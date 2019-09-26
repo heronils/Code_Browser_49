@@ -1,0 +1,4737 @@
+allow-multiple-instances	= false
+reload-mode	= always
+save-session	= true
+search-patterns	= *.py;*.html;*.js;*.css
+search-directory	=
+search-patterns-history	= *.*:*.py;*.html;*.js;*.css
+search-history	=
+search-replace-history	=
+layout	= page
+scroll-speed	= 1
+fisheye-view	= true
+
+//[of]:Themes
+theme = nils
+
+def themes
+	//[of]:system
+	def system
+		//[of]:font
+		font-family = Tahoma, Sans
+		font-size = 10
+		font-style = none
+
+		fixed-font-family = Courier New, Monospace
+		fixed-font-size = 10
+		fixed-font-style = none
+
+		title-font-family = Tahoma, Sans
+		title-font-size = 12
+		title-font-style = none
+
+		tree-view-font-family = Tahoma, Sans
+		tree-view-font-size = 10
+		tree-view-font-style = none
+		//[cf]
+		//[of]:color
+		color = text
+		normal-color = text
+		text-back-color = background
+
+		workspace-color = workspace
+
+		title-back-color = medium
+		title-fore-color = text
+		tree-view-back-color = background
+		tree-view-fore-color = text
+
+		highlight-back-color = medium
+		inactive-back-color = inactive
+		inactive-line-back-color = inactive
+		selected-back-color = #96A0B4
+		pair-color = #B0FFB0
+
+		section-back-color = background
+		section-color = #283C78
+		description-color = text
+		description-back-color = medium
+		link-color = #20643C
+		link-back-color = background
+
+		bookmark-color = #B0C0FF
+		match-color = #FFFFB0
+
+		breakpoint-color = #F0A0A0
+		error-color = #FFAFAF
+		invalid-color = #FFAFAF
+
+		number-color = #283CC8
+		string-color = #008080
+		comment-color = #208040
+
+		preproc-color = #0040A0
+
+		char-1-color = #3C50DC
+		char-2-color = #8050DC
+		char-3-color = #DC5080
+		char-4-color = #DC503C
+
+		word-1-color = #3C50DC
+		word-2-color = #8050DC
+		word-3-color = #DC5080
+		word-4-color = #DC503C
+		//[cf]
+	end
+	//[cf]
+	//[of]:nils
+	def nils
+		prototype = themes.system
+		//[of]:font
+		//[of]:(Some Mono Font Families)
+		//[c]Anonymous Pro
+		//[c]BPmono
+		//[c]Bitstream Vera Sans Mono
+		//[c]CamingoCode
+		//[c]Consolas
+		//[c]Courier New
+		//[c]DejaVu Sans Mono
+		//[c]Droid Sans Mono
+		//[c]Hack
+		//[c]Inconsolata
+		//[c]Liberation Mono
+		//[c]Lucida Console
+		//[c]Lucida Sans Typewriter
+		//[c]Monospace
+		//[c]NotCourierSans
+		//[c]Ocelot Monowidth
+		//[c]Oxygen Mono
+		//[c]Roboto Mono
+		//[c]Simplified Arabic Fixed
+		//[c]Source Code Pro
+		//[c]Space Mono
+		//[c]Ubuntu Mono
+		//[c]
+		//[cf]
+
+		font-family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
+		font-size = 12
+
+		title-font-family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
+		title-font-size = 12
+		tree-view-font-family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
+		tree-view-font-size = 12
+
+		section-font-family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
+		section-font-size = 12
+		link-font-family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
+		link-font-size = 12
+		description-font-family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
+		description-font-size = 12
+
+		comment-font-family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
+		comment-font-size = 12
+
+		word-1-font-style = bold
+		word-1-font-Family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
+		word-1-font-size = 12
+
+		word-4-font-style = bold
+		word-4-font-Family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
+		word-4-font-size = 12
+
+		char-4-font-style = bold
+		//[cf]
+		//[of]color:color
+		normal-color = #666666
+		section-color = #0044BB
+		section-back-color = #F4F8FF
+		link-color = #88BB44
+		link-back-color = #F0F8DF
+
+		bookmark-color = #DDFF88
+		match-color = #DDFF88
+
+		number-color = #6090C0
+		string-color = #6090C0
+		comment-color = #AFAFAF
+		preproc-color = #0088BB
+
+		word-1-color = #0060C0 // keywords
+		word-2-color = #000000 // function names
+		word-3-color = #6090C0
+		word-4-color = #F08000 // special keywords (function, var)
+
+		char-1-color = #0060C0 // brackets, operators
+		char-2-color = #000000
+		char-3-color = #6090C0
+		char-4-color = #F08000
+
+		//[c]Text Selections
+		selected-back-color = #3399FF
+		inactive-back-color = #99CCFF
+
+		//[c]Section background
+		highlight-back-color = #DFEFFF
+		inactive-line-back-color = #DFEFFF
+		//[cf]
+	end
+	//[cf]
+	//[of]:lucy
+	def lucy
+		prototype = themes.nils
+
+		//[of]:back-color
+		//~ description-back-color = #FFFFFF
+		highlight-back-color = #DFEFFF
+		inactive-back-color = #9FCFFF
+		inactive-line-back-color = #F7FBFF
+		//~ link-back-color = #FFFFFF
+		//~ normal-back-color = #FFFFFF
+		//~ section-back-color = #FFFFFF
+		selected-back-color = #9FCFFF
+		//~ text-back-color = #FFFFFF
+		title-back-color = #FFFFFF
+		//~ tree-view-back-color = #FFFFFF
+		//[cf]
+		//[of]:color
+		bookmark-color = #B8FF6F
+		breakpoint-color = #B8FF6F
+		char-1-color = #0080FF
+		char-2-color = #B08050
+		char-3-color = #10D070
+		char-4-color = #D01070
+		comment-color = #C0C0C0
+		//~ description-color = #C0C0C0
+		error-color = #FF0000
+		invalid-color = #FF0000
+		link-color = #80C040
+		match-color = #B8FF6F
+		//~ normal-color = #000000
+		number-color = #10D070
+		pair-color = #A0D0FF
+		preproc-color = #D090B0
+		section-color = #C0C0C0
+		//~ section-color = #0060C0
+		string-color = #10D070
+		word-1-color = #0080FF
+		//~ word-2-color = #B08050
+		word-3-color = #10D070
+		word-4-color = #D01070
+		workspace-color = #F0F7FF
+		//[cf]
+		//[of]:font-family
+		//~ char-1-font-family = Consolas, Droid Sans Mono, Segoe UI
+		//~ char-2-font-family = Consolas, Droid Sans Mono, Segoe UI
+		//~ char-3-font-family = Consolas, Droid Sans Mono, Segoe UI
+		//~ char-4-font-family = Consolas, Droid Sans Mono, Segoe UI
+		//~ comment-font-family = Consolas, Droid Sans Mono, Segoe UI
+		//~ description-font-family = Consolas, Droid Sans Mono, Segoe UI
+		//~ fixed-font-family = Consolas, Droid Sans Mono
+		//~ font-family = Consolas, Droid Sans Mono, Segoe UI
+		//~ link-font-family = Consolas, Droid Sans Mono, Segoe UI
+		//~ preproc-font-family = Consolas, Droid Sans Mono, Segoe UI
+		//~ section-font-family = Consolas, Droid Sans Mono, Segoe UI
+		//~ title-font-family = Consolas, Droid Sans Mono, Segoe UI
+		//~ tree-view-font-family = Consolas, Droid Sans Mono, Segoe UI
+		//~ word-4-font-family = Consolas, Droid Sans Mono, Segoe UI
+		//~ string-font-family = Consolas, Droid Sans Mono, Segoe UI
+		//[cf]
+		//[of]:font-size
+		comment-font-size = 12
+		description-font-size = 12
+		fixed-font-size = 12
+		font-size = 12
+		preproc-font-size = 12
+		title-font-size = 12
+		tree-view-font-size = 12
+		//[cf]
+		//[of]:font-style
+		comment-font-style = none
+		description-font-style = none
+		//~ fixed-font-style = none
+		//~ font-style = none
+		//~ title-font-style = none
+		//~ tree-view-font-style = none
+		//~ word-1-font-style = none
+		//[cf]
+		//[of]:fore-color
+		//~ title-fore-color = #000000
+		//~ tree-view-fore-color = #000000
+		//[cf]
+	end
+	//[cf]
+	//[of]:blue
+	def blue
+		prototype = themes.system
+
+		//[of]:back-color
+		description-back-color = #C0C0CC
+		highlight-back-color = #90A0E0
+		inactive-back-color = #B8C8E0
+		link-back-color = #E0E0EC
+		section-back-color = #E0E0EC
+		selected-back-color = #E0B8C0
+		text-back-color = #E0E0EC
+		tree-view-back-color = #E0E0EC
+		//[cf]
+		//[of]:color
+		char-4-color = #DC503C
+		char-3-color = #DC5080
+		char-2-color = #8050DC
+		char-1-color = #7F0055
+		comment-color = #3F7F5F
+		description-color = #202030
+		invalid-color = #D02020
+		link-color = #50A060
+		number-color = #283CC8
+		preproc-color = #0040A0
+		section-color = #5050B0
+		string-color = #2A00FF
+		word-4-color = #8000C0
+		word-3-color = #DC5080
+		word-2-color = #8050DC
+		word-1-color = #7F0055
+		//[cf]
+	end
+	//[cf]
+	//[of]:dark-purple
+	def dark-purple
+		//[of]:back-color
+		description-back-color = #505068
+		highlight-back-color = #606080
+		inactive-back-color = #505070
+		link-back-color = #404050
+		section-back-color = #404050
+		selected-back-color = #505068
+		text-back-color = #404050
+		tree-view-back-color = #404050
+		//[cf]
+		//[of]:color
+		bookmark-color = #505498
+		breakpoint-color = #406040
+		char-4-color = #E08050
+		char-3-color = #D080D0
+		char-2-color = #C05080
+		char-1-color = #8080E0
+		color = #8C8CB4
+		comment-color = #B07090
+		description-color = #8C8CB4
+		error-color = #804040
+		invalid-color = #C03060
+		link-color = #70A080
+		match-color = #E0E0B0
+		normal-color = #8C8CB4
+		number-color = #509090
+		pair-color = #507050
+		preproc-color = #B08098
+		section-color = #8080E0
+		string-color = #509090
+		word-4-color = #E08050
+		word-3-color = #D080D0
+		word-2-color = #C05080
+		word-1-color = #8080E0
+		workspace-color = #505068
+		//[cf]
+		//[of]:font-family
+		fixed-font-family = Fixedsys, Bitstream Vera Sans Mono
+		font-family = Arial, Luxi
+		tree-view-font-family = Arial, Luxi
+		//[cf]
+		//[of]:font-size
+		fixed-font-size = 9
+		font-size = 9
+		tree-view-font-size = 9
+		//[cf]
+		//[of]:font-style
+		fixed-font-style = none
+		font-style = bold
+		tree-view-font-style = bold
+		//[cf]
+		//[of]:fore-color
+		tree-view-fore-color = #8C8CB4
+		//[cf]
+	end
+	//[cf]
+	//[of]:eclipse
+	def eclipse
+		prototype = themes.system
+
+		//[of]:color
+		char-4-color = #DC503C
+		char-3-color = #DC5080
+		char-2-color = #8050DC
+		char-1-color = #7F0055
+		comment-color = #3F7F5F
+		invalid-color = #D02020
+		number-color = #283CC8
+		preproc-color = #0040A0
+		string-color = #2A00FF
+		word-4-color = #DC503C
+		word-3-color = #DC5080
+		word-2-color = #8050DC
+		word-1-color = #7F0055
+		//[cf]
+		//[of]:font-style
+		word-1-font-style = bold
+		//[cf]
+	end
+	//[cf]
+	//[of]:paper
+	def paper
+		//[of]:back-color
+		description-back-color = medium
+		highlight-back-color = medium
+		inactive-back-color = inactive
+		link-back-color = background
+		section-back-color = background
+		selected-back-color = #96A0B4
+		text-back-color = background
+		tree-view-back-color = background
+		//[cf]
+		//[of]:color
+		bookmark-color = #B0C0FF
+		breakpoint-color = #F0A0A0
+		color = text
+		comment-color = #555555
+		error-color = #C8FFC8
+		link-color = #20643C
+		match-color = #FFFFB0
+		pair-color = #B0FFB0
+		section-color = #283C78
+		workspace-color = workspace
+		//[cf]
+		//[of]:font-family
+		fixed-font-family = Courier New, Bitstream Vera Sans Mono
+		font-family = DejaVu Serif, Georgia
+		tree-view-font-family = DejaVu Serif, Georgia
+		//[cf]
+		//[of]:font-size
+		fixed-font-size = 13
+		font-size = 13
+		tree-view-font-size = 13
+		//[cf]
+		//[of]:font-style
+		comment-font-style = italic
+		fixed-font-style = none
+		font-style = none
+		tree-view-font-style = none
+		word-1-font-style = bold
+		//[cf]
+		//[of]:fore-color
+		tree-view-fore-color = text
+		//[cf]
+	end
+	//[cf]
+	//[of]:zenburn
+	def zenburn
+		//[of]:back-color
+		description-back-color = #464646
+		highlight-back-color = #4C5F55
+		inactive-back-color = #455878 //#545454
+		link-back-color = #3F3F3F
+		section-back-color = #3F3F3F
+		selected-back-color = #455878
+		text-back-color = #3F3F3F
+		tree-view-back-color = #3F3F3F
+		//[cf]
+		//[of]:color
+		bookmark-color = #505498
+		breakpoint-color = #406040
+		char-4-color = #E08050
+		char-3-color = #D080D0
+		char-2-color = #C05080
+		char-1-color = #F0EFD0
+		color = #DCDCCC
+		comment-color = #7F9F7F
+		description-color = #7F9F7F
+		error-color = #804040
+		invalid-color = #C03060
+		link-color = #B3D3C3
+		match-color = #8C8C49
+		normal-color = #DCDCCC
+		number-color = #8CD0D3
+		pair-color = #507050
+		preproc-color = #FFCFAF
+		section-color = #C0BED1
+		string-color = #CC9393
+		word-4-color = #DCDCA3
+		word-3-color = #EFEF8F
+		word-2-color = #EFDCBC
+		word-1-color = #F0DFAF
+		workspace-color = #464646
+		//[cf]
+		//[of]:font-family
+		fixed-font-family = Courier New, Bitstream Vera Sans Mono
+		font-family = Arial, Luxi
+		tree-view-font-family = Arial, Luxi
+		//[cf]
+		//[of]:fore-color
+		tree-view-fore-color = #DCDCCC
+		//[cf]
+		//[of]:font-style
+		fixed-font-style = none
+		font-style = none
+		tree-view-font-style = none
+		word-1-font-style = bold
+		//[cf]
+		//[of]:font-size
+		fixed-font-size = 10
+		font-size = 10
+		tree-view-font-size = 10
+		//[cf]
+	end
+	//[cf]
+end
+//[cf]
+//[of]:Languages
+def languages
+	//[of]:default
+	//[c]'extra-id-chars' is broken.
+
+	def default
+		encoding	= UTF-8
+		layout	= page
+		stylizer	= monochrome
+		fixed	= false
+
+		relative-indentation	= true
+
+		ignore-case	= false
+		show-line-type	= false
+		auto-indentation	= true
+		first-line-patterns	=
+		extra-id-chars	= [_A-Za-z0-9-]
+
+		//[of]:Tabs
+		//[c]'word-wrap = true' does not work with 'elastic-tabstops = true'
+		//[c]'show-tabs' is broken.
+		//[c]
+
+		elastic-tabstops	= true
+		show-tabs	= true
+		tabulation-size	= 4
+		expand-tabulation	= false
+		word-wrap	= false
+		//[cf]
+		//[of]:Comments
+		line-comment	= #
+		line-comment-2	=
+
+		open-comment	=
+		close-comment	=
+
+		open-comment-2	=
+		close-comment-2	=
+		//[cf]
+		//[of]:Strings
+		escape-char	=
+		regex-escape-char	=
+
+		char-delimiter	=
+		char-escape-char	=
+		char-prefix	=
+
+		string-delimiter	=
+		string-escape-char	=
+
+		multiline-char-delimiter	=
+		multiline-string-delimiter	=
+		//[cf]
+		//[of]:Chars, Words
+		chars-1	=
+		chars-2	=
+		chars-3	=
+		chars-4	=
+
+		words-1	=
+		words-2	=
+		words-3	=
+		words-4	=
+		//[cf]
+		//[of]:Prefixes
+		variable-prefix	=
+		hexa-prefix	=
+		preprocessor	=
+		//[cf]
+	end
+	//[cf]
+	//[of]:Default-String
+	def Default-String
+		prototype	= languages.default
+		stylizer	= generic
+
+		escape-char	= \
+		regex-escape-char	= \
+
+		char-delimiter	= '
+		char-escape-char	= \
+		string-delimiter	= "
+		string-escape-char	= \
+		multiline-char-delimiter	= '''
+		multiline-string-delimiter	= """
+	end
+	//[cf]
+	//[of]:Default-Code
+	def Default-Code
+		prototype	= languages.Default-String
+		hexa-prefix	= 0x
+		chars-1	= ()[]{}
+	end
+	//[cf]
+	//[of]:Text
+	def Text
+		prototype	= languages.default
+		patterns	= *.txt;
+
+		elastic-tabstops	= false
+		word-wrap	= true
+	end
+	//[cf]
+
+	//[of]Nils:Nils
+	//[of]Coffee:Coffeepy
+	def Coffeepy
+		prototype	= languages.Python
+		patterns	= *.cp;*.cpw;*.cpm
+
+		open-comment	= (alias
+		close-comment	= )
+	end
+	//[cf]
+	//[of]:ML
+	def ML
+		prototype	= languages.Default-Code
+		patterns	= *.ml
+
+		multiline-char-delimiter	= '
+
+		line-comment	= --
+		open-comment	= #
+		close-comment	= #
+	end
+	//[cf]
+	//[of]:Markdown-Poweruser
+	def Markdown-Poweruser
+		prototype	= languages.Markdown
+		stylizer	= generic
+		patterns	= *.mp; *.mpl
+
+		line-comment	= ;
+		open-comment	= [
+		close-comment	= ]
+	end
+	//[cf]
+	//[of]Template:Template
+	def Template
+		prototype	= languages.Default-String
+		patterns	= *.tpl
+
+		char-delimiter =
+		char-escape-char =
+		string-delimiter	= '
+		string-escape-char	= \
+
+		line-comment =
+		open-comment	= #
+		close-comment	= #
+
+		chars-1	= []
+		chars-2	= ()
+		chars-4	= {}
+
+
+		//~ hexa-prefix =
+		//~ regex-escape-char =
+		//~ multiline-string-delimiter =
+
+		//~ words-4 = %
+		//~ break catch class const continue delete export extends final finally	%
+		//~ function import let namespace new private public package return	%
+		//~ static throw try use var
+
+		//~ words-3 = true null void false
+
+		//~ words-1 = %
+		//~ as case default do else for if in instanceof is of super switch this	%
+		//~ typeof while with
+
+		//~ words-2 = %
+		//~ exclude get include named set	%
+		//~ boolean byte char double float int long short
+
+		//~ words-4 = %
+		//~ _ bE buE ch e f fE h hEs iE m mE mEs mN mnE Ns R S sEs sqEs t tE tm x
+
+		//~ chars-4	= =
+		//~ chars-1	= (){}[],;^!=-+?!:.
+	end
+	//[cf]
+	//[of]:ECO
+	def eco
+		prototype	= languages.Default-String
+		stylizer	= sh
+		patterns	= *.eco
+	end
+	//[cf]
+	//[of]:log
+	def log
+		prototype	= languages.default
+		patterns	= *.log
+
+		line-comment	= DEBUG
+		//~ open-comment	= /*
+		//~ close-comment	= */
+		//~ hexa-prefix	= #
+		//~ preprocessor	= #
+
+		//~ words-1	=
+		//~ words-2	=
+		//~ words-3	=
+		//~ words-4	=
+
+		words-2	= INFO DEBUG from in line
+	end
+	//[cf]
+	//[of]:RFC
+	def RFC
+		prototype	= languages.Text
+		patterns	= *.rfc
+
+		elastic-tabstops	= false
+		word-wrap	= true
+	end
+	//[cf]
+	//[cf]
+	//[of]:Code Browser
+	//[of]:Code Browser Script
+	def Code-Browser-Script
+		prototype	= languages.Default-Code
+		patterns	= *.cbs
+
+		line-comment	= //
+		char-delimiter	=
+		char-escape-char	=
+		char-prefix	= $
+		hexa-prefix	= 0x
+
+		chars-1 = ()[]{}=<>,
+		words-1 = and cond do else elsif end if not or self while
+		//[of]:words-2 = %
+		words-2 = %
+		Fold_Or_Move_Left	%
+		Goto_Next_Block Goto_Prev_Block Goto_Next_Special Goto_Prev_Special	%
+		Move_Selection_Up	%
+		Unfold_Or_Move_Right	%
+			%
+		Block Buf Range Str	%
+			%
+		ActiveSection Append	%
+		Blockify	%
+		Clear Copy Cursor Cut	%
+		Dedent	%
+		End EnsureNewline	%
+		FindBlockCloser FindBlockOpener FindSpecialLine Fold	%
+		Indent Init IsMultiline	%
+		Line Location	%
+		MoveRelative	%
+		New NormDirection	%
+		Old OutcommentRecursively OutputWindow	%
+		Paste Print PrintWithBorders Prnt	%
+		RunTests	%
+		Section Select Selection SelectionRange SetCursor	%
+		SkipWhitespace Start StartUndo StopUndo Str	%
+		Type	%
+		UnoutcommentRecursively	%
+		Wrap	%
+		X	%
+		Y 	%
+			%
+		StringBuffer	%
+		TextBlock	%
+			%
+		activeView addToStringBuffer	%
+		basicNew	%
+		cursorColumn cursorLine	%
+		fromString	%
+		isNil	%
+		new notNil	%
+		outputFile	%
+		replaceText root rowsSize	%
+		showOutput startGroup stopGroup	%
+		toString	%
+
+
+		//[cf]
+
+		//[of]:~ words-2
+		//~ words-2 = %
+			//~ Application Boolean Char	%
+			//~ FindData FindResult Frame Integer Language Process	%
+			//~ Settings String StringBuffer TextBlock TextFile TextLink	%
+			//~ TextRow TextSection TextView Window activateWindow	%
+			//~ activeFile activeSection activeView activeWindow	%
+			//~ addComment addLink addSection addText adjustPage	%
+			//~ autoIndentation basicNew centerPage	%
+			//~ changeElasticTabStops changeFixedFont	%
+			//~ changeShowLineType charDelimiter charEscapeChar	%
+			//~ charPrefix closeComment closeComment2 closeDialog	%
+			//~ closeWindow column copyBlock copySelection cursorColumn	%
+			//~ cursorLine deleteSelection direction each eachFile	%
+			//~ eachLanguage eachLine eachRow elasticTabStops endsWith	%
+			//~ escapeChar exit exitCode expandTabulation filename find	%
+			//~ findFile findLanguage fromString gotoAbsoluteLine	%
+			//~ gotoLocalLine hexaPrefix id indexOf insertChar	%
+			//~ insertString isCaseSensitive isEmpty isMarked	%
+			//~ isModified isNil isReadOnly isSelectionEmpty language	%
+			//~ lastText layout line lineComment lineComment2 link mark	%
+			//~ markColumn markLine match matchCase matchWholeWord	%
+			//~ messageBox mode moveCursor multilineCharDelimiter	%
+			//~ multilineStringDelimiter name new newWithFilename	%
+			//~ newWithTitle notEmpty notNil open openComment	%
+			//~ openComment2 openFilename openSection outputFile parent	%
+			//~ path preprocessor range regexEscapeChar	%
+			//~ relativeIndentation remove removeAll removeAllMarkers	%
+			//~ removeRange replaceAll replaceSelection replaceText	%
+			//~ root rootFile row rowIsEmpty rowLink rowNotEmpty	%
+			//~ rowSection rowText rowType rowsSize run save saveAllFiles	%
+			//~ saveFile scope searchFile searchString section select	%
+			//~ selectedText self setCaseSensitive setDirection setFilename	%
+			//~ setLanguage setLastText setLayout setLinkProperties	%
+			//~ setMatchWholeWord setReadOnly setRegularExpression	%
+			//~ setRowId setRowPath setRowText setScope setSearchString	%
+			//~ setSectionProperties setShowLineType setShowTabs	%
+			//~ setWordWrap setWorkingDirectory settings showLineType	%
+			//~ showOutput showSection showTabs size startGroup	%
+			//~ startsWith stdout stopGroup stringDelimiter	%
+			//~ stringEscapeChar synchronize tabulationSize text title	%
+			//~ toChar toInteger toLowerCase toString toUpperCase type	%
+			//~ unmark unmarkAll useRegularExpression variablePrefix	%
+			//~ wordWrap workingDirectory
+		//[cf]
+		words-3 = application false frame nil true
+		words-4 = attr break class function method return var yield
+	end
+
+
+	//[cf]
+	//[of]:Code Browser Config
+	def Code-Browser-Config
+		prototype	= languages.Default-Code
+		patterns	= *.cbc;*.cb-config
+		stylizer	= code-browser-config
+
+		line-comment	= //
+		hexa-prefix	= #
+
+		elastic-tabstops	= true
+		word-wrap	= false
+
+		words-1	= def end
+	end
+	//[cf]
+	//[of]:Copper
+	def Copper
+		prototype	= languages.Default-String
+		patterns	= *.co
+
+
+		line-comment	= //
+		hexa-prefix	= 0x
+		char-prefix	= $
+
+		words-1 = %
+		attr break const enum	%
+		function global import method	%
+		ref return static struct var yield
+
+		//~ words-1	= and attr break case cond const do else elsif end enum	%
+		//~ extend function global if import method not or	%
+		//~ ref repeat return static struct switch var while yield
+
+		words-3	= false nil true
+		//~ chars-1	= ()[]{},<>=+-:&|^?@#.
+	end
+	//[cf]
+	//[of]:Zinc
+	def Zinc
+		prototype	= languages.default
+		patterns	= *.zc
+		stylizer	= zinc
+
+		layout	= list
+		line-comment	= //
+		open-comment	= /*
+		close-comment	= */
+		string-delimiter	= "
+		string-escape-char	= \
+		hexa-prefix	= 0x
+		char-prefix	= $
+
+		words-1 = %
+		break case const continue def else elsif enum equ end false func	%
+		if import public private repeat return sizeof struct switch typedef	%
+		true union while
+
+		chars-1	= (){}[]<>=|+-*~!&$%%^
+	end
+	//[cf]
+	//[cf]
+
+	//[of]:Autohotkey
+	def Autohotkey
+		prototype	= languages.Default-Code
+		patterns	= *.ahk
+		encoding	= default
+		ignore-case	= false
+
+		line-comment	= ;
+		hexa-prefix	= 0x
+
+	//[c]	Catches these:
+	//[c]	#AllowSameLineComments #ClipboardTimeout #CommentFlag #ErrorStdOut
+	//[c]	#EscapeChar #HotkeyInterval #HotkeyModifierTimeout #Hotstring #IfWinActive
+	//[c]	#IfWinExist #Include #InstallKeybdHook #InstallMouseHook #KeyHistory
+	//[c]	#MaxHotkeysPerInterval #MaxMem #MaxThreads #MaxThreadsBuffer
+	//[c]	#MaxThreadsPerHotkey #NoEnv #NoTrayIcon #Persistent #SingleInstance #UseHook
+	//[c]	#WinActivateForce
+		preprocessor	= #
+
+		words-1 = %
+		and catch else for if in is loop not or until while
+
+		//[of]:words-2
+		words-2 = %
+		A_Index Add AutoTrim BlockInput Click ClipboardAll ClipWait	%
+		Control ControlClick ControlFocus ControlGet ControlGetFocus	%
+		ControlGetPos ControlGetText ControlMove ControlSend	%
+		ControlSendRaw ControlSetText CoordMode Critical	%
+		DetectHiddenText DetectHiddenWindows DllCall Drive DriveGet	%
+		DriveSpaceFree Edit EndRepeat EnvAdd EnvDiv EnvGet EnvMult	%
+		EnvSet EnvSub EnvUpdate Exit ExitApp FileAppend FileCopy	%
+		FileCopyDir FileCreateDir FileCreateShortcut FileDelete	%
+		FileExist FileGetAttrib FileGetShortcut FileGetSize	%
+		FileGetTime FileGetVersion FileInstall FileMove FileMoveDir	%
+		FileRead FileReadLine FileRecycle FileRecycleEmpty	%
+		FileRemoveDir FileSelectFile FileSelectFolder FileSetAttrib	%
+		FileSetTime FormatTime GetKeyState GroupActivate GroupAdd	%
+		GroupClose GroupDeactivate Gui GuiControl GuiControlGet	%
+		Hotkey IfEqual IfExist IfGreater IfGreaterOrEqual IfInString	%
+		IfLess IfLessOrEqual IfMsgBox IfNotEqual IfWinActive	%
+		IfWinExist IfWinNotActive IfWinNotExist ImageSearch	%
+		IniDelete IniRead IniWrite Input InputBox InStr InStr	%
+		KeyHistory KeyWait ListHotkeys ListLines ListVars LTrim	%
+		Menu MouseClick MouseClickDrag MouseGetPos MouseMove MsgBox	%
+		New OnExit OnMessage OutputDebug Pause Picture PixelGetColor	%
+		PixelSearch PostMessage Process Progress Random RegDelete	%
+		RegExMatch RegExReplace RegisterCallback RegRead RegWrite	%
+		Reload Repeat Return RightClick RightClickDrag Round RTrim	%
+		Run RunAs RunWait Send SendInput SendMessage SendMode	%
+		SendPlay SendRaw SetBatchLines SetCapslockState	%
+		SetControlDelay SetDefaultMouseSpeed SetEnv SetFormat	%
+		SetKeyDelay SetMouseDelay SetNumlockState SetScrollLockState	%
+		SetStoreCapslockMode SetTimer SetTitleMatchMode SetWinDelay	%
+		SetWorkingDir Show Shutdown Sleep Sort SoundBeep SoundGet	%
+		SoundGetWaveVolume SoundPlay SoundSet SoundSetWaveVolume	%
+		SplashImage SplashTextOff SplashTextOn SplitPath	%
+		StatusBarGetText StatusBarWait StringCaseSense StringGetPos	%
+		StringLeft StringLen StringLower StringMid StringReplace	%
+		StringRight StringSplit StringTrimLeft StringTrimRight	%
+		StringUpper StrLen SubStr Suspend SysGet SysMenu Thread	%
+		ToolTip ToolWindow Transform TrayTip Trim UrlDownloadToFile	%
+		VarSetCapacity WinActivate WinActivateBottom WinActive	%
+		WinClose WinGet WinGetActiveStats WinGetActiveTitle	%
+		WinGetClass WinGetPos WinGetText WinGetTitle WinHide WinKill	%
+		WinMaximize WinMenuSelectItem WinMinimize WinMinimizeAll	%
+		WinMinimizeAllUndo WinMove WinRestore WinSet WinSetTitle	%
+		WinShow WinWait WinWaitActive WinWaitClose WinWaitNotActive	%
+		A ahk_class ahk_id ahk_pid Alt AppsKey Backspace Break	%
+		Browser_Back Browser_Favorites Browser_Forward Browser_Home	%
+		Browser_Refresh Browser_Search Browser_Stop BS CapsLock	%
+		clipboard Control Ctrl CtrlBreak Del Delete Down End Enter	%
+		ErrorLevel Esc Escape F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12	%
+		F13 F14 F15 F16 F17 F18 F19 F20 F21 F22 F23 F24 Help Home	%
+		ID IDLast Ins Insert Joy1 Joy2 Joy3 Joy4 Joy5 Joy6 Joy7 Joy8	%
+		Joy9 Joy10 Joy11 Joy12 Joy13 Joy14 Joy15 Joy16 Joy17 Joy18	%
+		Joy19 Joy20 Joy21 Joy22 Joy23 Joy24 Joy25 Joy26 Joy27 Joy28	%
+		Joy29 Joy30 Joy31 Joy32 LAlt Launch_App1 Launch_App2	%
+		Launch_Mail Launch_Media LButton LControl LCtrl Left LShift	%
+		LWin MButton Media_Next Media_Play_Pause Media_Prev	%
+		Media_Stop Numpad0 Numpad1 Numpad2 Numpad3 Numpad4 Numpad5	%
+		Numpad6 Numpad7 Numpad8 Numpad9 NumpadAdd NumpadClear	%
+		NumpadDel NumpadDiv NumpadDot NumpadDown NumpadEnd	%
+		NumpadEnter NumpadHome NumpadIns NumpadLeft NumpadMult	%
+		NumpadPgDn NumpadPgUp NumpadRight NumpadSub NumpadUp Pause	%
+		PgDn PgUp PID PrintScreen RAlt RButton RControl RCtrl Return	%
+		Right RShift RWin ScrollLock Shift Sleep Space Tab Up	%
+		Volume_Down Volume_Mute Volume_Up WheelDown WheelLeft	%
+		WheelRight WheelUp XButton1 XButton2
+		//[cf]
+
+		words-3 = %
+		True False On Off
+
+		words-4 = %
+		break byref continue critical exit exitapp global gosub goto	%
+		return static
+	end
+	//[cf]
+	//[of]:Batch
+	def Batch
+		prototype	= languages.default
+		stylizer	= batch
+		patterns	= *.bat;*.btm;*.cmd
+
+		line-comment	= REM%_
+	end
+	//[cf]
+	//[of]:CSS
+	def CSS
+		prototype	= languages.default
+		stylizer	= css
+		patterns	= *.css
+
+		line-comment	=
+		open-comment	= /*
+		close-comment	= */
+
+		//[of]:words-1
+		//[c]Todo: reformat
+		//[c]
+
+		words-1 = %
+		-epub-caption-side	%
+		-epub-text-transform	%
+		-epub-word-break	%
+		-epub-writing-mode	%
+		-moz-animation	%
+		-moz-animation-delay	%
+		-moz-animation-direction	%
+		-moz-animation-duration	%
+		-moz-animation-fill-mode	%
+		-moz-animation-iteration-count	%
+		-moz-animation-name	%
+		-moz-animation-play-state	%
+		-moz-animation-timing-function	%
+		-moz-backface-visibility	%
+		-moz-background-clip	%
+		-moz-background-origin	%
+		-moz-background-size	%
+		-moz-binding	%
+		-moz-border-bottom-colors	%
+		-moz-border-image	%
+		-moz-border-left-colors	%
+		-moz-border-radius	%
+		-moz-border-radius-bottomleft	%
+		-moz-border-radius-bottomright	%
+		-moz-border-radius-topleft	%
+		-moz-border-radius-topright	%
+		-moz-border-right-colors	%
+		-moz-border-top-colors	%
+		-moz-box-sizing	%
+		-moz-column-count	%
+		-moz-column-fill	%
+		-moz-column-gap	%
+		-moz-column-rule	%
+		-moz-column-rule-color	%
+		-moz-column-rule-style	%
+		-moz-column-rule-width	%
+		-moz-column-width	%
+		-moz-font-feature-settings	%
+		-moz-font-language-override	%
+		-moz-hyphens	%
+		-moz-opacity	%
+		-moz-outline	%
+		-moz-outline-color	%
+		-moz-outline-offset	%
+		-moz-outline-style	%
+		-moz-outline-width	%
+		-moz-perspective	%
+		-moz-perspective-origin	%
+		-moz-tab-size	%
+		-moz-text-align-last	%
+		-moz-text-decoration-color	%
+		-moz-text-decoration-line	%
+		-moz-text-decoration-style	%
+		-moz-text-size-adjust	%
+		-moz-transform	%
+		-moz-transform-origin	%
+		-moz-transform-style	%
+		-moz-transition	%
+		-moz-transition-delay	%
+		-moz-transition-duration	%
+		-moz-transition-property	%
+		-moz-transition-timing-function	%
+		-moz-user-focus	%
+		-moz-user-input	%
+		-moz-user-modify	%
+		-moz-user-select	%
+		-o-replace	%
+		-o-set-link-source	%
+		-o-use-link-source	%
+		-replace	%
+		-set-link-source	%
+		-use-link-source	%
+		-webkit-animation	%
+		-webkit-animation-delay	%
+		-webkit-animation-direction	%
+		-webkit-animation-duration	%
+		-webkit-animation-fill-mode	%
+		-webkit-animation-iteration-count	%
+		-webkit-animation-name	%
+		-webkit-animation-play-state	%
+		-webkit-animation-timing-function	%
+		-webkit-backface-visibility	%
+		-webkit-background-clip	%
+		-webkit-background-origin	%
+		-webkit-background-size	%
+		-webkit-border-bottom-left-radius	%
+		-webkit-border-bottom-right-radius	%
+		-webkit-border-image	%
+		-webkit-border-radius	%
+		-webkit-border-top-left-radius	%
+		-webkit-border-top-right-radius	%
+		-webkit-box-sizing	%
+		-webkit-column-count	%
+		-webkit-column-gap	%
+		-webkit-column-rule	%
+		-webkit-column-rule-color	%
+		-webkit-column-rule-style	%
+		-webkit-column-rule-width	%
+		-webkit-column-span	%
+		-webkit-column-width	%
+		-webkit-columns	%
+		-webkit-font-feature-settings	%
+		-webkit-font-kerning	%
+		-webkit-font-size-delta	%
+		-webkit-font-variant-ligatures	%
+		-webkit-grid-column	%
+		-webkit-grid-row	%
+		-webkit-hyphens	%
+		-webkit-mask	%
+		-webkit-mask-clip	%
+		-webkit-mask-composite	%
+		-webkit-mask-image	%
+		-webkit-mask-origin	%
+		-webkit-mask-position	%
+		-webkit-mask-position-x	%
+		-webkit-mask-position-y	%
+		-webkit-mask-repeat	%
+		-webkit-mask-repeat-x	%
+		-webkit-mask-repeat-y	%
+		-webkit-mask-size	%
+		-webkit-opacity	%
+		-webkit-perspective	%
+		-webkit-perspective-origin	%
+		-webkit-region-fragment	%
+		-webkit-shape-outside	%
+		-webkit-text-emphasis	%
+		-webkit-text-emphasis-color	%
+		-webkit-text-emphasis-position	%
+		-webkit-text-emphasis-style	%
+		-webkit-transform	%
+		-webkit-transform-origin	%
+		-webkit-transform-style	%
+		-webkit-transition	%
+		-webkit-transition-delay	%
+		-webkit-transition-duration	%
+		-webkit-transition-property	%
+		-webkit-transition-timing-function	%
+		accelerator	%
+		align-content	%
+		align-items	%
+		align-self	%
+		alignment-baseline	%
+		all	%
+		animation	%
+		animation-delay	%
+		animation-direction	%
+		animation-duration	%
+		animation-fill-mode	%
+		animation-iteration-count	%
+		animation-name	%
+		animation-play-state	%
+		animation-timing-function	%
+		appearance	%
+		azimuth	%
+		backface-visibility	%
+		background	%
+		background-attachment	%
+		background-blend-mode	%
+		background-clip	%
+		background-color	%
+		background-image	%
+		background-origin	%
+		background-position	%
+		background-position-x	%
+		background-position-y	%
+		background-repeat	%
+		background-size	%
+		baseline-shift	%
+		behavior	%
+		binding	%
+		bleed	%
+		bookmark-label	%
+		bookmark-level	%
+		bookmark-state	%
+		border	%
+		border-bottom	%
+		border-bottom-color	%
+		border-bottom-left-radius	%
+		border-bottom-right-radius	%
+		border-bottom-style	%
+		border-bottom-width	%
+		border-boundary	%
+		border-collapse	%
+		border-color	%
+		border-image	%
+		border-image-outset	%
+		border-image-repeat	%
+		border-image-slice	%
+		border-image-source	%
+		border-image-width	%
+		border-inline-end	%
+		border-inline-end-color	%
+		border-inline-end-style	%
+		border-inline-end-width	%
+		border-inline-start	%
+		border-inline-start-color	%
+		border-inline-start-style	%
+		border-inline-start-width	%
+		border-left	%
+		border-left-color	%
+		border-left-style	%
+		border-left-width	%
+		border-radius	%
+		border-right	%
+		border-right-color	%
+		border-right-style	%
+		border-right-width	%
+		border-spacing	%
+		border-style	%
+		border-top	%
+		border-top-color	%
+		border-top-left-radius	%
+		border-top-right-radius	%
+		border-top-style	%
+		border-top-width	%
+		border-width	%
+		bottom	%
+		box-decoration-break	%
+		box-shadow	%
+		box-sizing	%
+		box-snap	%
+		box-suppress	%
+		break-after	%
+		break-before	%
+		break-inside	%
+		caption-side	%
+		caret	%
+		caret-shape	%
+		chains	%
+		clear	%
+		clip	%
+		clip-path	%
+		clip-rule	%
+		color	%
+		color-interpolation-filters	%
+		column-break-inside	%
+		column-count	%
+		column-fill	%
+		column-gap	%
+		column-rule	%
+		column-rule-color	%
+		column-rule-style	%
+		column-rule-width	%
+		column-span	%
+		column-width	%
+		columns	%
+		contain	%
+		content	%
+		counter-increment	%
+		counter-reset	%
+		counter-set	%
+		crop	%
+		cue	%
+		cue-after	%
+		cue-before	%
+		cursor	%
+		direction	%
+		display	%
+		display-inside	%
+		display-list	%
+		display-outside	%
+		dominant-baseline	%
+		elevation	%
+		empty-cells	%
+		filter	%
+		fit	%
+		flex	%
+		flex-basis	%
+		flex-direction	%
+		flex-flow	%
+		flex-grow	%
+		flex-shrink	%
+		flex-wrap	%
+		float	%
+		float-offset	%
+		flood-color	%
+		flood-opacity	%
+		flow-from	%
+		flow-into	%
+		font	%
+		font-family	%
+		font-feature-settings	%
+		font-kerning	%
+		font-language-override	%
+		font-max-size	%
+		font-min-size	%
+		font-optical-sizing	%
+		font-palette	%
+		font-presentation	%
+		font-size	%
+		font-size-adjust	%
+		font-stretch	%
+		font-style	%
+		font-synthesis	%
+		font-variant	%
+		font-variant-alternates	%
+		font-variant-caps	%
+		font-variant-east-asian	%
+		font-variant-ligatures	%
+		font-variant-numeric	%
+		font-variant-position	%
+		font-variation-settings	%
+		font-weight	%
+		grid	%
+		grid-area	%
+		grid-auto-columns	%
+		grid-auto-flow	%
+		grid-auto-rows	%
+		grid-column	%
+		grid-column-end	%
+		grid-column-start	%
+		grid-row	%
+		grid-row-end	%
+		grid-row-start	%
+		grid-template	%
+		grid-template-areas	%
+		grid-template-columns	%
+		grid-template-rows	%
+		hanging-punctuation	%
+		height	%
+		hyphens	%
+		icon	%
+		image-orientation	%
+		image-rendering	%
+		image-resolution	%
+		ime-mode	%
+		include-source	%
+		initial-letter	%
+		justify-content	%
+		justify-items	%
+		justify-self	%
+		layer-background-color	%
+		layer-background-image	%
+		layout-flow	%
+		layout-grid	%
+		layout-grid-char	%
+		layout-grid-char-spacing	%
+		layout-grid-line	%
+		layout-grid-mode	%
+		layout-grid-type	%
+		left	%
+		letter-spacing	%
+		lighting-color	%
+		line-break	%
+		line-grid	%
+		line-height	%
+		line-snap	%
+		list-style	%
+		list-style-image	%
+		list-style-position	%
+		list-style-type	%
+		margin	%
+		margin-bottom	%
+		margin-inline-end	%
+		margin-inline-start	%
+		margin-left	%
+		margin-right	%
+		margin-top	%
+		mark	%
+		mark-after	%
+		mark-before	%
+		marker-offset	%
+		marker-side	%
+		marks	%
+		marquee-direction	%
+		marquee-play-count	%
+		marquee-speed	%
+		marquee-style	%
+		mask	%
+		mask-box	%
+		mask-box-outset	%
+		mask-box-repeat	%
+		mask-box-slice	%
+		mask-box-source	%
+		mask-box-width	%
+		mask-clip	%
+		mask-image	%
+		mask-origin	%
+		mask-position	%
+		mask-repeat	%
+		mask-size	%
+		mask-source-type	%
+		mask-type	%
+		max-height	%
+		max-lines	%
+		max-width	%
+		min-height	%
+		min-width	%
+		move-to	%
+		nav-down	%
+		nav-index	%
+		nav-left	%
+		nav-right	%
+		nav-up	%
+		object-fit	%
+		object-position	%
+		opacity	%
+		order	%
+		orphans	%
+		outline	%
+		outline-color	%
+		outline-offset	%
+		outline-style	%
+		outline-width	%
+		overflow	%
+		overflow-wrap	%
+		overflow-x	%
+		overflow-y	%
+		padding	%
+		padding-bottom	%
+		padding-inline-end	%
+		padding-inline-start	%
+		padding-left	%
+		padding-right	%
+		padding-top	%
+		page	%
+		page-break-after	%
+		page-break-before	%
+		page-break-inside	%
+		page-policy	%
+		pause	%
+		pause-after	%
+		pause-before	%
+		perspective	%
+		perspective-origin	%
+		pitch	%
+		pitch-range	%
+		play-during	%
+		pointer-events	%
+		polar-anchor	%
+		polar-angle	%
+		polar-distance	%
+		polar-origin	%
+		position	%
+		presentation-level	%
+		quotes	%
+		region-fragment	%
+		resize	%
+		rest	%
+		rest-after	%
+		rest-before	%
+		richness	%
+		right	%
+		rotation	%
+		rotation-point	%
+		row-gap	%
+		ruby-align	%
+		ruby-merge	%
+		ruby-overhang	%
+		ruby-position	%
+		scroll-padding	%
+		scroll-padding-block	%
+		scroll-padding-block-end	%
+		scroll-padding-block-start	%
+		scroll-padding-bottom	%
+		scroll-padding-inline	%
+		scroll-padding-inline-end	%
+		scroll-padding-inline-start	%
+		scroll-padding-left	%
+		scroll-padding-right	%
+		scroll-padding-top	%
+		scroll-snap-align	%
+		scroll-snap-margin	%
+		scroll-snap-margin-block	%
+		scroll-snap-margin-block-end	%
+		scroll-snap-margin-block-start	%
+		scroll-snap-margin-bottom	%
+		scroll-snap-margin-inline	%
+		scroll-snap-margin-inline-end	%
+		scroll-snap-margin-inline-start	%
+		scroll-snap-margin-left	%
+		scroll-snap-margin-right	%
+		scroll-snap-margin-top	%
+		scroll-snap-stop	%
+		scroll-snap-type	%
+		scrollbar-3d-light-color	%
+		scrollbar-arrow-color	%
+		scrollbar-base-color	%
+		scrollbar-dark-shadow-color	%
+		scrollbar-face-color	%
+		scrollbar-highlight-color	%
+		scrollbar-shadow-color	%
+		scrollbar-track-color	%
+		shape-image-threshold	%
+		shape-inside	%
+		shape-margin	%
+		shape-outside	%
+		size	%
+		speak	%
+		speak-as	%
+		speak-header	%
+		speak-numeral	%
+		speak-punctuation	%
+		speech-rate	%
+		src	%
+		stress	%
+		string-set	%
+		tab-size	%
+		table-layout	%
+		text-align	%
+		text-align-last	%
+		text-autospace	%
+		text-combine-upright	%
+		text-decoration	%
+		text-decoration-color	%
+		text-decoration-line	%
+		text-decoration-skip	%
+		text-decoration-style	%
+		text-emphasis	%
+		text-emphasis-color	%
+		text-emphasis-position	%
+		text-emphasis-style	%
+		text-indent	%
+		text-justify	%
+		text-kashida-space	%
+		text-orientation	%
+		text-overflow	%
+		text-shadow	%
+		text-space-collapse	%
+		text-transform	%
+		text-underline-position	%
+		text-wrap	%
+		top	%
+		transform	%
+		transform-origin	%
+		transform-style	%
+		transition	%
+		transition-delay	%
+		transition-duration	%
+		transition-property	%
+		transition-timing-function	%
+		unicode-bidi	%
+		user-select	%
+		vertical-align	%
+		visibility	%
+		voice-balance	%
+		voice-duration	%
+		voice-family	%
+		voice-pitch	%
+		voice-range	%
+		voice-rate	%
+		voice-stress	%
+		voice-volume	%
+		volume	%
+		white-space	%
+		widows	%
+		width	%
+		will-change	%
+		word-break	%
+		word-spacing	%
+		word-wrap	%
+		wrap-flow	%
+		wrap-through	%
+		writing-mode	%
+		z-index
+		//[cf]
+
+		words-2 = %
+		@font-face	%
+		@font-feature-values	%
+		@keyframes	%
+		@page
+	end
+	//[cf]
+	//[of]:HTML
+	def HTML
+		prototype	= languages.XML
+		patterns	= *.html;*.htm;*.tpl
+
+		open-comment-2	= <!
+		close-comment-2	= >
+
+		//[of]:words-1
+		//[c]compiled from https://mzl.la/13RCWd4
+		//[c]
+
+		words-1 = %
+		a abbr address area article aside audio b base bdi bdo	%
+		blockquote body br button canvas caption cite code col	%
+		colgroup command data datalist dd del details dfn div	%
+		dl dt em embed fieldset figcaption figure footer form	%
+		h1 h2 h3 h4 h5 h6 head header hr html i iframe img input	%
+		ins kbd keygen	%
+		label legend li link main map mark math menu meta meter	%
+		nav noscript object ol optgroup option output p param	%
+		pre progress q rp rt ruby s samp script section select	%
+		small source span strong style sub summary svg table	%
+		tbody td textarea tfoot th thead time title tr track u ul	%
+		var video wbr
+		//[cf]
+		//[of]:words-3
+		//[c]compiled from https://mzl.la/2SA1ph9
+		//[c]
+
+		words-3 = %
+		accept-charset= accept= accesskey= action= align= alt= 	%
+		async= autocomplete= autofocus= autoplay= autosave= 	%
+		bgcolor= border= buffered= challenge= charset= checked= 	%
+		cite= class= code= codebase= color= cols= colspan= 	%
+		content= contenteditable= contextmenu= controls= coords= 	%
+		crossorigin= data= datetime= default= defer= dir= 	%
+		dirname= disabled= download= draggable= dropzone= 	%
+		enctype= for= form= formaction= headers= height= hidden= 	%
+		high= href= hreflang= http-equiv= icon= id= integrity= 	%
+		ismap= itemprop= keytype= kind= label= lang= language= 	%
+		list= loop= low= manifest= max= maxlength= media= method= 	%
+		min= multiple= muted= name= novalidate= open= optimum= 	%
+		pattern= ping= placeholder= poster= preload= radiogroup= 	%
+		readonly= rel= required= reversed= rows= rowspan= 	%
+		sandbox= scope= scoped= seamless= selected= shape= size= 	%
+		sizes= slot= span= spellcheck= src= srcdoc= srclang= 	%
+		srcset= start= step= style= summary= tabindex= target= 	%
+		title= type= usemap= value= width= wrap=
+		//[cf]
+
+		chars-1 = !<>/
+	end
+	//[cf]
+	//[of]:Javascript
+	def Javascript
+		prototype	= languages.Default-Code
+		patterns	= *.js; *.json
+
+		line-comment	= //
+		open-comment	= /*
+		close-comment	= */
+
+		multiline-string-delimiter	= `
+
+		words-1 = %
+		as case default do else for if in instanceof is of self super	%
+		switch this typeof while with
+
+	//[c]	Todo: compile list of things in the standard lib
+		words-2 =
+
+		words-3	= true null void false
+
+		words-4 = %
+		break catch class const continue delete export extends final	%
+		finally function get import let namespace new private public	%
+		package return static throw try use var yield
+	end
+	//[cf]
+	//[of]:Markdown
+	def Markdown
+		prototype	= languages.default
+		stylizer	= generic
+		patterns	= *.md
+
+		elastic-tabstops	= false
+		word-wrap	= true
+
+		line-comment	=
+		open-comment	= <!--
+		close-comment	= -->
+	end
+	//[cf]
+	//[of]:Nim
+	def Nim
+		prototype	= languages.Default-Code
+		stylizer	= python
+		patterns	= *.nim
+
+		open-comment	= #[
+		close-comment	= ]#
+
+		tabulation-size	= 4
+		expand-tabulation	= true
+
+		//[of]:words-1
+		words-1 = %
+		addr and as asm bind case cast concept converter defer discard	%
+		distinct div do elif else end except finally for if in is isnot	%
+		iterator mod not notin of or out shl shr try while xor
+		//[cf]
+		//[of]:words-2
+		//[c]Todo: compile list of things in the standard lib
+		//[c]
+
+		words-2 = %
+		echo high low readLine stdin system.hostOS
+		//[cf]
+		//[of]:words-3
+		words-3 = %
+		false nil res result remainder true	%
+		%
+		array bool char cstring enum float float32 float64 int int8	%
+		int16 int32 int64 object openArray range seq set string tuple	%
+		uint uint8 uint16 uint32 uint64 varargs
+		//[cf]
+		//[of]:words-4
+		words-4 = %
+		block break const continue export from func import include	%
+		interface let macro method mixin proc ptr raise ref return	%
+		static template type using var when yield
+		//[cf]
+
+		chars-1	= ()[]{}
+		chars-4	= \
+	end
+	//[cf]
+	//[of]:PEG-js
+	def PEG-js
+		prototype	= languages.Javascript
+		patterns	= *.pegjs; *.g
+	end
+	//[cf]
+	//[of]:Python
+	def Python
+		prototype	= languages.Default-Code
+		stylizer	= python
+		patterns	= *.py;*.pyw
+
+		words-1 = %
+		and as assert elif else except finally for if	%
+		in is lambda not or pass try while with
+
+		//[of]:words-2
+		words-2=	%
+			%
+		__all__ sub finditer read write	%
+			%
+		ArithmeticError AssertionError AttributeError BaseException	%
+		BlockingIOError BrokenPipeError BufferError BytesWarning	%
+		ChildProcessError ConnectionAbortedError ConnectionError	%
+		ConnectionRefusedError ConnectionResetError DeprecationWarning	%
+		EOFError Exception FileExistsError FileNotFoundError	%
+		FloatingPointError FutureWarning GeneratorExit ImportError	%
+		ImportWarning IndentationError IndexError InterruptedError	%
+		IsADirectoryError KeyError KeyboardInterrupt LookupError MemoryError	%
+		ModuleNotFoundError NameError NotADirectoryError NotImplementedError	%
+		OSError OverflowError PendingDeprecationWarning PermissionError	%
+		ProcessLookupError RecursionError ReferenceError ResourceWarning	%
+		RuntimeError RuntimeWarning StopAsyncIteration StopIteration	%
+		SyntaxError SyntaxWarning SystemError SystemExit TabError	%
+		TimeoutError TypeError UnboundLocalError UnicodeDecodeError	%
+		UnicodeEncodeError UnicodeError UnicodeTranslateError UnicodeWarning	%
+		UserWarning ValueError Warning ZeroDivisionError __abs__ __add__	%
+		__and__ __bool__ __ceil__ __class__ __contains__ __delattr__	%
+		__delitem__ __dir__ __divmod__ __doc__ __eq__ __float__ __floor__	%
+		__floordiv__ __format__ __ge__ __getattribute__ __getitem__	%
+		__getnewargs__ __gt__ __hash__ __iadd__ __iand__ __import__ __imul__	%
+		__index__ __init__ __init_subclass__ __int__ __invert__ __ior__	%
+		__isub__ __iter__ __ixor__ __le__ __len__ __lshift__ __lt__ __mod__	%
+		__mul__ __ne__ __neg__ __new__ __or__ __pos__ __pow__ __radd__	%
+		__rand__ __rdivmod__ __reduce__ __reduce_ex__ __repr__ __reversed__	%
+		__rfloordiv__ __rlshift__ __rmod__ __rmul__ __ror__ __round__	%
+		__rpow__ __rrshift__ __rshift__ __rsub__ __rtruediv__ __rxor__	%
+		__setattr__ __setitem__ __sizeof__ __str__ __sub__ __subclasshook__	%
+		__truediv__ __trunc__ __xor__ abc abc.ABC abc.ABCMeta	%
+		abc.__builtins__ abc.__cached__ abc.__doc__ abc.__file__	%
+		abc.__loader__ abc.__name__ abc.__package__ abc.__spec__	%
+		abc._abc_init abc._abc_instancecheck abc._abc_register	%
+		abc._abc_subclasscheck abc._get_dump abc._reset_caches	%
+		abc._reset_registry abc.abstractclassmethod abc.abstractmethod	%
+		abc.abstractproperty abc.abstractstaticmethod abc.get_cache_token abs	%
+		add algorithms algorithms.__builtins__ algorithms.__cached__	%
+		algorithms.__doc__ algorithms.__file__ algorithms.__loader__	%
+		algorithms.__name__ algorithms.__package__ algorithms.__path__	%
+		algorithms.__spec__ all any append argparse argparse.Action	%
+		argparse.ArgumentDefaultsHelpFormatter argparse.ArgumentError	%
+		argparse.ArgumentParser argparse.ArgumentTypeError argparse.FileType	%
+		argparse.HelpFormatter argparse.MetavarTypeHelpFormatter	%
+		argparse.Namespace argparse.ONE_OR_MORE argparse.OPTIONAL	%
+		argparse.PARSER argparse.REMAINDER	%
+		argparse.RawDescriptionHelpFormatter argparse.RawTextHelpFormatter	%
+		argparse.SUPPRESS argparse.ZERO_OR_MORE argparse._	%
+		argparse._ActionsContainer argparse._AppendAction	%
+		argparse._AppendConstAction argparse._ArgumentGroup	%
+		argparse._AttributeHolder argparse._CountAction argparse._HelpAction	%
+		argparse._MutuallyExclusiveGroup argparse._StoreAction	%
+		argparse._StoreConstAction argparse._StoreFalseAction	%
+		argparse._StoreTrueAction argparse._SubParsersAction	%
+		argparse._UNRECOGNIZED_ARGS_ATTR argparse._VersionAction	%
+		argparse.__all__ argparse.__builtins__ argparse.__cached__	%
+		argparse.__doc__ argparse.__file__ argparse.__loader__	%
+		argparse.__name__ argparse.__package__ argparse.__spec__	%
+		argparse.__version__ argparse._copy_items argparse._get_action_name	%
+		argparse._os argparse._re argparse._sys argparse.ngettext ascii	%
+		asyncio asyncio.ALL_COMPLETED asyncio.AbstractEventLoop	%
+		asyncio.AbstractEventLoopPolicy asyncio.AbstractServer	%
+		asyncio.BaseEventLoop asyncio.BaseProtocol asyncio.BaseTransport	%
+		asyncio.BoundedSemaphore asyncio.BufferedProtocol	%
+		asyncio.CancelledError asyncio.Condition asyncio.DatagramProtocol	%
+		asyncio.DatagramTransport asyncio.DefaultEventLoopPolicy	%
+		asyncio.Event asyncio.FIRST_COMPLETED asyncio.FIRST_EXCEPTION	%
+		asyncio.Future asyncio.Handle asyncio.IncompleteReadError	%
+		asyncio.InvalidStateError asyncio.IocpProactor asyncio.LifoQueue	%
+		asyncio.LimitOverrunError asyncio.Lock asyncio.PriorityQueue	%
+		asyncio.ProactorEventLoop asyncio.Protocol asyncio.Queue	%
+		asyncio.QueueEmpty asyncio.QueueFull asyncio.ReadTransport	%
+		asyncio.SelectorEventLoop asyncio.Semaphore	%
+		asyncio.SendfileNotAvailableError asyncio.StreamReader	%
+		asyncio.StreamReaderProtocol asyncio.StreamWriter	%
+		asyncio.SubprocessProtocol asyncio.SubprocessTransport asyncio.Task	%
+		asyncio.TimeoutError asyncio.TimerHandle asyncio.Transport	%
+		asyncio.WindowsProactorEventLoopPolicy	%
+		asyncio.WindowsSelectorEventLoopPolicy asyncio.WriteTransport	%
+		asyncio.__all__ asyncio.__builtins__ asyncio.__cached__	%
+		asyncio.__doc__ asyncio.__file__ asyncio.__loader__ asyncio.__name__	%
+		asyncio.__package__ asyncio.__path__ asyncio.__spec__	%
+		asyncio._all_tasks_compat asyncio._enter_task	%
+		asyncio._get_running_loop asyncio._leave_task asyncio._register_task	%
+		asyncio._set_running_loop asyncio._unregister_task asyncio.all_tasks	%
+		asyncio.as_completed asyncio.base_events asyncio.base_futures	%
+		asyncio.base_subprocess asyncio.base_tasks asyncio.constants	%
+		asyncio.coroutine asyncio.coroutines asyncio.create_subprocess_exec	%
+		asyncio.create_subprocess_shell asyncio.create_task	%
+		asyncio.current_task asyncio.ensure_future asyncio.events	%
+		asyncio.format_helpers asyncio.futures asyncio.gather	%
+		asyncio.get_child_watcher asyncio.get_event_loop	%
+		asyncio.get_event_loop_policy asyncio.get_running_loop	%
+		asyncio.iscoroutine asyncio.iscoroutinefunction asyncio.isfuture	%
+		asyncio.locks asyncio.log asyncio.new_event_loop	%
+		asyncio.open_connection asyncio.proactor_events asyncio.protocols	%
+		asyncio.queues asyncio.run asyncio.run_coroutine_threadsafe	%
+		asyncio.runners asyncio.selector_events asyncio.set_child_watcher	%
+		asyncio.set_event_loop asyncio.set_event_loop_policy asyncio.shield	%
+		asyncio.sleep asyncio.sslproto asyncio.start_server asyncio.streams	%
+		asyncio.subprocess asyncio.sys asyncio.tasks asyncio.transports	%
+		asyncio.wait asyncio.wait_for asyncio.windows_events	%
+		asyncio.windows_utils asyncio.wrap_future bin bit_length bool bottle	%
+		bottle.AppEngineServer bottle.AppStack bottle.AutoServer	%
+		bottle.BaseRequest bottle.BaseResponse bottle.BaseTemplate	%
+		bottle.BjoernServer bottle.Bottle bottle.BottleException	%
+		bottle.BytesIO bottle.CGIServer bottle.CheetahTemplate	%
+		bottle.CherryPyServer bottle.ConfigDict bottle.ConfigParser	%
+		bottle.DEBUG bottle.DictMixin bottle.DictProperty bottle.DieselServer	%
+		bottle.ERROR_PAGE_TEMPLATE bottle.EventletServer bottle.FapwsServer	%
+		bottle.FileCheckerThread bottle.FileUpload bottle.FlupFCGIServer	%
+		bottle.FormsDict bottle.GeventServer bottle.GeventSocketIOServer	%
+		bottle.GunicornServer bottle.HTTPError bottle.HTTPResponse	%
+		bottle.HTTP_CODES bottle.HeaderDict bottle.HeaderProperty	%
+		bottle.JSONPlugin bottle.Jinja2Template bottle.LocalRequest	%
+		bottle.LocalResponse bottle.MakoTemplate bottle.MeinheldServer	%
+		bottle.MultiDict bottle.NORUN bottle.PasteServer bottle.PluginError	%
+		bottle.Request bottle.ResourceManager bottle.Response	%
+		bottle.RocketServer bottle.Route bottle.RouteBuildError	%
+		bottle.RouteError bottle.RouteReset bottle.RouteSyntaxError	%
+		bottle.Router bottle.RouterUnknownModeError bottle.ServerAdapter	%
+		bottle.SimpleCookie bottle.SimpleTemplate bottle.StplParser	%
+		bottle.StplSyntaxError bottle.TEMPLATES bottle.TEMPLATE_PATH	%
+		bottle.TemplateError bottle.TemplatePlugin bottle.TemporaryFile	%
+		bottle.TornadoServer bottle.TwistedServer bottle.UrlSplitResult	%
+		bottle.WSGIFileWrapper bottle.WSGIHeaderDict bottle.WSGIRefServer	%
+		bottle.WaitressServer bottle._HTTP_STATUS_LINES	%
+		bottle._ImportRedirect bottle.__author__ bottle.__builtins__	%
+		bottle.__cached__ bottle.__doc__ bottle.__file__ bottle.__license__	%
+		bottle.__loader__ bottle.__name__ bottle.__package__ bottle.__spec__	%
+		bottle.__version__ bottle.__warningregistry__ bottle._closeiter	%
+		bottle._debug bottle._e bottle._file_iter_range bottle._hkey	%
+		bottle._hval bottle._lscmp bottle._parse_qsl bottle._raise	%
+		bottle._re_flatten bottle._stderr bottle._stdout bottle.abort	%
+		bottle.app bottle.auth_basic bottle.base64 bottle.basestring	%
+		bottle.cached_property bottle.callable bottle.cgi	%
+		bottle.cheetah_template bottle.cheetah_view bottle.cookie_decode	%
+		bottle.cookie_encode bottle.cookie_is_encoded bottle.datedate	%
+		bottle.datetime bottle.debug bottle.default_app bottle.delete	%
+		bottle.depr bottle.email bottle.error bottle.ext bottle.format_exc	%
+		bottle.functools bottle.get bottle.getargspec bottle.hmac bottle.hook	%
+		bottle.html_escape bottle.html_quote bottle.http_date bottle.httplib	%
+		bottle.imap bottle.imp bottle.install bottle.itertools	%
+		bottle.jinja2_template bottle.jinja2_view bottle.json_dumps	%
+		bottle.json_lds bottle.json_loads bottle.lazy_attribute bottle.load	%
+		bottle.load_app bottle.local bottle.local_property	%
+		bottle.make_default_app_wrapper bottle.makelist bottle.mako_template	%
+		bottle.mako_view bottle.mimetypes bottle.mount bottle.normalize	%
+		bottle.os bottle.parse_auth bottle.parse_date	%
+		bottle.parse_range_header bottle.path_shift bottle.pickle bottle.post	%
+		bottle.print_exc bottle.put bottle.py bottle.py25 bottle.py31	%
+		bottle.py3k bottle.re bottle.redirect bottle.request bottle.response	%
+		bottle.route bottle.run bottle.server_names bottle.static_file	%
+		bottle.subprocess bottle.sys bottle.tempfile bottle.template	%
+		bottle.thread bottle.threading bottle.time bottle.timedelta	%
+		bottle.tob bottle.tonat bottle.touni bottle.unicode bottle.uninstall	%
+		bottle.update_wrapper bottle.url bottle.urlencode bottle.urljoin	%
+		bottle.urlquote bottle.urlunquote bottle.view bottle.warnings	%
+		bottle.with_statement bottle.yieldroutes bs4 bs4.BeautifulSoup	%
+		bs4.BeautifulStoneSoup bs4.CData bs4.Comment	%
+		bs4.DEFAULT_OUTPUT_ENCODING bs4.Declaration bs4.Doctype	%
+		bs4.FeatureNotFound bs4.NavigableString bs4.PageElement	%
+		bs4.ParserRejectedMarkup bs4.ProcessingInstruction bs4.ResultSet	%
+		bs4.SoupStrainer bs4.StopParsing bs4.Tag bs4.UnicodeDammit	%
+		bs4.__all__ bs4.__author__ bs4.__builtins__ bs4.__cached__	%
+		bs4.__copyright__ bs4.__doc__ bs4.__file__ bs4.__license__	%
+		bs4.__loader__ bs4.__name__ bs4.__package__ bs4.__path__ bs4.__spec__	%
+		bs4.__version__ bs4._s bs4._soup bs4.builder bs4.builder_registry	%
+		bs4.dammit bs4.element bs4.os bs4.re bs4.sys bs4.traceback	%
+		bs4.warnings bytearray bytes callable capitalize casefold center	%
+		chess chess.A1 chess.A2 chess.A3 chess.A4 chess.A5 chess.A6 chess.A7	%
+		chess.A8 chess.B1 chess.B2 chess.B3 chess.B4 chess.B5 chess.B6	%
+		chess.B7 chess.B8 chess.BB_A1 chess.BB_A2 chess.BB_A3 chess.BB_A4	%
+		chess.BB_A5 chess.BB_A6 chess.BB_A7 chess.BB_A8 chess.BB_ALL	%
+		chess.BB_B1 chess.BB_B2 chess.BB_B3 chess.BB_B4 chess.BB_B5	%
+		chess.BB_B6 chess.BB_B7 chess.BB_B8 chess.BB_BACKRANKS	%
+		chess.BB_BETWEEN chess.BB_C1 chess.BB_C2 chess.BB_C3 chess.BB_C4	%
+		chess.BB_C5 chess.BB_C6 chess.BB_C7 chess.BB_C8 chess.BB_CENTER	%
+		chess.BB_CORNERS chess.BB_D1 chess.BB_D2 chess.BB_D3 chess.BB_D4	%
+		chess.BB_D5 chess.BB_D6 chess.BB_D7 chess.BB_D8 chess.BB_DARK_SQUARES	%
+		chess.BB_DIAG_ATTACKS chess.BB_DIAG_MASKS chess.BB_E1 chess.BB_E2	%
+		chess.BB_E3 chess.BB_E4 chess.BB_E5 chess.BB_E6 chess.BB_E7	%
+		chess.BB_E8 chess.BB_EMPTY chess.BB_F1 chess.BB_F2 chess.BB_F3	%
+		chess.BB_F4 chess.BB_F5 chess.BB_F6 chess.BB_F7 chess.BB_F8	%
+		chess.BB_FILES chess.BB_FILE_A chess.BB_FILE_ATTACKS chess.BB_FILE_B	%
+		chess.BB_FILE_C chess.BB_FILE_D chess.BB_FILE_E chess.BB_FILE_F	%
+		chess.BB_FILE_G chess.BB_FILE_H chess.BB_FILE_MASKS chess.BB_G1	%
+		chess.BB_G2 chess.BB_G3 chess.BB_G4 chess.BB_G5 chess.BB_G6	%
+		chess.BB_G7 chess.BB_G8 chess.BB_H1 chess.BB_H2 chess.BB_H3	%
+		chess.BB_H4 chess.BB_H5 chess.BB_H6 chess.BB_H7 chess.BB_H8	%
+		chess.BB_KING_ATTACKS chess.BB_KNIGHT_ATTACKS chess.BB_LIGHT_SQUARES	%
+		chess.BB_PAWN_ATTACKS chess.BB_RANKS chess.BB_RANK_1 chess.BB_RANK_2	%
+		chess.BB_RANK_3 chess.BB_RANK_4 chess.BB_RANK_5 chess.BB_RANK_6	%
+		chess.BB_RANK_7 chess.BB_RANK_8 chess.BB_RANK_ATTACKS	%
+		chess.BB_RANK_MASKS chess.BB_RAYS chess.BB_SQUARES chess.BISHOP	%
+		chess.BLACK chess.BaseBoard chess.Bitboard chess.Board chess.C1	%
+		chess.C2 chess.C3 chess.C4 chess.C5 chess.C6 chess.C7 chess.C8	%
+		chess.COLORS chess.COLOR_NAMES chess.Color chess.D1 chess.D2 chess.D3	%
+		chess.D4 chess.D5 chess.D6 chess.D7 chess.D8 chess.E1 chess.E2	%
+		chess.E3 chess.E4 chess.E5 chess.E6 chess.E7 chess.E8 chess.F1	%
+		chess.F2 chess.F3 chess.F4 chess.F5 chess.F6 chess.F7 chess.F8	%
+		chess.FEN_CASTLING_REGEX chess.FILE_NAMES chess.G1 chess.G2 chess.G3	%
+		chess.G4 chess.G5 chess.G6 chess.G7 chess.G8 chess.H1 chess.H2	%
+		chess.H3 chess.H4 chess.H5 chess.H6 chess.H7 chess.H8 chess.KING	%
+		chess.KNIGHT chess.LegalMoveGenerator chess.Move chess.PAWN	%
+		chess.PIECE_NAMES chess.PIECE_SYMBOLS chess.PIECE_TYPES chess.Piece	%
+		chess.PieceType chess.PseudoLegalMoveGenerator chess.QUEEN	%
+		chess.RANK_NAMES chess.ROOK chess.SAN_REGEX chess.SQUARES	%
+		chess.SQUARES_180 chess.SQUARE_NAMES chess.STARTING_BOARD_FEN	%
+		chess.STARTING_FEN chess.STATUS_BAD_CASTLING_RIGHTS	%
+		chess.STATUS_EMPTY chess.STATUS_INVALID_EP_SQUARE	%
+		chess.STATUS_NO_BLACK_KING chess.STATUS_NO_WHITE_KING	%
+		chess.STATUS_OPPOSITE_CHECK chess.STATUS_PAWNS_ON_BACKRANK	%
+		chess.STATUS_RACE_CHECK chess.STATUS_RACE_MATERIAL	%
+		chess.STATUS_RACE_OVER chess.STATUS_TOO_MANY_BLACK_PAWNS	%
+		chess.STATUS_TOO_MANY_BLACK_PIECES chess.STATUS_TOO_MANY_KINGS	%
+		chess.STATUS_TOO_MANY_WHITE_PAWNS chess.STATUS_TOO_MANY_WHITE_PIECES	%
+		chess.STATUS_VALID chess.Square chess.SquareSet chess.Status	%
+		chess.UNICODE_PIECE_SYMBOLS chess.WHITE chess._BoardState	%
+		chess._IntFlag chess.__author__ chess.__builtins__ chess.__cached__	%
+		chess.__doc__ chess.__email__ chess.__file__ chess.__loader__	%
+		chess.__name__ chess.__package__ chess.__path__ chess.__spec__	%
+		chess.__version__ chess._attack_table chess._carry_rippler	%
+		chess._edges chess._rays chess._sliding_attacks chess._step_attacks	%
+		chess.collections chess.copy chess.enum chess.flip_anti_diagonal	%
+		chess.flip_diagonal chess.flip_horizontal chess.flip_vertical	%
+		chess.itertools chess.lsb chess.msb chess.popcount chess.re	%
+		chess.scan_forward chess.scan_reversed chess.shift_2_down	%
+		chess.shift_2_left chess.shift_2_right chess.shift_2_up	%
+		chess.shift_down chess.shift_down_left chess.shift_down_right	%
+		chess.shift_left chess.shift_right chess.shift_up chess.shift_up_left	%
+		chess.shift_up_right chess.square chess.square_distance	%
+		chess.square_file chess.square_mirror chess.square_name	%
+		chess.square_rank chr classmethod clear codecs codecs.BOM	%
+		codecs.BOM32_BE codecs.BOM32_LE codecs.BOM64_BE codecs.BOM64_LE	%
+		codecs.BOM_BE codecs.BOM_LE codecs.BOM_UTF16 codecs.BOM_UTF16_BE	%
+		codecs.BOM_UTF16_LE codecs.BOM_UTF32 codecs.BOM_UTF32_BE	%
+		codecs.BOM_UTF32_LE codecs.BOM_UTF8 codecs.BufferedIncrementalDecoder	%
+		codecs.BufferedIncrementalEncoder codecs.Codec codecs.CodecInfo	%
+		codecs.EncodedFile codecs.IncrementalDecoder	%
+		codecs.IncrementalEncoder codecs.StreamReader	%
+		codecs.StreamReaderWriter codecs.StreamRecoder codecs.StreamWriter	%
+		codecs.__all__ codecs.__builtins__ codecs.__cached__ codecs.__doc__	%
+		codecs.__file__ codecs.__loader__ codecs.__name__ codecs.__package__	%
+		codecs.__spec__ codecs._false codecs.ascii_decode codecs.ascii_encode	%
+		codecs.backslashreplace_errors codecs.builtins codecs.charmap_build	%
+		codecs.charmap_decode codecs.charmap_encode codecs.code_page_decode	%
+		codecs.code_page_encode codecs.decode codecs.encode	%
+		codecs.escape_decode codecs.escape_encode codecs.getdecoder	%
+		codecs.getencoder codecs.getincrementaldecoder	%
+		codecs.getincrementalencoder codecs.getreader codecs.getwriter	%
+		codecs.ignore_errors codecs.iterdecode codecs.iterencode	%
+		codecs.latin_1_decode codecs.latin_1_encode codecs.lookup	%
+		codecs.lookup_error codecs.make_encoding_map	%
+		codecs.make_identity_dict codecs.mbcs_decode codecs.mbcs_encode	%
+		codecs.namereplace_errors codecs.oem_decode codecs.oem_encode	%
+		codecs.open codecs.raw_unicode_escape_decode	%
+		codecs.raw_unicode_escape_encode codecs.readbuffer_encode	%
+		codecs.register codecs.register_error codecs.replace_errors	%
+		codecs.strict_errors codecs.sys codecs.unicode_escape_decode	%
+		codecs.unicode_escape_encode codecs.unicode_internal_decode	%
+		codecs.unicode_internal_encode codecs.utf_16_be_decode	%
+		codecs.utf_16_be_encode codecs.utf_16_decode codecs.utf_16_encode	%
+		codecs.utf_16_ex_decode codecs.utf_16_le_decode	%
+		codecs.utf_16_le_encode codecs.utf_32_be_decode	%
+		codecs.utf_32_be_encode codecs.utf_32_decode codecs.utf_32_encode	%
+		codecs.utf_32_ex_decode codecs.utf_32_le_decode	%
+		codecs.utf_32_le_encode codecs.utf_7_decode codecs.utf_7_encode	%
+		codecs.utf_8_decode codecs.utf_8_encode	%
+		codecs.xmlcharrefreplace_errors collections collections.ChainMap	%
+		collections.Counter collections.Mapping collections.MutableMapping	%
+		collections.MutableSet collections.OrderedDict collections.UserDict	%
+		collections.UserList collections.UserString collections._Link	%
+		collections._OrderedDictItemsView collections._OrderedDictKeysView	%
+		collections._OrderedDictValuesView collections.__all__	%
+		collections.__builtins__ collections.__cached__ collections.__doc__	%
+		collections.__file__ collections.__getattr__ collections.__loader__	%
+		collections.__name__ collections.__package__ collections.__path__	%
+		collections.__spec__ collections._chain collections._collections_abc	%
+		collections._count_elements collections._eq collections._heapq	%
+		collections._iskeyword collections._itemgetter	%
+		collections._nt_itemgetters collections._proxy	%
+		collections._recursive_repr collections._repeat collections._starmap	%
+		collections._sys collections.abc collections.defaultdict	%
+		collections.deque collections.namedtuple compile complex comtypes	%
+		comtypes.ARRAY comtypes.ArgumentError comtypes.Array	%
+		comtypes.BINDOPTS2 comtypes.BIND_OPTS comtypes.BSTR	%
+		comtypes.BigEndianStructure comtypes.CDLL comtypes.CFUNCTYPE	%
+		comtypes.CLSCTX comtypes.CLSCTX_ALL comtypes.CLSCTX_DISABLE_AAA	%
+		comtypes.CLSCTX_ENABLE_AAA comtypes.CLSCTX_ENABLE_CODE_DOWNLOAD	%
+		comtypes.CLSCTX_FROM_DEFAULT_CONTEXT comtypes.CLSCTX_INPROC	%
+		comtypes.CLSCTX_INPROC_HANDLER comtypes.CLSCTX_INPROC_HANDLER16	%
+		comtypes.CLSCTX_INPROC_SERVER comtypes.CLSCTX_INPROC_SERVER16	%
+		comtypes.CLSCTX_LOCAL_SERVER comtypes.CLSCTX_NO_CODE_DOWNLOAD	%
+		comtypes.CLSCTX_NO_CUSTOM_MARSHAL comtypes.CLSCTX_NO_FAILURE_LOG	%
+		comtypes.CLSCTX_REMOTE_SERVER comtypes.CLSCTX_RESERVED1	%
+		comtypes.CLSCTX_RESERVED2 comtypes.CLSCTX_RESERVED3	%
+		comtypes.CLSCTX_RESERVED4 comtypes.CLSCTX_RESERVED5	%
+		comtypes.CLSCTX_SERVER comtypes.COAUTHIDENTITY comtypes.COAUTHINFO	%
+		comtypes.COINIT_APARTMENTTHREADED comtypes.COINIT_DISABLE_OLE1DDE	%
+		comtypes.COINIT_MULTITHREADED comtypes.COINIT_SPEED_OVER_MEMORY	%
+		comtypes.COMError comtypes.COMMETHOD comtypes.COMObject	%
+		comtypes.COSERVERINFO comtypes.CoClass comtypes.CoCreateInstance	%
+		comtypes.CoCreateInstanceEx comtypes.CoGetClassObject	%
+		comtypes.CoGetObject comtypes.CoInitialize comtypes.CoInitializeEx	%
+		comtypes.CoUninitialize comtypes.DEFAULT_MODE comtypes.DISPMETHOD	%
+		comtypes.DISPPROPERTY comtypes.DWORD comtypes.DllCanUnloadNow	%
+		comtypes.DllGetClassObject comtypes.EOAC_NONE comtypes.FormatError	%
+		comtypes.GUID comtypes.GetActiveObject comtypes.GetLastError	%
+		comtypes.HRESULT comtypes.IID comtypes.IPersist	%
+		comtypes.IServiceProvider comtypes.IUnknown comtypes.LibraryLoader	%
+		comtypes.LittleEndianStructure comtypes.MULTI_QI comtypes.NullHandler	%
+		comtypes.OleDLL comtypes.POINTER comtypes.PYFUNCTYPE comtypes.PyDLL	%
+		comtypes.PyInstanceMethod_Type comtypes.RPC_C_AUTHN_LEVEL_CONNECT	%
+		comtypes.RPC_C_AUTHN_WINNT comtypes.RPC_C_AUTHZ_NONE	%
+		comtypes.RPC_C_IMP_LEVEL_IMPERSONATE comtypes.RTLD_GLOBAL	%
+		comtypes.RTLD_LOCAL comtypes.ReturnHRESULT	%
+		comtypes.SEC_WINNT_AUTH_IDENTITY	%
+		comtypes.SEC_WINNT_AUTH_IDENTITY_UNICODE	%
+		comtypes.SOLE_AUTHENTICATION_INFO comtypes.SOLE_AUTHENTICATION_LIST	%
+		comtypes.STDMETHOD comtypes.SetPointerType comtypes.Structure	%
+		comtypes.Union comtypes.WINFUNCTYPE comtypes.WinDLL comtypes.WinError	%
+		comtypes._COAUTHIDENTITY comtypes._COAUTHINFO comtypes._COSERVERINFO	%
+		comtypes._CoGetClassObject comtypes._GUID comtypes._NOTHING	%
+		comtypes._PARAMFLAGS comtypes._SEC_WINNT_AUTH_IDENTITY	%
+		comtypes._SOLE_AUTHENTICATION_INFO comtypes._SOLE_AUTHENTICATION_LIST	%
+		comtypes._SimpleCData comtypes.__builtins__ comtypes.__cached__	%
+		comtypes.__doc__ comtypes.__file__ comtypes.__loader__	%
+		comtypes.__name__ comtypes.__package__ comtypes.__path__	%
+		comtypes.__spec__ comtypes.__version__ comtypes._all_slice	%
+		comtypes._check_version comtypes._coclass_meta	%
+		comtypes._cominterface_meta comtypes._comobject	%
+		comtypes._compointer_base comtypes._compointer_meta	%
+		comtypes._encode_idl comtypes._is_object comtypes._meta	%
+		comtypes._ole32 comtypes._ole32_nohresult comtypes._safearray	%
+		comtypes._unpack_argspec comtypes.addressof comtypes.alignment	%
+		comtypes.atexit comtypes.automation comtypes.bound_named_property	%
+		comtypes.byref comtypes.c_bool comtypes.c_buffer comtypes.c_byte	%
+		comtypes.c_char comtypes.c_char_p comtypes.c_double comtypes.c_float	%
+		comtypes.c_int comtypes.c_int16 comtypes.c_int32 comtypes.c_int64	%
+		comtypes.c_int8 comtypes.c_long comtypes.c_longdouble	%
+		comtypes.c_longlong comtypes.c_short comtypes.c_size_t	%
+		comtypes.c_ssize_t comtypes.c_ubyte comtypes.c_uint comtypes.c_uint16	%
+		comtypes.c_uint32 comtypes.c_uint64 comtypes.c_uint8 comtypes.c_ulong	%
+		comtypes.c_ulonglong comtypes.c_ushort comtypes.c_void_p	%
+		comtypes.c_voidp comtypes.c_wchar comtypes.c_wchar_p comtypes.cast	%
+		comtypes.cdll comtypes.com_coclass_registry	%
+		comtypes.com_interface_registry comtypes.create_string_buffer	%
+		comtypes.create_unicode_buffer comtypes.defaultvalue comtypes.dispid	%
+		comtypes.errorinfo comtypes.get_errno comtypes.get_last_error	%
+		comtypes.helpstring comtypes.hresult comtypes.instancemethod	%
+		comtypes.logger comtypes.logging comtypes.memmove comtypes.memset	%
+		comtypes.named_property comtypes.npsupport comtypes.oledll	%
+		comtypes.os comtypes.patcher comtypes.pointer comtypes.py_object	%
+		comtypes.pydll comtypes.pythonapi comtypes.resize comtypes.safearray	%
+		comtypes.set_errno comtypes.set_last_error comtypes.sizeof	%
+		comtypes.string_at comtypes.sys comtypes.tagBIND_OPTS	%
+		comtypes.tagBIND_OPTS2 comtypes.tagCLSCTX comtypes.typeinfo	%
+		comtypes.types comtypes.windll comtypes.wireHWND comtypes.wstring_at	%
+		concurrent concurrent.__builtins__ concurrent.__cached__	%
+		concurrent.__doc__ concurrent.__file__ concurrent.__loader__	%
+		concurrent.__name__ concurrent.__package__ concurrent.__path__	%
+		concurrent.__spec__ concurrent.futures configparser	%
+		configparser.BasicInterpolation configparser.ConfigParser	%
+		configparser.ConverterMapping configparser.DEFAULTSECT	%
+		configparser.DuplicateOptionError configparser.DuplicateSectionError	%
+		configparser.Error configparser.ExtendedInterpolation	%
+		configparser.Interpolation configparser.InterpolationDepthError	%
+		configparser.InterpolationError	%
+		configparser.InterpolationMissingOptionError	%
+		configparser.InterpolationSyntaxError	%
+		configparser.LegacyInterpolation configparser.MAX_INTERPOLATION_DEPTH	%
+		configparser.MissingSectionHeaderError configparser.MutableMapping	%
+		configparser.NoOptionError configparser.NoSectionError	%
+		configparser.ParsingError configparser.RawConfigParser	%
+		configparser.SafeConfigParser configparser.SectionProxy	%
+		configparser._ChainMap configparser._UNSET configparser.__all__	%
+		configparser.__builtins__ configparser.__cached__	%
+		configparser.__doc__ configparser.__file__ configparser.__loader__	%
+		configparser.__name__ configparser.__package__ configparser.__spec__	%
+		configparser._default_dict configparser.functools configparser.io	%
+		configparser.itertools configparser.os configparser.re	%
+		configparser.sys configparser.warnings conjugate copy count ctypes	%
+		ctypes.ARRAY ctypes.ArgumentError ctypes.Array	%
+		ctypes.BigEndianStructure ctypes.CDLL ctypes.CFUNCTYPE	%
+		ctypes.DEFAULT_MODE ctypes.DllCanUnloadNow ctypes.DllGetClassObject	%
+		ctypes.FormatError ctypes.GetLastError ctypes.HRESULT	%
+		ctypes.LibraryLoader ctypes.LittleEndianStructure ctypes.OleDLL	%
+		ctypes.POINTER ctypes.PYFUNCTYPE ctypes.PyDLL ctypes.RTLD_GLOBAL	%
+		ctypes.RTLD_LOCAL ctypes.SetPointerType ctypes.Structure ctypes.Union	%
+		ctypes.WINFUNCTYPE ctypes.WinDLL ctypes.WinError ctypes._CFuncPtr	%
+		ctypes._FUNCFLAG_CDECL ctypes._FUNCFLAG_PYTHONAPI	%
+		ctypes._FUNCFLAG_STDCALL ctypes._FUNCFLAG_USE_ERRNO	%
+		ctypes._FUNCFLAG_USE_LASTERROR ctypes._Pointer ctypes._SimpleCData	%
+		ctypes.__builtins__ ctypes.__cached__ ctypes.__doc__ ctypes.__file__	%
+		ctypes.__loader__ ctypes.__name__ ctypes.__package__ ctypes.__path__	%
+		ctypes.__spec__ ctypes.__version__ ctypes._c_functype_cache	%
+		ctypes._calcsize ctypes._cast ctypes._cast_addr ctypes._check_HRESULT	%
+		ctypes._check_size ctypes._ctypes_version ctypes._dlopen	%
+		ctypes._endian ctypes._memmove_addr ctypes._memset_addr ctypes._os	%
+		ctypes._pointer_type_cache ctypes._reset_cache ctypes._string_at	%
+		ctypes._string_at_addr ctypes._sys ctypes._win_functype_cache	%
+		ctypes._wstring_at ctypes._wstring_at_addr ctypes.addressof	%
+		ctypes.alignment ctypes.byref ctypes.c_bool ctypes.c_buffer	%
+		ctypes.c_byte ctypes.c_char ctypes.c_char_p ctypes.c_double	%
+		ctypes.c_float ctypes.c_int ctypes.c_int16 ctypes.c_int32	%
+		ctypes.c_int64 ctypes.c_int8 ctypes.c_long ctypes.c_longdouble	%
+		ctypes.c_longlong ctypes.c_short ctypes.c_size_t ctypes.c_ssize_t	%
+		ctypes.c_ubyte ctypes.c_uint ctypes.c_uint16 ctypes.c_uint32	%
+		ctypes.c_uint64 ctypes.c_uint8 ctypes.c_ulong ctypes.c_ulonglong	%
+		ctypes.c_ushort ctypes.c_void_p ctypes.c_voidp ctypes.c_wchar	%
+		ctypes.c_wchar_p ctypes.cast ctypes.cdll ctypes.create_string_buffer	%
+		ctypes.create_unicode_buffer ctypes.get_errno ctypes.get_last_error	%
+		ctypes.memmove ctypes.memset ctypes.oledll ctypes.pointer	%
+		ctypes.py_object ctypes.pydll ctypes.pythonapi ctypes.resize	%
+		ctypes.set_errno ctypes.set_last_error ctypes.sizeof ctypes.string_at	%
+		ctypes.windll ctypes.wintypes ctypes.wstring_at datetime	%
+		datetime.MAXYEAR datetime.MINYEAR datetime.__builtins__	%
+		datetime.__cached__ datetime.__doc__ datetime.__file__	%
+		datetime.__loader__ datetime.__name__ datetime.__package__	%
+		datetime.__spec__ datetime.date datetime.datetime	%
+		datetime.datetime_CAPI datetime.sys datetime.time datetime.timedelta	%
+		datetime.timezone datetime.tzinfo decimal decimal.BasicContext	%
+		decimal.Clamped decimal.Context decimal.ConversionSyntax	%
+		decimal.Decimal decimal.DecimalException decimal.DecimalTuple	%
+		decimal.DefaultContext decimal.DivisionByZero	%
+		decimal.DivisionImpossible decimal.DivisionUndefined	%
+		decimal.ExtendedContext decimal.FloatOperation decimal.HAVE_THREADS	%
+		decimal.Inexact decimal.InvalidContext decimal.InvalidOperation	%
+		decimal.MAX_EMAX decimal.MAX_PREC decimal.MIN_EMIN decimal.MIN_ETINY	%
+		decimal.Overflow decimal.ROUND_05UP decimal.ROUND_CEILING	%
+		decimal.ROUND_DOWN decimal.ROUND_FLOOR decimal.ROUND_HALF_DOWN	%
+		decimal.ROUND_HALF_EVEN decimal.ROUND_HALF_UP decimal.ROUND_UP	%
+		decimal.Rounded decimal.Subnormal decimal.Underflow	%
+		decimal.__builtins__ decimal.__cached__ decimal.__doc__	%
+		decimal.__file__ decimal.__libmpdec_version__ decimal.__loader__	%
+		decimal.__name__ decimal.__package__ decimal.__spec__	%
+		decimal.__version__ decimal.getcontext decimal.localcontext	%
+		decimal.setcontext delattr denominator dict difference	%
+		difference_update dir discard divmod doctest doctest.BLANKLINE_MARKER	%
+		doctest.COMPARISON_FLAGS doctest.DONT_ACCEPT_BLANKLINE	%
+		doctest.DONT_ACCEPT_TRUE_FOR_1 doctest.DebugRunner	%
+		doctest.DocFileCase doctest.DocFileSuite doctest.DocFileTest	%
+		doctest.DocTest doctest.DocTestCase doctest.DocTestFailure	%
+		doctest.DocTestFinder doctest.DocTestParser doctest.DocTestRunner	%
+		doctest.DocTestSuite doctest.ELLIPSIS doctest.ELLIPSIS_MARKER	%
+		doctest.Example doctest.FAIL_FAST doctest.IGNORE_EXCEPTION_DETAIL	%
+		doctest.NORMALIZE_WHITESPACE doctest.OPTIONFLAGS_BY_NAME	%
+		doctest.OutputChecker doctest.REPORTING_FLAGS doctest.REPORT_CDIFF	%
+		doctest.REPORT_NDIFF doctest.REPORT_ONLY_FIRST_FAILURE	%
+		doctest.REPORT_UDIFF doctest.SKIP doctest.SkipDocTestCase	%
+		doctest.StringIO doctest.TestResults doctest.UnexpectedException	%
+		doctest._DocTestSuite doctest._OutputRedirectingPdb doctest._SpoofOut	%
+		doctest._TestClass doctest.__all__ doctest.__builtins__	%
+		doctest.__cached__ doctest.__doc__ doctest.__docformat__	%
+		doctest.__file__ doctest.__future__ doctest.__loader__	%
+		doctest.__name__ doctest.__package__ doctest.__spec__	%
+		doctest.__test__ doctest._comment_line doctest._ellipsis_match	%
+		doctest._exception_traceback doctest._extract_future_flags	%
+		doctest._indent doctest._load_testfile doctest._module_relative_path	%
+		doctest._normalize_module doctest._strip_exception_details	%
+		doctest._test doctest._unittest_reportflags doctest.debug	%
+		doctest.debug_script doctest.debug_src doctest.difflib	%
+		doctest.inspect doctest.linecache doctest.master doctest.namedtuple	%
+		doctest.os doctest.pdb doctest.re doctest.register_optionflag	%
+		doctest.run_docstring_examples doctest.script_from_examples	%
+		doctest.set_unittest_reportflags doctest.sys doctest.testfile	%
+		doctest.testmod doctest.testsource doctest.traceback doctest.unittest	%
+		dry dry.NotEnoughScriptArguments dry.__builtins__ dry.__cached__	%
+		dry.__doc__ dry.__file__ dry.__loader__ dry.__name__ dry.__package__	%
+		dry.__spec__ dry.scriptarg dry.scriptdir dry.uid encode encodings	%
+		encodings.CodecRegistryError encodings.__builtins__	%
+		encodings.__cached__ encodings.__doc__ encodings.__file__	%
+		encodings.__loader__ encodings.__name__ encodings.__package__	%
+		encodings.__path__ encodings.__spec__ encodings._alias_mbcs	%
+		encodings._aliases encodings._cache encodings._import_tail	%
+		encodings._unknown encodings.aliases encodings.codecs	%
+		encodings.cp1252 encodings.latin_1 encodings.normalize_encoding	%
+		encodings.search_function encodings.sys encodings.utf_8 endswith	%
+		enumerate eval exec expandtabs extend filter find float format	%
+		format_map from_bytes fromkeys frozenset functools functools.RLock	%
+		functools.WRAPPER_ASSIGNMENTS functools.WRAPPER_UPDATES	%
+		functools._CacheInfo functools._HashedSeq functools.__all__	%
+		functools.__builtins__ functools.__cached__ functools.__doc__	%
+		functools.__file__ functools.__loader__ functools.__name__	%
+		functools.__package__ functools.__spec__ functools._c3_merge	%
+		functools._c3_mro functools._compose_mro functools._convert	%
+		functools._find_impl functools._ge_from_gt functools._ge_from_le	%
+		functools._ge_from_lt functools._gt_from_ge functools._gt_from_le	%
+		functools._gt_from_lt functools._le_from_ge functools._le_from_gt	%
+		functools._le_from_lt functools._lru_cache_wrapper	%
+		functools._lt_from_ge functools._lt_from_gt functools._lt_from_le	%
+		functools._make_key functools.cmp_to_key functools.get_cache_token	%
+		functools.lru_cache functools.namedtuple functools.partial	%
+		functools.partialmethod functools.recursive_repr functools.reduce	%
+		functools.singledispatch functools.total_ordering	%
+		functools.update_wrapper functools.wraps get getattr globals hasattr	%
+		hash help hex html.parser html.parser.HTMLParser html.parser.__all__	%
+		html.parser.__builtins__ html.parser.__cached__ html.parser.__doc__	%
+		html.parser.__file__ html.parser.__loader__ html.parser.__name__	%
+		html.parser.__package__ html.parser.__spec__ html.parser._markupbase	%
+		html.parser.attrfind_tolerant html.parser.charref	%
+		html.parser.commentclose html.parser.endendtag html.parser.endtagfind	%
+		html.parser.entityref html.parser.incomplete	%
+		html.parser.interesting_normal html.parser.locatestarttagend_tolerant	%
+		html.parser.piclose html.parser.re html.parser.starttagopen	%
+		html.parser.tagfind_tolerant html.parser.unescape	%
+		html.parser.warnings html2text html2text.HTML2Text	%
+		html2text.HTMLParser html2text.__builtins__ html2text.__cached__	%
+		html2text.__doc__ html2text.__file__ html2text.__loader__	%
+		html2text.__name__ html2text.__package__ html2text.__path__	%
+		html2text.__spec__ html2text.__version__ html2text.compat	%
+		html2text.config html2text.division html2text.dumb_css_parser	%
+		html2text.element_style html2text.escape_md	%
+		html2text.escape_md_section html2text.google_fixed_width_font	%
+		html2text.google_has_height html2text.google_list_style	%
+		html2text.google_text_emphasis html2text.hn html2text.html2text	%
+		html2text.list_numbering_start html2text.name2cp html2text.nochr	%
+		html2text.pad_tables_in_text html2text.re html2text.skipwrap	%
+		html2text.sys html2text.unescape html2text.unicode_literals	%
+		html2text.unifiable_n html2text.urlparse html2text.utils	%
+		html2text.wrap html5lib html5lib.HTMLParser html5lib.__all__	%
+		html5lib.__builtins__ html5lib.__cached__ html5lib.__doc__	%
+		html5lib.__file__ html5lib.__loader__ html5lib.__name__	%
+		html5lib.__package__ html5lib.__path__ html5lib.__spec__	%
+		html5lib.__version__ html5lib._inputstream html5lib._tokenizer	%
+		html5lib._trie html5lib._utils html5lib.absolute_import	%
+		html5lib.constants html5lib.division html5lib.getTreeBuilder	%
+		html5lib.getTreeWalker html5lib.html5parser html5lib.parse	%
+		html5lib.parseFragment html5lib.serialize html5lib.serializer	%
+		html5lib.treebuilders html5lib.treewalkers html5lib.unicode_literals	%
+		http http.HTTPStatus http.IntEnum http.__all__ http.__builtins__	%
+		http.__cached__ http.__doc__ http.__file__ http.__loader__	%
+		http.__name__ http.__package__ http.__path__ http.__spec__	%
+		http.client http.cookiejar http.cookies id idlelib	%
+		idlelib.__builtins__ idlelib.__cached__ idlelib.__doc__	%
+		idlelib.__file__ idlelib.__loader__ idlelib.__name__	%
+		idlelib.__package__ idlelib.__path__ idlelib.__spec__	%
+		idlelib.autocomplete idlelib.autocomplete_w idlelib.calltip	%
+		idlelib.calltip_w idlelib.config idlelib.debugger idlelib.debugger_r	%
+		idlelib.debugobj idlelib.debugobj_r idlelib.hyperparser	%
+		idlelib.iomenu idlelib.macosx idlelib.multicall idlelib.pyparse	%
+		idlelib.rpc idlelib.run idlelib.scrolledlist idlelib.stackviewer	%
+		idlelib.testing idlelib.tooltip idlelib.tree idlelib.window	%
+		idlelib.zoomheight imag importlib importlib._RELOADING	%
+		importlib.__all__ importlib.__builtins__ importlib.__cached__	%
+		importlib.__doc__ importlib.__file__ importlib.__import__	%
+		importlib.__loader__ importlib.__name__ importlib.__package__	%
+		importlib.__path__ importlib.__spec__ importlib._bootstrap	%
+		importlib._bootstrap_external importlib._imp importlib._r_long	%
+		importlib._w_long importlib.abc importlib.find_loader	%
+		importlib.import_module importlib.invalidate_caches	%
+		importlib.machinery importlib.reload importlib.sys importlib.types	%
+		importlib.util importlib.warnings index input insert inspect	%
+		inspect.ArgInfo inspect.ArgSpec inspect.Arguments inspect.Attribute	%
+		inspect.BlockFinder inspect.BoundArguments inspect.CORO_CLOSED	%
+		inspect.CORO_CREATED inspect.CORO_RUNNING inspect.CORO_SUSPENDED	%
+		inspect.CO_ASYNC_GENERATOR inspect.CO_COROUTINE inspect.CO_GENERATOR	%
+		inspect.CO_ITERABLE_COROUTINE inspect.CO_NESTED inspect.CO_NEWLOCALS	%
+		inspect.CO_NOFREE inspect.CO_OPTIMIZED inspect.CO_VARARGS	%
+		inspect.CO_VARKEYWORDS inspect.ClosureVars inspect.EndOfBlock	%
+		inspect.FrameInfo inspect.FullArgSpec inspect.GEN_CLOSED	%
+		inspect.GEN_CREATED inspect.GEN_RUNNING inspect.GEN_SUSPENDED	%
+		inspect.OrderedDict inspect.Parameter inspect.Signature	%
+		inspect.TPFLAGS_IS_ABSTRACT inspect.Traceback	%
+		inspect._ClassMethodWrapper inspect._KEYWORD_ONLY	%
+		inspect._MethodWrapper inspect._NonUserDefinedCallables	%
+		inspect._PARAM_NAME_MAPPING inspect._POSITIONAL_ONLY	%
+		inspect._POSITIONAL_OR_KEYWORD inspect._ParameterKind	%
+		inspect._VAR_KEYWORD inspect._VAR_POSITIONAL	%
+		inspect._WrapperDescriptor inspect.__author__ inspect.__builtins__	%
+		inspect.__cached__ inspect.__doc__ inspect.__file__	%
+		inspect.__loader__ inspect.__name__ inspect.__package__	%
+		inspect.__spec__ inspect._check_class inspect._check_instance	%
+		inspect._empty inspect._filesbymodname inspect._findclass	%
+		inspect._finddoc inspect._get_paramkind_descr inspect._getfullargs	%
+		inspect._is_type inspect._main inspect._missing_arguments	%
+		inspect._sentinel inspect._shadowed_dict	%
+		inspect._signature_bound_method inspect._signature_from_builtin	%
+		inspect._signature_from_callable inspect._signature_from_function	%
+		inspect._signature_fromstr inspect._signature_get_bound_param	%
+		inspect._signature_get_partial	%
+		inspect._signature_get_user_defined_method	%
+		inspect._signature_is_builtin inspect._signature_is_functionlike	%
+		inspect._signature_strip_non_python_syntax inspect._static_getmro	%
+		inspect._too_many inspect._void inspect.abc inspect.attrgetter	%
+		inspect.builtins inspect.classify_class_attrs inspect.cleandoc	%
+		inspect.collections inspect.currentframe inspect.dis inspect.enum	%
+		inspect.findsource inspect.formatannotation	%
+		inspect.formatannotationrelativeto inspect.formatargspec	%
+		inspect.formatargvalues inspect.functools inspect.getabsfile	%
+		inspect.getargs inspect.getargspec inspect.getargvalues	%
+		inspect.getattr_static inspect.getblock inspect.getcallargs	%
+		inspect.getclasstree inspect.getclosurevars inspect.getcomments	%
+		inspect.getcoroutinelocals inspect.getcoroutinestate inspect.getdoc	%
+		inspect.getfile inspect.getframeinfo inspect.getfullargspec	%
+		inspect.getgeneratorlocals inspect.getgeneratorstate	%
+		inspect.getinnerframes inspect.getlineno inspect.getmembers	%
+		inspect.getmodule inspect.getmodulename inspect.getmro	%
+		inspect.getouterframes inspect.getsource inspect.getsourcefile	%
+		inspect.getsourcelines inspect.importlib inspect.indentsize	%
+		inspect.isabstract inspect.isasyncgen inspect.isasyncgenfunction	%
+		inspect.isawaitable inspect.isbuiltin inspect.isclass inspect.iscode	%
+		inspect.iscoroutine inspect.iscoroutinefunction	%
+		inspect.isdatadescriptor inspect.isframe inspect.isfunction	%
+		inspect.isgenerator inspect.isgeneratorfunction	%
+		inspect.isgetsetdescriptor inspect.ismemberdescriptor	%
+		inspect.ismethod inspect.ismethoddescriptor inspect.ismodule	%
+		inspect.isroutine inspect.istraceback inspect.itertools inspect.k	%
+		inspect.linecache inspect.mod_dict inspect.modulesbyfile	%
+		inspect.namedtuple inspect.os inspect.re inspect.signature	%
+		inspect.stack inspect.sys inspect.token inspect.tokenize	%
+		inspect.trace inspect.types inspect.unwrap inspect.v inspect.walktree	%
+		inspect.warnings int intersection intersection_update io	%
+		io.BlockingIOError io.BufferedIOBase io.BufferedRWPair	%
+		io.BufferedRandom io.BufferedReader io.BufferedWriter io.BytesIO	%
+		io.DEFAULT_BUFFER_SIZE io.FileIO io.IOBase	%
+		io.IncrementalNewlineDecoder io.OpenWrapper io.RawIOBase io.SEEK_CUR	%
+		io.SEEK_END io.SEEK_SET io.StringIO io.TextIOBase io.TextIOWrapper	%
+		io.UnsupportedOperation io._WindowsConsoleIO io.__all__ io.__author__	%
+		io.__builtins__ io.__cached__ io.__doc__ io.__file__ io.__loader__	%
+		io.__name__ io.__package__ io.__spec__ io._io io.abc io.open isalnum	%
+		isalpha isascii isdecimal isdigit isdisjoint isidentifier isinstance	%
+		islower isnumeric isprintable isspace issubclass issubset issuperset	%
+		istitle isupper items iter join json json.JSONDecodeError	%
+		json.JSONDecoder json.JSONEncoder json.__all__ json.__author__	%
+		json.__builtins__ json.__cached__ json.__doc__ json.__file__	%
+		json.__loader__ json.__name__ json.__package__ json.__path__	%
+		json.__spec__ json.__version__ json._default_decoder	%
+		json._default_encoder json.codecs json.decoder json.detect_encoding	%
+		json.dump json.dumps json.encoder json.load json.loads json.scanner	%
+		keys lark lark.Discard lark.GrammarError lark.InlineTransformer	%
+		lark.Lark lark.LexError lark.ParseError lark.Token lark.Transformer	%
+		lark.Tree lark.UnexpectedCharacters lark.UnexpectedInput	%
+		lark.UnexpectedToken lark.Visitor lark.__builtins__ lark.__cached__	%
+		lark.__doc__ lark.__file__ lark.__loader__ lark.__name__	%
+		lark.__package__ lark.__path__ lark.__spec__ lark.__version__	%
+		lark.common lark.exceptions lark.grammar lark.inline_args lark.lark	%
+		lark.lexer lark.load_grammar lark.parse_tree_builder	%
+		lark.parser_frontends lark.parsers lark.tree lark.utils lark.v_args	%
+		lark.visitors len lib2to3 lib2to3.__builtins__ lib2to3.__cached__	%
+		lib2to3.__doc__ lib2to3.__file__ lib2to3.__loader__ lib2to3.__name__	%
+		lib2to3.__package__ lib2to3.__path__ lib2to3.__spec__ linecache	%
+		linecache.__all__ linecache.__builtins__ linecache.__cached__	%
+		linecache.__doc__ linecache.__file__ linecache.__loader__	%
+		linecache.__name__ linecache.__package__ linecache.__spec__	%
+		linecache.cache linecache.checkcache linecache.clearcache	%
+		linecache.functools linecache.getline linecache.getlines	%
+		linecache.lazycache linecache.os linecache.sys linecache.tokenize	%
+		linecache.updatecache list ljust locals logging logging.BASIC_FORMAT	%
+		logging.BufferingFormatter logging.CRITICAL logging.DEBUG	%
+		logging.ERROR logging.FATAL logging.FileHandler logging.Filter	%
+		logging.Filterer logging.Formatter logging.Handler logging.INFO	%
+		logging.LogRecord logging.Logger logging.LoggerAdapter	%
+		logging.Manager logging.NOTSET logging.NullHandler	%
+		logging.PercentStyle logging.PlaceHolder logging.RootLogger	%
+		logging.StrFormatStyle logging.StreamHandler	%
+		logging.StringTemplateStyle logging.Template logging.WARN	%
+		logging.WARNING logging._STYLES logging._StderrHandler	%
+		logging.__all__ logging.__author__ logging.__builtins__	%
+		logging.__cached__ logging.__date__ logging.__doc__ logging.__file__	%
+		logging.__loader__ logging.__name__ logging.__package__	%
+		logging.__path__ logging.__spec__ logging.__status__	%
+		logging.__version__ logging._acquireLock logging._addHandlerRef	%
+		logging._checkLevel logging._defaultFormatter	%
+		logging._defaultLastResort logging._handlerList logging._handlers	%
+		logging._levelToName logging._lock logging._logRecordFactory	%
+		logging._loggerClass logging._nameToLevel	%
+		logging._register_at_fork_acquire_release logging._releaseLock	%
+		logging._removeHandlerRef logging._showwarning logging._srcfile	%
+		logging._startTime logging._warnings_showwarning logging.addLevelName	%
+		logging.atexit logging.basicConfig logging.captureWarnings	%
+		logging.collections logging.critical logging.currentframe	%
+		logging.debug logging.disable logging.error logging.exception	%
+		logging.fatal logging.getLevelName logging.getLogRecordFactory	%
+		logging.getLogger logging.getLoggerClass logging.info logging.io	%
+		logging.lastResort logging.log logging.logMultiprocessing	%
+		logging.logProcesses logging.logThreads logging.makeLogRecord	%
+		logging.os logging.raiseExceptions logging.root	%
+		logging.setLogRecordFactory logging.setLoggerClass logging.shutdown	%
+		logging.sys logging.threading logging.time logging.traceback	%
+		logging.warn logging.warning logging.warnings logging.weakref lower	%
+		lstrip lxml lxml.__builtins__ lxml.__cached__ lxml.__doc__	%
+		lxml.__file__ lxml.__loader__ lxml.__name__ lxml.__package__	%
+		lxml.__path__ lxml.__spec__ lxml._elementpath lxml.etree	%
+		lxml.get_include maketrans map max memoryview min multiprocessing	%
+		multiprocessing.Array multiprocessing.AuthenticationError	%
+		multiprocessing.Barrier multiprocessing.BoundedSemaphore	%
+		multiprocessing.BufferTooShort multiprocessing.Condition	%
+		multiprocessing.Event multiprocessing.JoinableQueue	%
+		multiprocessing.Lock multiprocessing.Manager multiprocessing.Pipe	%
+		multiprocessing.Pool multiprocessing.Process	%
+		multiprocessing.ProcessError multiprocessing.Queue	%
+		multiprocessing.RLock multiprocessing.RawArray	%
+		multiprocessing.RawValue multiprocessing.SUBDEBUG	%
+		multiprocessing.SUBWARNING multiprocessing.Semaphore	%
+		multiprocessing.SimpleQueue multiprocessing.TimeoutError	%
+		multiprocessing.Value multiprocessing.__all__	%
+		multiprocessing.__builtins__ multiprocessing.__cached__	%
+		multiprocessing.__doc__ multiprocessing.__file__	%
+		multiprocessing.__loader__ multiprocessing.__name__	%
+		multiprocessing.__package__ multiprocessing.__path__	%
+		multiprocessing.__spec__ multiprocessing.active_children	%
+		multiprocessing.allow_connection_pickling multiprocessing.context	%
+		multiprocessing.cpu_count multiprocessing.current_process	%
+		multiprocessing.freeze_support multiprocessing.get_all_start_methods	%
+		multiprocessing.get_context multiprocessing.get_logger	%
+		multiprocessing.get_start_method multiprocessing.log_to_stderr	%
+		multiprocessing.process multiprocessing.reducer	%
+		multiprocessing.reduction multiprocessing.set_executable	%
+		multiprocessing.set_forkserver_preload	%
+		multiprocessing.set_start_method multiprocessing.sys next numerator	%
+		object oct open operator operator.__abs__ operator.__add__	%
+		operator.__all__ operator.__and__ operator.__builtins__	%
+		operator.__cached__ operator.__concat__ operator.__contains__	%
+		operator.__delitem__ operator.__doc__ operator.__eq__	%
+		operator.__file__ operator.__floordiv__ operator.__ge__	%
+		operator.__getitem__ operator.__gt__ operator.__iadd__	%
+		operator.__iand__ operator.__iconcat__ operator.__ifloordiv__	%
+		operator.__ilshift__ operator.__imatmul__ operator.__imod__	%
+		operator.__imul__ operator.__index__ operator.__inv__	%
+		operator.__invert__ operator.__ior__ operator.__ipow__	%
+		operator.__irshift__ operator.__isub__ operator.__itruediv__	%
+		operator.__ixor__ operator.__le__ operator.__loader__	%
+		operator.__lshift__ operator.__lt__ operator.__matmul__	%
+		operator.__mod__ operator.__mul__ operator.__name__ operator.__ne__	%
+		operator.__neg__ operator.__not__ operator.__or__	%
+		operator.__package__ operator.__pos__ operator.__pow__	%
+		operator.__rshift__ operator.__setitem__ operator.__spec__	%
+		operator.__sub__ operator.__truediv__ operator.__xor__ operator._abs	%
+		operator.abs operator.add operator.and_ operator.attrgetter	%
+		operator.concat operator.contains operator.countOf operator.delitem	%
+		operator.eq operator.floordiv operator.ge operator.getitem	%
+		operator.gt operator.iadd operator.iand operator.iconcat	%
+		operator.ifloordiv operator.ilshift operator.imatmul operator.imod	%
+		operator.imul operator.index operator.indexOf operator.inv	%
+		operator.invert operator.ior operator.ipow operator.irshift	%
+		operator.is_ operator.is_not operator.isub operator.itemgetter	%
+		operator.itruediv operator.ixor operator.le operator.length_hint	%
+		operator.lshift operator.lt operator.matmul operator.methodcaller	%
+		operator.mod operator.mul operator.ne operator.neg operator.not_	%
+		operator.or_ operator.pos operator.pow operator.rshift	%
+		operator.setitem operator.sub operator.truediv operator.truth	%
+		operator.xor ord os os.DirEntry os.F_OK os.MutableMapping os.O_APPEND	%
+		os.O_BINARY os.O_CREAT os.O_EXCL os.O_NOINHERIT os.O_RANDOM	%
+		os.O_RDONLY os.O_RDWR os.O_SEQUENTIAL os.O_SHORT_LIVED os.O_TEMPORARY	%
+		os.O_TEXT os.O_TRUNC os.O_WRONLY os.P_DETACH os.P_NOWAIT os.P_NOWAITO	%
+		os.P_OVERLAY os.P_WAIT os.PathLike os.R_OK os.SEEK_CUR os.SEEK_END	%
+		os.SEEK_SET os.TMP_MAX os.W_OK os.X_OK os._Environ os.__all__	%
+		os.__builtins__ os.__cached__ os.__doc__ os.__file__ os.__loader__	%
+		os.__name__ os.__package__ os.__spec__ os._execvpe os._exists	%
+		os._exit os._fspath os._get_exports_list os._putenv os._unsetenv	%
+		os._wrap_close os.abc os.abort os.access os.altsep os.chdir os.chmod	%
+		os.close os.closerange os.cpu_count os.curdir os.defpath	%
+		os.device_encoding os.devnull os.dup os.dup2 os.environ os.error	%
+		os.execl os.execle os.execlp os.execlpe os.execv os.execve os.execvp	%
+		os.execvpe os.extsep os.fdopen os.fsdecode os.fsencode os.fspath	%
+		os.fstat os.fsync os.ftruncate os.get_exec_path	%
+		os.get_handle_inheritable os.get_inheritable os.get_terminal_size	%
+		os.getcwd os.getcwdb os.getenv os.getlogin os.getpid os.getppid	%
+		os.isatty os.kill os.linesep os.link os.listdir os.lseek os.lstat	%
+		os.makedirs os.mkdir os.name os.open os.pardir os.path	%
+		os.path.__all__ os.path.__builtins__ os.path.__cached__	%
+		os.path.__doc__ os.path.__file__ os.path.__loader__ os.path.__name__	%
+		os.path.__package__ os.path.__spec__ os.path._abspath_fallback	%
+		os.path._get_bothseps os.path._getfinalpathname	%
+		os.path._getfullpathname os.path._getvolumepathname os.path.abspath	%
+		os.path.altsep os.path.basename os.path.commonpath	%
+		os.path.commonprefix os.path.curdir os.path.defpath os.path.devnull	%
+		os.path.dirname os.path.exists os.path.expanduser os.path.expandvars	%
+		os.path.extsep os.path.genericpath os.path.getatime os.path.getctime	%
+		os.path.getmtime os.path.getsize os.path.isabs os.path.isdir	%
+		os.path.isfile os.path.islink os.path.ismount os.path.join	%
+		os.path.lexists os.path.normcase os.path.normpath os.path.os	%
+		os.path.pardir os.path.pathsep os.path.realpath os.path.relpath	%
+		os.path.samefile os.path.sameopenfile os.path.samestat os.path.sep	%
+		os.path.split os.path.splitdrive os.path.splitext os.path.stat	%
+		os.path.supports_unicode_filenames os.path.sys os.pathsep os.pipe	%
+		os.popen os.putenv os.read os.readlink os.remove os.removedirs	%
+		os.rename os.renames os.replace os.rmdir os.scandir os.sep	%
+		os.set_handle_inheritable os.set_inheritable os.spawnl os.spawnle	%
+		os.spawnv os.spawnve os.st os.startfile os.stat os.stat_result	%
+		os.statvfs_result os.strerror os.supports_bytes_environ	%
+		os.supports_dir_fd os.supports_effective_ids os.supports_fd	%
+		os.supports_follow_symlinks os.symlink os.sys os.system	%
+		os.terminal_size os.times os.times_result os.truncate os.umask	%
+		os.uname_result os.unlink os.urandom os.utime os.waitpid os.walk	%
+		os.write parglare parglare.ACCEPT parglare.DisambiguationError	%
+		parglare.EMPTY parglare.EOF parglare.GLRParser parglare.Grammar	%
+		parglare.GrammarError parglare.LALR parglare.Node	%
+		parglare.NodeNonTerm parglare.NodeTerm parglare.NonTerminal	%
+		parglare.ParseError parglare.Parser parglare.ParserInitError	%
+		parglare.REDUCE parglare.RegExRecognizer parglare.SHIFT parglare.SLR	%
+		parglare.STOP parglare.StringRecognizer parglare.Terminal	%
+		parglare.Token parglare.__builtins__ parglare.__cached__	%
+		parglare.__doc__ parglare.__file__ parglare.__loader__	%
+		parglare.__name__ parglare.__package__ parglare.__path__	%
+		parglare.__spec__ parglare.__version__ parglare.actions	%
+		parglare.closure parglare.common parglare.exceptions parglare.export	%
+		parglare.get_collector parglare.glr parglare.grammar parglare.parser	%
+		parglare.pos_to_line_col parglare.six parglare.tables parglare.termui	%
+		parsel parsel.Selector parsel.SelectorList parsel.__author__	%
+		parsel.__builtins__ parsel.__cached__ parsel.__doc__ parsel.__email__	%
+		parsel.__file__ parsel.__loader__ parsel.__name__ parsel.__package__	%
+		parsel.__path__ parsel.__spec__ parsel.__version__ parsel.css2xpath	%
+		parsel.csstranslator parsel.selector parsel.utils parsel.xpathfuncs	%
+		parso parso.Grammar parso.ParserSyntaxError parso.__builtins__	%
+		parso.__cached__ parso.__doc__ parso.__file__ parso.__loader__	%
+		parso.__name__ parso.__package__ parso.__path__ parso.__spec__	%
+		parso.__version__ parso._compatibility parso.cache parso.grammar	%
+		parso.load_grammar parso.normalizer parso.parse parso.parser	%
+		parso.pgen2 parso.python parso.python_bytes_to_unicode	%
+		parso.split_lines parso.tree parso.utils partition pickle	%
+		pickle.ADDITEMS pickle.APPEND pickle.APPENDS pickle.BINBYTES	%
+		pickle.BINBYTES8 pickle.BINFLOAT pickle.BINGET pickle.BININT	%
+		pickle.BININT1 pickle.BININT2 pickle.BINPERSID pickle.BINPUT	%
+		pickle.BINSTRING pickle.BINUNICODE pickle.BINUNICODE8 pickle.BUILD	%
+		pickle.DEFAULT_PROTOCOL pickle.DICT pickle.DUP pickle.EMPTY_DICT	%
+		pickle.EMPTY_LIST pickle.EMPTY_SET pickle.EMPTY_TUPLE pickle.EXT1	%
+		pickle.EXT2 pickle.EXT4 pickle.FALSE pickle.FLOAT pickle.FRAME	%
+		pickle.FROZENSET pickle.FunctionType pickle.GET pickle.GLOBAL	%
+		pickle.HIGHEST_PROTOCOL pickle.INST pickle.INT pickle.LIST	%
+		pickle.LONG pickle.LONG1 pickle.LONG4 pickle.LONG_BINGET	%
+		pickle.LONG_BINPUT pickle.MARK pickle.MEMOIZE pickle.NEWFALSE	%
+		pickle.NEWOBJ pickle.NEWOBJ_EX pickle.NEWTRUE pickle.NONE pickle.OBJ	%
+		pickle.PERSID pickle.POP pickle.POP_MARK pickle.PROTO pickle.PUT	%
+		pickle.PickleError pickle.Pickler pickle.PicklingError	%
+		pickle.PyStringMap pickle.REDUCE pickle.SETITEM pickle.SETITEMS	%
+		pickle.SHORT_BINBYTES pickle.SHORT_BINSTRING pickle.SHORT_BINUNICODE	%
+		pickle.STACK_GLOBAL pickle.STOP pickle.STRING pickle.TRUE	%
+		pickle.TUPLE pickle.TUPLE1 pickle.TUPLE2 pickle.TUPLE3 pickle.UNICODE	%
+		pickle.Unpickler pickle.UnpicklingError pickle._Framer	%
+		pickle._Pickler pickle._Stop pickle._Unframer pickle._Unpickler	%
+		pickle.__all__ pickle.__builtins__ pickle.__cached__ pickle.__doc__	%
+		pickle.__file__ pickle.__loader__ pickle.__name__ pickle.__package__	%
+		pickle.__spec__ pickle._compat_pickle pickle._dump pickle._dumps	%
+		pickle._extension_cache pickle._extension_registry	%
+		pickle._getattribute pickle._inverted_registry pickle._load	%
+		pickle._loads pickle._test pickle._tuplesize2code pickle.bytes_types	%
+		pickle.codecs pickle.compatible_formats pickle.decode_long	%
+		pickle.dispatch_table pickle.dump pickle.dumps pickle.encode_long	%
+		pickle.format_version pickle.io pickle.islice pickle.load	%
+		pickle.loads pickle.maxsize pickle.pack pickle.partial pickle.re	%
+		pickle.sys pickle.unpack pickle.whichmodule plac plac.Annotation	%
+		plac.ArgumentParser plac.Interpreter plac.Monitor plac.NONE	%
+		plac.PARSER_CFG plac.ReadlineInput plac.__builtins__ plac.__cached__	%
+		plac.__doc__ plac.__file__ plac.__loader__ plac.__name__	%
+		plac.__package__ plac.__spec__ plac.__version__ plac.annotations	%
+		plac.argparse plac.call plac.default_help plac.getargspec	%
+		plac.getfullargspec plac.import_main plac.inspect plac.is_annotation	%
+		plac.iterable plac.parser_from plac.pconf plac.re plac.runp	%
+		plac.stdout plac.sys ply ply.__all__ ply.__builtins__ ply.__cached__	%
+		ply.__doc__ ply.__file__ ply.__loader__ ply.__name__ ply.__package__	%
+		ply.__path__ ply.__spec__ ply.__version__ pop popitem pow pprint	%
+		pprint.PrettyPrinter pprint._StringIO pprint.__all__	%
+		pprint.__builtins__ pprint.__cached__ pprint.__doc__ pprint.__file__	%
+		pprint.__loader__ pprint.__name__ pprint.__package__ pprint.__spec__	%
+		pprint._builtin_scalars pprint._collections pprint._perfcheck	%
+		pprint._recursion pprint._safe_key pprint._safe_repr	%
+		pprint._safe_tuple pprint._sys pprint._types pprint._wrap_bytes_repr	%
+		pprint.isreadable pprint.isrecursive pprint.pformat pprint.pprint	%
+		pprint.re pprint.saferepr print property pylint pylint.__builtins__	%
+		pylint.__cached__ pylint.__doc__ pylint.__file__ pylint.__loader__	%
+		pylint.__name__ pylint.__package__ pylint.__path__ pylint.__pkginfo__	%
+		pylint.__spec__ pylint.__version__ pylint.run_epylint	%
+		pylint.run_pylint pylint.run_pyreverse pylint.run_symilar pylint.sys	%
+		pyparsing pyparsing.And pyparsing.CaselessKeyword	%
+		pyparsing.CaselessLiteral pyparsing.CharsNotIn pyparsing.CloseMatch	%
+		pyparsing.Combine pyparsing.Dict pyparsing.Each pyparsing.Empty	%
+		pyparsing.FollowedBy pyparsing.Forward pyparsing.GoToColumn	%
+		pyparsing.Group pyparsing.Iterable pyparsing.Keyword	%
+		pyparsing.LineEnd pyparsing.LineStart pyparsing.Literal	%
+		pyparsing.MatchFirst pyparsing.MutableMapping pyparsing.NoMatch	%
+		pyparsing.NotAny pyparsing.OneOrMore pyparsing.OnlyOnce	%
+		pyparsing.Optional pyparsing.Or pyparsing.PY_3	%
+		pyparsing.ParseBaseException pyparsing.ParseElementEnhance	%
+		pyparsing.ParseException pyparsing.ParseExpression	%
+		pyparsing.ParseFatalException pyparsing.ParseResults	%
+		pyparsing.ParseSyntaxException pyparsing.ParserElement	%
+		pyparsing.QuotedString pyparsing.RLock	%
+		pyparsing.RecursiveGrammarException pyparsing.Regex pyparsing.SkipTo	%
+		pyparsing.StringEnd pyparsing.StringStart pyparsing.Suppress	%
+		pyparsing.Token pyparsing.TokenConverter pyparsing.White	%
+		pyparsing.Word pyparsing.WordEnd pyparsing.WordStart	%
+		pyparsing.ZeroOrMore pyparsing._Constants pyparsing._ForwardNoRecurse	%
+		pyparsing._L pyparsing._MAX_INT pyparsing._MultipleMatch	%
+		pyparsing._NullToken pyparsing._OrderedDict	%
+		pyparsing._ParseResultsWithOffset pyparsing._PositionToken	%
+		pyparsing.__all__ pyparsing.__author__ pyparsing.__builtins__	%
+		pyparsing.__cached__ pyparsing.__doc__ pyparsing.__file__	%
+		pyparsing.__loader__ pyparsing.__name__ pyparsing.__package__	%
+		pyparsing.__spec__ pyparsing.__versionTime__ pyparsing.__version__	%
+		pyparsing._bslash pyparsing._charRange pyparsing._commasepitem	%
+		pyparsing._defaultExceptionDebugAction	%
+		pyparsing._defaultStartDebugAction	%
+		pyparsing._defaultSuccessDebugAction pyparsing._escapeRegexRangeChars	%
+		pyparsing._escapedHexChar pyparsing._escapedOctChar	%
+		pyparsing._escapedPunc pyparsing._flatten pyparsing._generatorType	%
+		pyparsing._htmlEntityMap pyparsing._makeTags	%
+		pyparsing._optionalNotMatched pyparsing._reBracketExpr	%
+		pyparsing._singleChar pyparsing._trim_arity pyparsing._ustr	%
+		pyparsing._xml_escape pyparsing.alphanums pyparsing.alphas	%
+		pyparsing.alphas8bit pyparsing.anyCloseTag pyparsing.anyOpenTag	%
+		pyparsing.basestring pyparsing.cStyleComment pyparsing.col	%
+		pyparsing.collections pyparsing.commaSeparatedList	%
+		pyparsing.commonHTMLEntity pyparsing.copy pyparsing.countedArray	%
+		pyparsing.cppStyleComment pyparsing.datetime	%
+		pyparsing.dblQuotedString pyparsing.dblSlashComment	%
+		pyparsing.delimitedList pyparsing.dictOf pyparsing.downcaseTokens	%
+		pyparsing.empty pyparsing.hexnums pyparsing.htmlComment	%
+		pyparsing.indentedBlock pyparsing.infixNotation	%
+		pyparsing.javaStyleComment pyparsing.line pyparsing.lineEnd	%
+		pyparsing.lineStart pyparsing.lineno pyparsing.locatedExpr	%
+		pyparsing.makeHTMLTags pyparsing.makeXMLTags pyparsing.matchOnlyAtCol	%
+		pyparsing.matchPreviousExpr pyparsing.matchPreviousLiteral	%
+		pyparsing.nestedExpr pyparsing.nullDebugAction pyparsing.nums	%
+		pyparsing.oneOf pyparsing.opAssoc pyparsing.operatorPrecedence	%
+		pyparsing.originalTextFor pyparsing.pprint pyparsing.printables	%
+		pyparsing.punc8bit pyparsing.pyparsing_common	%
+		pyparsing.pythonStyleComment pyparsing.quotedString pyparsing.re	%
+		pyparsing.removeQuotes pyparsing.replaceHTMLEntity	%
+		pyparsing.replaceWith pyparsing.restOfLine pyparsing.sglQuotedString	%
+		pyparsing.singleArgBuiltins pyparsing.srange pyparsing.sre_constants	%
+		pyparsing.string pyparsing.stringEnd pyparsing.stringStart	%
+		pyparsing.sys pyparsing.system_version pyparsing.tokenMap	%
+		pyparsing.traceParseAction pyparsing.traceback pyparsing.types	%
+		pyparsing.ungroup pyparsing.unichr pyparsing.unicodeString	%
+		pyparsing.upcaseTokens pyparsing.warnings pyparsing.withAttribute	%
+		pyparsing.withClass pyparsing.wkref pypeg2 pypeg2.Concat pypeg2.Enum	%
+		pypeg2.FunctionType pypeg2.GrammarError pypeg2.GrammarTypeError	%
+		pypeg2.GrammarValueError pypeg2.IK pypeg2.IKeyword pypeg2.K	%
+		pypeg2.Keyword pypeg2.List pypeg2.Literal pypeg2.Namespace	%
+		pypeg2.OrderedDict pypeg2.Parser pypeg2.Plain pypeg2.RegEx	%
+		pypeg2.Symbol pypeg2.Whitespace pypeg2._RegEx pypeg2._UserDict	%
+		pypeg2.__author__ pypeg2.__builtins__ pypeg2.__cached__	%
+		pypeg2.__doc__ pypeg2.__file__ pypeg2.__license__ pypeg2.__loader__	%
+		pypeg2.__name__ pypeg2.__package__ pypeg2.__path__ pypeg2.__spec__	%
+		pypeg2.__url__ pypeg2.__version__ pypeg2._card pypeg2._csl	%
+		pypeg2._exec pypeg2._issubclass pypeg2.attr pypeg2.attributes	%
+		pypeg2.blank pypeg2.comment_c pypeg2.comment_cpp pypeg2.comment_pas	%
+		pypeg2.comment_sh pypeg2.compose pypeg2.contiguous pypeg2.csl	%
+		pypeg2.endl pypeg2.flag pypeg2.how_many pypeg2.ignore pypeg2.indent	%
+		pypeg2.maxsize pypeg2.maybe_some pypeg2.name pypeg2.namedtuple	%
+		pypeg2.omit pypeg2.optional pypeg2.parse pypeg2.re pypeg2.restline	%
+		pypeg2.separated pypeg2.some pypeg2.sys pypeg2.unicode_literals	%
+		pypeg2.warnings pypeg2.weakref pypeg2.whitespace pypeg2.word	%
+		pyperclip pyperclip.CheckedCall pyperclip.ENCODING	%
+		pyperclip.EXCEPT_MSG pyperclip.HAS_DISPLAY pyperclip.PY2	%
+		pyperclip.PyperclipException pyperclip.PyperclipWindowsException	%
+		pyperclip.STR_OR_UNICODE pyperclip.WHICH_CMD pyperclip.__all__	%
+		pyperclip.__builtins__ pyperclip.__cached__ pyperclip.__doc__	%
+		pyperclip.__file__ pyperclip.__loader__ pyperclip.__name__	%
+		pyperclip.__package__ pyperclip.__path__ pyperclip.__spec__	%
+		pyperclip.__version__ pyperclip._executable_exists	%
+		pyperclip._stringifyText pyperclip.c_size_t pyperclip.c_wchar	%
+		pyperclip.c_wchar_p pyperclip.contextlib pyperclip.copy	%
+		pyperclip.ctypes pyperclip.determine_clipboard pyperclip.get_errno	%
+		pyperclip.init_dev_clipboard_clipboard pyperclip.init_gtk_clipboard	%
+		pyperclip.init_klipper_clipboard pyperclip.init_no_clipboard	%
+		pyperclip.init_osx_pbcopy_clipboard	%
+		pyperclip.init_osx_pyobjc_clipboard pyperclip.init_qt_clipboard	%
+		pyperclip.init_windows_clipboard pyperclip.init_wsl_clipboard	%
+		pyperclip.init_xclip_clipboard pyperclip.init_xsel_clipboard	%
+		pyperclip.is_available pyperclip.lazy_load_stub_copy	%
+		pyperclip.lazy_load_stub_paste pyperclip.os pyperclip.paste	%
+		pyperclip.platform pyperclip.set_clipboard pyperclip.sizeof	%
+		pyperclip.subprocess pyperclip.sys pyperclip.time pyperclip.warnings	%
+		queue queue.Empty queue.Full queue.LifoQueue queue.PriorityQueue	%
+		queue.Queue queue.SimpleQueue queue._PySimpleQueue queue.__all__	%
+		queue.__builtins__ queue.__cached__ queue.__doc__ queue.__file__	%
+		queue.__loader__ queue.__name__ queue.__package__ queue.__spec__	%
+		queue.deque queue.heappop queue.heappush queue.threading queue.time	%
+		random random.BPF random.LOG4 random.NV_MAGICCONST random.RECIP_BPF	%
+		random.Random random.SG_MAGICCONST random.SystemRandom random.TWOPI	%
+		random._BuiltinMethodType random._MethodType random._Sequence	%
+		random._Set random.__all__ random.__builtins__ random.__cached__	%
+		random.__doc__ random.__file__ random.__loader__ random.__name__	%
+		random.__package__ random.__spec__ random._acos random._bisect	%
+		random._ceil random._cos random._e random._exp random._inst	%
+		random._itertools random._log random._os random._pi random._random	%
+		random._sha512 random._sin random._sqrt random._test	%
+		random._test_generator random._urandom random._warn	%
+		random.betavariate random.choice random.choices random.expovariate	%
+		random.gammavariate random.gauss random.getrandbits random.getstate	%
+		random.lognormvariate random.normalvariate random.paretovariate	%
+		random.randint random.random random.randrange random.sample	%
+		random.seed random.setstate random.shuffle random.triangular	%
+		random.uniform random.vonmisesvariate random.weibullvariate range re	%
+		re.A re.ASCII re.DEBUG re.DOTALL re.I re.IGNORECASE re.L re.LOCALE	%
+		re.M re.MULTILINE re.Match re.Pattern re.RegexFlag re.S re.Scanner	%
+		re.T re.TEMPLATE re.U re.UNICODE re.VERBOSE re.X re._MAXCACHE	%
+		re.__all__ re.__builtins__ re.__cached__ re.__doc__ re.__file__	%
+		re.__loader__ re.__name__ re.__package__ re.__spec__ re.__version__	%
+		re._cache re._compile re._compile_repl re._expand re._locale	%
+		re._pickle re._special_chars_map re._subx re.compile re.copyreg	%
+		re.enum re.error re.escape re.findall re.finditer re.fullmatch	%
+		re.functools re.match re.purge re.search re.split re.sre_compile	%
+		re.sre_parse re.sub re.subn re.template real regex regex.A	%
+		regex.ASCII regex.B regex.BESTMATCH regex.D regex.DEBUG	%
+		regex.DEFAULT_VERSION regex.DOTALL regex.E regex.ENHANCEMATCH regex.F	%
+		regex.FULLCASE regex.I regex.IGNORECASE regex.L regex.LOCALE regex.M	%
+		regex.MULTILINE regex.Match regex.P regex.POSIX regex.Pattern regex.R	%
+		regex.REVERSE regex.Regex regex.S regex.Scanner regex.T	%
+		regex.TEMPLATE regex.U regex.UNICODE regex.V0 regex.V1 regex.VERBOSE	%
+		regex.VERSION0 regex.VERSION1 regex.W regex.WORD regex.X	%
+		regex._ALL_ENCODINGS regex._ALL_VERSIONS regex._ALNUM	%
+		regex._FirstSetError regex._Fuzzy regex._Info regex._MAXCACHE	%
+		regex._MAXREPCACHE regex._METACHARS regex._OP regex._RLock	%
+		regex._Source regex._UnscopedFlagSet regex.__all__ regex.__builtins__	%
+		regex.__cached__ regex.__doc__ regex.__file__ regex.__loader__	%
+		regex.__name__ regex.__package__ regex.__spec__ regex.__version__	%
+		regex._cache regex._cache_lock regex._check_group_features	%
+		regex._compile regex._compile_firstset regex._compile_replacement	%
+		regex._compile_replacement_helper regex._copy_reg regex._flatten_code	%
+		regex._fold_case regex._get_required_string	%
+		regex._getpreferredencoding regex._locale_sensitive regex._named_args	%
+		regex._parse_pattern regex._pickle regex._regex regex._regex_core	%
+		regex._replacement_cache regex._shrink_cache regex.compile	%
+		regex.error regex.escape regex.findall regex.finditer regex.fullmatch	%
+		regex.match regex.purge regex.search regex.split regex.splititer	%
+		regex.sub regex.subf regex.subfn regex.subn regex.template remove	%
+		replace repr requests requests.ConnectTimeout	%
+		requests.ConnectionError requests.DependencyWarning	%
+		requests.FileModeWarning requests.HTTPError requests.NullHandler	%
+		requests.PreparedRequest requests.ReadTimeout requests.Request	%
+		requests.RequestException requests.RequestsDependencyWarning	%
+		requests.Response requests.Session requests.Timeout	%
+		requests.TooManyRedirects requests.URLRequired requests.__author__	%
+		requests.__author_email__ requests.__build__ requests.__builtins__	%
+		requests.__cached__ requests.__cake__ requests.__copyright__	%
+		requests.__description__ requests.__doc__ requests.__file__	%
+		requests.__license__ requests.__loader__ requests.__name__	%
+		requests.__package__ requests.__path__ requests.__spec__	%
+		requests.__title__ requests.__url__ requests.__version__	%
+		requests._check_cryptography requests._internal_utils	%
+		requests.adapters requests.api requests.auth requests.certs	%
+		requests.chardet requests.check_compatibility requests.codes	%
+		requests.compat requests.cookies requests.cryptography_version	%
+		requests.delete requests.exceptions requests.get requests.head	%
+		requests.hooks requests.logging requests.models requests.options	%
+		requests.packages requests.patch requests.post requests.put	%
+		requests.pyopenssl requests.request requests.session	%
+		requests.sessions requests.status_codes requests.structures	%
+		requests.urllib3 requests.utils requests.warnings reverse reversed	%
+		rfind rindex rjust round rpartition rsplit rstrip set setattr	%
+		setdefault slice socket socket.AF_APPLETALK socket.AF_DECnet	%
+		socket.AF_INET socket.AF_INET6 socket.AF_IPX socket.AF_IRDA	%
+		socket.AF_SNA socket.AF_UNSPEC socket.AI_ADDRCONFIG socket.AI_ALL	%
+		socket.AI_CANONNAME socket.AI_NUMERICHOST socket.AI_NUMERICSERV	%
+		socket.AI_PASSIVE socket.AI_V4MAPPED socket.AddressFamily	%
+		socket.AddressInfo socket.CAPI socket.EAGAIN socket.EAI_AGAIN	%
+		socket.EAI_BADFLAGS socket.EAI_FAIL socket.EAI_FAMILY	%
+		socket.EAI_MEMORY socket.EAI_NODATA socket.EAI_NONAME	%
+		socket.EAI_SERVICE socket.EAI_SOCKTYPE socket.EBADF	%
+		socket.EWOULDBLOCK socket.INADDR_ALLHOSTS_GROUP socket.INADDR_ANY	%
+		socket.INADDR_BROADCAST socket.INADDR_LOOPBACK	%
+		socket.INADDR_MAX_LOCAL_GROUP socket.INADDR_NONE	%
+		socket.INADDR_UNSPEC_GROUP socket.IPPORT_RESERVED	%
+		socket.IPPORT_USERRESERVED socket.IPPROTO_ICMP socket.IPPROTO_IP	%
+		socket.IPPROTO_RAW socket.IPPROTO_TCP socket.IPPROTO_UDP	%
+		socket.IPV6_CHECKSUM socket.IPV6_DONTFRAG socket.IPV6_HOPLIMIT	%
+		socket.IPV6_HOPOPTS socket.IPV6_JOIN_GROUP socket.IPV6_LEAVE_GROUP	%
+		socket.IPV6_MULTICAST_HOPS socket.IPV6_MULTICAST_IF	%
+		socket.IPV6_MULTICAST_LOOP socket.IPV6_PKTINFO socket.IPV6_RECVRTHDR	%
+		socket.IPV6_RECVTCLASS socket.IPV6_RTHDR socket.IPV6_TCLASS	%
+		socket.IPV6_UNICAST_HOPS socket.IPV6_V6ONLY socket.IP_ADD_MEMBERSHIP	%
+		socket.IP_DROP_MEMBERSHIP socket.IP_HDRINCL socket.IP_MULTICAST_IF	%
+		socket.IP_MULTICAST_LOOP socket.IP_MULTICAST_TTL socket.IP_OPTIONS	%
+		socket.IP_RECVDSTADDR socket.IP_TOS socket.IP_TTL socket.IntEnum	%
+		socket.IntFlag socket.MSG_BCAST socket.MSG_CTRUNC	%
+		socket.MSG_DONTROUTE socket.MSG_ERRQUEUE socket.MSG_MCAST	%
+		socket.MSG_OOB socket.MSG_PEEK socket.MSG_TRUNC socket.MSG_WAITALL	%
+		socket.MsgFlag socket.NI_DGRAM socket.NI_MAXHOST socket.NI_MAXSERV	%
+		socket.NI_NAMEREQD socket.NI_NOFQDN socket.NI_NUMERICHOST	%
+		socket.NI_NUMERICSERV socket.RCVALL_MAX socket.RCVALL_OFF	%
+		socket.RCVALL_ON socket.RCVALL_SOCKETLEVELONLY socket.SHUT_RD	%
+		socket.SHUT_RDWR socket.SHUT_WR socket.SIO_KEEPALIVE_VALS	%
+		socket.SIO_LOOPBACK_FAST_PATH socket.SIO_RCVALL socket.SOCK_DGRAM	%
+		socket.SOCK_RAW socket.SOCK_RDM socket.SOCK_SEQPACKET	%
+		socket.SOCK_STREAM socket.SOL_IP socket.SOL_SOCKET socket.SOL_TCP	%
+		socket.SOL_UDP socket.SOMAXCONN socket.SO_ACCEPTCONN	%
+		socket.SO_BROADCAST socket.SO_DEBUG socket.SO_DONTROUTE	%
+		socket.SO_ERROR socket.SO_EXCLUSIVEADDRUSE socket.SO_KEEPALIVE	%
+		socket.SO_LINGER socket.SO_OOBINLINE socket.SO_RCVBUF	%
+		socket.SO_RCVLOWAT socket.SO_RCVTIMEO socket.SO_REUSEADDR	%
+		socket.SO_SNDBUF socket.SO_SNDLOWAT socket.SO_SNDTIMEO socket.SO_TYPE	%
+		socket.SO_USELOOPBACK socket.SocketIO socket.SocketKind	%
+		socket.SocketType socket.TCP_MAXSEG socket.TCP_NODELAY	%
+		socket._GLOBAL_DEFAULT_TIMEOUT socket._GiveupOnSendfile	%
+		socket._LOCALHOST socket._LOCALHOST_V6 socket.__all__	%
+		socket.__builtins__ socket.__cached__ socket.__doc__ socket.__file__	%
+		socket.__loader__ socket.__name__ socket.__package__ socket.__spec__	%
+		socket._blocking_errnos socket._intenum_converter socket._realsocket	%
+		socket._socket socket.close socket.create_connection socket.dup	%
+		socket.errno socket.error socket.errorTab socket.fromfd	%
+		socket.fromshare socket.gaierror socket.getaddrinfo	%
+		socket.getdefaulttimeout socket.getfqdn socket.gethostbyaddr	%
+		socket.gethostbyname socket.gethostbyname_ex socket.gethostname	%
+		socket.getnameinfo socket.getprotobyname socket.getservbyname	%
+		socket.getservbyport socket.has_ipv6 socket.herror socket.htonl	%
+		socket.htons socket.inet_aton socket.inet_ntoa socket.inet_ntop	%
+		socket.inet_pton socket.io socket.ntohl socket.ntohs socket.os	%
+		socket.selectors socket.setdefaulttimeout socket.socket	%
+		socket.socketpair socket.sys socket.timeout sort sorted	%
+		sortedcontainers sortedcontainers.SortedDict	%
+		sortedcontainers.SortedItemsView sortedcontainers.SortedKeyList	%
+		sortedcontainers.SortedKeysView sortedcontainers.SortedList	%
+		sortedcontainers.SortedListWithKey sortedcontainers.SortedSet	%
+		sortedcontainers.SortedValuesView sortedcontainers.__all__	%
+		sortedcontainers.__author__ sortedcontainers.__build__	%
+		sortedcontainers.__builtins__ sortedcontainers.__cached__	%
+		sortedcontainers.__copyright__ sortedcontainers.__doc__	%
+		sortedcontainers.__file__ sortedcontainers.__license__	%
+		sortedcontainers.__loader__ sortedcontainers.__name__	%
+		sortedcontainers.__package__ sortedcontainers.__path__	%
+		sortedcontainers.__spec__ sortedcontainers.__title__	%
+		sortedcontainers.__version__ sortedcontainers.sorteddict	%
+		sortedcontainers.sortedlist sortedcontainers.sortedset split	%
+		splitlines sqlite3 sqlite3.Binary sqlite3.Cache sqlite3.Connection	%
+		sqlite3.Cursor sqlite3.DataError sqlite3.DatabaseError sqlite3.Date	%
+		sqlite3.DateFromTicks sqlite3.Error sqlite3.IntegrityError	%
+		sqlite3.InterfaceError sqlite3.InternalError	%
+		sqlite3.NotSupportedError sqlite3.OperationalError	%
+		sqlite3.OptimizedUnicode sqlite3.PARSE_COLNAMES	%
+		sqlite3.PARSE_DECLTYPES sqlite3.PrepareProtocol	%
+		sqlite3.ProgrammingError sqlite3.Row sqlite3.SQLITE_ALTER_TABLE	%
+		sqlite3.SQLITE_ANALYZE sqlite3.SQLITE_ATTACH	%
+		sqlite3.SQLITE_CREATE_INDEX sqlite3.SQLITE_CREATE_TABLE	%
+		sqlite3.SQLITE_CREATE_TEMP_INDEX sqlite3.SQLITE_CREATE_TEMP_TABLE	%
+		sqlite3.SQLITE_CREATE_TEMP_TRIGGER sqlite3.SQLITE_CREATE_TEMP_VIEW	%
+		sqlite3.SQLITE_CREATE_TRIGGER sqlite3.SQLITE_CREATE_VIEW	%
+		sqlite3.SQLITE_CREATE_VTABLE sqlite3.SQLITE_DELETE	%
+		sqlite3.SQLITE_DENY sqlite3.SQLITE_DETACH sqlite3.SQLITE_DONE	%
+		sqlite3.SQLITE_DROP_INDEX sqlite3.SQLITE_DROP_TABLE	%
+		sqlite3.SQLITE_DROP_TEMP_INDEX sqlite3.SQLITE_DROP_TEMP_TABLE	%
+		sqlite3.SQLITE_DROP_TEMP_TRIGGER sqlite3.SQLITE_DROP_TEMP_VIEW	%
+		sqlite3.SQLITE_DROP_TRIGGER sqlite3.SQLITE_DROP_VIEW	%
+		sqlite3.SQLITE_DROP_VTABLE sqlite3.SQLITE_FUNCTION	%
+		sqlite3.SQLITE_IGNORE sqlite3.SQLITE_INSERT sqlite3.SQLITE_OK	%
+		sqlite3.SQLITE_PRAGMA sqlite3.SQLITE_READ sqlite3.SQLITE_RECURSIVE	%
+		sqlite3.SQLITE_REINDEX sqlite3.SQLITE_SAVEPOINT sqlite3.SQLITE_SELECT	%
+		sqlite3.SQLITE_TRANSACTION sqlite3.SQLITE_UPDATE sqlite3.Statement	%
+		sqlite3.Time sqlite3.TimeFromTicks sqlite3.Timestamp	%
+		sqlite3.TimestampFromTicks sqlite3.Warning sqlite3.__builtins__	%
+		sqlite3.__cached__ sqlite3.__doc__ sqlite3.__file__	%
+		sqlite3.__loader__ sqlite3.__name__ sqlite3.__package__	%
+		sqlite3.__path__ sqlite3.__spec__ sqlite3.adapt sqlite3.adapters	%
+		sqlite3.apilevel sqlite3.collections sqlite3.complete_statement	%
+		sqlite3.connect sqlite3.converters sqlite3.datetime sqlite3.dbapi2	%
+		sqlite3.enable_callback_tracebacks sqlite3.enable_shared_cache	%
+		sqlite3.paramstyle sqlite3.register_adapter	%
+		sqlite3.register_converter sqlite3.sqlite_version	%
+		sqlite3.sqlite_version_info sqlite3.threadsafety sqlite3.time	%
+		sqlite3.version sqlite3.version_info startswith staticmethod str	%
+		strip sum super swapcase symmetric_difference	%
+		symmetric_difference_update sys sys.__breakpointhook__	%
+		sys.__displayhook__ sys.__doc__ sys.__excepthook__	%
+		sys.__interactivehook__ sys.__loader__ sys.__name__ sys.__package__	%
+		sys.__spec__ sys.__stderr__ sys.__stdin__ sys.__stdout__	%
+		sys._clear_type_cache sys._current_frames sys._debugmallocstats	%
+		sys._enablelegacywindowsfsencoding sys._framework sys._getframe	%
+		sys._git sys._home sys._xoptions sys.api_version sys.argv	%
+		sys.base_exec_prefix sys.base_prefix sys.breakpointhook	%
+		sys.builtin_module_names sys.byteorder sys.call_tracing sys.callstats	%
+		sys.copyright sys.displayhook sys.dllhandle sys.dont_write_bytecode	%
+		sys.exc_info sys.excepthook sys.exec_prefix sys.executable sys.exit	%
+		sys.flags sys.float_info sys.float_repr_style sys.get_asyncgen_hooks	%
+		sys.get_coroutine_origin_tracking_depth sys.get_coroutine_wrapper	%
+		sys.getallocatedblocks sys.getcheckinterval sys.getdefaultencoding	%
+		sys.getfilesystemencodeerrors sys.getfilesystemencoding	%
+		sys.getprofile sys.getrecursionlimit sys.getrefcount sys.getsizeof	%
+		sys.getswitchinterval sys.gettrace sys.getwindowsversion	%
+		sys.hash_info sys.hexversion sys.implementation sys.int_info	%
+		sys.intern sys.is_finalizing sys.maxsize sys.maxunicode sys.meta_path	%
+		sys.modules sys.path sys.path_hooks sys.path_importer_cache	%
+		sys.platform sys.prefix sys.set_asyncgen_hooks	%
+		sys.set_coroutine_origin_tracking_depth sys.set_coroutine_wrapper	%
+		sys.setcheckinterval sys.setprofile sys.setrecursionlimit	%
+		sys.setswitchinterval sys.settrace sys.stderr sys.stdin sys.stdout	%
+		sys.thread_info sys.version sys.version_info sys.warnoptions	%
+		sys.winver tabnanny tabnanny.NannyNag tabnanny.Whitespace	%
+		tabnanny.__all__ tabnanny.__builtins__ tabnanny.__cached__	%
+		tabnanny.__doc__ tabnanny.__file__ tabnanny.__loader__	%
+		tabnanny.__name__ tabnanny.__package__ tabnanny.__spec__	%
+		tabnanny.__version__ tabnanny.check tabnanny.errprint	%
+		tabnanny.filename_only tabnanny.format_witnesses tabnanny.main	%
+		tabnanny.os tabnanny.process_tokens tabnanny.sys tabnanny.tokenize	%
+		tabnanny.verbose tarjan tarjan.TarjanContext tarjan.__all__	%
+		tarjan.__builtins__ tarjan.__cached__ tarjan.__doc__ tarjan.__file__	%
+		tarjan.__loader__ tarjan.__name__ tarjan.__package__ tarjan.__path__	%
+		tarjan.__spec__ tarjan._tarjan_body tarjan._tarjan_head	%
+		tarjan.namedtuple tarjan.tarjan tarjan.tarjan_iter	%
+		tarjan.tarjan_recursive tatsu tatsu.__builtins__ tatsu.__cached__	%
+		tatsu.__doc__ tatsu.__file__ tatsu.__loader__ tatsu.__name__	%
+		tatsu.__package__ tatsu.__path__ tatsu.__spec__ tatsu.__toolname__	%
+		tatsu.__version__ tatsu._config tatsu._unicode_characters	%
+		tatsu._version tatsu.absolute_import tatsu.ast tatsu.bootstrap	%
+		tatsu.buffering tatsu.codegen tatsu.color tatsu.compile	%
+		tatsu.contexts tatsu.division tatsu.exceptions tatsu.grammars	%
+		tatsu.infos tatsu.leftrec tatsu.main tatsu.objectmodel tatsu.parse	%
+		tatsu.parser tatsu.parser_semantics tatsu.parsing	%
+		tatsu.print_function tatsu.rendering tatsu.semantics tatsu.synth	%
+		tatsu.to_python_model tatsu.to_python_sourcecode tatsu.tool	%
+		tatsu.unicode_literals tatsu.util tempfile	%
+		tempfile.NamedTemporaryFile tempfile.SpooledTemporaryFile	%
+		tempfile.TMP_MAX tempfile.TemporaryDirectory tempfile.TemporaryFile	%
+		tempfile._Random tempfile._RandomNameSequence	%
+		tempfile._TemporaryFileCloser tempfile._TemporaryFileWrapper	%
+		tempfile.__all__ tempfile.__builtins__ tempfile.__cached__	%
+		tempfile.__doc__ tempfile.__file__ tempfile.__loader__	%
+		tempfile.__name__ tempfile.__package__ tempfile.__spec__	%
+		tempfile._allocate_lock tempfile._bin_openflags	%
+		tempfile._candidate_tempdir_list tempfile._errno tempfile._exists	%
+		tempfile._functools tempfile._get_candidate_names	%
+		tempfile._get_default_tempdir tempfile._infer_return_type	%
+		tempfile._io tempfile._mkstemp_inner tempfile._name_sequence	%
+		tempfile._once_lock tempfile._os tempfile._sanitize_params	%
+		tempfile._shutil tempfile._stat tempfile._text_openflags	%
+		tempfile._thread tempfile._warnings tempfile._weakref	%
+		tempfile.gettempdir tempfile.gettempdirb tempfile.gettempprefix	%
+		tempfile.gettempprefixb tempfile.mkdtemp tempfile.mkstemp	%
+		tempfile.mktemp tempfile.tempdir tempfile.template textwrap	%
+		textwrap.TextWrapper textwrap.__all__ textwrap.__builtins__	%
+		textwrap.__cached__ textwrap.__doc__ textwrap.__file__	%
+		textwrap.__loader__ textwrap.__name__ textwrap.__package__	%
+		textwrap.__spec__ textwrap._leading_whitespace_re	%
+		textwrap._whitespace textwrap._whitespace_only_re textwrap.dedent	%
+		textwrap.fill textwrap.indent textwrap.re textwrap.shorten	%
+		textwrap.wrap threading threading.Barrier threading.BoundedSemaphore	%
+		threading.BrokenBarrierError threading.Condition threading.Event	%
+		threading.Lock threading.RLock threading.Semaphore	%
+		threading.TIMEOUT_MAX threading.Thread threading.ThreadError	%
+		threading.Timer threading.WeakSet threading._CRLock	%
+		threading._DummyThread threading._MainThread threading._PyRLock	%
+		threading._RLock threading.__all__ threading.__builtins__	%
+		threading.__cached__ threading.__doc__ threading.__file__	%
+		threading.__loader__ threading.__name__ threading.__package__	%
+		threading.__spec__ threading._active threading._active_limbo_lock	%
+		threading._after_fork threading._allocate_lock threading._count	%
+		threading._counter threading._dangling threading._deque	%
+		threading._enumerate threading._format_exc threading._islice	%
+		threading._limbo threading._main_thread threading._newname	%
+		threading._os threading._pickSomeNonDaemonThread	%
+		threading._profile_hook threading._set_sentinel threading._shutdown	%
+		threading._start_new_thread threading._sys threading._time	%
+		threading._trace_hook threading.activeCount threading.active_count	%
+		threading.currentThread threading.current_thread threading.enumerate	%
+		threading.get_ident threading.local threading.main_thread	%
+		threading.setprofile threading.settrace threading.stack_size timeit	%
+		timeit.Timer timeit.__all__ timeit.__builtins__ timeit.__cached__	%
+		timeit.__doc__ timeit.__file__ timeit.__loader__ timeit.__name__	%
+		timeit.__package__ timeit.__spec__ timeit._globals	%
+		timeit.default_number timeit.default_repeat timeit.default_timer	%
+		timeit.dummy_src_name timeit.gc timeit.itertools timeit.main	%
+		timeit.reindent timeit.repeat timeit.sys timeit.template timeit.time	%
+		timeit.timeit title tkinter tkinter.ACTIVE tkinter.ALL tkinter.ANCHOR	%
+		tkinter.ARC tkinter.BASELINE tkinter.BEVEL tkinter.BOTH	%
+		tkinter.BOTTOM tkinter.BROWSE tkinter.BUTT tkinter.BaseWidget	%
+		tkinter.BitmapImage tkinter.BooleanVar tkinter.Button tkinter.CASCADE	%
+		tkinter.CENTER tkinter.CHAR tkinter.CHECKBUTTON tkinter.CHORD	%
+		tkinter.COMMAND tkinter.CURRENT tkinter.CallWrapper tkinter.Canvas	%
+		tkinter.Checkbutton tkinter.DISABLED tkinter.DOTBOX tkinter.DoubleVar	%
+		tkinter.E tkinter.END tkinter.EW tkinter.EXCEPTION tkinter.EXTENDED	%
+		tkinter.Entry tkinter.Event tkinter.EventType tkinter.FALSE	%
+		tkinter.FIRST tkinter.FLAT tkinter.Frame tkinter.GROOVE tkinter.Grid	%
+		tkinter.HIDDEN tkinter.HORIZONTAL tkinter.INSERT tkinter.INSIDE	%
+		tkinter.Image tkinter.IntVar tkinter.LAST tkinter.LEFT tkinter.Label	%
+		tkinter.LabelFrame tkinter.Listbox tkinter.MITER tkinter.MOVETO	%
+		tkinter.MULTIPLE tkinter.Menu tkinter.Menubutton tkinter.Message	%
+		tkinter.Misc tkinter.N tkinter.NE tkinter.NO tkinter.NONE	%
+		tkinter.NORMAL tkinter.NS tkinter.NSEW tkinter.NUMERIC tkinter.NW	%
+		tkinter.NoDefaultRoot tkinter.OFF tkinter.ON tkinter.OUTSIDE	%
+		tkinter.OptionMenu tkinter.PAGES tkinter.PIESLICE tkinter.PROJECTING	%
+		tkinter.Pack tkinter.PanedWindow tkinter.PhotoImage tkinter.Place	%
+		tkinter.RADIOBUTTON tkinter.RAISED tkinter.READABLE tkinter.RIDGE	%
+		tkinter.RIGHT tkinter.ROUND tkinter.Radiobutton tkinter.S	%
+		tkinter.SCROLL tkinter.SE tkinter.SEL tkinter.SEL_FIRST	%
+		tkinter.SEL_LAST tkinter.SEPARATOR tkinter.SINGLE tkinter.SOLID	%
+		tkinter.SUNKEN tkinter.SW tkinter.Scale tkinter.Scrollbar	%
+		tkinter.Spinbox tkinter.StringVar tkinter.TOP tkinter.TRUE	%
+		tkinter.Tcl tkinter.TclError tkinter.TclVersion tkinter.Text	%
+		tkinter.Tk tkinter.TkVersion tkinter.Toplevel tkinter.UNDERLINE	%
+		tkinter.UNITS tkinter.VERTICAL tkinter.Variable tkinter.W	%
+		tkinter.WORD tkinter.WRITABLE tkinter.Widget tkinter.Wm tkinter.X	%
+		tkinter.XView tkinter.Y tkinter.YES tkinter.YView	%
+		tkinter.__builtins__ tkinter.__cached__ tkinter.__doc__	%
+		tkinter.__file__ tkinter.__loader__ tkinter.__name__	%
+		tkinter.__package__ tkinter.__path__ tkinter.__spec__	%
+		tkinter._cnfmerge tkinter._default_root tkinter._exit	%
+		tkinter._flatten tkinter._join tkinter._magic_re tkinter._setit	%
+		tkinter._space_re tkinter._splitdict tkinter._stringify	%
+		tkinter._support_default_root tkinter._test tkinter._tkerror	%
+		tkinter._tkinter tkinter._varnum tkinter.constants tkinter.enum	%
+		tkinter.getboolean tkinter.getdouble tkinter.getint	%
+		tkinter.image_names tkinter.image_types tkinter.mainloop tkinter.re	%
+		tkinter.sys tkinter.wantobjects to_bytes translate tuple type union	%
+		unittest unittest.BaseTestSuite unittest.FunctionTestCase	%
+		unittest.SkipTest unittest.TestCase unittest.TestLoader	%
+		unittest.TestProgram unittest.TestResult unittest.TestSuite	%
+		unittest.TextTestResult unittest.TextTestRunner	%
+		unittest._TextTestResult unittest.__all__ unittest.__builtins__	%
+		unittest.__cached__ unittest.__doc__ unittest.__file__	%
+		unittest.__loader__ unittest.__name__ unittest.__package__	%
+		unittest.__path__ unittest.__spec__ unittest.__unittest unittest.case	%
+		unittest.defaultTestLoader unittest.expectedFailure	%
+		unittest.findTestCases unittest.getTestCaseNames	%
+		unittest.installHandler unittest.load_tests unittest.loader	%
+		unittest.main unittest.makeSuite unittest.registerResult	%
+		unittest.removeHandler unittest.removeResult unittest.result	%
+		unittest.runner unittest.signals unittest.skip unittest.skipIf	%
+		unittest.skipUnless unittest.suite unittest.util update upper urllib	%
+		urllib.__builtins__ urllib.__cached__ urllib.__doc__ urllib.__file__	%
+		urllib.__loader__ urllib.__name__ urllib.__package__ urllib.__path__	%
+		urllib.__spec__ urllib.error urllib.parse urllib.request	%
+		urllib.response urllib3 urllib3.HTTPConnectionPool	%
+		urllib3.HTTPResponse urllib3.HTTPSConnectionPool urllib3.PoolManager	%
+		urllib3.ProxyManager urllib3.Retry urllib3.Timeout urllib3.__all__	%
+		urllib3.__author__ urllib3.__builtins__ urllib3.__cached__	%
+		urllib3.__doc__ urllib3.__file__ urllib3.__license__	%
+		urllib3.__loader__ urllib3.__name__ urllib3.__package__	%
+		urllib3.__path__ urllib3.__spec__ urllib3.__version__	%
+		urllib3._collections urllib3.absolute_import	%
+		urllib3.add_stderr_logger urllib3.connection	%
+		urllib3.connection_from_url urllib3.connectionpool urllib3.contrib	%
+		urllib3.disable_warnings urllib3.encode_multipart_formdata	%
+		urllib3.exceptions urllib3.fields urllib3.filepost urllib3.get_host	%
+		urllib3.logging urllib3.make_headers urllib3.packages	%
+		urllib3.poolmanager urllib3.proxy_from_url urllib3.request	%
+		urllib3.response urllib3.util urllib3.warnings values vars venv	%
+		venv.EnvBuilder venv.__builtins__ venv.__cached__ venv.__doc__	%
+		venv.__file__ venv.__loader__ venv.__name__ venv.__package__	%
+		venv.__path__ venv.__spec__ venv.create venv.logger venv.logging	%
+		venv.main venv.os venv.shutil venv.subprocess venv.sys venv.types	%
+		webbrowser webbrowser.BackgroundBrowser webbrowser.BaseBrowser	%
+		webbrowser.Chrome webbrowser.Chromium webbrowser.Elinks	%
+		webbrowser.Error webbrowser.Galeon webbrowser.GenericBrowser	%
+		webbrowser.Grail webbrowser.Konqueror webbrowser.Mozilla	%
+		webbrowser.Netscape webbrowser.Opera webbrowser.UnixBrowser	%
+		webbrowser.WindowsDefault webbrowser.__all__ webbrowser.__builtins__	%
+		webbrowser.__cached__ webbrowser.__doc__ webbrowser.__file__	%
+		webbrowser.__loader__ webbrowser.__name__ webbrowser.__package__	%
+		webbrowser.__spec__ webbrowser._browsers webbrowser._lock	%
+		webbrowser._os_preferred_browser webbrowser._synthesize	%
+		webbrowser._tryorder webbrowser.get webbrowser.main webbrowser.open	%
+		webbrowser.open_new webbrowser.open_new_tab webbrowser.os	%
+		webbrowser.register webbrowser.register_X_browsers	%
+		webbrowser.register_standard_browsers webbrowser.shlex	%
+		webbrowser.shutil webbrowser.subprocess webbrowser.sys	%
+		webbrowser.threading websockets websockets.AbortHandshake	%
+		websockets.CancelHandshake websockets.ConnectionClosed	%
+		websockets.DuplicateParameter websockets.InvalidHandshake	%
+		websockets.InvalidHeader websockets.InvalidHeaderFormat	%
+		websockets.InvalidHeaderValue websockets.InvalidMessage	%
+		websockets.InvalidOrigin websockets.InvalidParameterName	%
+		websockets.InvalidParameterValue websockets.InvalidState	%
+		websockets.InvalidStatusCode websockets.InvalidURI	%
+		websockets.InvalidUpgrade websockets.NegotiationError	%
+		websockets.PayloadTooBig websockets.WebSocketClientProtocol	%
+		websockets.WebSocketCommonProtocol websockets.WebSocketProtocolError	%
+		websockets.WebSocketServerProtocol websockets.WebSocketURI	%
+		websockets.__all__ websockets.__builtins__ websockets.__cached__	%
+		websockets.__doc__ websockets.__file__ websockets.__loader__	%
+		websockets.__name__ websockets.__package__ websockets.__path__	%
+		websockets.__spec__ websockets.__version__ websockets.client	%
+		websockets.compatibility websockets.connect websockets.exceptions	%
+		websockets.extensions websockets.framing websockets.handshake	%
+		websockets.headers websockets.http websockets.parse_uri	%
+		websockets.protocol websockets.py35 websockets.py36 websockets.serve	%
+		websockets.server websockets.speedups websockets.unix_serve	%
+		websockets.uri websockets.version wsgiref wsgiref.__builtins__	%
+		wsgiref.__cached__ wsgiref.__doc__ wsgiref.__file__	%
+		wsgiref.__loader__ wsgiref.__name__ wsgiref.__package__	%
+		wsgiref.__path__ wsgiref.__spec__ xml.dom xml.dom.DOMException	%
+		xml.dom.DOMSTRING_SIZE_ERR xml.dom.DomstringSizeErr	%
+		xml.dom.EMPTY_NAMESPACE xml.dom.EMPTY_PREFIX	%
+		xml.dom.HIERARCHY_REQUEST_ERR xml.dom.HierarchyRequestErr	%
+		xml.dom.INDEX_SIZE_ERR xml.dom.INUSE_ATTRIBUTE_ERR	%
+		xml.dom.INVALID_ACCESS_ERR xml.dom.INVALID_CHARACTER_ERR	%
+		xml.dom.INVALID_MODIFICATION_ERR xml.dom.INVALID_STATE_ERR	%
+		xml.dom.IndexSizeErr xml.dom.InuseAttributeErr	%
+		xml.dom.InvalidAccessErr xml.dom.InvalidCharacterErr	%
+		xml.dom.InvalidModificationErr xml.dom.InvalidStateErr	%
+		xml.dom.NAMESPACE_ERR xml.dom.NOT_FOUND_ERR xml.dom.NOT_SUPPORTED_ERR	%
+		xml.dom.NO_DATA_ALLOWED_ERR xml.dom.NO_MODIFICATION_ALLOWED_ERR	%
+		xml.dom.NamespaceErr xml.dom.NoDataAllowedErr	%
+		xml.dom.NoModificationAllowedErr xml.dom.Node xml.dom.NotFoundErr	%
+		xml.dom.NotSupportedErr xml.dom.SYNTAX_ERR xml.dom.SyntaxErr	%
+		xml.dom.UserDataHandler xml.dom.VALIDATION_ERR xml.dom.ValidationErr	%
+		xml.dom.WRONG_DOCUMENT_ERR xml.dom.WrongDocumentErr	%
+		xml.dom.XHTML_NAMESPACE xml.dom.XMLNS_NAMESPACE xml.dom.XML_NAMESPACE	%
+		xml.dom.__builtins__ xml.dom.__cached__ xml.dom.__doc__	%
+		xml.dom.__file__ xml.dom.__loader__ xml.dom.__name__	%
+		xml.dom.__package__ xml.dom.__path__ xml.dom.__spec__ xml.dom.domreg	%
+		xml.dom.getDOMImplementation xml.dom.registerDOMImplementation	%
+		xml.etree xml.etree.ElementPath xml.etree.ElementTree	%
+		xml.etree.__builtins__ xml.etree.__cached__ xml.etree.__doc__	%
+		xml.etree.__file__ xml.etree.__loader__ xml.etree.__name__	%
+		xml.etree.__package__ xml.etree.__path__ xml.etree.__spec__	%
+		xml.etree.cElementTree xml.parsers xml.parsers.__builtins__	%
+		xml.parsers.__cached__ xml.parsers.__doc__ xml.parsers.__file__	%
+		xml.parsers.__loader__ xml.parsers.__name__ xml.parsers.__package__	%
+		xml.parsers.__path__ xml.parsers.__spec__ xml.sax	%
+		xml.sax.ContentHandler xml.sax.ErrorHandler xml.sax.InputSource	%
+		xml.sax.SAXException xml.sax.SAXNotRecognizedException	%
+		xml.sax.SAXNotSupportedException xml.sax.SAXParseException	%
+		xml.sax.SAXReaderNotAvailable xml.sax.__builtins__ xml.sax.__cached__	%
+		xml.sax.__doc__ xml.sax.__file__ xml.sax.__loader__ xml.sax.__name__	%
+		xml.sax.__package__ xml.sax.__path__ xml.sax.__spec__	%
+		xml.sax._create_parser xml.sax._exceptions xml.sax._false	%
+		xml.sax._key xml.sax.default_parser_list xml.sax.handler	%
+		xml.sax.make_parser xml.sax.parse xml.sax.parseString	%
+		xml.sax.saxutils xml.sax.xmlreader zfill zip
+		//[cf]
+
+		words-3 = %
+		False None True
+
+		words-4 = %
+		async await break class continue def del f from global import	%
+		nonlocal raise return yield
+
+		chars-1 = !%%&/\()[]{}<>=|@^,;.:-+*~
+	end
+
+	//[cf]
+	//[of]:Sweet-js
+	def Sweet-js
+		prototype	= languages.Javascript
+		patterns	= *.sjs
+	end
+	//[cf]
+	//[of]:Tiddler
+	def Tiddler
+		prototype	= languages.Default-Code
+		patterns	= *.tid
+
+		elastic-tabstops	= false
+		word-wrap	= true
+
+		open-comment	= <!--
+		close-comment	= -->
+		open-comment-2	= <<
+		close-comment-2	= >>
+
+		extra-id-chars	= [_A-Za-z0-9-=:]
+
+		words-1 = %
+		caption: created: input_tiddler: modified:	%
+		options_tiddler: section_name: tags: template_name: title: type:
+
+		//[of]:words-2
+		//[c]html tags compiled from https://mzl.la/13RCWd4
+		//[c]
+
+		words-2 =	%
+		a abbr address area article aside audio b base bdi bdo	%
+		blockquote body br button canvas caption cite code col	%
+		colgroup command data datalist dd del details dfn div	%
+		dl dt em embed fieldset figcaption figure footer form	%
+		h1 h2 h3 h4 h5 h6 head header hr html i iframe img input	%
+		ins kbd kbd keygen	%
+		label legend li link main map mark math menu meta meter	%
+		nav noscript object ol optgroup option output p param	%
+		pre progress q rp rt ruby s samp script section select	%
+		small source span strong style sub summary svg table	%
+		tbody td textarea tfoot th thead time title tr track u ul	%
+		var video wbr	%
+		%
+		action-createtiddler action-deletefield action-deletetiddler	%
+		action-listops action-navigate action-sendmessage	%
+		action-setfield	%
+		browse button	%
+		checkbox codeblock count	%
+		diff-text draggable droppable dropzone	%
+		edit-bitmap edit-text edit encrypt entity	%
+		fieldmangler fields	%
+		image importvariables	%
+		keyboard	%
+		linkcatcher link list	%
+		macrocall	%
+		navigator	%
+		password	%
+		radio range reveal	%
+		scrollable select setvariable set	%
+		text tiddler transclude	%
+		vars view	%
+		wikify	%
+		%
+		mode=block show=true show=false	%
+		%
+		Basics= EndColorStr= Forms= Header= ItemName= Links= ObjectiveName=	%
+		Py= R0= ResumeName= TIDDLYWIKI_PLUGIN_PATH= TW5_BUILD_TIDDLYWIKI=	%
+		TYPE= Tables= TemplateName= ThisAddItemButtonMacro= ThisResume=	%
+		ThisResumeName= ThisSection= ThisTitle= TiddlerPreamble2=	%
+		TiddlerPreamble3= TiddlerPreamble= USERS= UserInputTiddlerText=	%
+		UserOptionsTiddlerText= UserTemplateTiddlerText= Widget= Wikitext= a=	%
+		actions= actor= address= align= allowtransparency= alt= animate=	%
+		anon-username= another= archive= aria-label= assetList= attr= attrib=	%
+		attribute= aws_access_key_id= aws_secret_access_key=	%
+		background-color= backgroundColor= bad-chars= bag= baseFilename=	%
+		basetitle= button= buttonTemplate= caption= cecily-map= cecily-width=	%
+		champperso= character= checked= chunk= class= clip-path= clipHeight=	%
+		clipLeft= clipTop= clipWidth= code= color= colour= colourA= colourB=	%
+		colspan= compressedPayload= cond= config-title= content= count=	%
+		created= creator= credentials= currentTab= currentTiddler= custom=	%
+		customfield= cx= cy= d= data-address= data-dynaview-set-tiddler=	%
+		data-dynaview-set-value= data-dynaview-track-tiddler=	%
+		data-dynaview-unset-tiddler= data-dynaview-unset-value= data-module=	%
+		data-tags= data-tiddler-title= data-tw-keyboard-shortcut= data=	%
+		dates= debug= default-popup-state= default= definitions=	%
+		degree_level= deleted= dest= destSubTiddlerTitle= destTiddlerTitle=	%
+		destTitle= displayMode= download= dragFilter= dx= dy= e= edit-mode=	%
+		editTemplate= eg= egvar= element-attributes= element-tag= else=	%
+		email= embed= employer= emptyMessage= emptyValue= encoding=	%
+		encryption= entity= exclude= excluded= exportFilter= fallbackTarget=	%
+		fallthrough= field= filename= fill-opacity= fill-rule= fill= filter=	%
+		filterUnits= filtre= firstname= fjs= focus= focusPopup= foldedState=	%
+		foldedStatePrefix= font-family= font-size= font-weight=	%
+		foregroundColor= format= frameborder= from= fromTitle= full-title=	%
+		gpa= graduation_date= greeting= grouped= hashtag= height= history=	%
+		host= href= http-equiv= icon= id= ie= image= imageType=	%
+		import-field-column= import-field-name= import-field-source=	%
+		import-field-type= import-sheet-name= import-spec-role= in= include=	%
+		increment= index= infoTitlePrefix= initial-scale= input=	%
+		input_tiddler= institution= iosDragDropShim= item= itemClassFilter=	%
+		itemTemplate= job_title= journalTags= journalText=	%
+		journalTitleTemplate= js= key= label= labels= lambdaPackageInfo=	%
+		lambdaTiddlers= lang= language= lastname= level= line= lingoBase=	%
+		link= linkTiddler= linktext= list= macro= macrocall= major= max= me=	%
+		message= min= minHeight= missingText= mode= modeState= modified=	%
+		modifier= ms= n= name= network= onerror= onload= onunload=	%
+		openLinkFromInsideRiver= openLinkFromOutsideRiver= operator=	%
+		options_tiddler= order= output= outputMode= overrideClass=	%
+		ownerScreenName= palette= param= paramName= parameter= params=	%
+		parent= password= path-prefix= path= pattern= placeholder= points=	%
+		popup= popupTitle= port= position= positionAllowNegative= prefix=	%
+		preventScroll= prompt= prompts= r= radius= readers= realm= rel=	%
+		relinkOnRename= result= resume_name= resume_title= retain= revision=	%
+		role= root-tiddler= root= rx= ry= savetitle= screenName= scrolling=	%
+		searchTiddler= section= section_name= select= selectedClass=	%
+		selectedTiddler= semantics= sentence= separator= set= setTitle=	%
+		setTo= shortcuts= show= singleton= size= slicerRules= slug=	%
+		something= sort= source= sourceSubTiddlerTitle= sourceTiddlerTitle=	%
+		spiral= src= ssid= standalone= state-system= state-title= state=	%
+		stateField= stateTiddler= stateTitle= stdDeviation= stoke= story=	%
+		storyTiddler= storyview= strPayload= string= stripTitlePrefix=	%
+		stroke-dasharray= stroke-linecap= stroke-linejoin= stroke-miterlimit=	%
+		stroke-opacity= stroke-width= stroke= style= subfilter= subtiddler=	%
+		suffix= t= tabindex= tabsList= tag= tagnew= tags= target=	%
+		targetField= targetTiddler= tel= template= template_name= testfield=	%
+		text-anchor= text= then= tiddler= tiddlerInfoState= tiddlerTitle=	%
+		title= tls-cert= tls-key= to= toTitle= toc-type= tooltip=	%
+		transclusion= transform= tv-adjust-heading-level=	%
+		tv-default-heading-state= tv-heading-status-config-prefix=	%
+		tv-heading-status-config-title= tv-mode-configuration=	%
+		tv-show-missing-links= tw= tweetID= type= unchecked= unselectedText=	%
+		url= userClass= username= value= values= variable= version= viewBox=	%
+		widgetId= width= windowFeatures= windowName= writers= x= xmlns= y=	%
+		yourMessage= yourName=
+		//[cf]
+
+		words-4 = define end import whitespace
+
+		chars-2 = <>[]{}()/$=#!*:;-
+		chars-4 = \
+	end
+	//[cf]
+	//[of]:XML
+	def XML
+		prototype	= languages.Default-String
+		stylizer	= html
+		patterns	= *.xml;*.xsl;*.xsd;*.xul;*.exe.config;*.rdf
+
+		line-comment =
+		open-comment	= <!--
+		close-comment	= -->
+	end
+	//[cf]
+
+	//[of]:Sometimes Used
+	//[of]:C / Obj-C / C++
+	def C
+		prototype	= languages.Default-Code
+		patterns	= *.c;*.h;*.cpp;*.hpp;*.cxx;*.hxx;*.cc;*.hh;*.m
+
+		line-comment	= //
+		open-comment	= /*
+		close-comment	= */
+		preprocessor	= #
+
+		//[of]:words-1
+		words-1 = %
+		auto break case catch class const const_cast continue	%
+		default delete do dynamic_cast else enum explicit extern	%
+		for friend goto if inline	%
+		mutable namespace new operator private protected public	%
+		register reinterpret_cast restrict return sizeof	%
+		static static_cast struct switch template this	%
+		throw try typedef typeid typename union	%
+		using virtual volatile while	%
+		@protocol @implementation @class @interface @end	%
+		@private @protected @public @selector @encode @defs	%
+		@synchronized @try @throw @catch @finally self super	%
+		not not_eq xor xor_eq or or_eq and and_eq bitor bitand compl
+		//[cf]
+
+		words-2	= false METHOD_NULL nil Nil NULL NO true YES
+
+		//[of]:words-3
+		words-3 = %
+		bool char double float int long short signed	%
+		unsigned wchar_t size_t ssize_t off_t wchar_t ptrdiff_t void	%
+		sig_atomic_t fpos_t clock_t time_t va_list jmp_buf FILE DIR div_t	%
+		ldiv_t mbstate_t wctrans_t wint_t wctype_t complex int8_t int16_t	%
+		int32_t int64_t uint8_t uint16_t uint32_t uint64_t int_least8_t	%
+		int_least16_t int_least32_t int_least64_t uint_least8_t uint_least16_t	%
+		uint_least32_t uint_least64_t int_fast8_t int_fast16_t int_fast32_t	%
+		int_fast64_t uint_fast8_t uint_fast16_t uint_fast32_t uint_fast64_t	%
+		intptr_t uintptr_t intmax_t uintmax_t BOOL apply_t Class id IMP	%
+		MetaClass Object Protocol retval_t SEL STR TypedStream	%
+		//[cf]
+
+		chars-1	= ;(){}[]&:+-%%*/<>!?|~^=.,
+	end
+	//[cf]
+	//[of]:Cloe
+	def Cloe
+		prototype	= languages.Default-Code
+		patterns	= *.cloe
+		line-comment	= ;
+
+		words-1 = %
+		catch match mr par seq type
+
+		words-2 = %
+		insert map merge print reduce
+
+		words-3 = %
+		false nil true
+
+		words-4 = %
+		def error import let
+
+		chars-1	= ()[]{}.
+		chars-2 =
+		chars-3 =
+		chars-4	= \
+	end
+	//[cf]
+	//[of]:Clojure
+	def Clojure
+		prototype	= languages.Default-String
+		patterns	= *.clj
+		line-comment	= ;
+	end
+	//[cf]
+	//[of]Elm:Elm
+	def Elm
+		prototype	= languages.Default-Code
+		patterns	= *.elm
+
+		line-comment	= --
+		open-comment	= {-
+		close-comment	= -}
+
+	//[c]	https://stackoverflow.com/a/51062961/1658543
+		words-1 = %
+		as case command effect else exposing if in infix jsonFalse	%
+		jsonNull jsonTrue left non of port right subscription then	%
+		type where
+
+		words-3 = False None True
+
+	//[c]	https://stackoverflow.com/a/51062961/1658543
+		words-4 = alias class data import let module newtype type
+	end
+	//[cf]
+	//[of]:Go
+	def Go
+		prototype	= languages.Default-String
+		patterns	= *.go
+
+		line-comment	= //
+
+		words-1 = %
+		_ case const default else for func if import make new nil package range return switch type var
+
+		words-2 = %
+		cap fmt.Print fmt.Printf fmt.Println hypot len main math.Nextafter math.Pi math.Sqrt runtime.GOOS
+
+		words-3 = %
+		bool byte complex64 complex128 float32 float64 int int8 int16 int32 int64	%
+		map rune string struct uint uint8 uint16 uint32 uint64 uintptr
+
+		chars-1	= ;(){}[]&:+-%%*/<>!?|~^=,
+	end
+	//[cf]
+	//[of]:Haskell
+	def Haskell
+		prototype	= languages.Default-String
+		patterns	= *.hs
+
+		line-comment	= --
+		open-comment	= {-
+		close-comment	= -}
+
+		//~ words-1 = %
+		//~ case do else if of then
+
+		//~ words-2 = %
+		//~ Control.Concurrent Control.Monad.Error Control.Monad.Identity Control.Monad.Reader	%
+		//~ Control.Monad.State Control.Monad.Writer	%
+		//~ Data.Map Data.Maybe Prelude System.IO System.Process	%
+		//~ evalState forkIO get getLine hGetLine hPutStr hPutStrLn hSetBinaryMode	%
+		//~ main print put putStr putStrLn return runInteractiveCommand show terminateProcess
+
+		words-3	= False None True
+		words-4	= class data import infix infixl infixr let module newtype type
+		//~ words-4	= class data deriving import in infix infixl infixr instance let module newtype qualified type where
+
+		//~ words-4 = %
+		//~ Bool ErrorT False Int Integer IO Just Maybe Nothing	%
+		//~ ReaderT Show State StateT String True WriterT
+
+		//~ chars-1	= ()[]{}:=-<>|\,
+	end
+	//[cf]
+	//[of]:Ini
+	def Ini
+		prototype	= languages.default
+		patterns	= *.ini
+		stylizer	= generic
+
+		line-comment	= ;
+		line-comment-2	= :
+		open-comment	= [
+		close-comment	= ]
+	end
+	//[cf]
+	//[of]:Sass
+	def Sass
+		prototype	= languages.CSS
+		stylizer	= generic
+		patterns	= *.scss
+
+		line-comment	= //
+		open-comment	= /*
+		close-comment	= */
+		open-comment-2	= #{
+		close-comment-2	= }
+
+		variable-prefix	= $
+	end
+	//[cf]
+	//[of]Scala:Scala
+	def Scala
+		prototype	= languages.Default-String
+		patterns	= *.scala
+		line-comment	= //
+	end
+	//[cf]
+	//[of]Scalabuild:Scala-Build
+	def Scala-Build
+		prototype	= languages.Scala
+		patterns	= *.sbt
+		line-comment	= //
+	end
+	//[cf]
+	//[of]:Scheme
+	def Scheme
+		prototype	= languages.Default-String
+		patterns	= *.scheme
+		line-comment	= ;
+	end
+	//[cf]
+	//[of]:YML
+	def YML
+		prototype	= languages.Default-String
+		patterns	= *.yml;*.yhtml;*.yhtm
+
+		elastic-tabstops	= false
+		word-wrap	= true
+
+		line-comment	= //
+		open-comment	= /*
+		close-comment	= */
+
+		words-1	= alias as content decl define include in is operator
+	end
+	//[cf]
+	//[cf]
+	//[of]:Rarely Used
+	//[of]:ASP
+	def ASP
+		prototype	= languages.HTML
+		patterns	= *.asp;*.aspx
+		sublanguage	= vb
+
+	//[c]	These comments are used for folding only, they are not used
+	//[c]	by the html highlighter.
+	//[c]
+	//[c]	You can choose either html or vb comments, by default
+	//[c]	these comments are not configured because you must
+	//[c]	know exactly what you do:
+	//[c]	- If you choose html, you must only fold html blocks
+	//[c]	- If you choose java, you must only fold vb blocks
+	//[c]	Otherwise the editor will insert fold markers with wrong
+	//[c]	comment directives, resulting a broken source file.
+	//[c]
+	//[c]	Uncomment this if you want to fold at html level
+		//~ open-comment	= <!--
+		//~ close-comment	= -->
+
+	//[c]	Uncomment this if you want to fold at java level
+		//~ line-comment	= '
+		//~ sublanguage-in-subsections	= true
+	end
+	//[cf]
+	//[of]:Assembler x86
+	def Assembler-x86
+		prototype	= languages.Default-String
+		patterns	= *.asm;*.inc;*.fasm
+		fixed	= true
+
+		stylizer	= asm
+		line-comment	= ;
+		preprocessor	= %%
+		hexa-prefix	= $
+
+		//[of]:words-1
+		words-1 = %
+		aaa aad aam aas adc add addps addss and andnps andps arpl	%
+		bound bsf bsr bswap bt btc btr bts call cbw cdq clc cld cli clts cmc cmp	%
+		cmpeqps cmpeqss cmpleps cmpless cmpltps cmpltss cmpneqps cmpneqss	%
+		cmpnleps cmpnless cmpnltps cmpnltss cmpordps cmpordss cmpps cmpsb	%
+		cmpsd cmpss cmpsw cmpunordps cmpunordss cmpxchg cmpxchg486	%
+		cmpxchg8b comiss cpuid cvtpi2ps cvtps2pi cvtsi2ss cvtss2si cvttps2pi	%
+		cvttss2si cwd cwde daa das  dec div divps divss emms enter	%
+		f2xm1 fabs fadd faddp fbld fbstp fchs fclex fcmovb fcmovbe	%
+		fcmove fcmovnb fcmovnbe fcmovne fcmovnu fcmovu fcom	%
+		fcomi fcomip fcomp fcompp fcos fdecstp fdisi fdiv fdivp fdivr	%
+		fdivrp femms feni ffree fiadd ficom ficomp fidiv fidivr fild fimul	%
+		fincstp finit fist fistp fisub fisubr fld fld1 fldcw fldenv fldl2e fldl2t	%
+		fldlg2 fldln2 fldpi fldz fmul fmulp fnclex fndisi fneni fninit fnop fnsave	%
+		fnstcw fnstenv fnstsw fpatan fprem fprem1 fptan frndint frstor	%
+		fsave fscale fsetpm fsin fsincos fsqrt fst fstcw fstenv fstp fstsw	%
+		fsub fsubp fsubr fsubrp ftst fucom fucomi fucomip fucomp fucompp	%
+		fxam fxch fxrstor fxsave fxtract fyl2x fyl2xp1	%
+		hlt ibts icebp idiv imul in inc insb insd insw int int01 int03 int1 int3	%
+		into invd invlpg iret iretd iretw jcxz jecxz jmp lahf lar ldmxcsr lds	%
+		lea leave les lfs lgdt lgs lidt lldt lmsw loadall loadall286	%
+		lods lodsb lodsd lodsw loop loope loopne loopnz loopz lsl lss ltr	%
+		maskmovq maxps maxss minps minss mov movaps movd	%
+		movhlps movhps movlhps movlps movmskps movntps movntq	%
+		movq movsb movsd movss movsw movsx movups movzx	%
+		mul mulps mulss neg nop not or orps out outsb outsd outsw	%
+		packssdw packsswb packuswb paddb paddd paddsb paddsiw paddsw	%
+		paddusb paddusw paddw pand pandn paveb pavgb pavgusb pavgw	%
+		pcmpeqb pcmpeqd pcmpeqw pcmpgtb pcmpgtd pcmpgtw pdistib pextrw	%
+		pf2id pfacc pfadd pfcmpeq pfcmpge pfcmpgt pfmax pfmin pfmul pfrcp	%
+		pfrcpit1 pfrcpit2 pfrsqit1 pfrsqrt pfsub pfsubr pi2fd pinsrw pmachriw	%
+		pmaddwd pmagw pmaxsw pmaxub pminsw pminub pmovmskb	%
+		pmulhriw pmulhrwa pmulhrwc pmulhuw pmulhw pmullw pmvgezb	%
+		pmvlzb pmvnzb pmvzb pop popa popad popaw popf popfd popfw	%
+		por prefetch prefetchnta prefetcht0 prefetcht1 prefetcht2 prefetchw	%
+		psadbw pshufw pslld psllq psllw psrad psraw psrld psrlq psrlw psubb	%
+		psubd psubsb psubsiw psubsw psubusb psubusw psubw punpckhbw	%
+		punpckhdq punpckhwd punpcklbw punpckldq punpcklwd push pusha	%
+		pushad pushaw pushf pushfd pushfw pxor rcl rcpps rcpss rcr rdmsr	%
+		rdpmc rdshr rdtsc rep ret retf retn rol ror rsdc rsldt rsm rsqrtps rsqrtss	%
+		sahf sal salc sar sbb scasb scasd scasw sfence sgdt shl shld shr shrd	%
+		shufps sidt sldt smi smint smintold smsw sqrtps sqrtss stc std sti	%
+		stmxcsr stos stosb stosd stosw str sub subps subss svdc svldt svts syscall	%
+		sysenter sysexit sysret test ucomiss ud1 ud2 umov unpckhps unpcklps	%
+		verr verw wait wbinvd wrmsr wrshr xadd xbts xchg xlatb xor xorps	%
+		setb setc sete setg setl seto setp sets setz	%
+		setae setbe setge setle setna setnb setnc setne setng setnl	%
+		setno setnp setns setnz setpe setpo	%
+		ja jb jc je jg jl jo jp js jz	%
+		jbe jae jge jle jmp jna jnb jnc jne jng jnl jno jnp jns jnz jpe jpo
+
+		//[c]Additional keywords for Fasm:
+		//~ db dw dd dp df dq dt du rb rw rd rp rf rq rt	%
+		//~ align at define display else end entry equ extrn file fix format if include label load	%
+		//~ macro match public repeat rept section store struc times virtual while	%
+		//~ mod rva eqtype defined	%
+		//~ byte word dword pword fword qword tword dqword far near
+
+		//[c]Additional keywords for Nasm:
+		//~ db dd dq dt dw incbin resb resd resq rest resw equ times
+		//[cf]
+		//[of]:words-2
+		words-2 = %
+		ah al ax bh bl bp bx ch cl cs cx dh di dl  dx ip si sp	%
+		cs ds es fs gs ss	%
+		eax ebx ebp ecx edi edx esi esp	%
+		cr0 cr2 cr3 cr4 dr0 dr1 dr2 dr3 dr6 dr7	%
+		st0 st1 st2 st3 st4 st5 st6 st7	%
+		mm0 mm1 mm2 mm3 mm4 mm5 mm6 mm7	%
+		xmm8 xmm9 xmm10 xmm11 xmm12 xmm13 xmm14 xmm15v	%
+		spl bpl sil dil r8b r9b r10b r11b r12b r13b r14b r15b	%
+		r8w r9w r10w r11w r12w r13w r14w r15w	%
+		r8d r9d r10d r11d r12d r13d r14d r15d	%
+		rax rcx rdx rbx rsp rbp rsi rdi r8 r9 r10 r11 r12 r13 r14 r15
+		//[cf]
+
+		chars-1	= ,()[]+-*~#`\{}=:
+	end
+	//[cf]
+	//[of]:C#
+	def C-Sharp
+		prototype	= languages.Default-String
+		patterns	= *.cs
+
+		line-comment	= //
+		open-comment	= /*
+		close-comment	= */
+		hexa-prefix	= 0x
+		preprocessor	= #
+
+		//[of]:words-1
+		words-1 = %
+		abstract as base break case catch checked	%
+		class const continue default delegate do else	%
+		enum event explicit extern finally fixed for foreach	%
+		goto if implicit in interface internal is lock namespace	%
+		new object operator out override params private protected	%
+		public readonly ref return sealed sizeof stackalloc	%
+		static struct switch this throw try typeof	%
+		unchecked unsafe using virtual volatile while
+		//[cf]
+
+		words-3 = false null true void
+
+		words-4 = %
+		bool byte char decimal double float int long sbyte short string uint ulong ushort
+	end
+	//[cf]
+	//[of]:CMake
+	def CMake
+		prototype	= languages.Default-String
+		patterns	= *.cmake;CMakeLists.txt
+
+		hexa-prefix	= 0x
+		ignore-case	= true
+
+		//[of]:words-1
+		words-1 = %
+		add_custom_command add_custom_target add_definitions add_dependencies	%
+		add_executable add_library add_subdirectory add_test aux_source_directory	%
+		build_command build_name cmake_minimum_required	%
+		configure_file create_test_sourcelist	%
+		else elseif enable_language enable_testing endforeach endif endmacro	%
+		endwhile exec_program execute_process export_library_dependencies	%
+		file find_file find_library find_package find_path find_program	%
+		fltk_wrap_ui foreach	%
+		get_cmake_property get_directory_property get_filename_component	%
+		get_source_file_property get_target_property get_test_property	%
+		if include include_directories include_external_msproject	%
+		include_regular_expression install install_files install_programs	%
+		install_targets	%
+		link_directories link_libraries list load_cache load_command	%
+		macro make_directory mark_as_advanced math message	%
+		option output_required_files	%
+		project	%
+		qt_wrap_cpp qt_wrap_ui	%
+		remove remove_definitions	%
+		separate_arguments set set_directory_properties	%
+		set_source_files_properties set_target_properties set_tests_properties	%
+		site_name source_group string subdir_depends subdirs	%
+		target_link_libraries try_compile try_run	%
+		use_mangled_mesa utility_source	%
+		variable_requires	%
+		vtk_make_instantiator vtk_wrap_java vtk_wrap_python vtk_wrap_tcl	%
+		while write_file
+		//[cf]
+	end
+	//[cf]
+	//[of]:Java
+	def Java
+		prototype	= languages.Default-String
+		patterns	= *.java;*.jav
+
+
+		line-comment	= //
+		open-comment	= /*
+		close-comment	= */
+		hexa-prefix	= 0x
+
+		words-1 = %
+		abstract boolean break byte case catch char class const continue	%
+		default do double else extends final finally float for goto if	%
+		implements import instanceof int interface long native new	%
+		package private protected public return short static strictfp super%
+		switch synchronized this throw throws transient try	%
+		void volatile while
+
+		words-3	= false true null
+	end
+	//[cf]
+	//[of]:JSP
+	def JSP
+		prototype	= languages.HTML
+		patterns	= *.jsp
+		sublanguage	= java
+
+	//[c]	These comments are used for folding only, they are not used
+	//[c]	by the html highlighter.
+	//[c]
+	//[c]	You can choose either html or java comments, by default
+	//[c]	these comments are not configured because you must
+	//[c]	know exactly what you do:
+	//[c]	- If you choose html, you must only fold html blocks
+	//[c]	- If you choose java, you must only fold java blocks
+	//[c]	Otherwise the editor will insert fold markers with wrong
+	//[c]	comment directives, resulting a broken source file.
+	//[c]
+	//[c]	Uncomment this if you want to fold at html level
+		//~ open-comment	= <!--
+		//~ close-comment	= -->
+
+	//[c]	Uncomment this if you want to fold at java level
+		//~ line-comment	= //
+		//~ sublanguage-in-subsections	= true
+	end
+	//[cf]
+	//[of]:Lua
+	def Lua
+		prototype	= languages.Default-String
+		patterns	= *.lua
+		first-line-patterns	= #!*lua*
+
+
+		line-comment	= --
+		line-comment-2	= #!
+		open-comment	= --[[
+		close-comment	= ]]
+		hexa-prefix	= 0x
+
+		words-1 = %
+		do end while repeat until if then elseif else for in function local	%
+		return break nil false true and or not
+
+		words-3	= false nil true
+
+		chars-1 = ;,.:[](){}+-*/^%%<>~#
+	end
+	//[cf]
+	//[of]:Makefile
+	def Makefile
+		prototype	= languages.default
+		stylizer	= makefile
+		patterns	= makefile;Makefile;Makefile.in;Makefile.am;*.mak;*.mk
+	end
+	//[cf]
+	//[of]:NSIS Script Files
+	def NSIS
+		prototype	= languages.Default-String
+		patterns	= *.nsi;*.nsh
+
+		line-comment	= ;
+		line-comment-2	= #
+		open-comment	= /*
+		close-comment	= */
+		hexa-prefix	= 0x
+		preprocessor	= !
+		ignore-case	= true
+
+		//[of]:words-1
+		words-1 = %
+		Abort AllowRootDirInstall AllowSkipFiles AutoCloseWindow	%
+		BGGradient BringToFront	%
+		Call Caption CheckBitmap ClearErrors ComponentText CopyFiles CRCCheck CreateDirectory CreateShortCut	%
+		Delete DeleteINIStr DeleteINISec DeleteRegKey DeleteRegValue DetailPrint DirText	%
+		Exch Exec ExecShell ExecWait	%
+		File FileOpen FileWrite FileClose FindFirst FindNext FindClose Function FunctionEnd	%
+		GetFunctionAddress GetFullPathName GetLabelAddress Goto	%
+		HideWindow	%
+		Icon IfErrors IfFileExists IfSilent InstallColors InstallDir InstallDirRegKey InstType	%
+		IntCmp IntOp	%
+		LangString LicenseData LicenseText LoadLanguageFile	%
+		MessageBox	%
+		Name Nop	%
+		OutFile	%
+		Page Pop Push	%
+		Quit	%
+		ReadINIStr ReadRegDWORD ReadRegStr RegDLL Rename ReserveFile Return RMDir	%
+		SearchPath Section SectionEnd SectionGetFlags SectionGetText SectionIn SectionSetFlags SectionSetText	%
+		SendMessage SetCompress SetCompressor SetDatablockOptimize SetDateSave SetDetailsPrint SetDetailsView SetOutPath SetOverwrite SetSilent	%
+		ShowInstDetails SilentInstall Sleep StrCmp StrCpy StrLen SubSection SubSectionEnd	%
+		UninstallIcon UninstPage UninstallText UnRegDLL	%
+		Var VIAddVersionKey VIProductVersion	%
+		WriteINIStr WriteRegBin WriteRegDWORD WriteRegExpandStr WriteRegStr WriteUninstaller	%
+		XPStyle
+		//[cf]
+	end
+	//[cf]
+	//[of]:Pascal
+	def Pascal
+		prototype	= languages.Default-String
+		patterns	= *.pas;*.pp;*.p
+
+		line-comment	= //
+		open-comment	= {
+		close-comment	= }
+		open-comment-2	= (*
+		close-comment-2	= *)
+		hexa-prefix	= $
+		ignore-case	= true
+
+		//[of]:words-1
+		words-1 = %
+		absolute abstract alias and array as asm assembler automated begin	%
+		bitpacked break case cdecl class const constructor contains continue	%
+		cppdecl default destructor dispid dispinterface dispose div do downto	%
+		dynamic else end except exit export exports external false far far16 file	%
+		finalization finally for forward function generic goto if implementation	%
+		implements in index inherited initialization inline interface interrupt is	%
+		label library local message mod name near new nil nodefault nostackframe	%
+		not object of oldfpccall on operator or otherwise out overload override package	%
+		packed pascal private procedure program property protected public published	%
+		raise read readonly record register reintroduce repeat requires resident result	%
+		safecall saveregisters self set shl shr softfloat specialize stdcall stored then	%
+		threadvar to true try type unit until uses var varargs virtual while with write	%
+		writeonly xor
+		//[cf]
+		//[of]:words-2
+		words-2 = %
+		ansichar ansistring boolean byte bytebool cardinal char comp currency double	%
+		extended int64 integer longbool longint longword pansichar pchar pointer pwidechar	%
+		qword real real48 resourcestring shortint shortstring single smallint smallword string	%
+		text variant widechar widestring word wordbool
+		//[cf]
+	end
+	//[cf]
+	//[of]:Perl
+	def Perl
+		prototype	= languages.Default-String
+		patterns	= *.pl;*.PL;*.pm;*.pod
+		first-line-patterns	= #!*/perl*
+
+		stylizer	= perl
+
+		words-1 = %
+		else elsif for foreach if not unless until while
+
+		words-2 = %
+		__FILE__ __LINE__ __PACKAGE__	%
+		abs accept alarm atan2 bind binmode bless caller chdir chmod chomp	%
+		chop chown chr chroot close closedir connect continue cos crypt	%
+		dbmclose dbmopen defined delete die do dump each endgrent	%
+		endhostent endnetent endprotoent endpwent endservent eof eval exec	%
+		exists exit exp fcntl fileno flock fork format formline getc getgrent	%
+		getgrgid getgrnam gethostbyaddr gethostbyname gethostent getlogin	%
+		getnetbyaddr getnetbyname getnetent getpeername getpgrp getppid	%
+		getpriority getprotobyname getprotobynumber getprotoent getpwent	%
+		getpwnam getpwuid getservbyname getservbyport getservent getsockname	%
+		getsockopt glob gmtime goto grep hex import index int ioctl join keys	%
+		kill last lc lcfirst length link listen local localtime lock log	%
+		lstat m map mkdir msgctl msgget msgrcv msgsnd my next no oct open	%
+		opendir ord our pack package pipe pop pos print printf prototype push	%
+		q qq qr quotemeta qw qx rand read readdir readline readlink readpipe	%
+		recv redo ref rename require reset return reverse rewinddir rindex	%
+		rmdir s scalar seek seekdir select semctl semget semop send setgrent	%
+		sethostent setnetent setpgrp setpriority setprotoent setpwent	%
+		setservent setsockopt shift shmctl shmget shmread shmwrite shutdown	%
+		sin sleep socket socketpair sort splice split sprintf sqrt srand stat	%
+		study sub substr symlink syscall sysopen sysread sysseek system	%
+		syswrite tell telldir tie tied time times tr truncate uc ucfirst	%
+		umask undef unlink unpack unshift untie use utime values vec wait	%
+		waitpid wantarray warn write y
+
+		chars-1	= (){}[]<>=|+-*/~!&$%%^,?:
+	end
+	//[cf]
+	//[of]:PHP
+	def PHP
+		prototype	= languages.Default-Code
+		patterns	= *.php
+
+	//[c]	These comments are used for folding only, they are not used
+	//[c]	by the html highlighter.
+	//[c]
+	//[c]	You can choose either html or php comments, by default
+	//[c]	these comments are not configured because you must
+	//[c]	know exactly what you do:
+	//[c]	- If you choose html, you must only fold html blocks
+	//[c]	- If you choose php, you must only fold php blocks
+	//[c]	Otherwise the editor will insert fold markers with wrong
+	//[c]	comment directives, resulting a broken source file.
+	//[c]
+	//[c]	Uncomment this if you want to fold at html level
+		//~ //~ open-comment	= <!--
+		//~ //~ close-comment	= -->
+	//[c]	Uncomment this if you want to fold at php level
+		line-comment	= //
+		sublanguage-in-subsections	= true
+
+		line-comment-2	= #
+		open-comment	= /*
+		close-comment	= */
+		hexa-prefix	= 0x
+		variable-prefix	= $
+		ignore-case	= true
+
+		words-1 = %
+		__FILE__ __LINE__ __FUNCTION__ __CLASS__ __METHOD__	%
+		and array as break case cfunction class const continue declare default	%
+		die do echo else elseif empty enddeclare endfor endforeach	%
+		endif endswitch endwhile eval exception exit extends for foreach	%
+		function global if include include_once isset list new old_function	%
+		or php_user_filter print require require_once return static switch	%
+		unset use var while xor	%
+		final interface implements extends public private	%
+		protected abstract clone try catch	%
+		throw old_function this	%
+		FALSE TRUE NULL	%
+		PHP_SELF argv argc	%
+		GATEWAY_INTERFACE SERVER_NAME SERVER_SOFTWARE SERVER_PROTOCOL	%
+		REQUEST_METHOD QUERY_STRING DOCUMENT_ROOT HTTP_ACCEPT	%
+		HTTP_ACCEPT_CHARSET HTTP_ACCEPT_ENCODING HTTP_ACCEPT_LANGUAGE	%
+		HTTP_CONNECTION HTTP_HOST HTTP_REFERER HTTP_USER_AGENT	%
+		REMOTE_ADDR REMOTE_HOST REMOTE_PORT SCRIPT_FILENAME SERVER_ADMIN	%
+		SERVER_PORT SERVER_SIGNATURE PATH_TRANSLATED SCRIPT_NAME	%
+		REQUEST_URI PHP_AUTH_USER PHP_AUTH_PW AUTH_TYPE
+
+		chars-4	= =>
+	end
+	//[cf]
+	//[of]:Ruby
+	//[c]The ruby colorizer uses the following color classes:
+	//[c]	word-2 constants (identifiers starting by an uppercase letter)
+	//[c]	word-3 instance variables
+	//[c]	word-4 class variables
+
+	def Ruby
+		prototype	= languages.Default-String
+		patterns	= *.rb
+		first-line-patterns	= #!*/ruby*
+
+		stylizer	= ruby
+		open-comment	= =begin
+		close-comment	= =end
+
+		words-1 = %
+		__FILE__ and def end in or self unless	%
+		__LINE__ begin defined? ensure module redo super until	%
+		BEGIN break do false next rescue then when	%
+		END case else for nil retry true while	%
+		alias class elsif if not return undef yield
+
+		chars-1	= (){}[]<>=|+-*/~!&$%%^,?:
+	end
+	//[cf]
+	//[of]:Sh
+	def Sh
+		prototype	= languages.default
+		stylizer	= sh
+		patterns	= csh.cshrc;csh.login;*bashrc;*bash_profile;zlogin;zlogout;zprofile;zshenv;zshrc
+		first-line-patterns	= #!*/sh;#!*/bash
+	end
+	//[cf]
+	//[of]:SQL
+	def SQL
+		prototype	= languages.Default-String
+		patterns	= *.sql
+
+		line-comment	= --
+		open-comment	= /*
+		close-comment	= */
+		ignore-case	= true
+
+		//[of]:words-1
+		words-1 = %
+		absolute action add all allocate alter and any are as asc	%
+		assertion at authorization avg	%
+		begin between bit bit_length both by	%
+		cascade cascaded case cast catalog char character char_length	%
+		character_length check close coalesce collate collation	%
+		column commit connect connection constraint constraints continue	%
+		convert corresponding count create cross current	%
+		current_date current_time current_timestamp current_user cursor	%
+		date day deallocate dec decimal declare default deferrable	%
+		deferred delete desc describe descriptor diagnostics disconnect	%
+		distinct domain double drop else end end-exec escape except exception	%
+		exec execute exists external extract false fetch first float for	%
+		foreign found from full get global go goto grant group	%
+		having hour identity immediate in indicator initially inner input	%
+		insensitive insert int integer intersect interval into is isolation	%
+		join key language last leading left level like local lower	%
+		match max min minute module month names national natural nchar	%
+		next no not null nullif numeric octet_length of on only open option	%
+		or order outer output overlaps pad partial position precision	%
+		prepare preserve primary prior privileges procedure public	%
+		read real references relative restrict revoke right rollback rows	%
+		schema scroll second section select session session_user set	%
+		size smallint some space sql sqlcode sqlerror sqlstate	%
+		substring sum system_user table temporary then time timestamp	%
+		timezone_hour timezone_minute to trailing transaction translate	%
+		translation trim true union unique unknown update upper usage user	%
+		using value values varchar varying view when whenever where with	%
+		work write year zone	%
+		limit if loop return
+		//[cf]
+
+		chars-1	= @
+	end
+	//[cf]
+	//[of]:TeX
+	def TeX
+		prototype	= languages.default
+		stylizer	= tex
+		patterns	= *.tex;*.sty
+
+		line-comment	= %%
+		chars-1	= {}[]=
+
+		//[of]:~ Plain TeX
+		//~ words-1 = %
+		//~ @cclv @cclvi @crfalse @crtrue @foot @if @ins @lign @m @M	%
+		//~ @midfalse @midtrue @MM @ne @nother @penup @sf @vereq	%
+		//~ aa AA above abovedisplayshortskip abovedisplayskip	%
+		//~ abovewithdelims accent active acute adjdemerits	%
+		//~ advance advancepageno ae AE afterassignment aftergroup	%
+		//~ aleph alloc@ allocationnumber allowbreak alpha amalg	%
+		//~ angle approx arccos arcsin arctan arg arrowvert Arrowvert	%
+		//~ ast asymp atop atopwithdelims	%
+		//~ b backslash bar baselineskip batchmode begingroup beginsection	%
+		//~ belowdisplayshortskip belowdisplayskip beta bf bffam bgroup	%
+		//~ big Big bigbreak bigcap bigcirc bigcup bigg Bigg biggl Biggl	%
+		//~ biggm Biggm biggr Biggr bigl Bigl bigm Bigm bigodot bigoplus	%
+		//~ bigotimes bigr Bigr bigskip bigskipamount bigsqcup bigtriangledown	%
+		//~ bigtriangleup biguplus bigvee bigwedge binoppenalty bmod body	%
+		//~ bordermatrix bot botmark bowtie box box255 boxmaxdepth brace	%
+		//~ braceld bracelu bracerd braceru bracevert brack break breve	%
+		//~ brokenpenalty buildrel bullet bye	%
+		//~ c c@ncel cal cap cases catcode cdot cdotp cdots centering	%
+		//~ centerline ch@ck char chardef check chi choose circ cleaders	%
+		//~ cleartabs closein closeout clubpenalty clubsuit colon columns	%
+		//~ cong coprod copy copyright cos cosh cot coth count count@	%
+		//~ count0 countdef cr crcr csc csname cup	%
+		//~ d dag dagger dashv day ddag ddagger ddot ddots deadcycles	%
+		//~ def defaulthyphenchar defaultskewchar deg delcode delimiter	%
+		//~ delimiterfactor delimitershortfall delta Delta det diamond	%
+		//~ diamondsuit dim dimen dimen@ dimen@i dimen@ii dimendef	%
+		//~ discretionary displ@y displayindent displaylimits displaylines	%
+		//~ displaystyle displaywidowpenalty displaywidth div divide do	%
+		//~ dospecials dosupereject dot doteq dotfill dots	%
+		//~ doublehyphendemerits downarrow Downarrow downbracefill dp	%
+		//~ dt@pfalse dt@ptrue dump	%
+		//~ edef egroup eject ell else empty emptyset end endcsname endgraf	%
+		//~ endgroup endinput endinsert endline endlinechar enskip enspace	%
+		//~ epsilon eqalign eqalignno eqno equiv errhelp errmessage	%
+		//~ errorstopmode escapechar eta everycr everydisplay everyhbox	%
+		//~ everyjob everymath everypar everyvbox exhyphenpenalty exists	%
+		//~ exp expandafter	%
+		//~ f@@t f@t fam fi filbreak finalhyphendemerits finph@nt finsm@sh	%
+		//~ firstmark fivebf fivei fiverm fivesy flat floatingpenalty	%
+		//~ fmtname fmtversion fo@t folio font fontdimen fontname footins	%
+		//~ footline footnote footnoterule footstrut forall frenchspacing	%
+		//~ frown futurelet	%
+		//~ gamma Gamma gcd gdef ge geq gets gg global globaldefs	%
+		//~ goodbreak grave	%
+		//~ H h@false h@true halign hang hangafter hangindent hat hbadness	%
+		//~ hbar hbox headline heartsuit hfil hfill hfilneg hfuzz hgl@	%
+		//~ hglue hideskip hidewidth hoffset hom hookleftarrow	%
+		//~ hookrightarrow hphantom hrule hrulefill hsize hskip hss ht	%
+		//~ hyphenation hyphenchar hyphenpenalty	%
+		//~ i ialign if if@ if@cr if@mid ifcase ifcat ifdim ifdt@p ifeof	%
+		//~ iff iffalse ifh@ ifhbox ifhmode ifinner ifmmode ifnum ifodd	%
+		//~ ifp@ge ifr@ggedbottom iftrue ifus@ ifv@ ifvbox ifvmode ifvoid	%
+		//~ ifx ignorespaces Im imath immediate in indent inf infty	%
+		//~ input insc@unt insert insertpenalties int interdisplaylinepenalty	%
+		//~ interfootnotelinepenalty interlinepenalty intop iota it item	%
+		//~ itemitem iterate itfam	%
+		//~ j jmath jobname joinrel jot	%
+		//~ kappa ker kern	%
+		//~ l L lambda Lambda land langle lastbox lastkern lastpenalty	%
+		//~ lastskip lbrace lbrack lccode lceil ldotp ldots le leaders	%
+		//~ leavevmode left leftarrow Leftarrow leftarrowfill leftharpoondown	%
+		//~ leftharpoonup leftline leftrightarrow Leftrightarrow leftskip	%
+		//~ leq leqalignno leqno let lfloor lg lgroup lhook lim liminf	%
+		//~ limits limsup line linepenalty lineskip lineskiplimit ll	%
+		//~ llap lmoustache ln lnot log long longleftarrow Longleftarrow	%
+		//~ longleftrightarrow Longleftrightarrow longmapsto Longrightarrow	%
+		//~ longrightarrow loop looseness lor lower lowercase lq	%
+		//~ m@g m@ketabbox m@ne m@th mag magnification magstep magstephalf	%
+		//~ makefootline makeheadline makeph@nt makesm@sh mapsto mapstochar	%
+		//~ mark mathaccent mathbin mathchar mathchardef mathchoice mathclose	%
+		//~ mathcode mathhexbox mathinner mathop mathopen mathord mathpalette	%
+		//~ mathph@nt mathpunct mathrel mathsm@sh mathstrut mathsurround	%
+		//~ matrix max maxdeadcycles maxdepth maxdimen meaning medbreak medmuskip	%
+		//~ medskip medskipamount message mid midinsert min mit mkern models	%
+		//~ month moveleft moveright mp mscount mskip mu multiply multispan	%
+		//~ muskip muskipdef	%
+		//~ n@space nabla narrower natural ne nearrow neg	%
+		//~ negthinspace neq newbox newcount newdimen newfam newhelp newif	%
+		//~ newinsert newlinechar newmuskip newread newskip newtoks newwrite	%
+		//~ next ni noalign nobreak noexpand noindent nointerlineskip	%
+		//~ nolimits nonfrenchspacing nonscript nonstopmode nopagenumbers	%
+		//~ normalbaselines normalbaselineskip normalbottom normallineskip	%
+		//~ normallineskiplimit not notin nu null nulldelimiterspace number	%
+		//~ nwarrow	%
+		//~ o O oalign obeylines obeyspaces odot oe OE of offinterlineskip	%
+		//~ oint ointop oldstyle omega Omega ominus omit ooalign openin	%
+		//~ openout openup oplus or oslash otimes outer output outputpenalty	%
+		//~ over overbrace overfullrule overleftarrow overline overrightarrow	%
+		//~ overwithdelims owns	%
+		//~ P p@ p@gefalse p@getrue p@renwd pagebody pagecontents pagedepth	%
+		//~ pagefilllstretch pagefillstretch pagefilstretch pagegoal	%
+		//~ pageinsert pageno pageshrink pagestretch pagetotal par parallel	%
+		//~ parfillskip parindent parshape parskip partial patterns pausing	%
+		//~ penalty perp ph@nt phantom phi Phi pi Pi plainoutput pm pmatrix	%
+		//~ pmod postdisplaypenalty Pr pr@@@s pr@@@t pr@m@s prec preceq	%
+		//~ predisplaypenalty predisplaysize preloaded pretolerance	%
+		//~ prevdepth prevgraf prim@s prime proclaim prod propto psi Psi	%
+		//~ qquad quad	%
+		//~ r@@t r@ggedbottomfalse r@ggedbottomtrue radical raggedbottom	%
+		//~ raggedright raise rangle rbrace rbrack rceil Re read relax	%
+		//~ relbar Relbar relpenalty removelastskip repeat rfloor rgroup	%
+		//~ rho rhook right rightarrow Rightarrow rightarrowfill	%
+		//~ rightharpoondown rightharpoonup rightleftharpoons rightline	%
+		//~ rightskip rlap rlh@ rm rmoustache romannumeral root rootbox	%
+		//~ rq	%
+		//~ S s@tcols s@tt@b sb scriptfont scriptscriptfont	%
+		//~ scriptscriptstyle scriptspace scriptstyle scrollmode searrow	%
+		//~ sec setbox setminus sett@b settabs sevenbf seveni sevenrm	%
+		//~ sevensy sfcode sharp shipout show showbox showboxbreadth	%
+		//~ showboxdepth showhyphens showlists showthe sigma Sigma sim	%
+		//~ simeq sin sinh sixt@@n skew skewchar skip skip@ skipdef sl	%
+		//~ slash slfam smallbreak smallint smallskip smallskipamount	%
+		//~ smash smile sp sp@n space spacefactor spaceskip spadesuit	%
+		//~ span special splitbotmark splitfirstmark splitmaxdepth	%
+		//~ splittopskip sqcap sqcup sqrt sqsupseteq ss star string	%
+		//~ strut strutbox subset subseteq succ succeq sum sup supereject	%
+		//~ supset supseteq surd swarrow	%
+		//~ t t@bb@x t@bbox tabalign tabs tabsdone tabskip tabsyet tan	%
+		//~ tanh tau tenbf tenex teni tenit tenrm tensl tensy tentt	%
+		//~ TeX textfont textindent textstyle the theta Theta thickmuskip	%
+		//~ thinmuskip thinspace thr@@ tilde time times to toks toks@	%
+		//~ toksdef tolerance top topins topinsert topmark topskip	%
+		//~ tracingall tracingcommands tracinglostchars tracingmacros	%
+		//~ tracingonline tracingoutput tracingpages tracingparagraphs	%
+		//~ tracingrestores tracingstats triangle triangleleft triangleright	%
+		//~ tt ttfam ttraggedright tw@	%
+		//~ u uccode uchyph undefined underbar underbrace underline unhbox	%
+		//~ unhcopy unkern unpenalty unskip unvbox unvcopy uparrow Uparrow	%
+		//~ upbracefill updownarrow Updownarrow uplus uppercase upsilon	%
+		//~ Upsilon us@false us@true	%
+		//~ v v@false v@true vadjust valign varepsilon varphi varpi varrho	%
+		//~ varsigma vartheta vbadness vbox vcenter vdash vdots vec vee	%
+		//~ Vert vert vfil vfill vfilneg vfootnote vfuzz vgl@ vglue voffset	%
+		//~ voidb@x vphantom vrule vsize vskip vsplit vss vtop	%
+		//~ wd wedge widehat widetilde widowpenalty wlog wp wr write	%
+		//~ xdef xi Xi xleaders xspaceskip	%
+		//~ year	%
+		//~ z@ z@skip zeta
+		//[cf]
+		//[of]:LaTeX
+		words-1 = %
+		addcontentsline	%
+		addtocontents	%
+		addtocounter	%
+		address	%
+		addtolength	%
+		addvspace	%
+		alph	%
+		appendix	%
+		arabic	%
+		author	%
+		backslash	%
+		baselineskip	%
+		baselinestretch	%
+		begin	%
+		bf	%
+		bibitem	%
+		bigskipamount	%
+		bigskip	%
+		boldmath	%
+		cal	%
+		caption	%
+		cdots	%
+		centering	%
+		chapter	%
+		circle	%
+		cite	%
+		cleardoublepage	%
+		clearpage	%
+		cline	%
+		closing	%
+		copyright	%
+		dashbox	%
+		date	%
+		ddots	%
+		documentclass	%
+		documentstyle	%
+		dotfill	%
+		em	%
+		end	%
+		euro	%
+		fbox	%
+		flushbottom	%
+		fnsymbol	%
+		footnote	%
+		footnotemark	%
+		footnotesize	%
+		footnotetext	%
+		frac	%
+		frame	%
+		framebox	%
+		frenchspacing	%
+		hfill	%
+		hline	%
+		hrulefill	%
+		hspace	%
+		huge	%
+		Huge	%
+		hyphenation	%
+		include	%
+		includegraphics	%
+		includeonly	%
+		indent	%
+		input	%
+		it	%
+		item	%
+		kill	%
+		label	%
+		large	%
+		Large	%
+		LARGE	%
+		LaTeX	%
+		LaTeXe	%
+		ldots	%
+		left	%
+		leftmargin	%
+		lefteqn	%
+		line	%
+		linebreak	%
+		linethickness	%
+		linewidth	%
+		listoffigures	%
+		listoftables	%
+		location	%
+		makebox	%
+		maketitle	%
+		markboth	%
+		markright	%
+		mathcal	%
+		mathop	%
+		mbox	%
+		medskip	%
+		multicolumn	%
+		multiput	%
+		newcommand	%
+		newcounter	%
+		newenvironment	%
+		newfont	%
+		newlength	%
+		newline	%
+		newpage	%
+		newsavebox	%
+		newtheorem	%
+		nobreak	%
+		nocite	%
+		noindent	%
+		nolinebreak	%
+		normalsize	%
+		nopagebreak	%
+		not	%
+		onecolumn	%
+		opening	%
+		oval	%
+		overbrace	%
+		overline	%
+		pagebreak	%
+		pagenumbering	%
+		pageref	%
+		pagestyle	%
+		par	%
+		paragraph	%
+		part	%
+		parbox	%
+		parindent	%
+		parskip	%
+		protect	%
+		put	%
+		raggedbottom	%
+		raggedleft	%
+		raggedright	%
+		raisebox	%
+		ref	%
+		renewcommand	%
+		right	%
+		rightmargin	%
+		rm	%
+		roman	%
+		rule	%
+		savebox	%
+		sbox	%
+		sc	%
+		scriptsize	%
+		section	%
+		setcounter	%
+		setlength	%
+		settowidth	%
+		sf	%
+		shortstack	%
+		signature	%
+		sl	%
+		small	%
+		smallskip	%
+		sout	%
+		space	%
+		sqrt	%
+		stackrel	%
+		subparagraph	%
+		subsection	%
+		subsubsection	%
+		tableofcontents	%
+		telephone	%
+		TeX	%
+		textbf	%
+		textit	%
+		textmd	%
+		textnormal	%
+		textrm	%
+		textsc	%
+		textsf	%
+		textsl	%
+		texttt	%
+		textup	%
+		textwidth	%
+		textheight	%
+		thanks	%
+		thispagestyle	%
+		tiny	%
+		title	%
+		today	%
+		tt	%
+		twocolumn	%
+		typeout	%
+		typein	%
+		uline	%
+		underbrace	%
+		underline	%
+		unitlength	%
+		usebox	%
+		usecounter	%
+		uwave	%
+		value	%
+		vbox	%
+		vdots	%
+		vector	%
+		verb	%
+		vfill	%
+		vline	%
+		vphantom	%
+		vspace	%
+		ensuremath	%
+		providecommand
+		//[cf]
+	end
+	//[cf]
+	//[of]:Visual Basic
+	def Visual-Basic
+		prototype	= languages.default
+		stylizer	= generic
+		patterns	= *.vb;*.bas
+
+
+		line-comment	= '
+		line-comment-2	= REM%_
+		hexa-prefix	= &H
+		string-delimiter	= "
+		escape-char	= _
+		preprocessor	= #
+		ignore-case	= true
+
+		//[of]:words-1
+		words-1 = %
+		AddHandler AddressOf Alias And AndAlso Ansi As Assembly	%
+		Auto Boolean ByRef Byte ByVal Call Case Catch	%
+		CBool CByte CChar CDate CDec CDbl Char CInt	%
+		Class CLng CObj Const CShort CSng CStr CType	%
+		Date Decimal Declare Default Delegate Dim DirectCast Do	%
+		Double Each Else ElseIf End Enum Erase Error	%
+		Event Exit False Finally For Friend Function Get	%
+		GetType GoSub GoTo Handles If Implements Imports In	%
+		Inherits Integer Interface Is Let Lib Like Long	%
+		Loop Me Mod Module MustInherit MustOverride MyBase MyClass	%
+		Namespace New Next Not Nothing NotInheritable NotOverridable Object	%
+		On Option Optional Or OrElse Overloads Overridable Overrides	%
+		ParamArray Preserve Private Property Protected Public RaiseEvent	%
+		ReadOnly ReDim RemoveHandler Resume Return Select Set Shadows	%
+		Shared Short Single Static Step Stop String Structure	%
+		Sub SyncLock Then Throw To True Try TypeOf	%
+		Unicode Until Variant When While With WithEvents WriteOnly	%
+		Xor
+		//[cf]
+	end
+	//[cf]
+	//[cf]
+end
+//[cf]
+//[of]:Key Mappings
+key-mapping	= nils-style
+
+def key-mappings
+	//[of]windows-style:nils style
+	def nils-style
+		activate-text-window	=
+		activate-tree-window	=
+		view-one-pane	= F4
+		page-view	= F5
+		view-tree	= F6
+		view-browser	= F7
+		word-wrap	=
+		elastic-tabstops	=
+		show-tabs	= CTRL+SHIFT+T
+		show-line-type	=
+		switch-zoom	=
+
+		file-new	= CTRL+N
+		file-open	= CTRL+O
+		file-open-new	= CTRL+SHIFT+N
+		file-save	= CTRL+S
+		file-save-all	= CTRL+SHIFT+S
+		file-save-as	=
+
+		edit-select-all	= CTRL+A
+		edit-cut	= CTRL+X
+		edit-copy	= CTRL+C
+		edit-copy-reference	= CTRL+ALT+C
+		edit-paste	= CTRL+V
+		edit-paste-raw-text	= CTRL+ALT+V
+		edit-delete	=
+		edit-undo	= CTRL+Z
+		edit-redo	= CTRL+Y
+		edit-upper	= CTRL+U
+		edit-lower	= CTRL+SHIFT+U
+		insert-comment	= F11
+		insert-text	= F10
+		insert-section	= F12
+		edit-unfold	= SHIFT+F12
+		insert-link	=
+		edit-properties	= ALT+RETURN
+		mark-all	= CTRL+M
+		unmark-all	= CTRL+SHIFT+M
+
+	//[c]	broken
+		move-up	=
+		move-down	=
+
+		find	=
+		find-next	= F3
+		find-previous	= SHIFT+F3
+		find-all	=
+		find-in-files	= CTRL+SHIFT+F
+		incremental-search	=
+		find-replace	= CTRL+R
+		find-replace-in-files	= CTRL+SHIFT+R
+		find-replace-all	=
+		show-search-results	=
+
+		go-back	= ALT+LEFT
+		go-enter	= ALT+RIGHT
+		go-next	= CTRL+SHIFT+DOWN
+		go-previous	= CTRL+SHIFT+UP
+		goto-line	= CTRL+G
+		goto-matching-bracket	= CTRL+B
+		select-matching-bracket	= CTRL+SHIFT+B
+		go-page-1	=
+		go-page-2	=
+		go-page-3	=
+		go-page-4	=
+		go-page-5	=
+		go-page-6	=
+		go-page-7	=
+		go-page-8	=
+		go-page-9	=
+		go-next-error	=
+		go-previous-error	=
+		go-open-in-new-tab	= CTRL+T
+		go-open-target-in-new-tab	=
+
+		toggle-bookmark	= CTRL+F2
+		goto-next-bookmark	= F2
+		goto-previous-bookmark	= SHIFT+F2
+
+		open-cmdline-preferences	=
+		open-global-preferences	=
+		open-global-languages	=
+		open-user-preferences	=
+		open-user-languages	=
+
+		tools-break	=
+		tools-options	=
+		show-output	=
+
+	//[c]	broken
+		window-next	=
+		window-previous	=
+
+		window-clone	=
+		window-close	=
+		window-close-dialog	=
+		window-close-dialog-or-window	= ESCAPE
+		window-windows	=
+		file-files	=
+
+		exit	= CTRL+F4
+	end
+	//[cf]
+
+	// Original Key Mappings
+	//[of]:windows style
+	def windows-style
+		//[of]:File
+		file-new	= CTRL+N
+		file-open-new	= CTRL+SHIFT+N
+		file-open	= CTRL+O
+		file-save	= CTRL+S
+		file-save-as	=
+		file-save-all	= CTRL+SHIFT+S
+		file-files	=
+		exit	= CTRL+Q
+		//[cf]
+		//[of]:Edit
+		edit-undo	= CTRL+Z
+		edit-redo	= CTRL+Y
+		edit-cut	= CTRL+X
+		edit-copy	= CTRL+C
+		edit-paste	= CTRL+V
+		edit-delete	=
+		edit-select-all	= CTRL+A
+		edit-copy-reference	=
+		edit-paste-raw-text	=
+		toggle-bookmark	= CTRL+F2
+		edit-upper	= CTRL+SHIFT+U
+		edit-lower	= CTRL+U
+		edit-unfold	= CTRL+B
+		edit-properties	= ALT+RETURN
+		//[cf]
+		//[of]:Search
+		find	= CTRL+F
+		find-all	= CTRL+H
+		find-next	= F3
+		find-previous	= SHIFT+F3
+		find-replace	= CTRL+R
+		find-replace-all	= CTRL+SHIFT+R
+		find-in-files	=
+		find-replace-in-files	=
+		incremental-search	= CTRL+I
+		mark-all	= CTRL+M
+		unmark-all	= CTRL+SHIFT+M
+		//[cf]
+		//[of]:View
+		word-wrap	= CTRL+W
+		elastic-tabstops	= CTRL+L
+		show-tabs	= CTRL+F10
+		show-line-type	= CTRL+F11
+		switch-zoom	= ALT+END
+		view-one-pane	= ALT+1
+		view-browser	= ALT+2
+		view-tree	= ALT+3
+		page-view	= ALT+4
+		show-output	= ALT+X
+		show-search-results	= ALT+Z
+		move-up	= ALT+PAGE UP
+		move-down	= ALT+PAGE DOWN
+		//[cf]
+		//[of]:Go
+		go-back	= ALT+LEFT
+		go-enter	= ALT+RIGHT
+		go-open-in-new-tab	= CTRL+J
+		go-open-target-in-new-tab	= CTRL+T
+		go-next	= CTRL+SHIFT+DOWN
+		go-previous	= CTRL+SHIFT+UP
+		go-next-error	= F4
+		go-previous-error	= SHIFT+F4
+		go-page-1	= CTRL+NUMPAD 1
+		go-page-2	= CTRL+NUMPAD 2
+		go-page-3	= CTRL+NUMPAD 3
+		go-page-4	= CTRL+NUMPAD 4
+		go-page-5	= CTRL+NUMPAD 5
+		go-page-6	= CTRL+NUMPAD 6
+		go-page-7	= CTRL+NUMPAD 7
+		go-page-8	= CTRL+NUMPAD 8
+		go-page-9	= CTRL+NUMPAD 9
+		goto-line	= CTRL+G
+		goto-matching-bracket	=
+		select-matching-bracket	=
+		goto-next-bookmark	= F2
+		goto-previous-bookmark	= SHIFT+F2
+		activate-tree-window	= ALT+INSERT
+		activate-text-window	= ALT+HOME
+		//[cf]
+		//[of]:Insert
+		insert-text	= CTRL+SHIFT+T
+		insert-comment	= CTRL+SHIFT+C
+		insert-section	= F12
+		insert-link	= CTRL+SHIFT+L
+		//[cf]
+		//[of]:Tools
+		tools-options	=
+		tools-break	= CTRL+BREAK
+		open-global-preferences	=
+		open-user-preferences	=
+		open-cmdline-preferences	=
+		open-global-languages	=
+		open-user-languages	=
+		//[cf]
+		//[of]:Window
+		window-close	= CTRL+F4
+		window-clone	= CTRL+K
+		window-close-dialog	= ESCAPE
+		window-close-dialog-or-window	=
+		window-next	=
+		window-previous	=
+		window-windows	=
+		//[cf]
+	end
+	//[cf]
+	//[of]:gtk style
+	def gtk-style
+		prototype	= key-mappings.windows-style
+
+		edit-redo	= CTRL+SHIFT+Z
+
+		find-next	= CTRL+G
+		find-previous	= CTRL+SHIFT+G
+
+		goto-line	= CTRL+L
+		elastic-tabstops	= CTRL+SHIFT+B
+
+		word-wrap	= CTRL+SHIFT+W
+		window-close	= CTRL+W
+	end
+	//[cf]
+	//
+end
+//[cf]
+//[of]:User Tools
+//[c]Do not add underscores in names. Seems to be a bug.
+//[c]
+
+def tools
+	//[of]:Run with Python
+	def RunWithPython
+		caption	= Run with Python
+		hot-key	= ALT+P
+		command	= python
+		language	= Default-String
+		arguments	= "$(FileDir)\$(FileName).py"
+		directory	= $(FileDir)
+		save-all	= true
+		auto-close	= false
+	end
+	//[cf]
+	//[of]Node:Run with Node
+	def RunWithNode
+		caption	= Run with Node.js
+		hot-key	= Alt+N
+		command	= node
+		language	= Default-String
+		arguments	= "$(FileDir)\$(FileName).js"
+		directory	= $(FileDir)
+		save-all	= true
+		auto-close	= false
+	end
+	//[cf]
+	//[of]:Run Exe
+	def RunExe
+		caption	= Run Exe
+		hot-key	= ALT+E
+		command	= "$(FileDir)\$(FileName).exe"
+		language	= Default-String
+		arguments	=
+		directory	= $(FileDir)
+		save-all	= false
+		auto-close	= false
+	end
+	//[cf]
+
+	//[of]:Open File in Firefox
+	def OpenFileInFirefox
+		caption	= Open File in Firefox
+		hot-key	= CTRL+F
+		command	= C:\Program Files\Mozilla Firefox\firefox.exe
+		arguments	= "$(FilePath)"
+		save-all	= true
+		auto-close	= true
+	end
+	//[cf]
+	//[of]:Open Selection in Firefox
+	def OpenSelectionInFirefox
+		caption	= Open Selection in Firefox
+		hot-key	= CTRL+SHIFT+F
+		command	= C:\Program Files\Mozilla Firefox\firefox.exe
+		arguments	= "$(CurText)"
+		save-all	= false
+		auto-close	= true
+	end
+	//[cf]
+	//[of]:Search Selection at Google
+	def SearchSelectionAtGoogle
+		caption	= Search Selection at Google
+		hot-key	= CTRL+SHIFT+G
+		command	= C:\Program Files\Mozilla Firefox\firefox.exe
+		arguments	= "https://www.google.com/search?q=$(CurText)"
+		save-all	= false
+		auto-close	= true
+	end
+	//[cf]
+end
+//[cf]
