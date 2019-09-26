@@ -1,30 +1,49 @@
-# Code Browser 4.9 Backup
-
-This is a Backup of *Code Browser* 4.9, written by Marc Kerbiquet
+# Code Browser 4.9
 
 ![Screenshot of Code Browser](Screenshot.png)
 
-[Code Browser´s website is here](http://tibleiz.net/code-browser/), the current (2019.09) version is 6.6.
+[Code Browser](http://tibleiz.net/code-browser/) is a [code folding text editor](http://www.tibleiz.net/code-browser/code-folding.html) written by Marc Kerbiquet. Its nice features include *sections* (sometimes called *folders*, blue in the screenshot), *links* (allowing crosslinking in code files, green in the screenshot) and *descriptions* (pretty looking comments, gray in the screenshot). It loads very fast and is able to load very big files.
 
-### Why
+Not so nice is that it does not have an autocompleter, refactoring, linting, and other features which full throttle IDE´s like Pycharm provide. Currently i solve it by using [Typing Aid](https://github.com/ManiacDC/TypingAid) for autocompletion and i use other editors for the rest. Code Browsers own scripting language (which i wish was Python) can solve many of those issues.
 
-After version 4.9 Marc Kerbiquet rewrote the editor and in this process he abandoned support for *relative indentation* - [sections](http://www.tibleiz.net/code-browser/code-folding.html) which can be indented and the indent of the contained code will reflect it.
+## Why this repo?
 
-The removal renders the editor not so usable for indentation-based languages like Python, Nim, Haskell and others.
+This is a backup of version 4.9. As the current version is 6.6, Marc Kerbiquet removed those older downloads from [his site](http://tibleiz.net/code-browser/download.html) (but [archive.org still has them](https://web.archive.org/web/20160912162221/http://tibleiz.net:80/code-browser/download.html)).
 
-Further, after a while Marc also removed the code, the installer, and the portable versions for this version from [his website](http://tibleiz.net/code-browser/) (however, [archive.org still has it](https://web.archive.org/web/20160912162221/http://tibleiz.net:80/code-browser/download.html)).
+What is so special about version 4.9? It was the last version that supported *relative indentation*. Marc removed this feature after version 4.9, but it is very much needed.
 
-### What
+*What is relative indentation? Example: You [fold](http://www.tibleiz.net/code-browser/code-folding.html) a class method in Python to a section. Then you indent the text of the blue section line by one. With relative indentation: The `def` keyword inside of the section will start at column 0. Without relative indentation (the default since version 4.9): This `def` keyword will instead start at column 1 (where it started before you folded it).*
 
-Therefore i uploaded this version 4.9 – which is the last version which supports relative indentation – here, as an extra backup, should the [archive.org](https://web.archive.org/web/20160912162221/http://tibleiz.net:80/code-browser/download.html) link disappear one day.
+The behaviour since version 4.9 is not pleasant when using languages like [Python](https://www.python.org/), [Nim](https://nim-lang.org/), [Haskell](https://www.haskell.org/), [Coffeescript](https://coffeescript.org/). You can just fold global classes and functions with it, otherwise you will have those indents inside of the sections. But the idea was to have a tree of code sections, not just a list of code sections.
 
-Included is also my [preferences.cbc](preferences.cbc) which defines some handy tools and has my own syntax scheme enabled, see the screenshot.
+Another problem with versions since 4.9 is that ctrl+shift navigation inside of links now switches to other levels. This is a problem when for example you have lists of links in lists of sections and want to navigate between sections.
 
-Further included is my userscript which provides some extended functionality. It works, but the code is not nice to look at. Im currently in the process of rewriting it.
+## What can this repo do for me?
 
-If you want to have autocompletion in Code Browser, i suggest to have a look at [Typing Aid](https://github.com/ManiacDC/TypingAid). It is Windows only. [Here is the Discussion Thread in the Autohotkey Forum](https://autohotkey.com/board/topic/49517-ahk-11typingaid-v2220-word-autocompletion-utility/).
+Here you have the original version 4.9 portables and the source code.
 
-### Basic installation
+Further, here is my [preferences.cbc](preferences.cbc) which
+
+* defines my own color scheme (see the screenshot),
+* defines some tools,
+* sets page view as the default view, page navigation is set to fastest speed,
+* turns on word wrapping and turns off elastic tabstops (because it does not play together with word wrapping),
+* introduces some other changes i made over the years.
+
+You may want to change the keyboard shortcuts according to your flavour.
+
+Further here is my userscript file, which provides extended functionality. I am in the process of making it look more pretty and fix some bugs i found.
+
+The scripts do the following:
+
+* *alt + up/down* – navigate to the previous/next section line or to the start/end of this section.
+* *ctrl + alt + up/down* – navigate to the previous/next paragraph or to the start/end of this section (paragraph = lines of code separated by empty lines). Pressing shift will also select the paragraph.
+* *ctrl + alt left/right* – if something is selected, move that selection left/right, otherwise fold the paragraph/unfold the section line under the cursor.
+* *ctrl + up/down* – move line or selection one line up/down.
+* *(shift +) alt + x* – outcomment/unoutcomment the current line or the selection. Works recusively on sections.
+
+
+## Installation
 
 *Notice, i just tested this on Windows. Let me know if things do not work for you on Linux.*
 
@@ -46,20 +65,10 @@ If you want to use my color scheme, navigate
 
 Replace the original *preferences.cbc* located there with the one located here.
 
-I also made some other changes in that file, to the languages, i added some tools, page view is the default, and some other options are also different. The file has changed a bit over time.
-
 ### Enabling the user scripts
 
-If you want to have the extended user script functionality, navigate to the **user** config directory (see description above), and create/replace the three *user.xxx* files there with the ones in the *User Scripts* folder located here. The scripts do the following:
+If you want to have the extended functionality, navigate to the **user** config directory (see description above), and create/replace the three *user.xxx* files there with the ones in the *User Scripts* folder located here.
 
-* *alt + up/down* – Navigate to the previous/next section line or to the start/end of this section.
-* *ctrl + alt + up/down* – Navigate to the previous/next paragraph or to the start/end of this section (paragraph = lines of code separated by empty lines). Pressing shift will also select the paragraph.
-* *ctrl + alt left/right* – if something is selected, move that selection left/right, otherwise fold the paragraph/unfold the section line under the cursor.
-* *ctrl + up/down* – move line or selection one line up/down.
-* *(shift +) alt + x* – outcomment/unoutcomment the current line or the selection. Works recusively on sections.
+## Thats all folks
 
-### Thats all folks
-
-Written in 2019.09.26 by Nils-Hero Lindemann, <nilsherolindemann@gmail.com>.
-
-Have fun with Code Browser :-)
+Written in 2019.09.26 by [heronils](https://github.com/heronils?tab=repositories).
