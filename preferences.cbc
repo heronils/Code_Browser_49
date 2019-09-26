@@ -1,91 +1,94 @@
 allow-multiple-instances	= false
 reload-mode	= always
+
 save-session	= true
 search-patterns	= *.py;*.html;*.js;*.css
 search-directory	=
 search-patterns-history	= *.*:*.py;*.html;*.js;*.css
 search-history	=
 search-replace-history	=
+
 layout	= page
 scroll-speed	= 1
 fisheye-view	= true
 
 //[of]:Themes
-theme = nils
+theme	= nils
 
 def themes
 	//[of]:system
 	def system
 		//[of]:font
-		font-family = Tahoma, Sans
-		font-size = 10
-		font-style = none
+		font-family	= Tahoma, Sans
+		font-size	= 10
+		font-style	= none
 
-		fixed-font-family = Courier New, Monospace
-		fixed-font-size = 10
-		fixed-font-style = none
+		fixed-font-family	= Courier New, Monospace
+		fixed-font-size	= 10
+		fixed-font-style	= none
 
-		title-font-family = Tahoma, Sans
-		title-font-size = 12
-		title-font-style = none
+		title-font-family	= Tahoma, Sans
+		title-font-size	= 12
+		title-font-style	= none
 
-		tree-view-font-family = Tahoma, Sans
-		tree-view-font-size = 10
-		tree-view-font-style = none
+		tree-view-font-family	= Tahoma, Sans
+		tree-view-font-size	= 10
+		tree-view-font-style	= none
 		//[cf]
 		//[of]:color
-		color = text
-		normal-color = text
-		text-back-color = background
+		color	= text
+		normal-color	= text
+		text-back-color	= background
 
-		workspace-color = workspace
+		workspace-color	= workspace
 
-		title-back-color = medium
-		title-fore-color = text
-		tree-view-back-color = background
-		tree-view-fore-color = text
+		title-back-color	= medium
+		title-fore-color	= text
+		tree-view-back-color	= background
+		tree-view-fore-color	= text
 
-		highlight-back-color = medium
-		inactive-back-color = inactive
-		inactive-line-back-color = inactive
-		selected-back-color = #96A0B4
-		pair-color = #B0FFB0
+		highlight-back-color	= medium
+		inactive-back-color	= inactive
+		inactive-line-back-color	= inactive
+		selected-back-color	= #96A0B4
+		pair-color	= #B0FFB0
 
-		section-back-color = background
-		section-color = #283C78
-		description-color = text
-		description-back-color = medium
-		link-color = #20643C
-		link-back-color = background
+		section-back-color	= background
+		section-color	= #283C78
+		description-color	= text
+		description-back-color	= medium
+		link-color	= #20643C
+		link-back-color	= background
 
-		bookmark-color = #B0C0FF
-		match-color = #FFFFB0
+		bookmark-color	= #B0C0FF
+		match-color	= #FFFFB0
 
-		breakpoint-color = #F0A0A0
-		error-color = #FFAFAF
-		invalid-color = #FFAFAF
+		breakpoint-color	= #F0A0A0
+		error-color	= #FFAFAF
+		invalid-color	= #FFAFAF
 
-		number-color = #283CC8
-		string-color = #008080
-		comment-color = #208040
+		number-color	= #283CC8
+		string-color	= #008080
+		comment-color	= #208040
 
-		preproc-color = #0040A0
+		preproc-color	= #0040A0
 
-		char-1-color = #3C50DC
-		char-2-color = #8050DC
-		char-3-color = #DC5080
-		char-4-color = #DC503C
+		char-1-color	= #3C50DC
+		char-2-color	= #8050DC
+		char-3-color	= #DC5080
+		char-4-color	= #DC503C
 
-		word-1-color = #3C50DC
-		word-2-color = #8050DC
-		word-3-color = #DC5080
-		word-4-color = #DC503C
+		word-1-color	= #3C50DC
+		word-2-color	= #8050DC
+		word-3-color	= #DC5080
+		word-4-color	= #DC503C
 		//[cf]
 	end
 	//[cf]
 	//[of]:nils
 	def nils
 		prototype = themes.system
+
 		//[of]:font
 		//[of]:(Some Mono Font Families)
 		//[c]Anonymous Pro
@@ -113,66 +116,50 @@ def themes
 		//[c]
 		//[cf]
 
-		font-family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
-		font-size = 12
+		font-family	= Consolas
+		font-size	= 12
 
-		title-font-family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
-		title-font-size = 12
-		tree-view-font-family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
-		tree-view-font-size = 12
+		word-1-font-style	= bold
+		word-4-font-style	= bold
 
-		section-font-family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
-		section-font-size = 12
-		link-font-family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
-		link-font-size = 12
-		description-font-family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
-		description-font-size = 12
-
-		comment-font-family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
-		comment-font-size = 12
-
-		word-1-font-style = bold
-		word-1-font-Family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
-		word-1-font-size = 12
-
-		word-4-font-style = bold
-		word-4-font-Family = Consolas, Source Code Pro Light, Lucida Sans Typewriter
-		word-4-font-size = 12
-
-		char-4-font-style = bold
+		char-4-font-style	= bold
 		//[cf]
 		//[of]color:color
-		normal-color = #666666
-		section-color = #0044BB
-		section-back-color = #F4F8FF
-		link-color = #88BB44
-		link-back-color = #F0F8DF
+		normal-color	= #666666
 
-		bookmark-color = #DDFF88
-		match-color = #DDFF88
+		section-color	= #0044BB
+		section-back-color	= #F4F8FF
+		link-color	= #88BB44
+		link-back-color	= #F0F8DF
 
-		number-color = #6090C0
-		string-color = #6090C0
-		comment-color = #AFAFAF
-		preproc-color = #0088BB
+		bookmark-color	= #DDFF88
+		match-color	= #DDFF88
 
-		word-1-color = #0060C0 // keywords
-		word-2-color = #000000 // function names
-		word-3-color = #6090C0
-		word-4-color = #F08000 // special keywords (function, var)
+		number-color	= #6090C0
+		string-color	= #6090C0
 
-		char-1-color = #0060C0 // brackets, operators
-		char-2-color = #000000
-		char-3-color = #6090C0
-		char-4-color = #F08000
+		comment-color	= #AFAFAF
+		preproc-color	= #0088BB
 
-		//[c]Text Selections
-		selected-back-color = #3399FF
-		inactive-back-color = #99CCFF
+		//[of]:Words and Chars
+		word-1-color	= #0060C0 // keywords
+		word-2-color	= #000000 // function names
+		word-3-color	= #6090C0 // False None True ...
+		word-4-color	= #F08000 // special keywords (function var import ...)
 
-		//[c]Section background
-		highlight-back-color = #DFEFFF
-		inactive-line-back-color = #DFEFFF
+		char-1-color	= #0060C0 // brackets, operators
+		char-2-color	= #000000
+		char-3-color	= #6090C0
+		char-4-color	= #F08000
+		//[cf]
+		//[of]:Text Selections
+		selected-back-color	= #3399FF
+		inactive-back-color	= #3399FF
+		//[cf]
+		//[of]:Section background
+		highlight-back-color	= #DFEFFF
+		inactive-line-back-color	= #DFEFFF
+		//[cf]
 		//[cf]
 	end
 	//[cf]
@@ -181,219 +168,219 @@ def themes
 		prototype = themes.system
 
 		//[of]:back-color
-		description-back-color = #C0C0CC
-		highlight-back-color = #90A0E0
-		inactive-back-color = #B8C8E0
-		link-back-color = #E0E0EC
-		section-back-color = #E0E0EC
-		selected-back-color = #E0B8C0
-		text-back-color = #E0E0EC
-		tree-view-back-color = #E0E0EC
+		description-back-color	= #C0C0CC
+		highlight-back-color	= #90A0E0
+		inactive-back-color	= #B8C8E0
+		link-back-color	= #E0E0EC
+		section-back-color	= #E0E0EC
+		selected-back-color	= #E0B8C0
+		text-back-color	= #E0E0EC
+		tree-view-back-color	= #E0E0EC
 		//[cf]
 		//[of]:color
-		char-4-color = #DC503C
-		char-3-color = #DC5080
-		char-2-color = #8050DC
-		char-1-color = #7F0055
-		comment-color = #3F7F5F
-		description-color = #202030
-		invalid-color = #D02020
-		link-color = #50A060
-		number-color = #283CC8
-		preproc-color = #0040A0
-		section-color = #5050B0
-		string-color = #2A00FF
-		word-4-color = #8000C0
-		word-3-color = #DC5080
-		word-2-color = #8050DC
-		word-1-color = #7F0055
+		char-4-color	= #DC503C
+		char-3-color	= #DC5080
+		char-2-color	= #8050DC
+		char-1-color	= #7F0055
+		comment-color	= #3F7F5F
+		description-color	= #202030
+		invalid-color	= #D02020
+		link-color	= #50A060
+		number-color	= #283CC8
+		preproc-color	= #0040A0
+		section-color	= #5050B0
+		string-color	= #2A00FF
+		word-4-color	= #8000C0
+		word-3-color	= #DC5080
+		word-2-color	= #8050DC
+		word-1-color	= #7F0055
 		//[cf]
 	end
 	//[cf]
 	//[of]:dark-purple
 	def dark-purple
 		//[of]:back-color
-		description-back-color = #505068
-		highlight-back-color = #606080
-		inactive-back-color = #505070
-		link-back-color = #404050
-		section-back-color = #404050
-		selected-back-color = #505068
-		text-back-color = #404050
-		tree-view-back-color = #404050
+		description-back-color	= #505068
+		highlight-back-color	= #606080
+		inactive-back-color	= #505070
+		link-back-color	= #404050
+		section-back-color	= #404050
+		selected-back-color	= #505068
+		text-back-color	= #404050
+		tree-view-back-color	= #404050
 		//[cf]
 		//[of]:color
-		bookmark-color = #505498
-		breakpoint-color = #406040
-		char-4-color = #E08050
-		char-3-color = #D080D0
-		char-2-color = #C05080
-		char-1-color = #8080E0
-		color = #8C8CB4
-		comment-color = #B07090
-		description-color = #8C8CB4
-		error-color = #804040
-		invalid-color = #C03060
-		link-color = #70A080
-		match-color = #E0E0B0
-		normal-color = #8C8CB4
-		number-color = #509090
-		pair-color = #507050
-		preproc-color = #B08098
-		section-color = #8080E0
-		string-color = #509090
-		word-4-color = #E08050
-		word-3-color = #D080D0
-		word-2-color = #C05080
-		word-1-color = #8080E0
-		workspace-color = #505068
+		bookmark-color	= #505498
+		breakpoint-color	= #406040
+		char-4-color	= #E08050
+		char-3-color	= #D080D0
+		char-2-color	= #C05080
+		char-1-color	= #8080E0
+		color	= #8C8CB4
+		comment-color	= #B07090
+		description-color	= #8C8CB4
+		error-color	= #804040
+		invalid-color	= #C03060
+		link-color	= #70A080
+		match-color	= #E0E0B0
+		normal-color	= #8C8CB4
+		number-color	= #509090
+		pair-color	= #507050
+		preproc-color	= #B08098
+		section-color	= #8080E0
+		string-color	= #509090
+		word-4-color	= #E08050
+		word-3-color	= #D080D0
+		word-2-color	= #C05080
+		word-1-color	= #8080E0
+		workspace-color	= #505068
 		//[cf]
 		//[of]:font-family
-		fixed-font-family = Fixedsys, Bitstream Vera Sans Mono
-		font-family = Arial, Luxi
-		tree-view-font-family = Arial, Luxi
+		fixed-font-family	= Fixedsys, Bitstream Vera Sans Mono
+		font-family	= Arial, Luxi
+		tree-view-font-family	= Arial, Luxi
 		//[cf]
 		//[of]:font-size
-		fixed-font-size = 9
-		font-size = 9
-		tree-view-font-size = 9
+		fixed-font-size	= 9
+		font-size	= 9
+		tree-view-font-size	= 9
 		//[cf]
 		//[of]:font-style
-		fixed-font-style = none
-		font-style = bold
-		tree-view-font-style = bold
+		fixed-font-style	= none
+		font-style	= bold
+		tree-view-font-style	= bold
 		//[cf]
 		//[of]:fore-color
-		tree-view-fore-color = #8C8CB4
+		tree-view-fore-color	= #8C8CB4
 		//[cf]
 	end
 	//[cf]
 	//[of]:eclipse
 	def eclipse
-		prototype = themes.system
+		prototype	= themes.system
 
 		//[of]:color
-		char-4-color = #DC503C
-		char-3-color = #DC5080
-		char-2-color = #8050DC
-		char-1-color = #7F0055
-		comment-color = #3F7F5F
-		invalid-color = #D02020
-		number-color = #283CC8
-		preproc-color = #0040A0
-		string-color = #2A00FF
-		word-4-color = #DC503C
-		word-3-color = #DC5080
-		word-2-color = #8050DC
-		word-1-color = #7F0055
+		char-4-color	= #DC503C
+		char-3-color	= #DC5080
+		char-2-color	= #8050DC
+		char-1-color	= #7F0055
+		comment-color	= #3F7F5F
+		invalid-color	= #D02020
+		number-color	= #283CC8
+		preproc-color	= #0040A0
+		string-color	= #2A00FF
+		word-4-color	= #DC503C
+		word-3-color	= #DC5080
+		word-2-color	= #8050DC
+		word-1-color	= #7F0055
 		//[cf]
 		//[of]:font-style
-		word-1-font-style = bold
+		word-1-font-style	= bold
 		//[cf]
 	end
 	//[cf]
 	//[of]:paper
 	def paper
 		//[of]:back-color
-		description-back-color = medium
-		highlight-back-color = medium
-		inactive-back-color = inactive
-		link-back-color = background
-		section-back-color = background
-		selected-back-color = #96A0B4
-		text-back-color = background
-		tree-view-back-color = background
+		description-back-color	= medium
+		highlight-back-color	= medium
+		inactive-back-color	= inactive
+		link-back-color	= background
+		section-back-color	= background
+		selected-back-color	= #96A0B4
+		text-back-color	= background
+		tree-view-back-color	= background
 		//[cf]
 		//[of]:color
-		bookmark-color = #B0C0FF
-		breakpoint-color = #F0A0A0
-		color = text
-		comment-color = #555555
-		error-color = #C8FFC8
-		link-color = #20643C
-		match-color = #FFFFB0
-		pair-color = #B0FFB0
-		section-color = #283C78
-		workspace-color = workspace
+		bookmark-color	= #B0C0FF
+		breakpoint-color	= #F0A0A0
+		color	= text
+		comment-color	= #555555
+		error-color	= #C8FFC8
+		link-color	= #20643C
+		match-color	= #FFFFB0
+		pair-color	= #B0FFB0
+		section-color	= #283C78
+		workspace-color	= workspace
 		//[cf]
 		//[of]:font-family
-		fixed-font-family = Courier New, Bitstream Vera Sans Mono
-		font-family = DejaVu Serif, Georgia
-		tree-view-font-family = DejaVu Serif, Georgia
+		fixed-font-family	= Courier New, Bitstream Vera Sans Mono
+		font-family	= DejaVu Serif, Georgia
+		tree-view-font-family	= DejaVu Serif, Georgia
 		//[cf]
 		//[of]:font-size
-		fixed-font-size = 13
-		font-size = 13
-		tree-view-font-size = 13
+		fixed-font-size	= 13
+		font-size	= 13
+		tree-view-font-size	= 13
 		//[cf]
 		//[of]:font-style
-		comment-font-style = italic
-		fixed-font-style = none
-		font-style = none
-		tree-view-font-style = none
-		word-1-font-style = bold
+		comment-font-style	= italic
+		fixed-font-style	= none
+		font-style	= none
+		tree-view-font-style	= none
+		word-1-font-style	= bold
 		//[cf]
 		//[of]:fore-color
-		tree-view-fore-color = text
+		tree-view-fore-color	= text
 		//[cf]
 	end
 	//[cf]
 	//[of]:zenburn
 	def zenburn
 		//[of]:back-color
-		description-back-color = #464646
-		highlight-back-color = #4C5F55
-		inactive-back-color = #455878 //#545454
-		link-back-color = #3F3F3F
-		section-back-color = #3F3F3F
-		selected-back-color = #455878
-		text-back-color = #3F3F3F
-		tree-view-back-color = #3F3F3F
+		description-back-color	= #464646
+		highlight-back-color	= #4C5F55
+		inactive-back-color	= #455878 //#545454
+		link-back-color	= #3F3F3F
+		section-back-color	= #3F3F3F
+		selected-back-color	= #455878
+		text-back-color	= #3F3F3F
+		tree-view-back-color	= #3F3F3F
 		//[cf]
 		//[of]:color
-		bookmark-color = #505498
-		breakpoint-color = #406040
-		char-4-color = #E08050
-		char-3-color = #D080D0
-		char-2-color = #C05080
-		char-1-color = #F0EFD0
-		color = #DCDCCC
-		comment-color = #7F9F7F
-		description-color = #7F9F7F
-		error-color = #804040
-		invalid-color = #C03060
-		link-color = #B3D3C3
-		match-color = #8C8C49
-		normal-color = #DCDCCC
-		number-color = #8CD0D3
-		pair-color = #507050
-		preproc-color = #FFCFAF
-		section-color = #C0BED1
-		string-color = #CC9393
-		word-4-color = #DCDCA3
-		word-3-color = #EFEF8F
-		word-2-color = #EFDCBC
-		word-1-color = #F0DFAF
-		workspace-color = #464646
+		bookmark-color	= #505498
+		breakpoint-color	= #406040
+		char-4-color	= #E08050
+		char-3-color	= #D080D0
+		char-2-color	= #C05080
+		char-1-color	= #F0EFD0
+		color	= #DCDCCC
+		comment-color	= #7F9F7F
+		description-color	= #7F9F7F
+		error-color	= #804040
+		invalid-color	= #C03060
+		link-color	= #B3D3C3
+		match-color	= #8C8C49
+		normal-color	= #DCDCCC
+		number-color	= #8CD0D3
+		pair-color	= #507050
+		preproc-color	= #FFCFAF
+		section-color	= #C0BED1
+		string-color	= #CC9393
+		word-4-color	= #DCDCA3
+		word-3-color	= #EFEF8F
+		word-2-color	= #EFDCBC
+		word-1-color	= #F0DFAF
+		workspace-color	= #464646
 		//[cf]
 		//[of]:font-family
-		fixed-font-family = Courier New, Bitstream Vera Sans Mono
-		font-family = Arial, Luxi
-		tree-view-font-family = Arial, Luxi
+		fixed-font-family	= Courier New, Bitstream Vera Sans Mono
+		font-family	= Arial, Luxi
+		tree-view-font-family	= Arial, Luxi
 		//[cf]
 		//[of]:fore-color
-		tree-view-fore-color = #DCDCCC
+		tree-view-fore-color	= #DCDCCC
 		//[cf]
 		//[of]:font-style
-		fixed-font-style = none
-		font-style = none
-		tree-view-font-style = none
-		word-1-font-style = bold
+		fixed-font-style	= none
+		font-style	= none
+		tree-view-font-style	= none
+		word-1-font-style	= bold
 		//[cf]
 		//[of]:font-size
-		fixed-font-size = 10
-		font-size = 10
-		tree-view-font-size = 10
+		fixed-font-size	= 10
+		font-size	= 10
+		tree-view-font-size	= 10
 		//[cf]
 	end
 	//[cf]
@@ -402,8 +389,6 @@ end
 //[of]:Languages
 def languages
 	//[of]:default
-	//[c]'extra-id-chars' is broken.
-
 	def default
 		encoding	= UTF-8
 		layout	= page
@@ -420,7 +405,7 @@ def languages
 
 		//[of]:Tabs
 		//[c]'word-wrap = true' does not work with 'elastic-tabstops = true'
-		//[c]'show-tabs' is broken.
+		//[c]'show-tabs' seems to be broken.
 		//[c]
 
 		elastic-tabstops	= true
@@ -471,7 +456,7 @@ def languages
 		//[cf]
 	end
 	//[cf]
-	//[of]:Default-String
+	//[of]:Default String
 	def Default-String
 		prototype	= languages.default
 		stylizer	= generic
@@ -487,7 +472,7 @@ def languages
 		multiline-string-delimiter	= """
 	end
 	//[cf]
-	//[of]:Default-Code
+	//[of]:Default Code
 	def Default-Code
 		prototype	= languages.Default-String
 		hexa-prefix	= 0x
@@ -542,44 +527,18 @@ def languages
 		prototype	= languages.Default-String
 		patterns	= *.tpl
 
-		char-delimiter =
-		char-escape-char =
+		char-delimiter	=
+		char-escape-char	=
 		string-delimiter	= '
 		string-escape-char	= \
 
-		line-comment =
+		line-comment	=
 		open-comment	= #
 		close-comment	= #
 
 		chars-1	= []
 		chars-2	= ()
 		chars-4	= {}
-
-
-		//~ hexa-prefix =
-		//~ regex-escape-char =
-		//~ multiline-string-delimiter =
-
-		//~ words-4 = %
-		//~ break catch class const continue delete export extends final finally	%
-		//~ function import let namespace new private public package return	%
-		//~ static throw try use var
-
-		//~ words-3 = true null void false
-
-		//~ words-1 = %
-		//~ as case default do else for if in instanceof is of super switch this	%
-		//~ typeof while with
-
-		//~ words-2 = %
-		//~ exclude get include named set	%
-		//~ boolean byte char double float int long short
-
-		//~ words-4 = %
-		//~ _ bE buE ch e f fE h hEs iE m mE mEs mN mnE Ns R S sEs sqEs t tE tm x
-
-		//~ chars-4	= =
-		//~ chars-1	= (){}[],;^!=-+?!:.
 	end
 	//[cf]
 	//[of]:ECO
@@ -595,15 +554,6 @@ def languages
 		patterns	= *.log
 
 		line-comment	= DEBUG
-		//~ open-comment	= /*
-		//~ close-comment	= */
-		//~ hexa-prefix	= #
-		//~ preprocessor	= #
-
-		//~ words-1	=
-		//~ words-2	=
-		//~ words-3	=
-		//~ words-4	=
 
 		words-2	= INFO DEBUG from in line
 	end
@@ -630,8 +580,7 @@ def languages
 		char-prefix	= $
 		hexa-prefix	= 0x
 
-		chars-1 = ()[]{}=<>,
-		words-1 = and cond do else elsif end if not or self while
+		words-1	= and cond do else elsif end if not or self while
 		//[of]:words-2 = %
 		words-2 = %
 		Fold_Or_Move_Left	%
@@ -675,57 +624,54 @@ def languages
 		replaceText root rowsSize	%
 		showOutput startGroup stopGroup	%
 		toString	%
-
-
+			%
+		Application Boolean Char	%
+		FindData FindResult Frame Integer Language Process	%
+		Settings String StringBuffer TextBlock TextFile TextLink	%
+		TextRow TextSection TextView Window activateWindow	%
+		activeFile activeSection activeView activeWindow	%
+		addComment addLink addSection addText adjustPage	%
+		autoIndentation basicNew centerPage	%
+		changeElasticTabStops changeFixedFont	%
+		changeShowLineType charDelimiter charEscapeChar	%
+		charPrefix closeComment closeComment2 closeDialog	%
+		closeWindow column copyBlock copySelection cursorColumn	%
+		cursorLine deleteSelection direction each eachFile	%
+		eachLanguage eachLine eachRow elasticTabStops endsWith	%
+		escapeChar exit exitCode expandTabulation filename find	%
+		findFile findLanguage fromString gotoAbsoluteLine	%
+		gotoLocalLine hexaPrefix id indexOf insertChar	%
+		insertString isCaseSensitive isEmpty isMarked	%
+		isModified isNil isReadOnly isSelectionEmpty language	%
+		lastText layout line lineComment lineComment2 link mark	%
+		markColumn markLine match matchCase matchWholeWord	%
+		messageBox mode moveCursor multilineCharDelimiter	%
+		multilineStringDelimiter name new newWithFilename	%
+		newWithTitle notEmpty notNil open openComment	%
+		openComment2 openFilename openSection outputFile parent	%
+		path preprocessor range regexEscapeChar	%
+		relativeIndentation remove removeAll removeAllMarkers	%
+		removeRange replaceAll replaceSelection replaceText	%
+		root rootFile row rowIsEmpty rowLink rowNotEmpty	%
+		rowSection rowText rowType rowsSize run save saveAllFiles	%
+		saveFile scope searchFile searchString section select	%
+		selectedText self setCaseSensitive setDirection setFilename	%
+		setLanguage setLastText setLayout setLinkProperties	%
+		setMatchWholeWord setReadOnly setRegularExpression	%
+		setRowId setRowPath setRowText setScope setSearchString	%
+		setSectionProperties setShowLineType setShowTabs	%
+		setWordWrap setWorkingDirectory settings showLineType	%
+		showOutput showSection showTabs size startGroup	%
+		startsWith stdout stopGroup stringDelimiter	%
+		stringEscapeChar synchronize tabulationSize text title	%
+		toChar toInteger toLowerCase toString toUpperCase type	%
+		unmark unmarkAll useRegularExpression variablePrefix	%
+		wordWrap workingDirectory
 		//[cf]
+		words-3	= application false frame nil true
+		words-4	= attr break class function method return var yield
 
-		//[of]:~ words-2
-		//~ words-2 = %
-			//~ Application Boolean Char	%
-			//~ FindData FindResult Frame Integer Language Process	%
-			//~ Settings String StringBuffer TextBlock TextFile TextLink	%
-			//~ TextRow TextSection TextView Window activateWindow	%
-			//~ activeFile activeSection activeView activeWindow	%
-			//~ addComment addLink addSection addText adjustPage	%
-			//~ autoIndentation basicNew centerPage	%
-			//~ changeElasticTabStops changeFixedFont	%
-			//~ changeShowLineType charDelimiter charEscapeChar	%
-			//~ charPrefix closeComment closeComment2 closeDialog	%
-			//~ closeWindow column copyBlock copySelection cursorColumn	%
-			//~ cursorLine deleteSelection direction each eachFile	%
-			//~ eachLanguage eachLine eachRow elasticTabStops endsWith	%
-			//~ escapeChar exit exitCode expandTabulation filename find	%
-			//~ findFile findLanguage fromString gotoAbsoluteLine	%
-			//~ gotoLocalLine hexaPrefix id indexOf insertChar	%
-			//~ insertString isCaseSensitive isEmpty isMarked	%
-			//~ isModified isNil isReadOnly isSelectionEmpty language	%
-			//~ lastText layout line lineComment lineComment2 link mark	%
-			//~ markColumn markLine match matchCase matchWholeWord	%
-			//~ messageBox mode moveCursor multilineCharDelimiter	%
-			//~ multilineStringDelimiter name new newWithFilename	%
-			//~ newWithTitle notEmpty notNil open openComment	%
-			//~ openComment2 openFilename openSection outputFile parent	%
-			//~ path preprocessor range regexEscapeChar	%
-			//~ relativeIndentation remove removeAll removeAllMarkers	%
-			//~ removeRange replaceAll replaceSelection replaceText	%
-			//~ root rootFile row rowIsEmpty rowLink rowNotEmpty	%
-			//~ rowSection rowText rowType rowsSize run save saveAllFiles	%
-			//~ saveFile scope searchFile searchString section select	%
-			//~ selectedText self setCaseSensitive setDirection setFilename	%
-			//~ setLanguage setLastText setLayout setLinkProperties	%
-			//~ setMatchWholeWord setReadOnly setRegularExpression	%
-			//~ setRowId setRowPath setRowText setScope setSearchString	%
-			//~ setSectionProperties setShowLineType setShowTabs	%
-			//~ setWordWrap setWorkingDirectory settings showLineType	%
-			//~ showOutput showSection showTabs size startGroup	%
-			//~ startsWith stdout stopGroup stringDelimiter	%
-			//~ stringEscapeChar synchronize tabulationSize text title	%
-			//~ toChar toInteger toLowerCase toString toUpperCase type	%
-			//~ unmark unmarkAll useRegularExpression variablePrefix	%
-			//~ wordWrap workingDirectory
-		//[cf]
-		words-3 = application false frame nil true
-		words-4 = attr break class function method return var yield
+		chars-1	= ()[]{}=<>,
 	end
 
 
@@ -1530,7 +1476,7 @@ def languages
 		title= type= usemap= value= width= wrap=
 		//[cf]
 
-		chars-1 = !<>/
+		chars-1	= !<>/
 	end
 	//[cf]
 	//[of]:Javascript
@@ -1549,7 +1495,7 @@ def languages
 		switch this typeof while with
 
 	//[c]	Todo: compile list of things in the standard lib
-		words-2 =
+		words-2	=
 
 		words-3	= true null void false
 
@@ -1617,7 +1563,7 @@ def languages
 		chars-4	= \
 	end
 	//[cf]
-	//[of]:PEG-js
+	//[of]:PEG.js
 	def PEG-js
 		prototype	= languages.Javascript
 		patterns	= *.pegjs; *.g
@@ -1634,7 +1580,7 @@ def languages
 		in is lambda not or pass try while with
 
 		//[of]:words-2
-		words-2=	%
+		words-2 = %
 			%
 		__all__ sub finditer read write	%
 			%
@@ -3056,11 +3002,11 @@ def languages
 		async await break class continue def del f from global import	%
 		nonlocal raise return yield
 
-		chars-1 = !%%&/\()[]{}<>=|@^,;.:-+*~
+		chars-1	= !%%&/\()[]{}<>=|@^,;.:-+*~
 	end
 
 	//[cf]
-	//[of]:Sweet-js
+	//[of]:Sweet.js
 	def Sweet-js
 		prototype	= languages.Javascript
 		patterns	= *.sjs
@@ -3089,7 +3035,7 @@ def languages
 		//[c]html tags compiled from https://mzl.la/13RCWd4
 		//[c]
 
-		words-2 =	%
+		words-2 = %
 		a abbr address area article aside audio b base bdi bdo	%
 		blockquote body br button canvas caption cite code col	%
 		colgroup command data datalist dd del details dfn div	%
@@ -3196,10 +3142,10 @@ def languages
 		yourMessage= yourName=
 		//[cf]
 
-		words-4 = define end import whitespace
+		words-4	= define end import whitespace
 
-		chars-2 = <>[]{}()/$=#!*:;-
-		chars-4 = \
+		chars-2	= <>[]{}()/$=#!*:;-
+		chars-4	= \
 	end
 	//[cf]
 	//[of]:XML
@@ -3208,7 +3154,7 @@ def languages
 		stylizer	= html
 		patterns	= *.xml;*.xsl;*.xsd;*.xul;*.exe.config;*.rdf
 
-		line-comment =
+		line-comment	=
 		open-comment	= <!--
 		close-comment	= -->
 	end
@@ -3279,8 +3225,8 @@ def languages
 		def error import let
 
 		chars-1	= ()[]{}.
-		chars-2 =
-		chars-3 =
+		chars-2	=
+		chars-3	=
 		chars-4	= \
 	end
 	//[cf]
@@ -3306,10 +3252,10 @@ def languages
 		jsonNull jsonTrue left non of port right subscription then	%
 		type where
 
-		words-3 = False None True
+		words-3	= False None True
 
 	//[c]	https://stackoverflow.com/a/51062961/1658543
-		words-4 = alias class data import let module newtype type
+		words-4	= alias class data import let module newtype type
 	end
 	//[cf]
 	//[of]:Go
@@ -3341,19 +3287,18 @@ def languages
 		open-comment	= {-
 		close-comment	= -}
 
-		//~ words-1 = %
-		//~ case do else if of then
+		words-1 = %
+		case do else if of then
 
-		//~ words-2 = %
-		//~ Control.Concurrent Control.Monad.Error Control.Monad.Identity Control.Monad.Reader	%
-		//~ Control.Monad.State Control.Monad.Writer	%
-		//~ Data.Map Data.Maybe Prelude System.IO System.Process	%
-		//~ evalState forkIO get getLine hGetLine hPutStr hPutStrLn hSetBinaryMode	%
-		//~ main print put putStr putStrLn return runInteractiveCommand show terminateProcess
+		words-2 = %
+		Control.Concurrent Control.Monad.Error Control.Monad.Identity Control.Monad.Reader	%
+		Control.Monad.State Control.Monad.Writer	%
+		Data.Map Data.Maybe Prelude System.IO System.Process	%
+		evalState forkIO get getLine hGetLine hPutStr hPutStrLn hSetBinaryMode	%
+		main print put putStr putStrLn return runInteractiveCommand show terminateProcess
 
 		words-3	= False None True
-		words-4	= class data import infix infixl infixr let module newtype type
-		//~ words-4	= class data deriving import in infix infixl infixr instance let module newtype qualified type where
+		words-4	= class data deriving import in infix infixl infixr instance let module newtype qualified type where
 
 		//~ words-4 = %
 		//~ Bool ErrorT False Int Integer IO Just Maybe Nothing	%
@@ -3567,7 +3512,7 @@ def languages
 		unchecked unsafe using virtual volatile while
 		//[cf]
 
-		words-3 = false null true void
+		words-3	= false null true void
 
 		words-4 = %
 		bool byte char decimal double float int long sbyte short string uint ulong ushort
@@ -3680,7 +3625,7 @@ def languages
 
 		words-3	= false nil true
 
-		chars-1 = ;,.:[](){}+-*/^%%<>~#
+		chars-1	= ;,.:[](){}+-*/^%%<>~#
 	end
 	//[cf]
 	//[of]:Makefile
