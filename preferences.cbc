@@ -1,13 +1,11 @@
 allow-multiple-instances	= false
 reload-mode	= always
-
 save-session	= true
 search-patterns	= *.py;*.html;*.js;*.css
 search-directory	=
 search-patterns-history	= *.*:*.py;*.html;*.js;*.css
 search-history	=
 search-replace-history	=
-
 layout	= page
 scroll-speed	= 1
 fisheye-view	= true
@@ -87,7 +85,7 @@ def themes
 	//[cf]
 	//[of]:nils
 	def nils
-		prototype = themes.system
+		prototype	= themes.system
 
 		//[of]:font
 		//[of]:(Some Mono Font Families)
@@ -119,53 +117,51 @@ def themes
 		font-family	= Consolas
 		font-size	= 12
 
+		title-font-family	= Consolas
+		tree-view-font-family	= Consolas
+
 		word-1-font-style	= bold
 		word-4-font-style	= bold
-
 		char-4-font-style	= bold
 		//[cf]
 		//[of]color:color
 		normal-color	= #666666
-
-		section-color	= #0044BB
-		section-back-color	= #F4F8FF
-		link-color	= #88BB44
-		link-back-color	= #F0F8DF
+		section-color	= #0033AA
+		section-back-color	= #FFFFFF
+		link-color	= #66AA11
+		link-back-color	= #FFFFFF
 
 		bookmark-color	= #DDFF88
 		match-color	= #DDFF88
 
-		number-color	= #6090C0
-		string-color	= #6090C0
-
+		number-color	= #000000
+		string-color	= #4070A0
 		comment-color	= #AFAFAF
 		preproc-color	= #0088BB
 
-		//[of]:Words and Chars
-		word-1-color	= #0060C0 // keywords
+		word-1-color	= #0050A0 // keywords
 		word-2-color	= #000000 // function names
-		word-3-color	= #6090C0 // False None True ...
-		word-4-color	= #F08000 // special keywords (function var import ...)
+		word-3-color	= #4070A0 // True, False, None ...
+		word-4-color	= #E08830 // special keywords (class, function, var)
 
-		char-1-color	= #0060C0 // brackets, operators
+		char-1-color	= #0050A0 // brackets, operators
 		char-2-color	= #000000
-		char-3-color	= #6090C0
-		char-4-color	= #F08000
-		//[cf]
-		//[of]:Text Selections
-		selected-back-color	= #3399FF
-		inactive-back-color	= #3399FF
-		//[cf]
-		//[of]:Section background
+		char-3-color	= #4070A0
+		char-4-color	= #E08830
+
+		//[c]Text Selections
+		selected-back-color	= #D0E0FF
+		inactive-back-color	= #99CCFF
+
+		//[c]Section background
 		highlight-back-color	= #DFEFFF
 		inactive-line-back-color	= #DFEFFF
-		//[cf]
 		//[cf]
 	end
 	//[cf]
 	//[of]:blue
 	def blue
-		prototype = themes.system
+		prototype	= themes.system
 
 		//[of]:back-color
 		description-back-color	= #C0C0CC
@@ -401,18 +397,18 @@ def languages
 		show-line-type	= false
 		auto-indentation	= true
 		first-line-patterns	=
-		extra-id-chars	= [_A-Za-z0-9-]
+		extra-id-chars	= [_A-Za-z0-9-=]
 
 		//[of]:Tabs
 		//[c]'word-wrap = true' does not work with 'elastic-tabstops = true'
-		//[c]'show-tabs' seems to be broken.
+		//[c]'show-tabs' is broken.
 		//[c]
 
-		elastic-tabstops	= true
+		elastic-tabstops	= false
 		show-tabs	= true
 		tabulation-size	= 4
 		expand-tabulation	= false
-		word-wrap	= false
+		word-wrap	= true
 		//[cf]
 		//[of]:Comments
 		line-comment	= #
@@ -456,7 +452,7 @@ def languages
 		//[cf]
 	end
 	//[cf]
-	//[of]:Default String
+	//[of]:Default-String
 	def Default-String
 		prototype	= languages.default
 		stylizer	= generic
@@ -472,7 +468,7 @@ def languages
 		multiline-string-delimiter	= """
 	end
 	//[cf]
-	//[of]:Default Code
+	//[of]:Default-Code
 	def Default-Code
 		prototype	= languages.Default-String
 		hexa-prefix	= 0x
@@ -580,50 +576,25 @@ def languages
 		char-prefix	= $
 		hexa-prefix	= 0x
 
+		chars-1	= ()[]{}=<>,
 		words-1	= and cond do else elsif end if not or self while
-		//[of]:words-2 = %
+		//[of]:words-2
 		words-2 = %
-		Fold_Or_Move_Left	%
-		Goto_Next_Block Goto_Prev_Block Goto_Next_Special Goto_Prev_Special	%
-		Move_Selection_Up	%
-		Unfold_Or_Move_Right	%
+		Fold_Or_Move_Left Goto_Next_Block Goto_Prev_Block Goto_Next_Special	%
+		Goto_Prev_Special Move_Selection_Up Unfold_Or_Move_Right	%
 			%
 		Block Buf Range Str	%
 			%
-		ActiveSection Append	%
-		Blockify	%
-		Clear Copy Cursor Cut	%
-		Dedent	%
-		End EnsureNewline	%
-		FindBlockCloser FindBlockOpener FindSpecialLine Fold	%
-		Indent Init IsMultiline	%
-		Line Location	%
-		MoveRelative	%
-		New NormDirection	%
-		Old OutcommentRecursively OutputWindow	%
-		Paste Print PrintWithBorders Prnt	%
-		RunTests	%
-		Section Select Selection SelectionRange SetCursor	%
-		SkipWhitespace Start StartUndo StopUndo Str	%
-		Type	%
-		UnoutcommentRecursively	%
-		Wrap	%
-		X	%
-		Y 	%
+		ActiveSection Append Blockify Clear Copy Cursor Cut Dedent End	%
+		EnsureNewline FindBlockCloser FindBlockOpener FindSpecialLine Fold	%
+		Indent Init IsMultiline Line Location MoveRelative New NormDirection	%
+		Old OutcommentRecursively OutputWindow Paste Print PrintWithBorders	%
+		Prnt RunTests Section Select Selection SelectionRange SetCursor	%
+		SkipWhitespace Start StartUndo StopUndo Str Type	%
+		UnoutcommentRecursively Wrap X Y 	%
 			%
 		StringBuffer	%
 		TextBlock	%
-			%
-		activeView addToStringBuffer	%
-		basicNew	%
-		cursorColumn cursorLine	%
-		fromString	%
-		isNil	%
-		new notNil	%
-		outputFile	%
-		replaceText root rowsSize	%
-		showOutput startGroup stopGroup	%
-		toString	%
 			%
 		Application Boolean Char	%
 		FindData FindResult Frame Integer Language Process	%
@@ -670,8 +641,6 @@ def languages
 		//[cf]
 		words-3	= application false frame nil true
 		words-4	= attr break class function method return var yield
-
-		chars-1	= ()[]{}=<>,
 	end
 
 
@@ -696,22 +665,24 @@ def languages
 		prototype	= languages.Default-String
 		patterns	= *.co
 
-
 		line-comment	= //
 		hexa-prefix	= 0x
 		char-prefix	= $
 
+		//[of]:words-1
 		words-1 = %
-		attr break const enum	%
-		function global import method	%
-		ref return static struct var yield
-
-		//~ words-1	= and attr break case cond const do else elsif end enum	%
-		//~ extend function global if import method not or	%
-		//~ ref repeat return static struct switch var while yield
-
+		and attr break case cond const do else elsif end enum extend function	%
+		global if import method not or ref repeat return static struct switch	%
+		var while yield
+		//[cf]
 		words-3	= false nil true
-		//~ chars-1	= ()[]{},<>=+-:&|^?@#.
+		//[of]:words-4
+		words-4 = %
+		attr break const enum function global import method ref return static	%
+		struct var yield
+		//[cf]
+
+		chars-1	= ()[]{},<>=+-:&|^?@#.
 	end
 	//[cf]
 	//[of]:Zinc
@@ -1434,46 +1405,54 @@ def languages
 		close-comment-2	= >
 
 		//[of]:words-1
-		//[c]compiled from https://mzl.la/13RCWd4
+		//[c]html tags compiled from https://developer.mozilla.org/de/docs/Web/HTML/HTML5/HTML5_element_list
+		//[c]svg tags compiled from https://www.w3.org/TR/SVG/eltindex.html
 		//[c]
 
 		words-1 = %
-		a abbr address area article aside audio b base bdi bdo	%
-		blockquote body br button canvas caption cite code col	%
-		colgroup command data datalist dd del details dfn div	%
-		dl dt em embed fieldset figcaption figure footer form	%
-		h1 h2 h3 h4 h5 h6 head header hr html i iframe img input	%
-		ins kbd keygen	%
-		label legend li link main map mark math menu meta meter	%
-		nav noscript object ol optgroup option output p param	%
-		pre progress q rp rt ruby s samp script section select	%
-		small source span strong style sub summary svg table	%
-		tbody td textarea tfoot th thead time title tr track u ul	%
-		var video wbr
+		html	%
+		a abbr address area article aside audio b base bdi bdo blockquote body	%
+		br button canvas caption cite code col colgroup command data datalist	%
+		dd del details dfn div dl dt em embed fieldset figcaption figure	%
+		footer form h1 h2 h3 h4 h5 h6 head header hr i iframe img input ins	%
+		kbd keygen label legend li link main map mark math menu meta meter nav	%
+		noscript object ol optgroup option output p param pre progress q rp rt	%
+		ruby s samp script section select small source span strong style sub	%
+		summary table tbody td textarea tfoot th thead time title tr track u	%
+		ul var video wbr	%
+			%
+		svg	%
+		animate animateMotion animateTransform audio canvas circle clipPath	%
+		defs desc discard ellipse feBlend feColorMatrix feComponentTransfer	%
+		feComposite feConvolveMatrix feDiffuseLighting feDisplacementMap	%
+		feDistantLight feDropShadow feFlood feFuncA feFuncB feFuncG feFuncR	%
+		feGaussianBlur feImage feMerge feMergeNode feMorphology feOffset	%
+		fePointLight feSpecularLighting feSpotLight feTile feTurbulence filter	%
+		foreignObject g iframe image line linearGradient marker mask metadata	%
+		mpath path pattern polygon polyline radialGradient rect script set	%
+		stop style svg switch symbol text textPath title tspan unknown use	%
+		video view
 		//[cf]
 		//[of]:words-3
-		//[c]compiled from https://mzl.la/2SA1ph9
+		//[c]HTML attributes compiled from https://developer.mozilla.org/de/docs/Web/HTML/Attributes
 		//[c]
 
 		words-3 = %
-		accept-charset= accept= accesskey= action= align= alt= 	%
-		async= autocomplete= autofocus= autoplay= autosave= 	%
-		bgcolor= border= buffered= challenge= charset= checked= 	%
-		cite= class= code= codebase= color= cols= colspan= 	%
-		content= contenteditable= contextmenu= controls= coords= 	%
-		crossorigin= data= datetime= default= defer= dir= 	%
-		dirname= disabled= download= draggable= dropzone= 	%
-		enctype= for= form= formaction= headers= height= hidden= 	%
-		high= href= hreflang= http-equiv= icon= id= integrity= 	%
-		ismap= itemprop= keytype= kind= label= lang= language= 	%
-		list= loop= low= manifest= max= maxlength= media= method= 	%
-		min= multiple= muted= name= novalidate= open= optimum= 	%
-		pattern= ping= placeholder= poster= preload= radiogroup= 	%
-		readonly= rel= required= reversed= rows= rowspan= 	%
-		sandbox= scope= scoped= seamless= selected= shape= size= 	%
-		sizes= slot= span= spellcheck= src= srcdoc= srclang= 	%
-		srcset= start= step= style= summary= tabindex= target= 	%
-		title= type= usemap= value= width= wrap=
+		accept-charset= accept= accesskey= action= align= alt= async=	%
+		autocomplete= autofocus= autoplay= autosave= bgcolor= border=	%
+		buffered= challenge= charset= checked= cite= class= code= codebase=	%
+		color= cols= colspan= content= contenteditable= contextmenu=	%
+		controls= coords= crossorigin= data= datetime= default= defer= dir=	%
+		dirname= disabled= download= draggable= dropzone= enctype= for= form=	%
+		formaction= headers= height= hidden= high= href= hreflang=	%
+		http-equiv= icon= id= integrity= ismap= itemprop= keytype= kind=	%
+		label= lang= language= list= loop= low= manifest= max= maxlength=	%
+		media= method= min= multiple= muted= name= novalidate= open= optimum=	%
+		pattern= ping= placeholder= poster= preload= radiogroup= readonly=	%
+		rel= required= reversed= rows= rowspan= sandbox= scope= scoped=	%
+		seamless= selected= shape= size= sizes= slot= span= spellcheck= src=	%
+		srcdoc= srclang= srcset= start= step= style= summary= tabindex=	%
+		target= title= type= usemap= value= width= wrap=
 		//[cf]
 
 		chars-1	= !<>/
@@ -1547,7 +1526,7 @@ def languages
 		//[of]:words-3
 		words-3 = %
 		false nil res result remainder true	%
-		%
+			%
 		array bool char cstring enum float float32 float64 int int8	%
 		int16 int32 int64 object openArray range seq set string tuple	%
 		uint uint8 uint16 uint32 uint64 varargs
@@ -1563,7 +1542,7 @@ def languages
 		chars-4	= \
 	end
 	//[cf]
-	//[of]:PEG.js
+	//[of]:PEG-js
 	def PEG-js
 		prototype	= languages.Javascript
 		patterns	= *.pegjs; *.g
@@ -1582,7 +1561,12 @@ def languages
 		//[of]:words-2
 		words-2 = %
 			%
-		__all__ sub finditer read write	%
+		__all__ __file__ exist_ok read write	%
+			%
+		compile error escape findall finditer fullmatch match purge search	%
+		split sub subn	%
+		ASCII DEBUG IGNORECASE LOCALE MULTILINE DOTALL VERBOSE	%
+			%
 			%
 		ArithmeticError AssertionError AttributeError BaseException	%
 		BlockingIOError BrokenPipeError BufferError BytesWarning	%
@@ -3006,7 +2990,7 @@ def languages
 	end
 
 	//[cf]
-	//[of]:Sweet.js
+	//[of]:Sweet-js
 	def Sweet-js
 		prototype	= languages.Javascript
 		patterns	= *.sjs
@@ -3017,6 +3001,8 @@ def languages
 		prototype	= languages.Default-Code
 		patterns	= *.tid
 
+		hexa-prefix	=
+
 		elastic-tabstops	= false
 		word-wrap	= true
 
@@ -3025,126 +3011,175 @@ def languages
 		open-comment-2	= <<
 		close-comment-2	= >>
 
-		extra-id-chars	= [_A-Za-z0-9-=:]
+		extra-id-chars	= [_A-Za-z0-9=-:]
 
-		words-1 = %
-		caption: created: input_tiddler: modified:	%
-		options_tiddler: section_name: tags: template_name: title: type:
-
-		//[of]:words-2
-		//[c]html tags compiled from https://mzl.la/13RCWd4
+		//[of]:words-1
+		//[c]extracted from the TiddlyWiki5 code base via script
 		//[c]
+		words-1 = %
+		_canonical_uri:	%
+		about: address: author:	%
+		background-color: button-classes:	%
+		caption: chapter.of: city: color: component: condition: core-version:	%
+		country: created: creator: current-tiddler: custom-icon:	%
+		days: daysoftheweek: delivery: description: dofwks: draft.of:	%
+		draft.title: dropdown:	%
+		email_address: embed: emptyfield: en-title: entered_date: es-title:	%
+		est-title: extend: extension:	%
+		filter: footer: fr-title: from-version:	%
+		group-sort: group:	%
+		hack-to-give-us-something-to-compare-against: help:	%
+		icon: image: import-field-column: import-field-list-op:	%
+		import-field-name: import-field-source: import-field-type:	%
+		import-field-value: import-sheet-name: import-spec-role:	%
+		inherits-from: input_tiddler: item1: item2: item3:	%
+		jeremy:	%
+		key:	%
+		license: link: list-after: list-before: list:	%
+		marker: method: modified: modifier: module-type: my-special-list:	%
+		myfield:	%
+		name: note: numbers:	%
+		op-input: op-neg-input: op-neg-output: op-output: op-parameter-name:	%
+		op-parameter: op-prefix: op-purpose: op-suffix-name: op-suffix:	%
+		options_tiddler: order: origin:	%
+		phone_number:	%
+		released: resume_title: revision:	%
+		section: section_name: sectionnumber: selected_resume: short-caption:	%
+		short: shortcuts: show: source: state: street: street_address:	%
+		sub.num: subtitle:	%
+		tags: template: template_name: text-test: text: title: toc-link:	%
+		tooltip: type:	%
+		url:	%
+		zip_code:
+		//[cf]
+		//[of]:words-2
+		//[c]html tags compiled from https://developer.mozilla.org/de/docs/Web/HTML/HTML5/HTML5_element_list
+		//[c]HTML attributes compiled from https://developer.mozilla.org/de/docs/Web/HTML/Attributes
+		//[c]svg tags compiled from https://www.w3.org/TR/SVG/eltindex.html
+		//[c]widget tags compiled from https://tiddlywiki.com/#Widgets
+		//[c]TiddlyWiki5 attributes extracted from the tiddlyWiki5 codebase via script
+		//[c](and manually added some attribute names)
 
 		words-2 = %
-		a abbr address area article aside audio b base bdi bdo	%
-		blockquote body br button canvas caption cite code col	%
-		colgroup command data datalist dd del details dfn div	%
-		dl dt em embed fieldset figcaption figure footer form	%
-		h1 h2 h3 h4 h5 h6 head header hr html i iframe img input	%
-		ins kbd kbd keygen	%
-		label legend li link main map mark math menu meta meter	%
-		nav noscript object ol optgroup option output p param	%
-		pre progress q rp rt ruby s samp script section select	%
-		small source span strong style sub summary svg table	%
-		tbody td textarea tfoot th thead time title tr track u ul	%
-		var video wbr	%
-		%
+		html	%
+		a abbr address area article aside audio b base bdi bdo blockquote body	%
+		br button canvas caption cite code col colgroup command data datalist	%
+		dd del details dfn div dl dt em embed fieldset figcaption figure	%
+		footer form h1 h2 h3 h4 h5 h6 head header hr i iframe img input ins	%
+		kbd keygen label legend li link main map mark math menu meta meter nav	%
+		noscript object ol optgroup option output p param pre progress q rp rt	%
+		ruby s samp script section select small source span strong style sub	%
+		summary table tbody td textarea tfoot th thead time title tr track u	%
+		ul var video wbr	%
+			%
+		accept-charset= accept= accesskey= action= align= alt= async=	%
+		autocomplete= autofocus= autoplay= autosave= bgcolor= border=	%
+		buffered= challenge= charset= checked= cite= class= code= codebase=	%
+		color= cols= colspan= content= contenteditable= contextmenu=	%
+		controls= coords= crossorigin= data= datetime= default= defer= dir=	%
+		dirname= disabled= download= draggable= dropzone= enctype= for= form=	%
+		formaction= headers= height= hidden= high= href= hreflang=	%
+		http-equiv= icon= id= integrity= ismap= itemprop= keytype= kind=	%
+		label= lang= language= list= loop= low= manifest= max= maxlength=	%
+		media= method= min= multiple= muted= name= novalidate= open= optimum=	%
+		pattern= ping= placeholder= poster= preload= radiogroup= readonly=	%
+		rel= required= reversed= rows= rowspan= sandbox= scope= scoped=	%
+		seamless= selected= shape= size= sizes= slot= span= spellcheck= src=	%
+		srcdoc= srclang= srcset= start= step= style= summary= tabindex=	%
+		target= title= type= usemap= value= width= wrap=	%
+			%
+		svg	%
+		animate animateMotion animateTransform audio canvas circle clipPath	%
+		defs desc discard ellipse feBlend feColorMatrix feComponentTransfer	%
+		feComposite feConvolveMatrix feDiffuseLighting feDisplacementMap	%
+		feDistantLight feDropShadow feFlood feFuncA feFuncB feFuncG feFuncR	%
+		feGaussianBlur feImage feMerge feMergeNode feMorphology feOffset	%
+		fePointLight feSpecularLighting feSpotLight feTile feTurbulence filter	%
+		foreignObject g iframe image line linearGradient marker mask metadata	%
+		mpath path pattern polygon polyline radialGradient rect script set	%
+		stop style svg switch symbol text textPath title tspan unknown use	%
+		video view	%
+			%
 		action-createtiddler action-deletefield action-deletetiddler	%
-		action-listops action-navigate action-sendmessage	%
-		action-setfield	%
-		browse button	%
-		checkbox codeblock count	%
-		diff-text draggable droppable dropzone	%
-		edit-bitmap edit-text edit encrypt entity	%
-		fieldmangler fields	%
-		image importvariables	%
-		keyboard	%
-		linkcatcher link list	%
-		macrocall	%
-		navigator	%
-		password	%
-		radio range reveal	%
-		scrollable select setvariable set	%
-		text tiddler transclude	%
-		vars view	%
-		wikify	%
-		%
-		mode=block show=true show=false	%
-		%
+		action-listops action-navigate action-sendmessage action-setfield	%
+		browse button checkbox codeblock count diff-text draggable droppable	%
+		dropzone edit-bitmap edit-text edit encrypt entity fieldmangler	%
+		fields image importvariables keyboard linkcatcher link list macrocall	%
+		navigator password radio range reveal scrollable select setvariable	%
+		set text tiddler transclude vars view wikify	%
+			%
 		Basics= EndColorStr= Forms= Header= ItemName= Links= ObjectiveName=	%
 		Py= R0= ResumeName= TIDDLYWIKI_PLUGIN_PATH= TW5_BUILD_TIDDLYWIKI=	%
 		TYPE= Tables= TemplateName= ThisAddItemButtonMacro= ThisResume=	%
 		ThisResumeName= ThisSection= ThisTitle= TiddlerPreamble2=	%
 		TiddlerPreamble3= TiddlerPreamble= USERS= UserInputTiddlerText=	%
 		UserOptionsTiddlerText= UserTemplateTiddlerText= Widget= Wikitext= a=	%
-		actions= actor= address= align= allowtransparency= alt= animate=	%
-		anon-username= another= archive= aria-label= assetList= attr= attrib=	%
-		attribute= aws_access_key_id= aws_secret_access_key=	%
-		background-color= backgroundColor= bad-chars= bag= baseFilename=	%
-		basetitle= button= buttonTemplate= caption= cecily-map= cecily-width=	%
-		champperso= character= checked= chunk= class= clip-path= clipHeight=	%
-		clipLeft= clipTop= clipWidth= code= color= colour= colourA= colourB=	%
-		colspan= compressedPayload= cond= config-title= content= count=	%
-		created= creator= credentials= currentTab= currentTiddler= custom=	%
-		customfield= cx= cy= d= data-address= data-dynaview-set-tiddler=	%
-		data-dynaview-set-value= data-dynaview-track-tiddler=	%
-		data-dynaview-unset-tiddler= data-dynaview-unset-value= data-module=	%
-		data-tags= data-tiddler-title= data-tw-keyboard-shortcut= data=	%
-		dates= debug= default-popup-state= default= definitions=	%
-		degree_level= deleted= dest= destSubTiddlerTitle= destTiddlerTitle=	%
-		destTitle= displayMode= download= dragFilter= dx= dy= e= edit-mode=	%
-		editTemplate= eg= egvar= element-attributes= element-tag= else=	%
-		email= embed= employer= emptyMessage= emptyValue= encoding=	%
-		encryption= entity= exclude= excluded= exportFilter= fallbackTarget=	%
-		fallthrough= field= filename= fill-opacity= fill-rule= fill= filter=	%
-		filterUnits= filtre= firstname= fjs= focus= focusPopup= foldedState=	%
-		foldedStatePrefix= font-family= font-size= font-weight=	%
-		foregroundColor= format= frameborder= from= fromTitle= full-title=	%
-		gpa= graduation_date= greeting= grouped= hashtag= height= history=	%
-		host= href= http-equiv= icon= id= ie= image= imageType=	%
+		actions= actor= address= allowtransparency= animate= anon-username=	%
+		another= archive= aria-label= assetList= attr= attrib= attribute=	%
+		aws_access_key_id= aws_secret_access_key= background-color=	%
+		backgroundColor= bad-chars= bag= baseFilename= basetitle= button=	%
+		buttonTemplate= caption= cecily-map= cecily-width= champperso=	%
+		character= chunk= clip-path= clipHeight= clipLeft= clipTop=	%
+		clipWidth= colour= colourA= colourB= compressedPayload= cond=	%
+		config-title= count= created= creator= credentials= currentTab=	%
+		currentTiddler= custom= customfield= cx= cy= d= data-address=	%
+		data-dynaview-set-tiddler= data-dynaview-set-value=	%
+		data-dynaview-track-tiddler= data-dynaview-unset-tiddler=	%
+		data-dynaview-unset-value= data-module= data-tags=	%
+		data-tiddler-title= data-tw-keyboard-shortcut= dates= debug=	%
+		default-popup-state= definitions= degree_level= deleted= dest=	%
+		destSubTiddlerTitle= destTiddlerTitle= destTitle= displayMode=	%
+		dragFilter= dx= dy= e= edit-mode= editTemplate= eg= egvar=	%
+		element-attributes= element-tag= else= email= embed= employer=	%
+		emptyMessage= emptyValue= encoding= encryption= entity= exclude=	%
+		excluded= exportFilter= fallbackTarget= fallthrough= field= filename=	%
+		fill-opacity= fill-rule= fill= filter= filterUnits= filtre=	%
+		firstname= fjs= focus= focusPopup= foldedState= foldedStatePrefix=	%
+		font-family= font-size= font-weight= foregroundColor= format=	%
+		frameborder= from= fromTitle= full-title= gpa= graduation_date=	%
+		greeting= grouped= hashtag= history= host= ie= image= imageType=	%
 		import-field-column= import-field-name= import-field-source=	%
 		import-field-type= import-sheet-name= import-spec-role= in= include=	%
 		increment= index= infoTitlePrefix= initial-scale= input=	%
 		input_tiddler= institution= iosDragDropShim= item= itemClassFilter=	%
 		itemTemplate= job_title= journalTags= journalText=	%
-		journalTitleTemplate= js= key= label= labels= lambdaPackageInfo=	%
-		lambdaTiddlers= lang= language= lastname= level= line= lingoBase=	%
-		link= linkTiddler= linktext= list= macro= macrocall= major= max= me=	%
-		message= min= minHeight= missingText= mode= modeState= modified=	%
-		modifier= ms= n= name= network= onerror= onload= onunload=	%
-		openLinkFromInsideRiver= openLinkFromOutsideRiver= operator=	%
-		options_tiddler= order= output= outputMode= overrideClass=	%
-		ownerScreenName= palette= param= paramName= parameter= params=	%
-		parent= password= path-prefix= path= pattern= placeholder= points=	%
-		popup= popupTitle= port= position= positionAllowNegative= prefix=	%
-		preventScroll= prompt= prompts= r= radius= readers= realm= rel=	%
+		journalTitleTemplate= js= key= labels= lambdaPackageInfo=	%
+		lambdaTiddlers= lastname= level= line= lingoBase= link= linkTiddler=	%
+		linktext= macro= macrocall= major= me= message= minHeight=	%
+		missingText= mode= modeState= modified= modifier= ms= n= network=	%
+		onerror= onload= onunload= openLinkFromInsideRiver=	%
+		openLinkFromOutsideRiver= operator= options_tiddler= order= output=	%
+		outputMode= overrideClass= ownerScreenName= palette= param=	%
+		paramName= parameter= params= parent= password= path-prefix= path=	%
+		points= popup= popupTitle= port= position= positionAllowNegative=	%
+		prefix= preventScroll= prompt= prompts= r= radius= readers= realm=	%
 		relinkOnRename= result= resume_name= resume_title= retain= revision=	%
 		role= root-tiddler= root= rx= ry= savetitle= screenName= scrolling=	%
 		searchTiddler= section= section_name= select= selectedClass=	%
 		selectedTiddler= semantics= sentence= separator= set= setTitle=	%
-		setTo= shortcuts= show= singleton= size= slicerRules= slug=	%
-		something= sort= source= sourceSubTiddlerTitle= sourceTiddlerTitle=	%
-		spiral= src= ssid= standalone= state-system= state-title= state=	%
-		stateField= stateTiddler= stateTitle= stdDeviation= stoke= story=	%
-		storyTiddler= storyview= strPayload= string= stripTitlePrefix=	%
-		stroke-dasharray= stroke-linecap= stroke-linejoin= stroke-miterlimit=	%
-		stroke-opacity= stroke-width= stroke= style= subfilter= subtiddler=	%
-		suffix= t= tabindex= tabsList= tag= tagnew= tags= target=	%
-		targetField= targetTiddler= tel= template= template_name= testfield=	%
-		text-anchor= text= then= tiddler= tiddlerInfoState= tiddlerTitle=	%
-		title= tls-cert= tls-key= to= toTitle= toc-type= tooltip=	%
-		transclusion= transform= tv-adjust-heading-level=	%
+		setTo= shortcuts= show= singleton= slicerRules= slug= something=	%
+		sort= source= sourceSubTiddlerTitle= sourceTiddlerTitle= spiral=	%
+		ssid= standalone= state-system= state-title= state= stateField=	%
+		stateTiddler= stateTitle= stdDeviation= stoke= story= storyTiddler=	%
+		storyview= strPayload= string= stripTitlePrefix= stroke-dasharray=	%
+		stroke-linecap= stroke-linejoin= stroke-miterlimit= stroke-opacity=	%
+		stroke-width= stroke= subfilter= subtiddler= suffix= t= tabsList=	%
+		tag= tagnew= tags= targetField= targetTiddler= tel= template=	%
+		template_name= testfield= text-anchor= text= then= tiddler=	%
+		tiddlerInfoState= tiddlerTitle= tls-cert= tls-key= to= toTitle=	%
+		toc-type= tooltip= transclusion= transform= tv-adjust-heading-level=	%
 		tv-default-heading-state= tv-heading-status-config-prefix=	%
 		tv-heading-status-config-title= tv-mode-configuration=	%
-		tv-show-missing-links= tw= tweetID= type= unchecked= unselectedText=	%
-		url= userClass= username= value= values= variable= version= viewBox=	%
-		widgetId= width= windowFeatures= windowName= writers= x= xmlns= y=	%
-		yourMessage= yourName=
+		tv-show-missing-links= tw= tweetID= unchecked= unselectedText= url=	%
+		userClass= username= values= variable= version= viewBox= widgetId=	%
+		windowFeatures= windowName= writers= x= xmlns= y= yourMessage=	%
+		yourName=	%
+			%
+		mode=block show=true show=false
 		//[cf]
+		words-4	= define end import rules whitespace
 
-		words-4	= define end import whitespace
-
-		chars-2	= <>[]{}()/$=#!*:;-
+		chars-2	= <>[]{}()/$=#!*:;-`
 		chars-4	= \
 	end
 	//[cf]
@@ -3246,16 +3281,22 @@ def languages
 		open-comment	= {-
 		close-comment	= -}
 
-	//[c]	https://stackoverflow.com/a/51062961/1658543
+		//[of]:words-1
+		//[c]https://stackoverflow.com/a/51062961/1658543
+		//[c]
+
 		words-1 = %
 		as case command effect else exposing if in infix jsonFalse	%
 		jsonNull jsonTrue left non of port right subscription then	%
 		type where
-
+		//[cf]
 		words-3	= False None True
+		//[of]:words-4
+		//[c]https://stackoverflow.com/a/51062961/1658543
+		//[c]
 
-	//[c]	https://stackoverflow.com/a/51062961/1658543
 		words-4	= alias class data import let module newtype type
+		//[cf]
 	end
 	//[cf]
 	//[of]:Go
@@ -3287,24 +3328,34 @@ def languages
 		open-comment	= {-
 		close-comment	= -}
 
-		words-1 = %
-		case do else if of then
+		words-1	= case do else if in of then
+		//[of]:words-2
+		//[c]Todo
+		//[c]
 
 		words-2 = %
-		Control.Concurrent Control.Monad.Error Control.Monad.Identity Control.Monad.Reader	%
-		Control.Monad.State Control.Monad.Writer	%
-		Data.Map Data.Maybe Prelude System.IO System.Process	%
-		evalState forkIO get getLine hGetLine hPutStr hPutStrLn hSetBinaryMode	%
-		main print put putStr putStrLn return runInteractiveCommand show terminateProcess
+		Control.Concurrent Control.Monad.Error Control.Monad.Identity	%
+		Control.Monad.Reader Control.Monad.State Control.Monad.Writer	%
+		Data.Map Data.Maybe Prelude System.IO System.Process evalState forkIO	%
+		get getLine hGetLine hPutStr hPutStrLn hSetBinaryMode main print put	%
+		putStr putStrLn return runInteractiveCommand show terminateProcess
+		//[cf]
+		//[of]:words-3
+		//[c]Todo
+		//[c]
 
-		words-3	= False None True
-		words-4	= class data deriving import in infix infixl infixr instance let module newtype qualified type where
+		words-3 = %
+		Bool ErrorT False Int Integer IO Just Maybe None Nothing	ReaderT Show	%
+		State StateT String True WriterT
+		//[cf]
+		//[of]:words-4
+		words-4 = %
+		class data deriving import infix infixl infixr instance let module	%
+		newtype qualified type where
 
-		//~ words-4 = %
-		//~ Bool ErrorT False Int Integer IO Just Maybe Nothing	%
-		//~ ReaderT Show State StateT String True WriterT
+		//[cf]
 
-		//~ chars-1	= ()[]{}:=-<>|\,
+		chars-1	= ()[]{}:=-<>|\,
 	end
 	//[cf]
 	//[of]:Ini
@@ -3406,7 +3457,7 @@ def languages
 
 		stylizer	= asm
 		line-comment	= ;
-		preprocessor	= %%
+		preprocessor = %%
 		hexa-prefix	= $
 
 		//[of]:words-1
@@ -3894,7 +3945,7 @@ def languages
 		stylizer	= tex
 		patterns	= *.tex;*.sty
 
-		line-comment	= %%
+		line-comment = %%
 		chars-1	= {}[]=
 
 		//[of]:~ Plain TeX
@@ -4249,7 +4300,6 @@ def languages
 		stylizer	= generic
 		patterns	= *.vb;*.bas
 
-
 		line-comment	= '
 		line-comment-2	= REM%_
 		hexa-prefix	= &H
@@ -4329,7 +4379,7 @@ def key-mappings
 		mark-all	= CTRL+M
 		unmark-all	= CTRL+SHIFT+M
 
-	//[c]	broken
+	//[c]	Seems to be broken
 		move-up	=
 		move-down	=
 
@@ -4379,7 +4429,7 @@ def key-mappings
 		tools-options	=
 		show-output	=
 
-	//[c]	broken
+	//[c]	Seems to be broken
 		window-next	=
 		window-previous	=
 
