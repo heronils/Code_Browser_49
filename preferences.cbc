@@ -114,11 +114,11 @@ def themes
 		//[c]
 		//[cf]
 
-		font-family	= Consolas
+		font-family	= Consolas, Lucida Sans Typewriter, Courier New, Monospace
 		font-size	= 12
 
-		title-font-family	= Consolas
-		tree-view-font-family	= Consolas
+		title-font-family	= Consolas, Lucida Sans Typewriter, Courier New, Monospace
+		tree-view-font-family	= Consolas, Lucida Sans Typewriter, Courier New, Monospace
 
 		word-1-font-style	= bold
 		word-4-font-style	= bold
