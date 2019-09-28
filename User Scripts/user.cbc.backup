@@ -1,3 +1,7 @@
+#[c]Backup of user.cbc.
+#[c]Code Browser overwrites that file, destroying the layout.
+#[c]
+
 def commands
 	#[of]:Navigate Next Section
 	def NavigateNextSection
