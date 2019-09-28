@@ -72,7 +72,9 @@ Overwrite the `user.cbs` (the scripts) and the `user.cbc` (connects the scripts 
 
 ## Keyboard shortcuts
 
-These are the most common shortcuts defined in the [Bob theme](#enable-the-color-scheme-optional). Edit them under *Key Mappings → Bob*. Those having a `*` behind them are only available when [the user scripts are enabled](#enable-the-user-scripts-optional).
+These are the most common shortcuts defined in the [Bob theme](#enable-the-color-scheme-optional). Edit them under *Key Mappings → Bob*.
+
+Those having a `*` behind them are only available when [the user scripts are enabled](#enable-the-user-scripts-optional). You can change these shortcuts in the `user.cbc`.
 
 ### Views
 
@@ -117,8 +119,6 @@ These are the most common shortcuts defined in the [Bob theme](#enable-the-color
 
 * `esc` – close any open dialog at the bottom or, if no dialog is open, close the current tab.
 * `alt` + `f4` – exit Code Browser. If there are dirty files you will be asked what to do with them.
-
-You can change the script shortcuts in the `user.cbc` and the other shortcuts under *Key Mappings* in the `preferences.cbc`.
 
 ## Credits
 
