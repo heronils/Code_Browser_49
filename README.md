@@ -20,7 +20,7 @@ What is so special about version 4.9? It was the last version that supported *re
 
 Therefore the behaviour since version 4.9 is not so pleasant when using indentation sensitive languages like [Python](https://www.python.org/) or [Nim](https://nim-lang.org/). We can just fold global classes and functions with it, otherwise we will have those indents inside of the sections.
 
-Another issue with versions since 4.9 is that `ctrl` + `shift` navigation inside of links now switches the level. For example when we have lists of links in lists of sections, then we can not navigate between sections any more, using `ctrl` + `shift` + (`up` or `down`).
+Another issue with versions since 4.9 is that `ctrl` + `shift` navigation inside of links now switches the level. For example when we have [lists of links in lists of sections](https://github.com/heronils/Indexmaker#the-code-file), then we can not navigate between sections any more, using `ctrl` + `shift` + (`up` or `down`).
 
 ## What do i find here?
 
