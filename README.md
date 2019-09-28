@@ -78,6 +78,8 @@ These are the most common shortcuts defined in the [Bob theme](#enable-the-color
 
 * `F4` to `F7` – enable simple or page or tree or browser view.
 
+*Notice that due to a bug in Code Browser you will not be able to navigate back to a previous file when you switch views inbetween. In that case you need to reopen that previous file manually.*
+
 ### Navigation
 
 * `alt` + (`up` or `down`) – navigate to the previous or next section or link.
@@ -101,6 +103,23 @@ These are the most common shortcuts defined in the [Bob theme](#enable-the-color
 * (`shift` +) `alt` + `x` \* – outcomment/unoutcomment the current line or the selection. Works recusively on sections.
 
 You can change the script shortcuts in the `user.cbc` and the other shortcuts under *Key Mappings* in the `preferences.cbc`.
+
+### Bookmarks
+
+* `ctrl` + `F2` – bookmark or unbookmark a line.
+* (`shift` +) `F2` – navigate to the next or previous bookmarked line. Bookmark navigation does not work across different files and bookmarks are not remembered between sessions.
+
+### Search and replace
+
+* `ctrl` + `r` – open the search and replace dialog.
+* `alt` + `r` – when the search dialog has the focus, select the first search result or replace and select the next search result.
+* `F3` – find the next search result, do not replace the current result.
+
+## Other
+
+* `esc` – close any open dialog at the bottom or, if no dialog is open, close the current tab.
+* `alt` + `f4` – exit Code Browser. If there are dirty files you will be asked what to do with them.
+
 
 ## Credits
 
