@@ -113,7 +113,7 @@ These are the most common shortcuts defined in the [Bob theme](#enable-the-color
 * `alt` + `r` – when the search dialog has the focus, select the first search result or replace and select the next search result.
 * `F3` – find the next search result, do not replace the current result.
 
-## Other
+### Other
 
 * `esc` – close any open dialog at the bottom or, if no dialog is open, close the current tab.
 * `alt` + `f4` – exit Code Browser. If there are dirty files you will be asked what to do with them.
