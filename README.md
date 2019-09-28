@@ -16,7 +16,7 @@ This is a backup of version 4.9. The current version is 6.6 and Marc Kerbiquet r
 
 What is so special about version 4.9? It was the last version that supported *relative indentation*. (I think) Marc removed this feature after version 4.9 because it restricted the performance of another new feature.
 
-*What is relative indentation? Example: You [fold](http://www.tibleiz.net/code-browser/code-folding.html) a class method in Python to a section. Then you indent the resulting blue section line by one tab. With relative indentation: The `def` keyword inside of the section will start at column 0. Without relative indentation (the default since version 4.9): This `def` keyword will start at column 1 (where it started before you folded it).*
+*What is relative indentation? Example: We [fold](http://www.tibleiz.net/code-browser/code-folding.html) a class method in Python to a section. Then we indent the resulting blue section line by one tab. With relative indentation: The `def` keyword inside of the section will start at column 0. Without relative indentation (the default since version 4.9): This `def` keyword will start at column 1 (where it started before we folded it).*
 
 Therefore the behaviour since version 4.9 is not so pleasant when using indentation sensitive languages like [Python](https://www.python.org/) or [Nim](https://nim-lang.org/). We can just fold global classes and functions with it, otherwise we will have those indents inside of the sections.
 
@@ -28,10 +28,10 @@ Here are the [original version 4.9 portables and the source code](#install-the-e
 
 Further my [configuration file](#enable-the-color-scheme-optional), which, amongst other things
 
-* defines a new color scheme, *Bob*, see the screenshot, edit it under *Themes → Bob*
-* defines some tools, edit them under *Tools*
-* sets page view (`F5`) as the default
-* per default turns on word wrapping and turns off elastic tabstops (because it does not play together with word wrapping)
+* defines a new color scheme, *Bob*, see the screenshot, edit it under *Themes → Bob*,
+* defines some tools, edit them under *Tools*,
+* sets page view (`F5`) as the default,
+* per default turns on word wrapping and turns off elastic tabstops (because it does not play together with word wrapping),
 * changes some [keyboard shortcuts](#keyboard-shortcuts).
 
 Further here are my [userscripts](#enable-the-user-scripts-optional), which provide extended functionality. See [Keyboard shortcuts](#keyboard-shortcuts) for what they do.
@@ -49,7 +49,7 @@ Choose the portable version fitting your OS from the `Setup` folder and [unzip](
 After [Installing the Editor](#install-the-editor), start the executable once. This will create the user config directories (or create them manually). They are located at
 
 * `$(HOME)/.code-browser-4` on Linux and
-* `\Documents and Settings\<you>\Application Data\code-browser-4` on Windows.
+* `\Documents and Settings\<You>\Application Data\code-browser-4` on Windows.
 
 *Customizing* → *Files* in the Code Browser docs explains how Code Browser loads its configuration files.
 
@@ -76,12 +76,12 @@ These are the most common shortcuts defined in the [Bob theme](#enable-the-color
 
 ### Views
 
-* `F4` to `F7` – enable simple or page or tree or browser view
+* `F4` to `F7` – enable simple or page or tree or browser view.
 
 ### Navigation
 
 * `alt` + (`up` or `down`) – navigate to the previous or next section or link.
-* `alt` + (`right` or `left`) – navigate into or out of sections and links
+* `alt` + (`right` or `left`) – navigate into or out of sections and links.
 * `ctrl` + `shift` + (`up` or `down`) – shortcut for typing `alt` + `left`, `alt` + (`up` or `down`), `alt` + `right`.
 * `ctrl` + `alt` + (`up` or `down`) \* – navigate to the previous or next paragraph. (paragraph = lines of code separated by empty lines). Pressing `shift` will also select the paragraph.
 
@@ -89,7 +89,7 @@ These are the most common shortcuts defined in the [Bob theme](#enable-the-color
 
 * `F12` – create a section. When text is selected, this will become the content of the section.
 * `shift` + `F12` – delete a section. Its contents will be moved to the current level.
-* `alt` + `enter` – edit the properties of a section or a link
+* `alt` + `enter` – edit the properties of a section or a link.
 
 ### Move code, fold and unfold sections
 
@@ -104,6 +104,6 @@ You can change the script shortcuts in the `user.cbc` and the other shortcuts un
 
 ## Credits
 
-Many Thanks go to [Marc Kerbiquet for creating this enjoyable editor and other cool tools](http://tibleiz.net/).
+Many thanks go to [Marc Kerbiquet for creating this enjoyable editor and other cool tools](http://tibleiz.net/).
 
 Written 2019-09-26 by [heronils](https://github.com/heronils?tab=repositories). Last update: 2019-09-28.
