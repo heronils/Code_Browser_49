@@ -28,8 +28,8 @@ Here are the [original version 4.9 portables and the source code](#install-the-e
 
 Further my [configuration file](#enable-the-color-scheme-optional), which, amongst other things
 
-* defines a new color scheme, *Bob*, see the screenshot, edit it under *Themes → Bob*,
-* defines some tools, edit them under *Tools*,
+* defines a new color scheme, *Bob*, see the screenshot, you can edit it under *Themes → Bob*,
+* defines some tools, you can edit them under *Tools*,
 * sets page view (`F5`) as the default,
 * per default turns on word wrapping and turns off elastic tabstops (because it does not play together with word wrapping),
 * changes some [keyboard shortcuts](#keyboard-shortcuts).
