@@ -11,12 +11,12 @@ scroll-speed	= 1
 fisheye-view	= true
 
 //[of]:Themes
-theme	= nils
+theme	= Bob
 
 def themes
-	//[of]:system
-	def system
-		//[of]:font
+	//[of]:System
+	def System
+		//[of]:Font
 		font-family	= Tahoma, Sans
 		font-size	= 10
 		font-style	= none
@@ -33,7 +33,7 @@ def themes
 		tree-view-font-size	= 10
 		tree-view-font-style	= none
 		//[cf]
-		//[of]:color
+		//[of]:Color
 		color	= text
 		normal-color	= text
 		text-back-color	= background
@@ -83,12 +83,14 @@ def themes
 		//[cf]
 	end
 	//[cf]
-	//[of]:nils
-	def nils
-		prototype	= themes.system
+	//[of]:Bob
+	//[c]Blue, Orange, Black
 
-		//[of]:font
-		//[of]:(Some Mono Font Families)
+	def Bob
+		prototype	= themes.System
+
+		//[of]:Font
+		//[of]:Some Mono Font Families
 		//[c]Anonymous Pro
 		//[c]BPmono
 		//[c]Bitstream Vera Sans Mono
@@ -124,7 +126,7 @@ def themes
 		word-4-font-style	= bold
 		char-4-font-style	= bold
 		//[cf]
-		//[of]color:color
+		//[of]color:Color
 		normal-color	= #666666
 		section-color	= #0033AA
 		section-back-color	= #FFFFFF
@@ -158,12 +160,14 @@ def themes
 		inactive-line-back-color	= #DFEFFF
 		//[cf]
 	end
-	//[cf]
-	//[of]:blue
-	def blue
-		prototype	= themes.system
 
-		//[of]:back-color
+//[l]:Bob´s Keyboard shortcuts:#Key Mappings/Bob
+	//[cf]
+	//[of]:Blue
+	def Blue
+		prototype	= themes.System
+
+		//[of]:Back-Color
 		description-back-color	= #C0C0CC
 		highlight-back-color	= #90A0E0
 		inactive-back-color	= #B8C8E0
@@ -173,7 +177,7 @@ def themes
 		text-back-color	= #E0E0EC
 		tree-view-back-color	= #E0E0EC
 		//[cf]
-		//[of]:color
+		//[of]:Color
 		char-4-color	= #DC503C
 		char-3-color	= #DC5080
 		char-2-color	= #8050DC
@@ -193,9 +197,9 @@ def themes
 		//[cf]
 	end
 	//[cf]
-	//[of]:dark-purple
-	def dark-purple
-		//[of]:back-color
+	//[of]:Dark-Purple
+	def Dark-Purple
+		//[of]:Back-Color
 		description-back-color	= #505068
 		highlight-back-color	= #606080
 		inactive-back-color	= #505070
@@ -205,7 +209,7 @@ def themes
 		text-back-color	= #404050
 		tree-view-back-color	= #404050
 		//[cf]
-		//[of]:color
+		//[of]:Color
 		bookmark-color	= #505498
 		breakpoint-color	= #406040
 		char-4-color	= #E08050
@@ -231,31 +235,31 @@ def themes
 		word-1-color	= #8080E0
 		workspace-color	= #505068
 		//[cf]
-		//[of]:font-family
+		//[of]:Font-Family
 		fixed-font-family	= Fixedsys, Bitstream Vera Sans Mono
 		font-family	= Arial, Luxi
 		tree-view-font-family	= Arial, Luxi
 		//[cf]
-		//[of]:font-size
+		//[of]:Font-Size
 		fixed-font-size	= 9
 		font-size	= 9
 		tree-view-font-size	= 9
 		//[cf]
-		//[of]:font-style
+		//[of]:Font-Style
 		fixed-font-style	= none
 		font-style	= bold
 		tree-view-font-style	= bold
 		//[cf]
-		//[of]:fore-color
+		//[of]:Fore-Color
 		tree-view-fore-color	= #8C8CB4
 		//[cf]
 	end
 	//[cf]
-	//[of]:eclipse
-	def eclipse
-		prototype	= themes.system
+	//[of]:Eclipse
+	def Eclipse
+		prototype	= themes.System
 
-		//[of]:color
+		//[of]:Color
 		char-4-color	= #DC503C
 		char-3-color	= #DC5080
 		char-2-color	= #8050DC
@@ -270,14 +274,14 @@ def themes
 		word-2-color	= #8050DC
 		word-1-color	= #7F0055
 		//[cf]
-		//[of]:font-style
+		//[of]:Font-Style
 		word-1-font-style	= bold
 		//[cf]
 	end
 	//[cf]
-	//[of]:paper
-	def paper
-		//[of]:back-color
+	//[of]:Paper
+	def Paper
+		//[of]:Back-Color
 		description-back-color	= medium
 		highlight-back-color	= medium
 		inactive-back-color	= inactive
@@ -287,7 +291,7 @@ def themes
 		text-back-color	= background
 		tree-view-back-color	= background
 		//[cf]
-		//[of]:color
+		//[of]:Color
 		bookmark-color	= #B0C0FF
 		breakpoint-color	= #F0A0A0
 		color	= text
@@ -299,31 +303,31 @@ def themes
 		section-color	= #283C78
 		workspace-color	= workspace
 		//[cf]
-		//[of]:font-family
+		//[of]:Font-Family
 		fixed-font-family	= Courier New, Bitstream Vera Sans Mono
 		font-family	= DejaVu Serif, Georgia
 		tree-view-font-family	= DejaVu Serif, Georgia
 		//[cf]
-		//[of]:font-size
+		//[of]:Font-Size
 		fixed-font-size	= 13
 		font-size	= 13
 		tree-view-font-size	= 13
 		//[cf]
-		//[of]:font-style
+		//[of]:Font-Style
 		comment-font-style	= italic
 		fixed-font-style	= none
 		font-style	= none
 		tree-view-font-style	= none
 		word-1-font-style	= bold
 		//[cf]
-		//[of]:fore-color
+		//[of]:Fore-Color
 		tree-view-fore-color	= text
 		//[cf]
 	end
 	//[cf]
-	//[of]:zenburn
-	def zenburn
-		//[of]:back-color
+	//[of]:Zenburn
+	def Zenburn
+		//[of]:Back-Color
 		description-back-color	= #464646
 		highlight-back-color	= #4C5F55
 		inactive-back-color	= #455878 //#545454
@@ -333,7 +337,7 @@ def themes
 		text-back-color	= #3F3F3F
 		tree-view-back-color	= #3F3F3F
 		//[cf]
-		//[of]:color
+		//[of]:Color
 		bookmark-color	= #505498
 		breakpoint-color	= #406040
 		char-4-color	= #E08050
@@ -359,21 +363,21 @@ def themes
 		word-1-color	= #F0DFAF
 		workspace-color	= #464646
 		//[cf]
-		//[of]:font-family
+		//[of]:Font-Family
 		fixed-font-family	= Courier New, Bitstream Vera Sans Mono
 		font-family	= Arial, Luxi
 		tree-view-font-family	= Arial, Luxi
 		//[cf]
-		//[of]:fore-color
+		//[of]:Fore-Color
 		tree-view-fore-color	= #DCDCCC
 		//[cf]
-		//[of]:font-style
+		//[of]:Font-Style
 		fixed-font-style	= none
 		font-style	= none
 		tree-view-font-style	= none
 		word-1-font-style	= bold
 		//[cf]
-		//[of]:font-size
+		//[of]:Font-Size
 		fixed-font-size	= 10
 		font-size	= 10
 		tree-view-font-size	= 10
@@ -401,11 +405,11 @@ def languages
 
 		//[of]:Tabs
 		//[c]'word-wrap = true' does not work with 'elastic-tabstops = true'
-		//[c]'show-tabs' is broken.
+		//[c]'show-tabs' seems to be broken.
 		//[c]
 
 		elastic-tabstops	= false
-		show-tabs	= true
+		show-tabs	= false
 		tabulation-size	= 4
 		expand-tabulation	= false
 		word-wrap	= true
@@ -4334,12 +4338,12 @@ def languages
 	//[cf]
 end
 //[cf]
-//[of]:Key Mappings
-key-mapping	= nils-style
+//[of]Key Mappings:Key Mappings
+key-mapping	= Bob-Style
 
 def key-mappings
-	//[of]windows-style:nils style
-	def nils-style
+	//[of]Bob:Bob
+	def Bob-Style
 		activate-text-window	=
 		activate-tree-window	=
 		view-one-pane	= F4
@@ -4445,8 +4449,8 @@ def key-mappings
 	//[cf]
 
 	// Original Key Mappings
-	//[of]:windows style
-	def windows-style
+	//[of]:Windows
+	def Windows-Style
 		//[of]:File
 		file-new	= CTRL+N
 		file-open-new	= CTRL+SHIFT+N
@@ -4553,9 +4557,9 @@ def key-mappings
 		//[cf]
 	end
 	//[cf]
-	//[of]:gtk style
-	def gtk-style
-		prototype	= key-mappings.windows-style
+	//[of]:GTK
+	def GTK-Style
+		prototype	= key-mappings.Windows-Style
 
 		edit-redo	= CTRL+SHIFT+Z
 
@@ -4572,7 +4576,7 @@ def key-mappings
 	//
 end
 //[cf]
-//[of]:User Tools
+//[of]:Tools
 //[c]Do not add underscores in names. Seems to be a bug.
 //[c]
 
