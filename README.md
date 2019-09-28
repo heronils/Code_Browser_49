@@ -102,7 +102,7 @@ Those having a `*` behind them are only available when [the user scripts are ena
 
 ### Outcomment and unoutcomment code
 
-* (`shift` +) `alt` + `x` \* – outcomment/unoutcomment the current line or the selection. Works recusively on sections.
+* (`shift` +) `alt` + `x` \* – outcomment/unoutcomment the current line or the selection. Works recursively on sections.
 
 ### Bookmarks
 
@@ -112,13 +112,13 @@ Those having a `*` behind them are only available when [the user scripts are ena
 ### Search and replace
 
 * `ctrl` + `r` – open the search and replace dialog.
-* `alt` + `r` – when the search dialog has the focus, select the first search result or replace and select the next search result.
-* `F3` – find the next search result, do not replace the current result.
+* `alt` + `r` – when the search dialog has the focus, select the first search result or replace the current and select the next search result.
+* (`shift` +) `F3` – find the next or previous search result, do not replace the current.
 
 ### Other
 
 * `esc` – close any open dialog at the bottom or, if no dialog is open, close the current tab.
-* `alt` + `f4` – exit Code Browser. If there are dirty files you will be asked what to do with them.
+* `alt` + `f4` – exit Code Browser. If there are dirty files Code Browser will show a prompt what to do.
 
 ## Credits
 
