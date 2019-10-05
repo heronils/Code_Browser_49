@@ -153,7 +153,7 @@ Content of the section
 Normal text
 </pre>
 
-The directives start with the language-specific metacharacter for [Comments](https://en.wikipedia.org/wiki/Comment_(computer_programming)). In this example, it is the hash sign – `#` – used by Code Browser by default for unknown file types, text, [Python](https://www.python.org/) and [Nim](https://nim -lang.org/). For javascript it is `//`, for CSS, which has no single-line comments, `/*` at the start of the line and `*/` at the end.
+The directives start with the language-specific metacharacter for [Comments](https://en.wikipedia.org/wiki/Comment_(computer_programming)). In this example, it is the hash sign – `#` – used by Code Browser by default for unknown file types, text, [Python](https://www.python.org/) and [Nim](https://nim-lang.org/). For javascript it is `//`, for CSS, which has no single-line comments, `/*` at the start of the line and `*/` at the end.
 
 Comment characters can be defined in `preferences.cbc` under *Languages* → *(Language)* with the variable `line-comment`. Or with `open-comment` and `close-comment` if the language does not have single-line comments. If all three are defined, `line-comment` is preferred.
 
