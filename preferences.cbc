@@ -10,11 +10,14 @@ layout	= page
 scroll-speed	= 1
 fisheye-view	= true
 
-//[of]:Themes
+//[l]:'Bob' Theme:#Themes/Bob
+//[l]:'Bob' Key Mappings:#Key Mappings/Bob
+
+//[of]Themes:Themes
 theme	= Bob
 
 def themes
-	//[of]:System
+	//[of]System:System
 	def System
 		//[of]:Font
 		font-family	= Tahoma, Sans
@@ -83,7 +86,7 @@ def themes
 		//[cf]
 	end
 	//[cf]
-	//[of]:Bob
+	//[of]Bob:Bob
 	//[c]Blue, Orange, Black
 
 	def Bob
@@ -156,12 +159,10 @@ def themes
 		inactive-back-color	= #99CCFF
 
 		//[c]Section background
-		highlight-back-color	= #DFEFFF
-		inactive-line-back-color	= #DFEFFF
+		highlight-back-color	= #F0F0E0
+		inactive-line-back-color	= #F0F0E0
 		//[cf]
 	end
-
-//[l]:Bob´s Keyboard shortcuts:#Key Mappings/Bob
 	//[cf]
 	//[of]:Blue
 	def Blue
@@ -386,6 +387,246 @@ def themes
 	//[cf]
 end
 //[cf]
+//[of]Key Mappings:Key Mappings
+key-mapping	= Bob-Style
+
+def key-mappings
+	//[of]Bob:Bob
+	def Bob-Style
+		activate-text-window	=
+		activate-tree-window	=
+
+		view-one-pane	= F4
+		page-view	= F5
+		view-tree	= F6
+		view-browser	= F7
+
+		word-wrap	=
+		elastic-tabstops	=
+		show-tabs	= CTRL+SHIFT+T
+		show-line-type	=
+		switch-zoom	=
+
+		file-new	= CTRL+N
+		file-open	= CTRL+O
+		file-open-new	= CTRL+SHIFT+N
+		file-save	= CTRL+S
+		file-save-all	= CTRL+SHIFT+S
+		file-save-as	=
+
+		edit-select-all	= CTRL+A
+		edit-cut	= CTRL+X
+		edit-copy	= CTRL+C
+		edit-copy-reference	= CTRL+ALT+C
+		edit-paste	= CTRL+V
+		edit-paste-raw-text	= CTRL+ALT+V
+		edit-delete	=
+		edit-undo	= CTRL+Z
+		edit-redo	= CTRL+Y
+		edit-upper	= CTRL+U
+		edit-lower	= CTRL+SHIFT+U
+		insert-comment	= F11
+		insert-text	= F10
+		insert-section	= F12
+		edit-unfold	= SHIFT+F12
+		insert-link	=
+		edit-properties	= ALT+RETURN
+		mark-all	= CTRL+M
+		unmark-all	= CTRL+SHIFT+M
+
+	//[c]	Seems to be broken
+		move-up	=
+		move-down	=
+
+		find	=
+		find-next	= F3
+		find-previous	= SHIFT+F3
+		find-all	=
+		find-in-files	= CTRL+SHIFT+F
+		incremental-search	=
+		find-replace	= CTRL+R
+		find-replace-in-files	= CTRL+SHIFT+R
+		find-replace-all	=
+		show-search-results	=
+
+		go-back	= ALT+LEFT
+		go-enter	= ALT+RIGHT
+		go-next	= CTRL+SHIFT+DOWN
+		go-previous	= CTRL+SHIFT+UP
+		goto-line	= CTRL+G
+		goto-matching-bracket	= CTRL+B
+		select-matching-bracket	= CTRL+SHIFT+B
+		go-page-1	=
+		go-page-2	=
+		go-page-3	=
+		go-page-4	=
+		go-page-5	=
+		go-page-6	=
+		go-page-7	=
+		go-page-8	=
+		go-page-9	=
+		go-next-error	=
+		go-previous-error	=
+		go-open-in-new-tab	= CTRL+T
+		go-open-target-in-new-tab	=
+
+		toggle-bookmark	= CTRL+F2
+		goto-next-bookmark	= F2
+		goto-previous-bookmark	= SHIFT+F2
+
+		open-cmdline-preferences	=
+		open-global-preferences	=
+		open-global-languages	=
+		open-user-preferences	=
+		open-user-languages	=
+
+		tools-break	=
+		tools-options	=
+		show-output	=
+
+	//[c]	Seems to be broken
+		window-next	=
+		window-previous	=
+
+		window-clone	=
+		window-close	=
+		window-close-dialog	=
+		window-close-dialog-or-window	= ESCAPE
+		window-windows	=
+		file-files	=
+
+		exit	= CTRL+F4
+	end
+	//[cf]
+
+	//( Original Key Mappings
+	//[of]:Windows
+	def Windows-Style
+		//[of]:File
+		file-new	= CTRL+N
+		file-open-new	= CTRL+SHIFT+N
+		file-open	= CTRL+O
+		file-save	= CTRL+S
+		file-save-as	=
+		file-save-all	= CTRL+SHIFT+S
+		file-files	=
+		exit	= CTRL+Q
+		//[cf]
+		//[of]:Edit
+		edit-undo	= CTRL+Z
+		edit-redo	= CTRL+Y
+		edit-cut	= CTRL+X
+		edit-copy	= CTRL+C
+		edit-paste	= CTRL+V
+		edit-delete	=
+		edit-select-all	= CTRL+A
+		edit-copy-reference	=
+		edit-paste-raw-text	=
+		toggle-bookmark	= CTRL+F2
+		edit-upper	= CTRL+SHIFT+U
+		edit-lower	= CTRL+U
+		edit-unfold	= CTRL+B
+		edit-properties	= ALT+RETURN
+		//[cf]
+		//[of]:Search
+		find	= CTRL+F
+		find-all	= CTRL+H
+		find-next	= F3
+		find-previous	= SHIFT+F3
+		find-replace	= CTRL+R
+		find-replace-all	= CTRL+SHIFT+R
+		find-in-files	=
+		find-replace-in-files	=
+		incremental-search	= CTRL+I
+		mark-all	= CTRL+M
+		unmark-all	= CTRL+SHIFT+M
+		//[cf]
+		//[of]:View
+		word-wrap	= CTRL+W
+		elastic-tabstops	= CTRL+L
+		show-tabs	= CTRL+F10
+		show-line-type	= CTRL+F11
+		switch-zoom	= ALT+END
+		view-one-pane	= ALT+1
+		view-browser	= ALT+2
+		view-tree	= ALT+3
+		page-view	= ALT+4
+		show-output	= ALT+X
+		show-search-results	= ALT+Z
+		move-up	= ALT+PAGE UP
+		move-down	= ALT+PAGE DOWN
+		//[cf]
+		//[of]:Go
+		go-back	= ALT+LEFT
+		go-enter	= ALT+RIGHT
+		go-open-in-new-tab	= CTRL+J
+		go-open-target-in-new-tab	= CTRL+T
+		go-next	= CTRL+SHIFT+DOWN
+		go-previous	= CTRL+SHIFT+UP
+		go-next-error	= F4
+		go-previous-error	= SHIFT+F4
+		go-page-1	= CTRL+NUMPAD 1
+		go-page-2	= CTRL+NUMPAD 2
+		go-page-3	= CTRL+NUMPAD 3
+		go-page-4	= CTRL+NUMPAD 4
+		go-page-5	= CTRL+NUMPAD 5
+		go-page-6	= CTRL+NUMPAD 6
+		go-page-7	= CTRL+NUMPAD 7
+		go-page-8	= CTRL+NUMPAD 8
+		go-page-9	= CTRL+NUMPAD 9
+		goto-line	= CTRL+G
+		goto-matching-bracket	=
+		select-matching-bracket	=
+		goto-next-bookmark	= F2
+		goto-previous-bookmark	= SHIFT+F2
+		activate-tree-window	= ALT+INSERT
+		activate-text-window	= ALT+HOME
+		//[cf]
+		//[of]:Insert
+		insert-text	= CTRL+SHIFT+T
+		insert-comment	= CTRL+SHIFT+C
+		insert-section	= F12
+		insert-link	= CTRL+SHIFT+L
+		//[cf]
+		//[of]:Tools
+		tools-options	=
+		tools-break	= CTRL+BREAK
+		open-global-preferences	=
+		open-user-preferences	=
+		open-cmdline-preferences	=
+		open-global-languages	=
+		open-user-languages	=
+		//[cf]
+		//[of]:Window
+		window-close	= CTRL+F4
+		window-clone	= CTRL+K
+		window-close-dialog	= ESCAPE
+		window-close-dialog-or-window	=
+		window-next	=
+		window-previous	=
+		window-windows	=
+		//[cf]
+	end
+	//[cf]
+	//[of]:GTK
+	def GTK-Style
+		prototype	= key-mappings.Windows-Style
+
+		edit-redo	= CTRL+SHIFT+Z
+
+		find-next	= CTRL+G
+		find-previous	= CTRL+SHIFT+G
+
+		goto-line	= CTRL+L
+		elastic-tabstops	= CTRL+SHIFT+B
+
+		word-wrap	= CTRL+SHIFT+W
+		window-close	= CTRL+W
+	end
+	//[cf]
+	//)
+end
+//[cf]
 //[of]:Languages
 def languages
 	//[of]:default
@@ -403,16 +644,16 @@ def languages
 		first-line-patterns	=
 		extra-id-chars	= [_A-Za-z0-9-=]
 
-		//[of]:Tabs
-		//[c]'word-wrap = true' does not work with 'elastic-tabstops = true'
-		//[c]'show-tabs' seems to be broken.
+		//[of]:Indents and word wrapping
+		//[c]'elastic-tabstops = true' only has an effect if 'word-wrap' is set to
+		//[c]'false'.
 		//[c]
 
 		elastic-tabstops	= false
-		show-tabs	= false
+		word-wrap	= true
+
 		tabulation-size	= 4
 		expand-tabulation	= false
-		word-wrap	= true
 		//[cf]
 		//[of]:Comments
 		line-comment	= #
@@ -475,6 +716,7 @@ def languages
 	//[of]:Default-Code
 	def Default-Code
 		prototype	= languages.Default-String
+
 		hexa-prefix	= 0x
 		chars-1	= ()[]{}
 	end
@@ -573,6 +815,9 @@ def languages
 	def Code-Browser-Script
 		prototype	= languages.Default-Code
 		patterns	= *.cbs
+
+		elastic-tabstops	= true
+		word-wrap	= false
 
 		line-comment	= //
 		char-delimiter	=
@@ -1409,8 +1654,8 @@ def languages
 		close-comment-2	= >
 
 		//[of]:words-1
-		//[c]html tags compiled from https://developer.mozilla.org/de/docs/Web/HTML/HTML5/HTML5_element_list
-		//[c]svg tags compiled from https://www.w3.org/TR/SVG/eltindex.html
+		//[c]HTML tags compiled from https://developer.mozilla.org/de/docs/Web/HTML/HTML5/HTML5_element_list
+		//[c]SVG tags compiled from https://www.w3.org/TR/SVG/eltindex.html
 		//[c]
 
 		words-1 = %
@@ -1570,7 +1815,7 @@ def languages
 		compile error escape findall finditer fullmatch match purge search	%
 		split sub subn	%
 		ASCII DEBUG IGNORECASE LOCALE MULTILINE DOTALL VERBOSE	%
-			%
+		encoding end flush	%
 			%
 		ArithmeticError AssertionError AttributeError BaseException	%
 		BlockingIOError BrokenPipeError BufferError BytesWarning	%
@@ -2987,7 +3232,7 @@ def languages
 		False None True
 
 		words-4 = %
-		async await break class continue def del f from global import	%
+		async await break class continue def del do from global import	%
 		nonlocal raise return yield
 
 		chars-1	= !%%&/\()[]{}<>=|@^,;.:-+*~
@@ -3057,10 +3302,10 @@ def languages
 		zip_code:
 		//[cf]
 		//[of]:words-2
-		//[c]html tags compiled from https://developer.mozilla.org/de/docs/Web/HTML/HTML5/HTML5_element_list
+		//[c]HTML tags compiled from https://developer.mozilla.org/de/docs/Web/HTML/HTML5/HTML5_element_list
 		//[c]HTML attributes compiled from https://developer.mozilla.org/de/docs/Web/HTML/Attributes
-		//[c]svg tags compiled from https://www.w3.org/TR/SVG/eltindex.html
-		//[c]widget tags compiled from https://tiddlywiki.com/#Widgets
+		//[c]SVG tags compiled from https://www.w3.org/TR/SVG/eltindex.html
+		//[c]Widget tags compiled from https://tiddlywiki.com/#Widgets
 		//[c]TiddlyWiki5 attributes extracted from the tiddlyWiki5 codebase via script
 		//[c](and manually added some attribute names)
 
@@ -3449,8 +3694,8 @@ def languages
 		//~ close-comment	= -->
 
 	//[c]	Uncomment this if you want to fold at java level
-		//~ line-comment	= '
-		//~ sublanguage-in-subsections	= true
+		line-comment	= '
+		sublanguage-in-subsections	= true
 	end
 	//[cf]
 	//[of]:Assembler x86
@@ -3657,8 +3902,8 @@ def languages
 		//~ close-comment	= -->
 
 	//[c]	Uncomment this if you want to fold at java level
-		//~ line-comment	= //
-		//~ sublanguage-in-subsections	= true
+		line-comment	= //
+		sublanguage-in-subsections	= true
 	end
 	//[cf]
 	//[of]:Lua
@@ -4336,244 +4581,6 @@ def languages
 	end
 	//[cf]
 	//[cf]
-end
-//[cf]
-//[of]Key Mappings:Key Mappings
-key-mapping	= Bob-Style
-
-def key-mappings
-	//[of]Bob:Bob
-	def Bob-Style
-		activate-text-window	=
-		activate-tree-window	=
-		view-one-pane	= F4
-		page-view	= F5
-		view-tree	= F6
-		view-browser	= F7
-		word-wrap	=
-		elastic-tabstops	=
-		show-tabs	= CTRL+SHIFT+T
-		show-line-type	=
-		switch-zoom	=
-
-		file-new	= CTRL+N
-		file-open	= CTRL+O
-		file-open-new	= CTRL+SHIFT+N
-		file-save	= CTRL+S
-		file-save-all	= CTRL+SHIFT+S
-		file-save-as	=
-
-		edit-select-all	= CTRL+A
-		edit-cut	= CTRL+X
-		edit-copy	= CTRL+C
-		edit-copy-reference	= CTRL+ALT+C
-		edit-paste	= CTRL+V
-		edit-paste-raw-text	= CTRL+ALT+V
-		edit-delete	=
-		edit-undo	= CTRL+Z
-		edit-redo	= CTRL+Y
-		edit-upper	= CTRL+U
-		edit-lower	= CTRL+SHIFT+U
-		insert-comment	= F11
-		insert-text	= F10
-		insert-section	= F12
-		edit-unfold	= SHIFT+F12
-		insert-link	=
-		edit-properties	= ALT+RETURN
-		mark-all	= CTRL+M
-		unmark-all	= CTRL+SHIFT+M
-
-	//[c]	Seems to be broken
-		move-up	=
-		move-down	=
-
-		find	=
-		find-next	= F3
-		find-previous	= SHIFT+F3
-		find-all	=
-		find-in-files	= CTRL+SHIFT+F
-		incremental-search	=
-		find-replace	= CTRL+R
-		find-replace-in-files	= CTRL+SHIFT+R
-		find-replace-all	=
-		show-search-results	=
-
-		go-back	= ALT+LEFT
-		go-enter	= ALT+RIGHT
-		go-next	= CTRL+SHIFT+DOWN
-		go-previous	= CTRL+SHIFT+UP
-		goto-line	= CTRL+G
-		goto-matching-bracket	= CTRL+B
-		select-matching-bracket	= CTRL+SHIFT+B
-		go-page-1	=
-		go-page-2	=
-		go-page-3	=
-		go-page-4	=
-		go-page-5	=
-		go-page-6	=
-		go-page-7	=
-		go-page-8	=
-		go-page-9	=
-		go-next-error	=
-		go-previous-error	=
-		go-open-in-new-tab	= CTRL+T
-		go-open-target-in-new-tab	=
-
-		toggle-bookmark	= CTRL+F2
-		goto-next-bookmark	= F2
-		goto-previous-bookmark	= SHIFT+F2
-
-		open-cmdline-preferences	=
-		open-global-preferences	=
-		open-global-languages	=
-		open-user-preferences	=
-		open-user-languages	=
-
-		tools-break	=
-		tools-options	=
-		show-output	=
-
-	//[c]	Seems to be broken
-		window-next	=
-		window-previous	=
-
-		window-clone	=
-		window-close	=
-		window-close-dialog	=
-		window-close-dialog-or-window	= ESCAPE
-		window-windows	=
-		file-files	=
-
-		exit	= CTRL+F4
-	end
-	//[cf]
-
-	// Original Key Mappings
-	//[of]:Windows
-	def Windows-Style
-		//[of]:File
-		file-new	= CTRL+N
-		file-open-new	= CTRL+SHIFT+N
-		file-open	= CTRL+O
-		file-save	= CTRL+S
-		file-save-as	=
-		file-save-all	= CTRL+SHIFT+S
-		file-files	=
-		exit	= CTRL+Q
-		//[cf]
-		//[of]:Edit
-		edit-undo	= CTRL+Z
-		edit-redo	= CTRL+Y
-		edit-cut	= CTRL+X
-		edit-copy	= CTRL+C
-		edit-paste	= CTRL+V
-		edit-delete	=
-		edit-select-all	= CTRL+A
-		edit-copy-reference	=
-		edit-paste-raw-text	=
-		toggle-bookmark	= CTRL+F2
-		edit-upper	= CTRL+SHIFT+U
-		edit-lower	= CTRL+U
-		edit-unfold	= CTRL+B
-		edit-properties	= ALT+RETURN
-		//[cf]
-		//[of]:Search
-		find	= CTRL+F
-		find-all	= CTRL+H
-		find-next	= F3
-		find-previous	= SHIFT+F3
-		find-replace	= CTRL+R
-		find-replace-all	= CTRL+SHIFT+R
-		find-in-files	=
-		find-replace-in-files	=
-		incremental-search	= CTRL+I
-		mark-all	= CTRL+M
-		unmark-all	= CTRL+SHIFT+M
-		//[cf]
-		//[of]:View
-		word-wrap	= CTRL+W
-		elastic-tabstops	= CTRL+L
-		show-tabs	= CTRL+F10
-		show-line-type	= CTRL+F11
-		switch-zoom	= ALT+END
-		view-one-pane	= ALT+1
-		view-browser	= ALT+2
-		view-tree	= ALT+3
-		page-view	= ALT+4
-		show-output	= ALT+X
-		show-search-results	= ALT+Z
-		move-up	= ALT+PAGE UP
-		move-down	= ALT+PAGE DOWN
-		//[cf]
-		//[of]:Go
-		go-back	= ALT+LEFT
-		go-enter	= ALT+RIGHT
-		go-open-in-new-tab	= CTRL+J
-		go-open-target-in-new-tab	= CTRL+T
-		go-next	= CTRL+SHIFT+DOWN
-		go-previous	= CTRL+SHIFT+UP
-		go-next-error	= F4
-		go-previous-error	= SHIFT+F4
-		go-page-1	= CTRL+NUMPAD 1
-		go-page-2	= CTRL+NUMPAD 2
-		go-page-3	= CTRL+NUMPAD 3
-		go-page-4	= CTRL+NUMPAD 4
-		go-page-5	= CTRL+NUMPAD 5
-		go-page-6	= CTRL+NUMPAD 6
-		go-page-7	= CTRL+NUMPAD 7
-		go-page-8	= CTRL+NUMPAD 8
-		go-page-9	= CTRL+NUMPAD 9
-		goto-line	= CTRL+G
-		goto-matching-bracket	=
-		select-matching-bracket	=
-		goto-next-bookmark	= F2
-		goto-previous-bookmark	= SHIFT+F2
-		activate-tree-window	= ALT+INSERT
-		activate-text-window	= ALT+HOME
-		//[cf]
-		//[of]:Insert
-		insert-text	= CTRL+SHIFT+T
-		insert-comment	= CTRL+SHIFT+C
-		insert-section	= F12
-		insert-link	= CTRL+SHIFT+L
-		//[cf]
-		//[of]:Tools
-		tools-options	=
-		tools-break	= CTRL+BREAK
-		open-global-preferences	=
-		open-user-preferences	=
-		open-cmdline-preferences	=
-		open-global-languages	=
-		open-user-languages	=
-		//[cf]
-		//[of]:Window
-		window-close	= CTRL+F4
-		window-clone	= CTRL+K
-		window-close-dialog	= ESCAPE
-		window-close-dialog-or-window	=
-		window-next	=
-		window-previous	=
-		window-windows	=
-		//[cf]
-	end
-	//[cf]
-	//[of]:GTK
-	def GTK-Style
-		prototype	= key-mappings.Windows-Style
-
-		edit-redo	= CTRL+SHIFT+Z
-
-		find-next	= CTRL+G
-		find-previous	= CTRL+SHIFT+G
-
-		goto-line	= CTRL+L
-		elastic-tabstops	= CTRL+SHIFT+B
-
-		word-wrap	= CTRL+SHIFT+W
-		window-close	= CTRL+W
-	end
-	//[cf]
-	//
 end
 //[cf]
 //[of]:Tools

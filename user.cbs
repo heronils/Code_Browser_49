@@ -1,9 +1,12 @@
-//[c]I am at the start of rewriting this. Try not to understand it.
+//[c]I am at the start of rewriting this.
 //[c]
-//[c]However, the scripts work, except that the Outcomment/Unoutcomment
-//[c]Selection scripts have a bug - they generate invalid code when folding
-//[c]languages like CSS, which have no single-line comments. But they work
-//[c]fine for languages which have single line comments.
+//[c]Currently the scripts work, except that the Outcomment/Unoutcomment
+//[c]Selection scripts have a bug - they generate invalid code when multiple
+//[c]outcommenting in languages like CSS which have no single-line comments.
+//[c]
+//[c]Planning to improve moving Selection left/right
+//[c]
+//[c]Planning to improve Paragraph folding
 //[c]
 
 //[of]:(Old)
@@ -30,13 +33,13 @@
 //[c]- = Nothing
 //[c]
 //[c]â†“ Syntax
-//[c]â†’ = 'returns'
-//[c]â†’â†’ = 'yields'
+//[c]-> = 'returns'
+//[c]->-> = 'yields'
 //[c]`name` = 'see the thing called `name`'
 //[c]! = The function has a requirement in order to work properly
 //[cf]
 
-//[of]B_do_each_add_left	Block -> String -> nil:B_do_each_add_left	|	B â†’ s â†’ -	|
+//[of]B_do_each_add_left	Block -> String -> nil:B_do_each_add_left	|	B -> s -> -	|
 //[c]
 //[c]	Add string left to each line of TextBlock.
 //[c]
@@ -46,7 +49,7 @@ function B_do_each_add_left(B, str)
 		BY_do_add_left(B, y, str)
 	end
 //[cf]
-//[of]B_do_each_cut_left_if_starts_with	Block -> String -> nil:B_do_each_cut_left_if_starts_with	|	B â†’ s â†’ -	|
+//[of]B_do_each_cut_left_if_starts_with	Block -> String -> nil:B_do_each_cut_left_if_starts_with	|	B -> s -> -	|
 //[c]
 //[c]	Cut string left from each line in TextBlock if line starts with
 //[c]	string.
@@ -57,7 +60,7 @@ function B_do_each_cut_left_if_starts_with(B, str)
 		BY_do_cut_left_if_starts_with(B, y, str)
 	end
 //[cf]
-//[of]B_do_outc_all	Block -> nil:B_do_outc_all	|	B â†’ -	|
+//[of]B_do_outc_all	Block -> nil:B_do_outc_all	|	B -> -	|
 //[c]
 //[c]	Outcomment each line in TextBlock.
 //[c]
@@ -67,7 +70,7 @@ function B_do_outc_all(B)
 		BY_do_outc(B, y)
 	end
 //[cf]
-//[of]B_do_unoutc_all	Block -> nil:B_do_unoutc_all	|	B â†’ -	|
+//[of]B_do_unoutc_all	Block -> nil:B_do_unoutc_all	|	B -> -	|
 //[c]
 //[c]	Unoutcomment each line in TextBlock.
 //[c]
@@ -77,7 +80,7 @@ function B_do_unoutc_all(B)
 		BY_do_unoutc(B, y)
 	end
 //[cf]
-//[of]BY_do_add_left	Block -> Y -> String -> nil:BY_do_add_left	|	B â†’ y â†’ s â†’ -	|
+//[of]BY_do_add_left	Block -> Y -> String -> nil:BY_do_add_left	|	B -> y -> s -> -	|
 //[c]
 //[c]	In TextBlock, add string left to line at Y.
 //[c]
@@ -85,7 +88,7 @@ function B_do_unoutc_all(B)
 function BY_do_add_left(B, Y, str)
 	B setRowText(Y, str + B rowText(Y))
 //[cf]
-//[of]BY_do_cut_left_if_starts_with	Block -> Y -> String -> nil:BY_do_cut_left_if_starts_with	|	B â†’ y â†’ s â†’ -	|
+//[of]BY_do_cut_left_if_starts_with	Block -> Y -> String -> nil:BY_do_cut_left_if_starts_with	|	B -> y -> s -> -	|
 //[c]
 //[c]	In TextBlock, cut string from line at Y if line starts with string.
 //[c]
@@ -93,7 +96,7 @@ function BY_do_add_left(B, Y, str)
 function BY_do_cut_left_if_starts_with(B, Y, str)
 	B setRowText(Y, cut_left_if_starts_with(B rowText(Y), str))
 //[cf]
-//[of]BY_do_outc	Block -> Y -> nil:BY_do_outc	|	B â†’ y â†’ -	|
+//[of]BY_do_outc	Block -> Y -> nil:BY_do_outc	|	B -> y -> -	|
 //[c]
 //[c]	In TextBlock, outcomment line at Y.
 //[c]
@@ -109,7 +112,7 @@ function BY_do_outc(B, Y)
 				B rowText(Y), false))
 	end
 //[cf]
-//[of]BY_do_unoutc	Block -> Y -> nil:BY_do_unoutc	|	B â†’ y â†’ -	|
+//[of]BY_do_unoutc	Block -> Y -> nil:BY_do_unoutc	|	B -> y -> -	|
 //[c]
 //[c]	In TextBlock, unoutcomment line at Y.
 //[c]
@@ -125,7 +128,7 @@ function BY_do_unoutc(B, Y)
 				B rowText(Y), false))
 	end
 //[cf]
-//[of]BY_is_cb_sep	Block -> Y -> Bool:BY_is_cb_sep	|	B â†’ y â†’ b	|
+//[of]BY_is_cb_sep	Block -> Y -> Bool:BY_is_cb_sep	|	B -> y -> b	|
 //[c]
 //[c]	In TextBlock, if line at Y is opener or closer of a code block.
 //[c]
@@ -133,7 +136,7 @@ function BY_do_unoutc(B, Y)
 function BY_is_cb_sep(B, Y)
 	return is_cb_sep(B rowText(Y)) and BY_is_desc_or_text(B, Y)
 //[cf]
-//[of]BY_is_desc	Block -> Y -> Bool	shortcut for Code Browser function:BY_is_desc	|	B â†’ y â†’ b	|
+//[of]BY_is_desc	Block -> Y -> Bool	shortcut for Code Browser function:BY_is_desc	|	B -> y -> b	|
 //[c]
 //[c]	In TextBlock, if line at Y is description.
 //[c]
@@ -141,7 +144,7 @@ function BY_is_cb_sep(B, Y)
 function BY_is_desc(B, Y)
 	return (B rowType(Y) == lt_comment)
 //[cf]
-//[of]BY_is_desc_or_text	Block -> Y -> Bool:BY_is_desc_or_text	|	B â†’ y â†’ b	|
+//[of]BY_is_desc_or_text	Block -> Y -> Bool:BY_is_desc_or_text	|	B -> y -> b	|
 //[c]
 //[c]	In TextBlock, if line at Y is description or text.
 //[c]
@@ -149,7 +152,7 @@ function BY_is_desc(B, Y)
 function BY_is_desc_or_text(B, Y)
 	return BY_is_desc(B, Y) or BY_is_text(B, Y)
 //[cf]
-//[of]BY_is_just_ws	Block -> Y -> Bool:BY_is_just_ws	|	B â†’ y â†’ b	|
+//[of]BY_is_just_ws	Block -> Y -> Bool:BY_is_just_ws	|	B -> y -> b	|
 //[c]
 //[c]	In TextBlock, if line at Y is just whitespace.
 //[c]
@@ -157,7 +160,7 @@ function BY_is_desc_or_text(B, Y)
 function BY_is_just_ws(B, Y)
 	return BY_not_sec(B, Y) and BY_not_link(B, Y) and is_just_ws(B rowText(Y))
 //[cf]
-//[of]BY_is_link	Block -> Y -> Bool	shortcut for Code Browser function:BY_is_link	|	B â†’ y â†’ b	|
+//[of]BY_is_link	Block -> Y -> Bool	shortcut for Code Browser function:BY_is_link	|	B -> y -> b	|
 //[c]
 //[c]	In TextBlock, if line at Y is link.
 //[c]
@@ -165,7 +168,7 @@ function BY_is_just_ws(B, Y)
 function BY_is_link(B, Y)
 	return (B rowType(Y) == lt_link)
 //[cf]
-//[of]BY_is_sec	Block -> Y -> Bool	shortcut for Code Browser function:BY_is_sec	|	B â†’ y â†’ b	|
+//[of]BY_is_sec	Block -> Y -> Bool	shortcut for Code Browser function:BY_is_sec	|	B -> y -> b	|
 //[c]
 //[c]	In TextBlock, if line at Y is section.
 //[c]
@@ -173,7 +176,7 @@ function BY_is_link(B, Y)
 function BY_is_sec(B, Y)
 	return (B rowType(Y) == lt_section)
 //[cf]
-//[of]BY_is_text	Block -> Y -> Bool	shortcut for Code Browser function:BY_is_text	|	B â†’ y â†’ b	|
+//[of]BY_is_text	Block -> Y -> Bool	shortcut for Code Browser function:BY_is_text	|	B -> y -> b	|
 //[c]
 //[c]	In TextBlock, if line at Y is text.
 //[c]
@@ -181,7 +184,7 @@ function BY_is_sec(B, Y)
 function BY_is_text(B, Y)
 	return (B rowType(Y) == lt_text)
 //[cf]
-//[of]BY_not_cb_sep	Block -> Y -> Bool	shortcut:BY_not_cb_sep	|	B â†’ y â†’ b	|
+//[of]BY_not_cb_sep	Block -> Y -> Bool	shortcut:BY_not_cb_sep	|	B -> y -> b	|
 //[c]
 //[c]	In TextBlock, if line at Y is not opener and not closer of a
 //[c]	code block.
@@ -190,7 +193,7 @@ function BY_is_text(B, Y)
 function BY_not_cb_sep(B, Y)
 	return not BY_is_cb_sep(B, Y)
 //[cf]
-//[of]BY_not_cb_sep	Block -> Y -> Bool	shortcut:BY_not_desc	|	B â†’ y â†’ b	|
+//[of]BY_not_cb_sep	Block -> Y -> Bool	shortcut:BY_not_desc	|	B -> y -> b	|
 //[c]
 //[c]	In TextBlock, if line at Y is not description.
 //[c]
@@ -198,7 +201,7 @@ function BY_not_cb_sep(B, Y)
 function BY_not_desc(B, Y)
 	return not BY_is_desc(B, Y)
 //[cf]
-//[of]BY_not_just_ws	Block -> Y -> Bool	shortcut:BY_not_just_ws	|	B â†’ y â†’ b	|
+//[of]BY_not_just_ws	Block -> Y -> Bool	shortcut:BY_not_just_ws	|	B -> y -> b	|
 //[c]
 //[c]	In TextBlock, if line at Y is not just whitespace.
 //[c]
@@ -206,7 +209,7 @@ function BY_not_desc(B, Y)
 function BY_not_just_ws(B, Y)
 	return not BY_is_just_ws(B, Y)
 //[cf]
-//[of]BY_not_link	Block -> Y -> Bool	shortcut:BY_not_link	|	B â†’ y â†’ b	|
+//[of]BY_not_link	Block -> Y -> Bool	shortcut:BY_not_link	|	B -> y -> b	|
 //[c]
 //[c]	In TextBlock, if line at Y is not link.
 //[c]
@@ -214,7 +217,7 @@ function BY_not_just_ws(B, Y)
 function BY_not_link(B, Y)
 	return not BY_is_link(B, Y)
 //[cf]
-//[of]BY_not_sec	Block -> Y -> Bool	shortcut:BY_not_sec	|	B â†’ y â†’ b	|
+//[of]BY_not_sec	Block -> Y -> Bool	shortcut:BY_not_sec	|	B -> y -> b	|
 //[c]
 //[c]	In TextBlock, if line at Y is not section.
 //[c]
@@ -223,14 +226,14 @@ function BY_not_sec(B, Y)
 	return not BY_is_sec(B, Y)
 //[cf]
 
-//[of]choose_first_non_nil:FirstNotNil	|	x â†’ x â†’ x	|
+//[of]choose_first_non_nil:FirstNotNil	|	x -> x -> x	|
 function FirstNotNil(a, b)
 	if a isNil
 		return b
 	end
 	return a
 //[cf]
-//[of]Codeblock	Codeblock	has rule:Codeblock!	|	S â†’ y â†’ y â†’ Cb	|		|
+//[of]Codeblock	Codeblock	has rule:Codeblock!	|	S -> y -> y -> Cb	|		|
 //[of]doc:doc
 //[of]1:0
 //[c]
@@ -419,7 +422,7 @@ function FirstNotNil(a, b)
 //[cf]
 
 //[c]Requirements:
-//[c]* The Section ends with an empty line = Use â†’active_normed_S. This is relevant if the user presses eg. CTRL+A and then quick-folds.
+//[c]* The Section ends with an empty line = Use ->active_normed_S. This is relevant if the user presses eg. CTRL+A and then quick-folds.
 //[c]* y must be the start of a code block and y2 must be the end.
 //[c]
 
@@ -502,7 +505,7 @@ class Codeblock
 		return self
 	//
 //[cf]
-//[of]cut_left_if_starts_with	String -> String -> String:cut_left_if_starts_with	|	s â†’ s â†’ s	|
+//[of]cut_left_if_starts_with	String -> String -> String:cut_left_if_starts_with	|	s -> s -> s	|
 //[c]
 //[c]	If string starts with string 2, cut string 2 from start of string.
 //[c]
@@ -515,7 +518,7 @@ function cut_left_if_starts_with(str, str2)
 		return str
 	end
 //[cf]
-//[of]cut_right_if_ends_with	String -> String -> String:cut_right_if_ends_with	|	s â†’ s â†’ s	|
+//[of]cut_right_if_ends_with	String -> String -> String:cut_right_if_ends_with	|	s -> s -> s	|
 //[c]
 //[c]	If string ends with string 2, cut string 2 from end of string.
 //[c]
@@ -527,7 +530,7 @@ function cut_right_if_ends_with(str, str2)
 		return str
 	end
 //[cf]
-//[of]Cb_fold	Codeblock -> Y:Cb_fold	|	Cb â†’ y	|
+//[of]Cb_fold	Codeblock -> Y:Cb_fold	|	Cb -> y	|
 //[c]
 //[c]	(Quick-)Fold code block to a section.
 //[c]
@@ -564,7 +567,7 @@ function Cb_fold(Cb)
 	S_do_replace(Cb s, first, 0, last+1, 0, b2)
 	return (frame activeView cursorLine) + fmt
 //[cf]
-//[of]Cb_find_next	Codeblock -> Codeblock:Cb_find_next	|	Cb â†’ Cb	|
+//[of]Cb_find_next	Codeblock -> Codeblock:Cb_find_next	|	Cb -> Cb	|
 //[c]
 //[c]	Find next sibling of code block.
 //[c]
@@ -577,7 +580,7 @@ function Cb_find_next(Cb)
 		return SY_get_cblock(Cb s, y)
 	end
 //[cf]
-//[of]Cb_find_prev	Codeblock -> Codeblock:Cb_find_prev	|	Cb â†’ Cb	|
+//[of]Cb_find_prev	Codeblock -> Codeblock:Cb_find_prev	|	Cb -> Cb	|
 //[c]
 //[c]	Find prev sibling of code block.
 //[c]
@@ -590,13 +593,13 @@ function Cb_find_prev(Cb)
 		return SY_get_cblock(Cb s, y)
 	end
 //[cf]
-//[of]:do_select	|	y â†’ x â†’ y â†’ x â†’ -	|
+//[of]:do_select	|	y -> x -> y -> x -> -	|
 function do_select(Y, X, Y2, X2)
 	var v = frame activeView
 	v moveCursor(Y, X, false)
 	v moveCursor(Y2, X2, true)
 //[cf]
-//[of]ensureEndsWithNewline:endwithnewline	|	S â†’ -	|
+//[of]ensureEndsWithNewline:endwithnewline	|	S -> -	|
 function endwithnewline(S)
 	var y = S rowsSize - 1
 	if (SY_not_just_ws(S, y)) or (y == 0)
@@ -607,7 +610,7 @@ function endwithnewline(S)
 //~ function test
 	//~ endwithnewline(frame activeView section)
 //[cf]
-//[of]extract_cb_title	String -> String:extract_cb_title	|	s â†’ s	|
+//[of]extract_cb_title	String -> String:extract_cb_title	|	s -> s	|
 //[c]
 //[c]	Extract_title from code block opener.
 //[c]
@@ -621,7 +624,7 @@ function extract_cb_title(str)
 	if sb size == 0
 		return nil
 	end
-	Sb_cut_left_if_starts_with(sb, get_lang_prefix)
+	Sb_cut_left_if_starts_with(sb, get_lang_prefix + "( ")
 	if sb size == 0
 		return nil
 	end
@@ -639,7 +642,7 @@ function extract_cb_title(str)
 //~ function test
 	//~ print_with_borders(extract_cb_title("       // foo    "))    // >foo<
 //[cf]
-//[of]extract_indent	String -> String:extract_indent	|	s â†’ s	|
+//[of]extract_indent	String -> String:extract_indent	|	s -> s	|
 //[c]
 //[c]	Extract indent of string as a string. Only spaces and tabs
 //[c]	recognized, no automagical fixing of mixed tabs and spaces
@@ -658,7 +661,7 @@ function extract_indent(str)
 	end
 	return sb toString
 //[cf]
-//[of]for_each_in_range	N -> N ->>> N:for_each_in_range	|	n â†’ n â†’â†’ n	|
+//[of]for_each_in_range	N -> N ->>> N:for_each_in_range	|	n -> n ->-> n	|
 //[c]
 //[c]	Yield numbers in range n1-n2. n2 is not contained.
 //[c]
@@ -795,7 +798,7 @@ function is_backward_sel
 	end
 	return false
 //[cf]
-//[of]is_cb_close	String -> Bool:is_cb_close	|	s â†’ b	|
+//[of]is_cb_close	String -> Bool:is_cb_close	|	s -> b	|
 //[c]
 //[c]	If text is code block closer.
 //[c]
@@ -803,52 +806,54 @@ function is_backward_sel
 function is_cb_close(T)
 	var t = strip_ws(T)
 	var p = get_lang_prefix
-	return (t == p) or (t == p + get_lang_suffix)
+	return (t == p + ")") or (t == p + ")" + get_lang_suffix)
 
 
 //~ function test
-	//~ print(is_cb_close("//"))    // true
-	//~ print(is_cb_close(" // "))    // true
-	//~ print(is_cb_close("// foo"))    // false
-	//~ print(is_cb_close("// //"))    // false
-	//~ print(is_cb_close("//foo"))    // false
-	//~ print(is_cb_close("////"))    // false
+	//~ print(is_cb_close("//)"))    // true
+	//~ print(is_cb_close(" //) "))    // true
+	//~ print(is_cb_close("//) foo"))    // false
+	//~ print(is_cb_close("// //)"))    // false
+	//~ print(is_cb_close("//foo)"))    // false
+	//~ print(is_cb_close("////)"))    // false
 //[cf]
-//[of]is_cb_open	String -> Bool:is_cb_open	|	s â†’ b	|
+//[of]is_cb_open	String -> Bool:is_cb_open	|	s -> b	|
 //[c]
 //[c]	If string is code block opener.
 //[c]
 
 function is_cb_open(str)
-	return strip_ws_left(str) startsWith(get_lang_prefix + " ")
+	return strip_ws_left(str) startsWith(get_lang_prefix + "( ")
 
 
 //~ function test
-	//~ print(is_cb_open("//"))    // false
-	//~ print(is_cb_open("// foo"))    // true
-	//~ print(is_cb_open(" //   foo  "))    // true
-	//~ print(is_cb_open("// //"))    // true
-	//~ print(is_cb_open("//foo"))    // false
-	//~ print(is_cb_open("////"))    // false
+	//~ print(is_cb_open("// ("))    // false
+	//~ print(is_cb_open("//( foo"))    // true
+	//~ print(is_cb_open(" //(   foo  "))    // true
+	//~ print(is_cb_open("//( //"))    // true
+	//~ print(is_cb_open("//(foo"))    // false
+	//~ print(is_cb_open("//(//"))    // false
 //[cf]
-//[of]is_cb_sep	String -> Bool:is_cb_sep	|	s â†’ b	|
+//[of]is_cb_sep	String -> Bool:is_cb_sep	|	s -> b	|
 //[c]
 //[c]	If string is code block opener or closer.
 //[c]
 
 function is_cb_sep(str)
 	var t = strip_ws(str)
-	return (((t == get_lang_prefix) or (t == get_lang_prefix + get_lang_suffix)) or t startsWith(get_lang_prefix + " "))
+	return (((t == get_lang_prefix + ")") or (t == get_lang_prefix + get_lang_suffix)) or t startsWith(get_lang_prefix + "( "))
 
 
 //~ function test
-	//~ print(is_cb_sep("//"))    // true
-	//~ print(is_cb_sep("// foo"))    // true
-	//~ print(is_cb_sep("// //"))    // true
-	//~ print(is_cb_sep("//foo"))    // false
-	//~ print(is_cb_sep("////"))    // false
+	//~ print(is_cb_sep("//( "))    // true
+	//~ print(is_cb_sep("// ( "))    // false
+	//~ print(is_cb_sep("//( foo"))    // true
+	//~ print(is_cb_sep("// //( foo"))    // false
+	//~ print(is_cb_sep("//)"))    // true
+	//~ print(is_cb_sep("//foo)"))    // false
+	//~ print(is_cb_sep("////)"))    // false
 //[cf]
-//[of]is_quickfold_title	String -> Bool:is_quickfold_title	|	s â†’ b	|
+//[of]is_quickfold_title	String -> Bool:is_quickfold_title	|	s -> b	|
 //[c]
 //[c]	If string contains just dots and whitespaces.
 //[c]
@@ -875,7 +880,7 @@ function is_quickfold_title(str)
 	//~ print(is_quickfold_title("foo"))    // false
 	//~ print(is_quickfold_title(" ... bar ... "))    // false
 //[cf]
-//[of]is_just_ws:is_just_ws	|	s â†’ b	|
+//[of]is_just_ws:is_just_ws	|	s -> b	|
 function is_just_ws(str)
 	str each do c
 		if not ((c == $ ) or (c ==\t) or (c ==\r) or (c==\n))
@@ -886,41 +891,41 @@ function is_just_ws(str)
 //[cf]
 //[of]make_cb_close	-> String:make_cb_close	|	s	|
 //[c]
-//[c]	Construct a code block closer. eg. "//" or "/**/".
+//[c]	Construct a code block closer. eg. "//)" or "/*)*/".
 //[c]
 
 function make_cb_close
 	var p = get_lang_prefix
 	var s = get_lang_suffix
 	if s isEmpty
-		return p
+		return p + ")"
 	else
-		return p + s
+		return p + ")" + s
 	end
 
 
 //~ function test
 	//~ print_with_borders(make_cb_close)    // >//<
 //[cf]
-//[of]make_cb_open	String -> String:make_cb_open	|	s â†’ s	|
+//[of]make_cb_open	String -> String:make_cb_open	|	s -> s	|
 //[c]
-//[c]	Construct a code block opener. eg. "// foo" or "/* foo */".
+//[c]	Construct a code block opener. eg. "//( foo" or "/*( foo */".
 //[c]
 
 function make_cb_open(title)
 	var p = get_lang_prefix
 	var s = get_lang_suffix
 	if s isEmpty
-		return ((StringBuffer new) << p << " " << title) toString
+		return ((StringBuffer new) << p << "( " << title) toString
 	else
-		return ((StringBuffer new) << p << " " << title << " " << s) toString
+		return ((StringBuffer new) << p << "( " << title << " " << s) toString
 	end
 
 
 //~ function test
-	//~ print_with_borders(make_cb_open("foo"))    // >// foo<
+	//~ print_with_borders(make_cb_open("foo"))    // >//( foo<
 //[cf]
-//[of]make_lower_than	y -> y -> y:make_lower_than	|	y â†’ y â†’ y	|
+//[of]make_lower_than	y -> y -> y:make_lower_than	|	y -> y -> y	|
 //[c]
 //[c]	If n not smaller than max, make it 1 smaller, return it.
 //[c]
@@ -938,7 +943,7 @@ function make_lower_than(n, max)
 	//~ print(make_lower_than(10, 10))    // 9
 	//~ print(make_lower_than(11, 10))    // 9
 //[cf]
-//[of]:move_selection_left!	|	S â†’ -	|		|
+//[of]:move_selection_left!	|	S -> -	|		|
 //[c]
 //[c]	Something must be selected and not more than one line shall be
 //[c]	selected.
@@ -962,7 +967,7 @@ function move_selection_left(S)
 		//~ r = f find(S, y, 0, false)
 		//~ if r isNil
 //[cf]
-//[of]msg	Thing -> nil:msg	|	Thing â†’ -	|
+//[of]msg	Thing -> nil:msg	|	Thing -> -	|
 //[c]
 //[c]	Lazy message box.
 //[c]
@@ -970,7 +975,7 @@ function move_selection_left(S)
 function msg(x)
 	frame messageBox(Str(x), "Info", mb_ok)
 //[cf]
-//[of]msg_error	Thing -> Thing -> nil:msg_error	|	Thing â†’ Thing â†’ -	|
+//[of]msg_error	Thing -> Thing -> nil:msg_error	|	Thing -> Thing -> -	|
 //[c]
 //[c]	Lazy 'error' message box.
 //[c]
@@ -983,7 +988,7 @@ function msg_error(context, message)
 //~ function test
 	//~ msg_error("foo", "bar")
 //[cf]
-//[of]msg_not_implemented	Thing -> nil:msg_not_implemented	|	Thing â†’ -	|
+//[of]msg_not_implemented	Thing -> nil:msg_not_implemented	|	Thing -> -	|
 //[c]
 //[c]	Lazy 'not implemented' message box.
 //[c]
@@ -996,7 +1001,7 @@ function msg_not_implemented(thing)
 //~ function test
 	//~ msg_not_implemented("foo bar baz lorem ipsum dolor")
 //[cf]
-//[of]move_cursor_to_first_non_e	Y -> nil:move_cursor_to_first_non_e	|	y â†’ -	|
+//[of]move_cursor_to_first_non_e	Y -> nil:move_cursor_to_first_non_e	|	y -> -	|
 //[c]
 //[c]	Move cursor to first non empty char in line at Y.
 //[c]
@@ -1006,7 +1011,7 @@ function move_cursor_to_first_non_e(Y)
 	v moveCursor(Y, SY_get_i_size(frame activeView section, Y), false)
 	v adjustPage
 //[cf]
-//[of]move_cursor_to_first_relevant	Y -> nil:move_cursor_to_first_relevant	|	y â†’ -	|
+//[of]move_cursor_to_first_relevant	Y -> nil:move_cursor_to_first_relevant	|	y -> -	|
 //[c]
 //[c]	In line at Y, move cursor to eg. before the "f" in "   // foo".
 //[c]
@@ -1021,7 +1026,7 @@ function move_cursor_to_first_relevant(Y)
 		v adjustPage
 	end
 //[cf]
-//[of]move_cursor_to_next_relevant	Y -> nil:move_cursor_to_next_relevant	|	y â†’ -	|
+//[of]move_cursor_to_next_relevant	Y -> nil:move_cursor_to_next_relevant	|	y -> -	|
 //[c]
 //[c]	Find next non empty line after line at Y, there move cursor to
 //[c]	eg. before the "f" in "   // foo".
@@ -1050,7 +1055,7 @@ function new_finddata
 	f setSearchString("")
 	return f
 //[cf]
-//[of]outc	String -> String:outc	|	s â†’ s	|
+//[of]outc	String -> String:outc	|	s -> s	|
 //[c]
 //[c]	Outcomment string.
 //[c]
@@ -1069,8 +1074,8 @@ function outc(str, not_section)
 	end
 	return sb toString
 //[cf]
-//[of]:R	|	R â†’ s	|
-//[of]R_extract_cb_title	Row -> String	shortcut:R_extract_cb_title	|	R â†’ s	|
+//[of]:R	|	R -> s	|
+//[of]R_extract_cb_title	Row -> String	shortcut:R_extract_cb_title	|	R -> s	|
 //[c]
 //[c]	Extract title from code block opener at row.
 //[c]
@@ -1078,7 +1083,7 @@ function outc(str, not_section)
 function R_extract_cb_title(R)
 	return extract_cb_title(R text)
 //[cf]
-//[of]R_extract_indent	Row -> String	shortcut:R_extract_indent	|	R â†’ s	|
+//[of]R_extract_indent	Row -> String	shortcut:R_extract_indent	|	R -> s	|
 //[c]
 //[c]	Get indent of row (as string, not number).
 //[c]
@@ -1086,7 +1091,7 @@ function R_extract_cb_title(R)
 function R_extract_indent(R)
 	return extract_indent(R text)
 //[cf]
-//[of]R_get_i_size	Row -> X	shortcut:R_get_i_size	|	R â†’ x	|
+//[of]R_get_i_size	Row -> X	shortcut:R_get_i_size	|	R -> x	|
 //[c]
 //[c]	Get indent size of row.
 //[c]
@@ -1094,7 +1099,7 @@ function R_extract_indent(R)
 function R_get_i_size(R)
 	return R_extract_indent(R) size
 //[cf]
-//[of]R_get_normed_sec	Row -> Section:R_get_normed_sec	|	R â†’ S	|
+//[of]R_get_normed_sec	Row -> Section:R_get_normed_sec	|	R -> S	|
 //[c]
 //[c]	Get rows section, adding a newline if missing.
 //[c]
@@ -1106,7 +1111,7 @@ function R_get_normed_sec(R)
 	end
 	return s
 //[cf]
-//[of]R_is_cb_close	Row -> Bool:R_is_cb_close	|	R â†’ b	|
+//[of]R_is_cb_close	Row -> Bool:R_is_cb_close	|	R -> b	|
 //[c]
 //[c]	If row is a code block closer.
 //[c]
@@ -1114,7 +1119,7 @@ function R_get_normed_sec(R)
 function R_is_cb_close(R)
 	return is_cb_close(R text) and R_is_desc_or_text(R)
 //[cf]
-//[of]R_is_cb_open	Row -> Bool:R_is_cb_open	|	R â†’ b	|
+//[of]R_is_cb_open	Row -> Bool:R_is_cb_open	|	R -> b	|
 //[c]
 //[c]	If row is a code block opener.
 //[c]
@@ -1122,7 +1127,7 @@ function R_is_cb_close(R)
 function R_is_cb_open(R)
 	return is_cb_open(R text) and R_is_desc_or_text(R)
 //[cf]
-//[of]R_is_cb_sep	Row -> Bool:R_is_cb_sep	|	R â†’ b	|
+//[of]R_is_cb_sep	Row -> Bool:R_is_cb_sep	|	R -> b	|
 //[c]
 //[c]	If row is a code block opener or closer.
 //[c]
@@ -1130,7 +1135,7 @@ function R_is_cb_open(R)
 function R_is_cb_sep(R)
 	return is_cb_sep(R text) and R_is_desc_or_text(R)
 //[cf]
-//[of]R_is_desc_or_text	Row -> Bool:R_is_desc_or_text	|	R â†’ b	|
+//[of]R_is_desc_or_text	Row -> Bool:R_is_desc_or_text	|	R -> b	|
 //[c]
 //[c]	If row is a description line or text.
 //[c]
@@ -1138,7 +1143,7 @@ function R_is_cb_sep(R)
 function R_is_desc_or_text(R)
 	return (R type == lt_comment) or (R type == lt_text)
 //[cf]
-//[of]R_is_just_ws	Row -> Bool:R_is_just_ws	|	R â†’ b	|
+//[of]R_is_just_ws	Row -> Bool:R_is_just_ws	|	R -> b	|
 //[c]
 //[c]	If row is just whitespace and not a link or section.
 //[c]
@@ -1146,7 +1151,7 @@ function R_is_desc_or_text(R)
 function R_is_just_ws(R)
 	return not (R type == lt_comment) and not (R type == lt_link) and is_just_ws(R text)
 //[cf]
-//[of]R_is_sec_or_link	Row -> Bool	shortcut for Code Browser function:R_is_sec_or_link	|	R â†’ b	|
+//[of]R_is_sec_or_link	Row -> Bool	shortcut for Code Browser function:R_is_sec_or_link	|	R -> b	|
 //[c]
 //[c]	If row is a section or a link.
 //[c]
@@ -1155,7 +1160,7 @@ function R_is_sec_or_link(R)
 	var t = R type
 	return ((t == lt_section) or (t == lt_link))
 //[cf]
-//[of]R_strip_ws	Row -> String	shortcut:~ R_strip_ws	|	R â†’ s	|
+//[of]R_strip_ws	Row -> String	shortcut:~ R_strip_ws	|	R -> s	|
 //[c]
 //[c]	Text of row with whitespace stripped from both sides.
 //[c]
@@ -1163,16 +1168,16 @@ function R_is_sec_or_link(R)
 //~ function R_strip_ws(R)
 	//~ return strip_ws(R text)
 //[cf]
-//[of]R_not_link:~ R_not_link	|	R â†’ b	|
+//[of]R_not_link:~ R_not_link	|	R -> b	|
 //~ function R_not_link(R)
 	//~ return not (R type == lt_link)
 //[cf]
-//[of]R_not_sec:~ R_not_sec	|	R â†’ b	|
+//[of]R_not_sec:~ R_not_sec	|	R -> b	|
 //~ function R_not_sec(R)
 	//~ return not (R type == lt_section)
 //[cf]
 //[cf]
-//[of]select_relevant	Y -> nil:select_relevant	|	y â†’ -	|
+//[of]select_relevant	Y -> nil:select_relevant	|	y -> -	|
 //[c]
 //[c]	Normal line: select non-empty part of line.
 //[c]	Code block opener: select everything after start of code
@@ -1183,7 +1188,7 @@ function select_relevant(y)
 	move_cursor_to_first_relevant(y)
 	frame activeView moveCursor(y, SY_get_size(frame activeView section, y), true)
 //[cf]
-//[of]strip_ws	String -> String:strip_ws	|	s â†’ s	|
+//[of]strip_ws	String -> String:strip_ws	|	s -> s	|
 //[c]
 //[c]	Strip all whitespace from both sides of string.
 //[c]
@@ -1197,7 +1202,7 @@ function strip_ws(str)
 //~ function test
 	//~ print_with_borders(strip_ws(" foo "))    // >foo<
 //[cf]
-//[of]strip_ws_left	String -> String:strip_ws_left	|	s â†’ s	|
+//[of]strip_ws_left	String -> String:strip_ws_left	|	s -> s	|
 //[c]
 //[c]	Strip all whitespace from left side of string.
 //[c]
@@ -1218,8 +1223,8 @@ function something_selected
 		(v markColumn) <> (v cursorColumn)) or (
 		(v markLine) <> (v cursorLine))
 //[cf]
-//[of]:S	|	S â†’ y â†’ x â†’ y â†’ x â†’ Block	|
-//[of]S_copy_block	Section -> Y -> X -> Y -> X -> Block:S_copy_block	|	S â†’ y â†’ x â†’ y â†’ x â†’ Block	|
+//[of]:S	|	S -> y -> x -> y -> x -> Block	|
+//[of]S_copy_block	Section -> Y -> X -> Y -> X -> Block:S_copy_block	|	S -> y -> x -> y -> x -> Block	|
 //[c]
 //[c]	In section, get text between Y/X and Y2/X2 and return it as
 //[c]	block. Indices can be nil, then are biggest values.
@@ -1237,7 +1242,7 @@ function S_copy_block(S, Y, X, Y2, X2)
 //~ function test
 	//~ print_B_with_borders(S_copy_block(frame activeView section, 2, 0, nil, nil))
 //[cf]
-//[of]S_do_add_missing_nl	Section -> nil:S_do_add_nl	|	S â†’ -	|
+//[of]S_do_add_missing_nl	Section -> nil:S_do_add_nl	|	S -> -	|
 //[c]
 //[c]	Add a newline at end of section.
 //[c]
@@ -1249,7 +1254,7 @@ function S_do_add_nl(S)
 //~ function test
 	//~ S_do_add_nl(frame activeView section)
 //[cf]
-//[of]S_do_clear	Section -> nil:S_do_clear	|	S â†’ -	|
+//[of]S_do_clear	Section -> nil:S_do_clear	|	S -> -	|
 //[c]
 //[c]	Replace everything in section with one newline.
 //[c]
@@ -1262,7 +1267,7 @@ function S_do_clear(S)
 	//~ var s = frame activeView section
 	//~ S_do_clear(s)
 //[cf]
-//[of]S_do_cut_all_after	Section -> Y -> X -> nil	shortcut:S_do_cut_all_after	|	S â†’ y â†’ x â†’ -	|
+//[of]S_do_cut_all_after	Section -> Y -> X -> nil	shortcut:S_do_cut_all_after	|	S -> y -> x -> -	|
 //[c]
 //[c]	Cut everything after y/x from section.
 //[c]
@@ -1274,7 +1279,7 @@ function S_do_cut_all_after(S, y, x)
 //~ function test
 	//~ S_do_cut_all_after(frame activeView section, 1, 0)
 //[cf]
-//[of]S_do_cut_all_before	Section -> Y -> X -> nil	shortcut:S_do_cut_all_before	|	S â†’ y â†’ x â†’ -	|
+//[of]S_do_cut_all_before	Section -> Y -> X -> nil	shortcut:S_do_cut_all_before	|	S -> y -> x -> -	|
 //[c]
 //[c]	Cut everything before y/x from section.
 //[c]
@@ -1286,7 +1291,7 @@ function S_do_cut_all_before(S, y, x)
 //~ function test
 	//~ S_do_cut_all_before(frame activeView section, 1, 0)
 //[cf]
-//[of]S_do_fold_all	Section -> nil:S_do_fold_all	|	S â†’ -	|
+//[of]S_do_fold_all	Section -> nil:S_do_fold_all	|	S -> -	|
 //[c]
 //[c]	Fold all named code blocks in section.
 //[c]
@@ -1311,7 +1316,7 @@ function S_do_fold_all(S)
 //~ function test
 	//~ S_do_fold_all(frame activeView section)
 //[cf]
-//[of]S_do_insert_line	Section -> Y -> Buffer -> nil:S_do_insert_line	|	S â†’ y â†’ Buffer â†’ -	|
+//[of]S_do_insert_line	Section -> Y -> Buffer -> nil:S_do_insert_line	|	S -> y -> Buffer -> -	|
 //[c]
 //[c]	Insert str + "\n" at y in section.
 //[c]
@@ -1320,7 +1325,7 @@ function S_do_insert_line(S, y, str)
 	var y = FirstNotNil(y, S rowsSize - 1)
 	S replaceText(y, 0, y, 0, TextBlock fromString(((StringBuffer new) << str << "\n") toString))
 //[cf]
-//[of]S_do_insert_line_sb	Section -> Y -> Buffer -> nil:S_do_insert_line_sb	|	S â†’ y â†’ Buffer â†’ -	|
+//[of]S_do_insert_line_sb	Section -> Y -> Buffer -> nil:S_do_insert_line_sb	|	S -> y -> Buffer -> -	|
 //[c]
 //[c]	Insert buffer + "\n" at y in section.
 //[c]
@@ -1329,7 +1334,7 @@ function S_do_insert_line_sb(S, y, sb)
 	var y = FirstNotNil(y, S rowsSize - 1)
 	S replaceText(y, 0, y, 0, TextBlock fromString((sb << "\n") toString))
 //[cf]
-//[of]S_do_outc_all	Section -> nil:S_do_move_sel_right_one_char!	|	S â†’ -	|		|
+//[of]S_do_outc_all	Section -> nil:S_do_move_sel_right_one_char!	|	S -> -	|		|
 //[c]
 //[c]	move selection right one char. contract: Something is selected,
 //[c]	not more than one line is selected.
@@ -1352,7 +1357,7 @@ function S_do_move_sel_right_one_char(S)
 //~ function test
 	//~ move_selection_left(get_active_normed_section)
 //[cf]
-//[of]S_do_outc_all	Section -> nil:S_do_outc_all!	|	S â†’ -	|		|
+//[of]S_do_outc_all	Section -> nil:S_do_outc_all!	|	S -> -	|		|
 //[c]
 //[c]	Outcomment every line in section.
 //[c]
@@ -1361,7 +1366,7 @@ function S_do_outc_all(S)
 //[c]	contract: S ends with an empty line
 	S_outc(S, 0, 0, nil, nil)
 //[cf]
-//[of]S_do_outc_rec	Section -> Y -> Y -> nil:S_do_outc_rec	|	S â†’ y â†’ x â†’ y â†’ x â†’ -	|
+//[of]S_do_outc_rec	Section -> Y -> Y -> nil:S_do_outc_rec	|	S -> y -> x -> y -> x -> -	|
 //[c]
 //[c]	Outcomment every line in section between and including Y and Y2.
 //[c]	Also outcomment subsections.
@@ -1378,7 +1383,7 @@ function S_do_outc_rec(S, Y, X, Y2, X2)
 		end
 	end
 //[cf]
-//[of]S_do_replace	Section -> Y -> X -> Y -> X -> Block -> nil:S_do_replace	|	S â†’ y â†’ x â†’ y â†’ x â†’ Block â†’ -	|
+//[of]S_do_replace	Section -> Y -> X -> Y -> X -> Block -> nil:S_do_replace	|	S -> y -> x -> y -> x -> Block -> -	|
 //[c]
 //[c]	In section, replace everything between Y/X and Y2/X2 with block.
 //[c]	Indices can be nil, = max.
@@ -1392,7 +1397,7 @@ function S_do_replace(S, Y, X, Y2, X2, B)
 	var x2 = FirstNotNil(X2, SY_get_size(S, y2))
 	S replaceText(y, x, y2, x2, B)
 //[cf]
-//[of]S_do_strip_ws	Section -> nil:S_do_strip_ws	|	S â†’ -	|
+//[of]S_do_strip_ws	Section -> nil:S_do_strip_ws	|	S -> -	|
 //[c]
 //[c]	Remove all whitespace-only lines at top and bottom of section.
 //[c]
@@ -1405,7 +1410,7 @@ function S_do_strip_ws(S)
 //~ function test
 	//~ S_do_strip_ws(frame activeView section)
 //[cf]
-//[of]S_do_strip_ws_bot	Section -> nil:S_do_strip_ws_bot	|	S â†’ -	|
+//[of]S_do_strip_ws_bot	Section -> nil:S_do_strip_ws_bot	|	S -> -	|
 //[c]
 //[c]	Remove all whitespace-only lines at bottom of section.
 //[c]
@@ -1429,7 +1434,7 @@ function S_do_strip_ws_bot(S)
 //~ function test
 	//~ S_do_strip_ws_bot(frame activeView section)
 //[cf]
-//[of]S_do_strip_ws_top	Section -> nil:S_do_strip_ws_top	|	S â†’ -	|
+//[of]S_do_strip_ws_top	Section -> nil:S_do_strip_ws_top	|	S -> -	|
 //[c]
 //[c]	Remove all whitespace-only lines at top of section.
 //[c]
@@ -1454,7 +1459,7 @@ function S_do_strip_ws_top(S)
 //~ function test
 	//~ S_do_strip_ws_top(frame activeView section)
 //[cf]
-//[of]S_do_unfold_all	Section -> nil:S_do_unfold_all	|	S â†’ -	|
+//[of]S_do_unfold_all	Section -> nil:S_do_unfold_all	|	S -> -	|
 //[c]
 //[c]	Unfold all sub sections of section.
 //[c]
@@ -1476,7 +1481,7 @@ function S_do_unfold_all(S)
 //~ function test
 	//~ S_do_unfold_all(frame activeView section)
 //[cf]
-//[of]S_do_unoutc_all	Section -> nil	shortcut:S_do_unoutc_all	|	S â†’ -	|
+//[of]S_do_unoutc_all	Section -> nil	shortcut:S_do_unoutc_all	|	S -> -	|
 //[c]
 //[c]	Unoutcomment every line in section.
 //[c]
@@ -1484,7 +1489,7 @@ function S_do_unfold_all(S)
 function S_do_unoutc_all(S)
 	S_unoutc(S, 0, 0, nil, nil)
 //[cf]
-//[of]S_do_unoutc_rec	Section -> Y -> Y -> nil:S_do_unoutc_rec	|	S â†’ y â†’ y â†’ -	|
+//[of]S_do_unoutc_rec	Section -> Y -> Y -> nil:S_do_unoutc_rec	|	S -> y -> y -> -	|
 //[c]
 //[c]	Unoutcomment every line in section between and including Y and
 //[c]	Y2. Also unoutcomment subsections.
@@ -1502,13 +1507,13 @@ function S_do_unoutc_rec(S, Y, X, Y2, X2)
 		end
 	end
 //[cf]
-//[of]S_do_insert:S_do_insert	|	S â†’ y â†’ x â†’ Block â†’ -	|
+//[of]S_do_insert:S_do_insert	|	S -> y -> x -> Block -> -	|
 function S_do_insert(S, Y, X, B)
 	var y = FirstNotNil(Y, S rowsSize - 1)
 	var x = FirstNotNil(X, SY_get_size(S, y))
 	S replaceText(y, x, y, x, B)
 //[cf]
-//[of]S_make_cblock	Section -> Y -> Y -> Codeblock:S_make_cblock	|	S â†’ y â†’ y â†’ Cb	|
+//[of]S_make_cblock	Section -> Y -> Y -> Codeblock:S_make_cblock	|	S -> y -> y -> Cb	|
 //[c]
 //[c]	In section, get code block between Y and Y2.
 //[c]	Does not check if Y and Y2 are really start and end of this
@@ -1520,7 +1525,7 @@ function S_do_insert(S, Y, X, B)
 function S_make_cblock(S, Y, Y2)
 	return Codeblock basicNew init(S, Y, Y2)
 //[cf]
-//[of]S_do_outc	Section -> Y -> Y -> nil:S_outc	|	S â†’ y â†’ x â†’ y â†’ x â†’ y	|
+//[of]S_do_outc	Section -> Y -> Y -> nil:S_outc	|	S -> y -> x -> y -> x -> y	|
 //[c]
 //[c]	In section, outcomment every line between and including Y and
 //[c]	Y2.
@@ -1551,7 +1556,7 @@ function S_outc(S, Y, X, Y2, X2)
 	S_do_replace(S, Y, 0, y2, 0, b)
 	return y2
 //[cf]
-//[of]S_do_unoutc	Section -> Y -> Y -> nil	has rule:S_unoutc!	|	S â†’ y â†’ y â†’ -	|		|
+//[of]S_do_unoutc	Section -> Y -> Y -> nil	has rule:S_unoutc!	|	S -> y -> y -> -	|		|
 //[c]
 //[c]	In section, unoutcomment every line between and including Y and
 //[c]	Y2.
@@ -1583,8 +1588,8 @@ function S_unoutc(S, Y, X, Y2, X2)
 	return y2
 //[cf]
 //[cf]
-//[of]:Sb	|	Buffer â†’ s â†’ -	|
-//[of]Sb_cut_left_if_starts_with	Buffer -> String -> nil:Sb_cut_left_if_starts_with	|	Buffer â†’ s â†’ -	|
+//[of]:Sb	|	Buffer -> s -> -	|
+//[of]Sb_cut_left_if_starts_with	Buffer -> String -> nil:Sb_cut_left_if_starts_with	|	Buffer -> s -> -	|
 //[c]
 //[c]	Cut string from left side of buffer if buffer starts with string.
 //[c]
@@ -1597,7 +1602,7 @@ function Sb_cut_left_if_starts_with(Sb, str)
 		end
 	end
 //[cf]
-//[of]Sb_cut_right_if_ends_with	Buffer -> String -> nil:Sb_cut_right_if_ends_with	|	Buffer â†’ s â†’ -	|
+//[of]Sb_cut_right_if_ends_with	Buffer -> String -> nil:Sb_cut_right_if_ends_with	|	Buffer -> s -> -	|
 //[c]
 //[c]	Cut string from right side of buffer if buffer ends with string.
 //[c]
@@ -1616,7 +1621,7 @@ function Sb_cut_right_if_ends_with(Sb, str)
 	//~ Sb_cut_right_if_ends_with(sb, "    ")
 	//~ print_with_borders(sb)
 //[cf]
-//[of]Sb_do_strip	Buffer -> String -> nil:Sb_do_strip	|	Buffer â†’ s â†’ -	|
+//[of]Sb_do_strip	Buffer -> String -> nil:Sb_do_strip	|	Buffer -> s -> -	|
 //[c]
 //[c]	Strip chars from both sides of buffer.
 //[c]
@@ -1625,7 +1630,7 @@ function Sb_do_strip(Sb, chars)
 	Sb_do_strip_left(Sb, chars)
 	Sb_do_strip_right(Sb, chars)
 //[cf]
-//[of]Sb_do_strip_left	Buffer -> String -> nil:Sb_do_strip_left	|	Buffer â†’ s â†’ -	|
+//[of]Sb_do_strip_left	Buffer -> String -> nil:Sb_do_strip_left	|	Buffer -> s -> -	|
 //[c]
 //[c]	Strip chars from left side of buffer.
 //[c]
@@ -1643,7 +1648,7 @@ function Sb_do_strip_left(Sb, chars)
 		end
 	end
 //[cf]
-//[of]Sb_do_strip_right	Buffer -> String -> nil:Sb_do_strip_right	|	Buffer â†’ s â†’ -	|
+//[of]Sb_do_strip_right	Buffer -> String -> nil:Sb_do_strip_right	|	Buffer -> s -> -	|
 //[c]
 //[c]	Strip chars from right side of buffer.
 //[c]
@@ -1667,7 +1672,7 @@ function Sb_do_strip_right(Sb, chars)
 	//~ Sb_do_strip_right(Sb, " */")
 	//~ print_with_borders(Sb)
 //[cf]
-//[of]Sb_do_strip_ws	Buffer -> nil:Sb_do_strip_ws	|	Buffer â†’ -	|
+//[of]Sb_do_strip_ws	Buffer -> nil:Sb_do_strip_ws	|	Buffer -> -	|
 //[c]
 //[c]	Strip whitespaces from each side of buffer.
 //[c]
@@ -1675,7 +1680,7 @@ function Sb_do_strip_right(Sb, chars)
 function Sb_do_strip_ws(Sb)
 	Sb_do_strip(Sb, " \t")
 //[cf]
-//[of]Sb_do_strip_c_left	Buffer -> Char -> nil:Sb_do_strip_c_left	|	Buffer â†’ Char â†’ -	|
+//[of]Sb_do_strip_c_left	Buffer -> Char -> nil:Sb_do_strip_c_left	|	Buffer -> Char -> -	|
 //[c]
 //[c]	Strip each occurrence of char from left side of buffer.
 //[c]
@@ -1692,7 +1697,7 @@ function Sb_do_strip_c_left(Sb, char)
 		end
 	end
 //[cf]
-//[of]Sb_do_strip_c_right	Buffer -> Char -> nil:Sb_do_strip_c_right	|	Buffer â†’ Char â†’ -	|
+//[of]Sb_do_strip_c_right	Buffer -> Char -> nil:Sb_do_strip_c_right	|	Buffer -> Char -> -	|
 //[c]
 //[c]	Strip each occurrence of char from right side of buffer.
 //[c]
@@ -1710,7 +1715,7 @@ function Sb_do_strip_c_right(Sb, char)
 	end
 //[cf]
 //[cf]
-//[of]SY_fold:fold_at_cursor!	|	S â†’ y â†’ y	|		|
+//[of]SY_fold:fold_at_cursor!	|	S -> y -> y	|		|
 //[c]
 //[c]	In section: If line at Y is a code block opener or code block
 //[c]	closer, fold the matching named block. If line at Y is a
@@ -1745,8 +1750,8 @@ function fold_at_cursor(S, Y)
 	return cursor_y
 //[l]:something_selected:#somethingSelected
 //[cf]
-//[of]:SY	|	S â†’ y â†’ s	|		|
-//[of]SY_extract_cb_title	Section -> Y -> String	shortcut, has rule:SY_extract_cb_title!	|	S â†’ y â†’ s	|		|
+//[of]:SY	|	S -> y -> s	|		|
+//[of]SY_extract_cb_title	Section -> Y -> String	shortcut, has rule:SY_extract_cb_title!	|	S -> y -> s	|		|
 //[c]
 //[c]	In section, extract title from code block opener at line at Y.
 //[c]
@@ -1755,7 +1760,7 @@ function SY_extract_cb_title(S, Y)
 //[c]	contract: Y is code block opener
 	return extract_cb_title(SY_get_text(S, Y))
 //[cf]
-//[of]SY_extract_indent	Section -> Y -> String	shortcut:SY_extract_indent	|	S â†’ y â†’ s	|
+//[of]SY_extract_indent	Section -> Y -> String	shortcut:SY_extract_indent	|	S -> y -> s	|
 //[c]
 //[c]	In section, get indent of line at Y.
 //[c]
@@ -1763,7 +1768,7 @@ function SY_extract_cb_title(S, Y)
 function SY_extract_indent(S, Y)
 	return extract_indent(SY_get_text(S, Y))
 //[cf]
-//[of]SY_extract_indent_of_next_non_e	Section -> Y -> String:SY_extract_indent_of_next_non_e	|	S â†’ y â†’ s	|
+//[of]SY_extract_indent_of_next_non_e	Section -> Y -> String:SY_extract_indent_of_next_non_e	|	S -> y -> s	|
 //[c]
 //[c]	In section, get indent of next non-empty line after line at Y.
 //[c]
@@ -1776,7 +1781,7 @@ function SY_extract_indent_of_next_non_e(S, Y)
 		return SY_extract_indent(S, y)
 	end
 //[cf]
-//[of]SY_extract_indent_of_prev_non_e	Section -> Y -> String:SY_extract_indent_of_prev_non_e	|	S â†’ y â†’ s	|
+//[of]SY_extract_indent_of_prev_non_e	Section -> Y -> String:SY_extract_indent_of_prev_non_e	|	S -> y -> s	|
 //[c]
 //[c]	In section, get indent of previous non-empty line before line at Y.
 //[c]
@@ -1789,7 +1794,7 @@ function SY_extract_indent_of_prev_non_e(S, Y)
 		return SY_extract_indent(S, y)
 	end
 //[cf]
-//[of]SY_find_end_of_cblock	Section -> Y -> Y	has rule:SY_find_end_of_cblock!	|	S â†’ y â†’ y	|		|
+//[of]SY_find_end_of_cblock	Section -> Y -> Y	has rule:SY_find_end_of_cblock!	|	S -> y -> y	|		|
 //[c]
 //[c]	In section, If y is code block opener: return matching code
 //[c]	block closer. If y is code block closer: return it. Otherwise:
@@ -1831,7 +1836,7 @@ function SY_find_end_of_cblock(S, Y)
 		end
 	end
 //[cf]
-//[of]SY_find_matching_cb_close	Section -> Y -> Y	has rule:SY_find_matching_cb_close!	|	S â†’ y â†’ y	|		|
+//[of]SY_find_matching_cb_close	Section -> Y -> Y	has rule:SY_find_matching_cb_close!	|	S -> y -> y	|		|
 //[c]
 //[c]	Find the code block closer which belongs to the code block
 //[c]	opener at line at Y.
@@ -1875,7 +1880,7 @@ function SY_find_matching_cb_close(S, Y)
 		end
 	end
 //[cf]
-//[of]SY_find_matching_cb_open	Section -> Y -> Y	has rule:SY_find_matching_cb_open!	|	S â†’ y â†’ y	|		|
+//[of]SY_find_matching_cb_open	Section -> Y -> Y	has rule:SY_find_matching_cb_open!	|	S -> y -> y	|		|
 //[c]
 //[c]	Find the code block opener which belongs to the code block
 //[c]	closer at line at Y.
@@ -1908,7 +1913,7 @@ function SY_find_matching_cb_open(S, Y)
 		y = r line
 	end
 //[cf]
-//[of]SY_find_next_cb_open	Section -> Y -> Y:SY_find_next_cb_open	|	S â†’ y â†’ y	|
+//[of]SY_find_next_cb_open	Section -> Y -> Y:SY_find_next_cb_open	|	S -> y -> y	|
 //[c]
 //[c]	In section, find next code block opener after line at Y.
 //[c]
@@ -1926,7 +1931,7 @@ function SY_find_next_cb_open(S, Y)
 		end
 	end
 //[cf]
-//[of]SY_find_next_e	Section -> Y -> Y:SY_find_next_e	|	S â†’ y â†’ y	|
+//[of]SY_find_next_e	Section -> Y -> Y:SY_find_next_e	|	S -> y -> y	|
 //[c]
 //[c]	In section, find next empty line after line at Y.
 //[c]
@@ -1944,7 +1949,7 @@ function SY_find_next_e(S, Y)
 		end
 	end
 //[cf]
-//[of]SY_find_next_non_e	Section -> Y -> Y:SY_find_next_non_e	|	S â†’ y â†’ y	|
+//[of]SY_find_next_non_e	Section -> Y -> Y:SY_find_next_non_e	|	S -> y -> y	|
 //[c]
 //[c]	In section, find next non-empty line after line at Y.
 //[c]
@@ -1962,7 +1967,7 @@ function SY_find_next_non_e(S, Y)
 		end
 	end
 //[cf]
-//[of]SY_find_next_non_e_with_i_size	Section -> Y -> X -> Y:SY_find_next_non_e_with_i_size	|	S â†’ y â†’ x â†’ y	|
+//[of]SY_find_next_non_e_with_i_size	Section -> Y -> X -> Y:SY_find_next_non_e_with_i_size	|	S -> y -> x -> y	|
 //[c]
 //[c]	In section, find next non-empty line after line at Y, which
 //[c]	has the same indent size as size.
@@ -1986,7 +1991,7 @@ function SY_find_next_non_e_with_i_size(S, Y, size)
 		end
 	end
 //[cf]
-//[of]SY_find_next_sec_or_link	Section -> Y -> Y:SY_find_next_sec_or_link	|	S â†’ y â†’ y	|
+//[of]SY_find_next_sec_or_link	Section -> Y -> Y:SY_find_next_sec_or_link	|	S -> y -> y	|
 //[c]
 //[c]	In section, find next section or link after line at Y.
 //[c]
@@ -2004,7 +2009,7 @@ function SY_find_next_sec_or_link(S, Y)
 		end
 	end
 //[cf]
-//[of]SY_find_prev_cb_open	Section -> Y -> Y:SY_find_prev_cb_open	|	S â†’ y â†’ y	|
+//[of]SY_find_prev_cb_open	Section -> Y -> Y:SY_find_prev_cb_open	|	S -> y -> y	|
 //[c]
 //[c]	In section, find previous code block opener before line at Y.
 //[c]
@@ -2021,7 +2026,7 @@ function SY_find_prev_cb_open(S, Y)
 		end
 	end
 //[cf]
-//[of]SY_find_prev_e	Section -> Y -> Y:SY_find_prev_e	|	S â†’ y â†’ y	|
+//[of]SY_find_prev_e	Section -> Y -> Y:SY_find_prev_e	|	S -> y -> y	|
 //[c]
 //[c]	In section, find previous empty line before line at Y.
 //[c]
@@ -2038,7 +2043,7 @@ function SY_find_prev_e(S, Y)
 		end
 	end
 //[cf]
-//[of]SY_find_prev_non_e	Section -> Y -> Y:SY_find_prev_non_e	|	S â†’ y â†’ y	|
+//[of]SY_find_prev_non_e	Section -> Y -> Y:SY_find_prev_non_e	|	S -> y -> y	|
 //[c]
 //[c]	In section, find previous non-empty line before line at Y.
 //[c]
@@ -2055,7 +2060,7 @@ function SY_find_prev_non_e(S, Y)
 		end
 	end
 //[cf]
-//[of]SY_find_prev_non_e_with_i_size	Section -> Y -> X -> Y:SY_find_prev_non_e_with_i_size	|	S â†’ y â†’ x â†’ y	|
+//[of]SY_find_prev_non_e_with_i_size	Section -> Y -> X -> Y:SY_find_prev_non_e_with_i_size	|	S -> y -> x -> y	|
 //[c]
 //[c]	In section, find previous non-empty line before line at Y,
 //[c]	which has the same indent size as size.
@@ -2078,7 +2083,7 @@ function SY_find_prev_non_e_with_i_size(S, Y, size)
 		end
 	end
 //[cf]
-//[of]SY_find_prev_sec_or_link	Section -> Y -> Y:SY_find_prev_sec_or_link	|	S â†’ y â†’ y	|
+//[of]SY_find_prev_sec_or_link	Section -> Y -> Y:SY_find_prev_sec_or_link	|	S -> y -> y	|
 //[c]
 //[c]	In section, find previous section or link before line at Y.
 //[c]
@@ -2095,7 +2100,7 @@ function SY_find_prev_sec_or_link(S, Y)
 		end
 	end
 //[cf]
-//[of]SY_find_same_or_next_cb_close	Section -> Y -> Y:SY_find_same_or_next_cb_close	|	S â†’ y â†’ y	|
+//[of]SY_find_same_or_next_cb_close	Section -> Y -> Y:SY_find_same_or_next_cb_close	|	S -> y -> y	|
 //[c]
 //[c]	In section, find code block closer after line at Y or Y if Y
 //[c]	is a code block closer.
@@ -2114,7 +2119,7 @@ function SY_find_same_or_next_cb_close(S, Y)
 		end
 	end
 //[cf]
-//[of]SY_find_same_or_next_non_e	Section -> Y -> Y:SY_find_same_or_next_non_e	|	S â†’ y â†’ y	|
+//[of]SY_find_same_or_next_non_e	Section -> Y -> Y:SY_find_same_or_next_non_e	|	S -> y -> y	|
 //[c]
 //[c]	In section, find next non-empty line after line at Y or Y if
 //[c]	Y is non-empty.
@@ -2133,7 +2138,7 @@ function SY_find_same_or_next_non_e(S, Y)
 		end
 	end
 //[cf]
-//[of]SY_find_same_or_next_sec	Section -> Y -> Y:SY_find_same_or_next_sec	|	S â†’ y â†’ y	|
+//[of]SY_find_same_or_next_sec	Section -> Y -> Y:SY_find_same_or_next_sec	|	S -> y -> y	|
 //[c]
 //[c]	In section, find next section after line at Y or Y if Y is
 //[c]	a section.
@@ -2152,7 +2157,7 @@ function SY_find_same_or_next_sec(S, Y)
 		end
 	end
 //[cf]
-//[of]SY_find_start_of_cblock	Section -> Y -> Y:SY_find_start_of_cblock!	|	S â†’ y â†’ y	|		|
+//[of]SY_find_start_of_cblock	Section -> Y -> Y:SY_find_start_of_cblock!	|	S -> y -> y	|		|
 //[c]
 //[c]	In section, If line at Y is code block opener return it. If
 //[c]	line at Y is code block closer return the matching code
@@ -2202,7 +2207,7 @@ function SY_find_start_of_cblock(S, Y)
 		end
 	end
 //[cf]
-//[of]nav_next_codeblock:SY_find_start_of_next_cblock	|	S â†’ y â†’ y	|
+//[of]nav_next_codeblock:SY_find_start_of_next_cblock	|	S -> y -> y	|
 //[c]
 //[c]	in section, find start of next code block after line at Y
 //[c]
@@ -2301,7 +2306,7 @@ function SY_find_start_of_next_cblock(S, Y)
 	end
 	return y
 //[cf]
-//[of]nav_prev_codeblock:SY_find_start_of_prev_cblock	|	S â†’ y â†’ y	|
+//[of]nav_prev_codeblock:SY_find_start_of_prev_cblock	|	S -> y -> y	|
 //[c]
 //[c]	in section, find start of previous code block before line at Y
 //[c]
@@ -2407,7 +2412,7 @@ function SY_find_start_of_prev_cblock(S, Y)
 	end
 	return y
 //[cf]
-//[of]SY_get_cblock	\: Section -> Y -> Codeblock	\::SY_get_cblock	|	S â†’ y â†’ Cb	|
+//[of]SY_get_cblock	\: Section -> Y -> Codeblock	\::SY_get_cblock	|	S -> y -> Cb	|
 //[c]
 //[c]	In section, return innermost code block at line at Y.
 //[c]
@@ -2417,7 +2422,7 @@ function SY_get_cblock(S, Y)
 	var y2 = SY_find_end_of_cblock(S, Y)
 	return S_make_cblock(S, y, y2)
 //[cf]
-//[of]SY_get_i_size	Section -> Y -> X	shortcut:SY_get_i_size	|	S â†’ y â†’ x	|
+//[of]SY_get_i_size	Section -> Y -> X	shortcut:SY_get_i_size	|	S -> y -> x	|
 //[c]
 //[c]	In section, get size of indent of line at Y.
 //[c]
@@ -2425,7 +2430,7 @@ function SY_get_cblock(S, Y)
 function SY_get_i_size(S, Y)
 	return SY_extract_indent(S, Y) size
 //[cf]
-//[of]SY_get_i_size_of_next_non_e	Section -> Y -> String:SY_get_i_size_of_next_non_e	|	S â†’ y â†’ s	|
+//[of]SY_get_i_size_of_next_non_e	Section -> Y -> String:SY_get_i_size_of_next_non_e	|	S -> y -> s	|
 //[c]
 //[c]	In section, get size of indent of next non-empty line after
 //[c]	the line at Y.
@@ -2439,7 +2444,7 @@ function SY_get_i_size_of_next_non_e(S, Y)
 		return t size
 	end
 //[cf]
-//[of]SY_get_i_size_of_prev_non_e	Section -> Y -> String:SY_get_i_size_of_prev_non_e	|	S â†’ y â†’ s	|
+//[of]SY_get_i_size_of_prev_non_e	Section -> Y -> String:SY_get_i_size_of_prev_non_e	|	S -> y -> s	|
 //[c]
 //[c]	In section, get size of indent of previous non-empty line before
 //[c]	the line at Y.
@@ -2453,7 +2458,7 @@ function SY_get_i_size_of_prev_non_e(S, Y)
 		return t size
 	end
 //[cf]
-//[of]SY_get_lowest_indent_next_non_e	Section -> Y -> String:SY_get_lowest_indent_next_non_e	|	S â†’ y â†’ s	|
+//[of]SY_get_lowest_indent_next_non_e	Section -> Y -> String:SY_get_lowest_indent_next_non_e	|	S -> y -> s	|
 //[c]
 //[c]	In section, extract indent of next non-empty line after line at Y,
 //[c]	compare it with ind, return the smaller indent.
@@ -2471,7 +2476,7 @@ function SY_get_lowest_indent_next_non_e(S, Y, ind)
 		end
 	end
 //[cf]
-//[of]SY_get_lowest_indent_prev_non_e	Section -> Y -> String:SY_get_lowest_indent_prev_non_e	|	S â†’ y â†’ s	|
+//[of]SY_get_lowest_indent_prev_non_e	Section -> Y -> String:SY_get_lowest_indent_prev_non_e	|	S -> y -> s	|
 //[c]
 //[c]	In section, extract indent of previous non-empty line before
 //[c]	the line at Y, compare it with ind, return the smaller indent.
@@ -2489,7 +2494,7 @@ function SY_get_lowest_indent_prev_non_e(S, Y, ind)
 		end
 	end
 //[cf]
-//[of]SY_get_margin_bot	Section -> Y -> Y	has rule:SY_get_margin_bot!	|	S â†’ y â†’ y	|		|
+//[of]SY_get_margin_bot	Section -> Y -> Y	has rule:SY_get_margin_bot!	|	S -> y -> y	|		|
 //[c]
 //[c]	In section, return amount of empty lines above line at Y.
 //[c]	Contract: S ends with an empty line, Y is not that last line.
@@ -2502,7 +2507,7 @@ function SY_get_margin_bot(S, Y)
 	end
 	return (y - 1) - Y
 //[cf]
-//[of]SY_get_margin_top	Section -> Y -> Y:SY_get_margin_top	|	S â†’ y â†’ y	|
+//[of]SY_get_margin_top	Section -> Y -> Y:SY_get_margin_top	|	S -> y -> y	|
 //[c]
 //[c]	In section, return amount of empty lines above line at Y.
 //[c]
@@ -2514,7 +2519,7 @@ function SY_get_margin_top(S, Y)
 	end
 	return Y - (y + 1)
 //[cf]
-//[of]SY_get_sec	Section -> Y -> Section	shortcut:SY_get_normed_sec!	|	S â†’ y â†’ S	|		|
+//[of]SY_get_sec	Section -> Y -> Section	shortcut:SY_get_normed_sec!	|	S -> y -> S	|		|
 //[c]
 //[c]	In section, return normed section of row at Y. Contract: row
 //[c]	at Y is a section.
@@ -2525,7 +2530,7 @@ function SY_get_normed_sec(S, Y)
 	endwithnewline(s)
 	return s
 //[cf]
-//[of]SY_get_sec	Section -> Y -> Section	shortcut:SY_get_sec	|	S â†’ y â†’ S	|
+//[of]SY_get_sec	Section -> Y -> Section	shortcut:SY_get_sec	|	S -> y -> S	|
 //[c]
 //[c]	In section, return section of row at Y.
 //[c]
@@ -2533,11 +2538,11 @@ function SY_get_normed_sec(S, Y)
 function SY_get_sec(S, Y)
 	return SY_get_row(S, Y) section
 //[cf]
-//[of]SY_get_size:SY_get_size	|	S â†’ y â†’ n	|
+//[of]SY_get_size:SY_get_size	|	S -> y -> n	|
 function SY_get_size(S, Y)
 	return SY_get_row(S, Y) size
 //[cf]
-//[of]SY_get_text	Section -> Y -> String	shortcut:SY_get_text	|	S â†’ y â†’ s	|
+//[of]SY_get_text	Section -> Y -> String	shortcut:SY_get_text	|	S -> y -> s	|
 //[c]
 //[c]	In section, return text of row at Y.
 //[c]
@@ -2545,11 +2550,11 @@ function SY_get_size(S, Y)
 function SY_get_text(S, Y)
 	return SY_get_row(S, Y) text
 //[cf]
-//[of]SY_get_row:SY_get_row	|	S â†’ y â†’ R	|
+//[of]SY_get_row:SY_get_row	|	S -> y -> R	|
 function SY_get_row(S, Y)
 	return S row(FirstNotNil(Y, (S rowsSize)-1))
 //[cf]
-//[of]SY_is_cb_close	Section -> Y -> Bool	shortcut:SY_is_cb_close	|	S â†’ y â†’ b	|
+//[of]SY_is_cb_close	Section -> Y -> Bool	shortcut:SY_is_cb_close	|	S -> y -> b	|
 //[c]
 //[c]	In section, if line at Y is a code block closer
 //[c]	(eg. '//' or '/**/').
@@ -2558,7 +2563,7 @@ function SY_get_row(S, Y)
 function SY_is_cb_close(S, Y)
 	return R_is_cb_close(SY_get_row(S, Y))
 //[cf]
-//[of]SY_is_cb_open	Section -> Y -> Bool	shortcut:SY_is_cb_open	|	S â†’ y â†’ b	|
+//[of]SY_is_cb_open	Section -> Y -> Bool	shortcut:SY_is_cb_open	|	S -> y -> b	|
 //[c]
 //[c]	In section, if line at Y is code block opener
 //[c]	(eg. '// foo' or '/* foo */').
@@ -2567,7 +2572,7 @@ function SY_is_cb_close(S, Y)
 function SY_is_cb_open(S, Y)
 	return R_is_cb_open(SY_get_row(S, Y))
 //[cf]
-//[of]SY_is_first_in_level	Section -> Y -> Bool:SY_is_first_in_level	|	S â†’ y â†’ b	|
+//[of]SY_is_first_in_level	Section -> Y -> Bool:SY_is_first_in_level	|	S -> y -> b	|
 //[c]
 //[c]	In section, if line at Y is first line in level.
 //[c]
@@ -2583,7 +2588,7 @@ function SY_is_first_in_level(S, Y)
 	end
 	return false
 //[cf]
-//[of]SY_is_first_non_e_in_level	Section -> Y -> Bool:SY_is_first_non_e_in_level	|	S â†’ y â†’ b	|
+//[of]SY_is_first_non_e_in_level	Section -> Y -> Bool:SY_is_first_non_e_in_level	|	S -> y -> b	|
 //[c]
 //[c]	In section, if line at Y is first non-empty line in level.
 //[c]
@@ -2595,7 +2600,7 @@ function SY_is_first_non_e_in_level(S, Y)
 	end
 	return false
 //[cf]
-//[of]SY_is_first_non_e_in_sec	Section -> Y -> Bool:SY_is_first_non_e_in_sec	|	S â†’ y â†’ b	|
+//[of]SY_is_first_non_e_in_sec	Section -> Y -> Bool:SY_is_first_non_e_in_sec	|	S -> y -> b	|
 //[c]
 //[c]	In section, if line at Y is first non-empty line in section.
 //[c]
@@ -2607,7 +2612,7 @@ function SY_is_first_non_e_in_sec(S, Y)
 	end
 	return false
 //[cf]
-//[of]SY_is_link	Section -> Y -> Bool	shortcut:SY_is_link	|	S â†’ y â†’ b	|
+//[of]SY_is_link	Section -> Y -> Bool	shortcut:SY_is_link	|	S -> y -> b	|
 //[c]
 //[c]	In section, if line at Y is a link.
 //[c]
@@ -2615,7 +2620,7 @@ function SY_is_first_non_e_in_sec(S, Y)
 function SY_is_link(S, Y)
 	return (SY_get_row(S, Y) type == lt_link)
 //[cf]
-//[of]SY_is_last_non_e_in_sec	Section -> Y -> Bool:SY_is_last_non_e_in_sec	|	S â†’ y â†’ b	|
+//[of]SY_is_last_non_e_in_sec	Section -> Y -> Bool:SY_is_last_non_e_in_sec	|	S -> y -> b	|
 //[c]
 //[c]	In section, if line at Y is last non-empty line in section.
 //[c]
@@ -2633,7 +2638,7 @@ function SY_is_last_non_e_in_sec(S, Y)
 	//~ var last = s rowsSize - 1
 	//~ print(SY_is_last_non_e_in_sec(s, last))    // true
 //[cf]
-//[of]SY_is_last_in_level	Section -> Y -> Bool:SY_is_last_in_level	|	S â†’ y â†’ b	|
+//[of]SY_is_last_in_level	Section -> Y -> Bool:SY_is_last_in_level	|	S -> y -> b	|
 //[c]
 //[c]	In section, if line at Y is last line in level.
 //[c]
@@ -2649,7 +2654,7 @@ function SY_is_last_in_level(S, Y)
 	end
 	return false
 //[cf]
-//[of]SY_is_sec	Section -> Y -> Bool	shortcut:SY_is_sec	|	S â†’ y â†’ b	|
+//[of]SY_is_sec	Section -> Y -> Bool	shortcut:SY_is_sec	|	S -> y -> b	|
 //[c]
 //[c]	In section, if line at Y is a section.
 //[c]
@@ -2657,12 +2662,12 @@ function SY_is_last_in_level(S, Y)
 function SY_is_sec(S, Y)
 	return (SY_get_row(S, Y) type == lt_section)
 //[cf]
-//[of]SY_is_just_ws:SY_is_just_ws	|	S â†’ y â†’ b	|
+//[of]SY_is_just_ws:SY_is_just_ws	|	S -> y -> b	|
 function SY_is_just_ws(S, Y)
 	var r = SY_get_row(S, Y)
 	return not (r type == lt_comment) and not (r type == lt_link) and is_just_ws(r text)
 //[cf]
-//[of]SY_is_sec_or_link	Section -> Y -> Bool	shortcut:SY_is_sec_or_link	|	S â†’ y â†’ b	|
+//[of]SY_is_sec_or_link	Section -> Y -> Bool	shortcut:SY_is_sec_or_link	|	S -> y -> b	|
 //[c]
 //[c]	In section, if line at Y is a section or link.
 //[c]
@@ -2670,7 +2675,7 @@ function SY_is_just_ws(S, Y)
 function SY_is_sec_or_link(S, Y)
 	return R_is_sec_or_link(SY_get_row(S, Y))
 //[cf]
-//[of]SY_next_is_just_ws	Section -> Y -> Bool:SY_next_is_just_ws	|	S â†’ y â†’ b	|
+//[of]SY_next_is_just_ws	Section -> Y -> Bool:SY_next_is_just_ws	|	S -> y -> b	|
 //[c]
 //[c]	In section, if next line after line at Y is just whitespace.
 //[c]
@@ -2684,7 +2689,7 @@ function SY_next_is_just_ws(S, Y)
 	end
 	return false
 //[cf]
-//[of]SY_next_non_e_is_cb_close	Section -> Y -> Bool:SY_next_non_e_is_cb_close	|	S â†’ y â†’ b	|
+//[of]SY_next_non_e_is_cb_close	Section -> Y -> Bool:SY_next_non_e_is_cb_close	|	S -> y -> b	|
 //[c]
 //[c]	In section, if next non-empty line after line at Y is a
 //[c]	code block closer.
@@ -2699,7 +2704,7 @@ function SY_next_non_e_is_cb_close(S, Y)
 	end
 	return false
 //[cf]
-//[of]SY_next_non_e_is_sec	Section -> Y -> Bool:SY_next_non_e_is_sec	|	S â†’ y â†’ b	|
+//[of]SY_next_non_e_is_sec	Section -> Y -> Bool:SY_next_non_e_is_sec	|	S -> y -> b	|
 //[c]
 //[c]	In section, if next non-empty line after line at Y is section.
 //[c]
@@ -2713,7 +2718,7 @@ function SY_next_non_e_is_sec(S, Y)
 	end
 	return false
 //[cf]
-//[of]SY_next_non_e_is_sec_or_link	Section -> Y -> Bool:SY_next_non_e_is_sec_or_link	|	S â†’ y â†’ b	|
+//[of]SY_next_non_e_is_sec_or_link	Section -> Y -> Bool:SY_next_non_e_is_sec_or_link	|	S -> y -> b	|
 //[c]
 //[c]	In section, if next non-empty line after line at Y is section
 //[c]	or link.
@@ -2728,7 +2733,7 @@ function SY_next_non_e_is_sec_or_link(S, Y)
 	end
 	return false
 //[cf]
-//[of]SY_next_not_just_ws	Section -> Y -> Bool	shortcut:SY_next_not_just_ws	|	S â†’ y â†’ b	|
+//[of]SY_next_not_just_ws	Section -> Y -> Bool	shortcut:SY_next_not_just_ws	|	S -> y -> b	|
 //[c]
 //[c]	In section, if next line after line at Y is not just whitespace.
 //[c]
@@ -2736,11 +2741,11 @@ function SY_next_non_e_is_sec_or_link(S, Y)
 function SY_next_not_just_ws(S, Y)
 	return not SY_next_is_just_ws(S, Y)
 //[cf]
-//[of]SY_not_just_ws:SY_not_just_ws	|	S â†’ y â†’ b	|
+//[of]SY_not_just_ws:SY_not_just_ws	|	S -> y -> b	|
 function SY_not_just_ws(S, Y)
 	return not SY_is_just_ws(S, Y)
 //[cf]
-//[of]SY_prev_is_just_ws	Section -> Y -> Bool:SY_prev_is_just_ws	|	S â†’ y â†’ b	|
+//[of]SY_prev_is_just_ws	Section -> Y -> Bool:SY_prev_is_just_ws	|	S -> y -> b	|
 //[c]
 //[c]	In section, if previous line before line at Y is just whitespace.
 //[c]
@@ -2754,7 +2759,7 @@ function SY_prev_is_just_ws(S, Y)
 	end
 	return false
 //[cf]
-//[of]SY_prev_non_e_is_sec	Section -> Y -> Bool:SY_prev_non_e_is_sec	|	S â†’ y â†’ b	|
+//[of]SY_prev_non_e_is_sec	Section -> Y -> Bool:SY_prev_non_e_is_sec	|	S -> y -> b	|
 //[c]
 //[c]	In section, if previous non-empty line before line at Y is a
 //[c]	section.
@@ -2769,7 +2774,7 @@ function SY_prev_non_e_is_sec(S, Y)
 	end
 	return false
 //[cf]
-//[of]SY_prev_non_e_is_sec_or_link	Section -> Y -> Bool:SY_prev_non_e_is_sec_or_link	|	S â†’ y â†’ b	|
+//[of]SY_prev_non_e_is_sec_or_link	Section -> Y -> Bool:SY_prev_non_e_is_sec_or_link	|	S -> y -> b	|
 //[c]
 //[c]	In section, if previous non-empty line before line at Y is a
 //[c]	section or link.
@@ -2784,7 +2789,7 @@ function SY_prev_non_e_is_sec_or_link(S, Y)
 	end
 	return false
 //[cf]
-//[of]SY_unfold	Section -> Y -> Y:SY_unfold	|	S â†’ y â†’ y	|
+//[of]SY_unfold	Section -> Y -> Y:SY_unfold	|	S -> y -> y	|
 //[c]
 //[c]	In section, unfold subsection at Y to a named/unnamed code
 //[c]	block. Unnamed code block if section line text contains just
@@ -2850,7 +2855,7 @@ function SY_unfold(S, Y)
 	end
 //[cf]
 //[cf]
-//[of]unoutc	String -> String:unoutc	|	s â†’ s	|
+//[of]unoutc	String -> String:unoutc	|	s -> s	|
 //[c]
 //[c]	Unoutcomment string.
 //[c]
@@ -3016,8 +3021,8 @@ function Unfold_Or_Move_Right
 	s stopGroup
 //[cf]
 
-//[of]move_selection_up:Move_Selection_Up
-function Move_Selection_Up
+//[of]move_selection_up:Move_Up
+function Move_Up
 	var s = get_active_normed_section
 	s startGroup
 	var start_y = get_sel_start_y
@@ -3044,8 +3049,8 @@ function Move_Selection_Up
 	end
 	s stopGroup
 //[cf]
-//[of]move_selection_down:Move_Selection_Down
-function Move_Selection_Down
+//[of]move_selection_down:Move_Down
+function Move_Down
 	var s = get_active_normed_section
 	s startGroup
 	var start_y = get_sel_start_y
