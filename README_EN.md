@@ -131,7 +131,7 @@ There is no shortcut defined to create a link by hand, because I think that´s a
 
 Here is a reference of the meta characters and -character groups that are meaningful for Code Browser and my user scripts. That´s how they would look in another editor. Those that are relevant for Code Browser are highlighted in yellow. Those that are relevant for my user scripts are highlighted in orange.
 
-*Edit: At least they should be, but Github´s markdown parser does not support colored highlighting. Browser extensions like [This for Firefox](https://addons.mozilla.org/de/firefox/addon/markdown-viewer-webext/) or [This for Chrome](https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk) will [show the highlights](https://raw.githubusercontent.com/heronils/Code_Browser_49/master/README_EN.md#directives).*
+*Edit: At least they should be, but Github´s markdown parser does not support colored highlighting. Browser extensions like [this for Firefox](https://addons.mozilla.org/de/firefox/addon/markdown-viewer-webext/) or [this for Chrome](https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk) will [show the highlights](https://raw.githubusercontent.com/heronils/Code_Browser_49/master/README_EN.md#directives).*
 
 <pre>
 <span style = 'background:yellow'>#[of]</span>ID of the section<span style = 'background:yellow'>:</span>Title of the section
