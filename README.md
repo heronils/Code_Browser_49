@@ -90,7 +90,7 @@ Die nachfolgenden Schritte sind optional.
 
 * `Strg` + `Alt` + `c` – Kopiere einen Link zur aktuellen Sektion in die Zwischenablage. Kann dann mit `Strg` + `v` woanders – auch in andere Dateien – eingefügt werden. Damit das funktioniert, muss die Sektion und alle Eltern-Sektionen über eine ID verfügen (ID = Ein frei zu wählender Text). Diese kann für eine Sektion (oder einen Link) entweder von Hand hinzugefügt werden, mittels `Alt` + `Enter` wenn der Cursor sich auf der Sektions- oder Linkzeile befindet, oder einfach die Sektion einmal mit `Strg` + `Alt` + `→` entfalten und dann mit `Strg` + `Alt` + `←` wieder falten. Das setzt die ID mit dem Titel der Sektion gleich.
 
-Es ist kein Tastenkürzel definiert, um einen Link von Hand zu erstellen, da das meines Erachtens sowieso ein umständliches Procedere ist.
+Es ist kein Tastenkürzel definiert, um einen Link von Hand zu erstellen, da das meines Erachtens sowieso ein umständlicher Prozess ist.
 
 ### Beschreibungen
 
@@ -131,6 +131,8 @@ Es ist kein Tastenkürzel definiert, um einen Link von Hand zu erstellen, da das
 ## Direktiven
 
 Hier eine Referenz der für Code Browser und meine Benutzerskripte bedeutsamen Metazeichen und -zeichengruppen. So würden sie in einem anderen Editor aussehen. Diejenigen, welche für Code Browser relevant sind, sind gelb hinterlegt. Solche, die für meine Benutzerskripte relevant sind, sind orange hinterlegt.
+
+*Edit: Zumindest sollten sie das sein, aber Github´s Markdown Parser unterstützt keine farbige Hervorhebungen. Browser-Erweiterungen wie [Dieses für Firefox](https://addons.mozilla.org/de/firefox/addon/markdown-viewer-webext/) oder [Dieses für Chrome](https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk) werden [die Hervorhebungen anzeigen](https://raw.githubusercontent.com/heronils/Code_Browser_49/master/README.md#direktiven).*
 
 <pre>
 <span style='background:yellow'>#[of]</span>ID der Sektion<span style='background:yellow'>:</span>Titel der Sektion
