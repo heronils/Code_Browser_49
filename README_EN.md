@@ -2,7 +2,7 @@
 
 *[In deutsch lesen](README.md)*
 
-[Introduction](#introduction) • [Why this repo](#why-this-repo) • [Installation](#installation) • [Shortcuts](#shortcuts) • [Tips and Tricks](#tips-and-tricks ) • [Directives](#directives) • [Credits](#credits)
+[Introduction](#introduction) • [Why this repo](#why-this-repo) • [Installation](#installation) • [Keyboard Shortcuts](#keyboard-shortcuts) • [Tips and Tricks](#tips-and-tricks ) • [Directives](#directives) • [Credits](#credits)
 
 ![Screenshot of Code Browser](Screenshots/Hello_World.png)
 
@@ -50,9 +50,9 @@ The following steps are optional.
 
    The user scripts provide additional functionality such as folding and unfolding sections and commenting out parts of the code. It is not pretty looking code right now – I wrote the scripts a long time ago – but they work. A revision is in planning.
 
-## Shortcuts
+## Keyboard Shortcuts
 
-[If my user scripts and my user settings are installed](#installation), the Code Browser uses the following shortcuts. The abbreviations can be changed under `preferences.cbc` → *Key Mappings* → *(activated Key Mapping)*. Those with the text `(user script)` behind them are defined by my user scripts and can be changed in the `user.cbc`.
+[If my user scripts and my user settings are installed](#installation), the Code Browser uses the following keyboard shortcuts. The shortcuts can be changed under `preferences.cbc` → *Key Mappings* → *(activated Key Mapping)*. Those with the text `(user script)` behind them are defined by my user scripts and can be changed in the `user.cbc`.
 
 ### Basic
 * `Ctrl` + `z` and `Ctrl` + `y` – Undo and Redo
