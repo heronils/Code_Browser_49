@@ -1,5 +1,7 @@
 # Code Browser 4.9
 
+*[In deutsch lesen](README.md)*
+
 [Introduction](#introduction) • [Why this repo](#why-this-repo) • [Installation](#installation) • [Shortcuts](#shortcuts) • [Tips and Tricks](#tips-and-tricks ) • [Directives](#directives) • [Credits](#credits)
 
 ![Screenshot of Code Browser](Screenshots/Hello_World.png)
