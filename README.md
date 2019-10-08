@@ -132,7 +132,7 @@ Es ist kein Tastenkürzel definiert, um einen Link von Hand zu erstellen, da das
 
 Hier eine Referenz der für Code Browser und meine Benutzerskripte bedeutsamen Metazeichen und -zeichengruppen. So würden sie in einem anderen Editor aussehen. Diejenigen, welche für Code Browser relevant sind, sind gelb hinterlegt. Solche, die für meine Benutzerskripte relevant sind, sind orange hinterlegt.
 
-*Edit: Zumindest sollten sie das sein, aber Github´s Markdown Parser unterstützt keine farbige Hervorhebungen. Browser-Erweiterungen wie [dieses für Firefox](https://addons.mozilla.org/de/firefox/addon/markdown-viewer-webext/) oder [dieses für Chrome](https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk) werden [die Hervorhebungen anzeigen](https://raw.githubusercontent.com/heronils/Code_Browser_49/master/README.md#direktiven).*
+*Edit: Zumindest sollten sie das sein, aber Github´s Markdown Parser unterstützt keine farbige Hervorhebungen. Browser-Erweiterungen wie [diese für Firefox](https://addons.mozilla.org/de/firefox/addon/markdown-viewer-webext/) oder [diese für Chrome](https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk) werden [die Hervorhebungen anzeigen](https://raw.githubusercontent.com/heronils/Code_Browser_49/master/README.md#direktiven).*
 
 <pre>
 <span style='background:yellow'>#[of]</span>ID der Sektion<span style='background:yellow'>:</span>Titel der Sektion
