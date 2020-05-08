@@ -1,0 +1,7 @@
+Hello world!
+
+#[of]:I am a section
+I am the content of the section.
+#[cf]
+
+#[c]I am a description comment

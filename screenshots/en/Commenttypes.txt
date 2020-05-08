@@ -1,0 +1,18 @@
+#[of]ID of the Section:Title of the section
+Content of the section
+#[cf]
+
+#[l]:Title of the link:#ID of the Section
+
+#[c]Description comment
+
+#[c]( Title of the unfolded section
+Content of the section
+#[c])
+
+#[c]~ Outcommented text
+#[c]~ ~ Outcommented twice
+
+# Normal comment
+
+Normal text

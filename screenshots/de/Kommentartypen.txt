@@ -1,0 +1,18 @@
+#[of]ID der Sektion:Titel der Sektion
+Inhalt der Sektion
+#[cf]
+
+#[l]:Titel des Links:#ID der Sektion
+
+#[c]Beschreibender Kommentar
+
+#[c]( Titel der entfalteten Sektion
+Inhalt der Sektion
+#[c])
+
+#[c]~ Auskommentierter Text
+#[c]~ ~ Doppelt auskommentiert
+
+# Normaler Kommentar
+
+Normaler Text

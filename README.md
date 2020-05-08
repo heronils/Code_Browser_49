@@ -2,29 +2,29 @@
 
 *[Read in english](README_EN.md)*
 
-[Einführung](#einführung) • [Warum dieses Repo](#warum-dieses-repo) • [Installation](#installation) • [Tastenkürzel](#tastenkürzel) • [Tips und Tricks](#tips-und-tricks) • [Direktiven](#direktiven) • [Credits](#credits)
+[Einführung](#einführung) • [Warum dieses Repo](#warum-dieses-repo) • [Installation](#installation) • [Tastenkürzel](#tastenkürzel) • [Direktiven](#direktiven) • [Tips und Tricks](#tips-und-tricks) • [Versionshistorie](#versionshistorie) • [Credits](#credits)
 
-![Bildschirmfoto von Code Browser](Screenshots/Hallo_Welt.png)
+![Bildschirmfoto von Code Browser](screenshots/de/hallowelt.png)
 
 *Bildschirmfoto von Code Browser.*
 
 ## Einführung
 
-[Code Browser](http://tibleiz.net/code-browser/) ist ein Zen-artiger Text-Editor, geschrieben von [Marc Kerbiquet](http://tibleiz.net/). Er lädt schnell und zeigt auch große Dateien ohne Murren an. Er verfügt über eine eigene Skriptsprache, mit Hilfe derer man die Funktionalität des Editors erweitern kann.
+[Code Browser](http://tibleiz.net/code-browser/) ist ein Zen-artiger Text-Editor, geschrieben von [Marc Kerbiquet](http://tibleiz.net/). Er lädt in Sekundenbruchteilen und zeigt auch riesige Dateien ohne große Verzögerungen an. Er verfügt über eine eigene Skriptsprache, mit Hilfe derer man die Funktionalität des Editors erweitern kann.
 
 Seine revolutionäre Eigenschaft aber besteht darin, wie er spezielle formatierte [Direktiven](#direktiven) im Quellcode interpretiert und anzeigt:
 
-* *Sektionen* (englisch: *Sections*). Blau im Bildschirmfoto. Sie falten frei zu wählende Teile des Codes weg. Man kann in solche Sektionen mittels `Alt` + (`→` oder `←`) hinein und hinaus navigieren, so wie man in Datei-Browsern in Ordner hinein und hinaus navigieren kann. Weshalb Sektionen ursprünglich von Marc Kerbiquet auch *Folder* (deutsch: *Ordner*) genannt wurden.
+* *Sektionen* (englisch: *Sections*). Dunkelblau im Bildschirmfoto. Sie falten frei zu wählende Teile des Codes weg. Man kann in solche Sektionen mittels `Alt` + (`→` oder `←`) hinein und hinaus navigieren, so wie man in Datei-Browsern in Ordner hinein und hinaus navigieren kann. Weshalb Sektionen ursprünglich von Marc Kerbiquet auch *Folder* (deutsch: *Ordner*) genannt wurden.
 
   Sektionen können beliebig tief verschachtelt werden. Somit kann man eine lineare Code-Datei in einen Baum aus 'Mini-Dateien' umwandeln, was der Code-Strukturierung sehr förderlich ist. Es bleibt allerdings tatsächlich eine einzelne Datei.
-* *Links*. Grün im Bildschirmfoto. Sie erweitern das Konzept, und ermöglichen es, Verweise zu anderen Sektionen oder auch zu anderen Dateien einzufügen, vergleichbar zu [Hyperlinks](https://de.wikipedia.org/wiki/Hyperlink) in HTML-Dokumenten. In der Praxis werden Links gerne in indexierenden Dateien oder Doku´s eingesetzt, seltener im Code selbst. Sie bieten weitere interessante Möglichkeiten wegen ihrer Fähigkeit, auf Zeilennummern oder sogar auf Suchresultate regulärer Ausdrücke zu verlinken.
-* *Beschreibungen* (englisch: *Descriptions*). Der Text mit grauem Hintergrund im Bildschirmfoto. Sie sind 'visueller Zucker'. Es handelt sich um hübsch anzusehende, wahlweise farbig hervorgehobene Kommentare. Die Kommentarzeichen werden ausgeblendet.
+* *Links*. Hellgrün im Bildschirmfoto. Sie erweitern das Konzept, und ermöglichen es, Verweise zu anderen Sektionen oder auch zu anderen Dateien einzufügen, vergleichbar zu [Hyperlinks](https://de.wikipedia.org/wiki/Hyperlink) in HTML-Dokumenten. In der Praxis werden Links gerne in indexierenden Dateien oder Doku´s eingesetzt, seltener im Code selbst. Sie bieten weitere interessante Möglichkeiten wegen ihrer Fähigkeit, auf Zeilennummern oder sogar auf Suchresultate regulärer Ausdrücke zu verlinken.
+* *Beschreibungen* (englisch: *Descriptions*). Der waldgrüne Text im Bildschirmfoto. Sie sind 'visueller Zucker'. Es handelt sich um hübsch anzusehende, wahlweise farbig hervorgehobene Kommentare. Die Kommentarzeichen werden ausgeblendet. Meine Nutzerskripte verwenden Beschreibungen für spezielle Direktiven.
 
 Mehr Informationen dazu gibt´s in der Hilfedatei oder [auf der Projektseite](http://www.tibleiz.net/code-browser/code-folding.html).
 
 ## Warum dieses Repo?
 
-Nach Version 4.9 hat der Autor leider ein wichtiges Feature entfernt – relative Einrückung (siehe *Folding* → *Relative Indentation* in der Hilfedatei) – was den Editor für einrückungsbasierte Sprachen wie [Python](https://www.python.org/) oder [Nim](https://nim-lang.org/) eher unbrauchbar gemacht hat. Ferner wurde die Geschwister-Navigation verändert – `Strg` + `Umschalttaste` + (`↑` oder `↓`) – welche nun die Ebene wechselt wenn man über Sektionsgrenzen hinweg navigiert.
+Nach Version 4.9 hat der Autor leider ein wichtiges Feature entfernt – relative Einrückung (siehe *Folding* → *Relative Indentation* in der Hilfedatei) – was den Editor für einrückungsbasierte Sprachen wie [Python](https://www.python.org/) eher unbrauchbar gemacht hat. Ferner wurde die Geschwister-Navigation verändert – `Strg` + `Umschalttaste` + (`↑` oder `↓`) – welche nun die Ebene wechselt wenn man über Sektionsgrenzen hinweg navigiert.
 
 Da ich diese Features in [Treesearcher](https://github.com/heronils/Treesearcher) benötige, hier ein Backup von Version 4.9, dazu ferner meine globalen Einstellungen und meine Benutzerskripte.
 
@@ -32,27 +32,27 @@ Da ich diese Features in [Treesearcher](https://github.com/heronils/Treesearcher
 
 1. Lade die zu deinem Betriebssystem passende Portable aus dem hier befindlichen Ordner `Setup` herunter und [entpacke](https://www.7-zip.de/) Sie. Der Editor ist die `cb.exe` unter Windows und die `code-browser` im Ordner `usr/local/bin` unter Linux.
 
-Die nachfolgenden Schritte sind optional.
+Die nachfolgenden Schritte sind optional aber ich empfehle sie.
 
 2. Lies den Abschnitt *Customizing* → *Files* in der beigefügten Hilfedatei.
 
-3. Starte den Editor einmal. Das erstellt die unter 2. beschriebenen Nutzerverzeichnisse.
+3. Starte den Editor einmal. Das erstellt die unter 2. beschriebenen Nutzerverzeichnisse. [Suche gegebenfalls systemweit](https://www.voidtools.com/) nach `code-browser-4` unter Windows oder `.code-browser-4` unter Linux. Diese Ordner sind die Nutzerverzeichnisse.
 
 4. *Globale Einstellungen ändern*: Ersetze die globale `preferences.cbc` mit der in diesem Verzeichnis.
 
-   Die Hauptunterschiede sind: Relative Einrückung wird als Standard gesetzt, ein (meiner Meinung nach) hübscher anzusehendes Theme wird verwendet (Siehe *Themes* → *Bob* in der `preferences.cbc`), einige Tastenkürzel werden umdefiniert (siehe *Key Mappings* → *Bob*), und einige Sprachen werden geändert (siehe *Languages*). Auch wird unter Anderem Python als Tool definiert (`Alt` + `p`, siehe *Tools*).
+   Die Hauptunterschiede sind: Relative Einrückung wird als Standard gesetzt, ein (meiner Meinung nach) hübscher anzusehendes Theme wird verwendet (Siehe *Themes* → *Purple-Blue* in der `preferences.cbc`), einige Tastenkürzel werden umdefiniert (siehe *Key Mappings* → *Nils*), und einige Sprachen werden geändert (siehe *Languages*). Auch wird unter Anderem Python (`Alt` + `p`) und Node.js (`Alt` + `n`) als Tool definiert (siehe *Tools*).
 
    Die `preferences.cbc` kann nach Belieben verändert werden, **wird aber bei einer Neuinstallation – [falls Du den Installer verwendet hast](https://web.archive.org/web/20160912162221/http://tibleiz.net:80/code-browser/download.html) – überschrieben**.
 
-5. *Benutzerskripte aktivieren*: Verschiebe die `user.cbs` und die `user.cbc` hier im Verzeichnis in das in Schritt 3 erstellte Benutzerverzeichnis. Die `user.cbs` sind die Skripte, und die `user.cbc` verbindet die Skripte mit dem Editor.
+5. *Benutzerskripte aktivieren*: Verschiebe die `user.cbs` und die `user.cbc` hier im Verzeichnis in das in Schritt 3 erstellte Nutzerverzeichnis. Die `user.cbs` sind die Skripte, und die `user.cbc` verbindet die Skripte mit dem Editor.
 
    *Beachte, daß das Layout der `user.cbc` zerstört wird, wenn Du Änderungen innerhalb von Code Browser via 'Tools' → 'Options...' vornimmst. Mach Dir zur Not ein Backup dieser Datei.*
 
-   Die Benutzerskripte bieten weitere Funktionen, wie das Falten und Entfalten von Sektionen und das Auskommentieren von Code-Abschnitten. Es ist derzeit kein hübscher Code – ich habe die Skripte vor langer Zeit geschrieben – aber sie funktionieren. Eine Überarbeitung ist in Planung.
+   Die Benutzerskripte bieten weitere Funktionen, wie das Falten und Entfalten von Sektionen und das Auskommentieren von Code-Abschnitten.
 
 ## Tastenkürzel
 
-[Wenn meine Benutzerskripte und meine Nutzereinstellungen installiert sind](#installation), verwendet der Code Browser die folgenden Tastenkürzel. Die Kürzel können unter `preferences.cbc` → *Key Mappings* → *(aktiviertes Key Mapping)* geändert werden. Die mit dem Text `(Benutzerskript)` dahinter werden von meinen Benutzerskripten definiert und können in der `user.cbc` geändert werden.
+[Wenn meine Benutzerskripte und meine Nutzereinstellungen installiert sind](#installation), verwendet der Code Browser die folgenden Tastenkürzel. Die Kürzel können unter `preferences.cbc` → *Key Mappings* → *(aktiviertes Key Mapping)* geändert werden. Die mit dem Text `(Benutzerskript)` davor werden von meinen Benutzerskripten definiert und können in der `user.cbc` geändert werden.
 
 ### Grundlegendes
 
@@ -73,7 +73,7 @@ Die nachfolgenden Schritte sind optional.
 * `Alt` + (`↑` oder `↓`) – Zur vorherigen oder zur nächsten Sektion/Link springen.
 * `Alt` + (`→` oder `←`) – In eine Sektion/einen Link hinein- oder aus ihr wieder hinaus navigieren.
 * `Strg` + `Umschalttaste` + (`↑` oder `↓`) – Zur vorherigen oder nächsten Geschwister-Sektion/Link in der Eltern-Ebene springen – Abkürzung für `Alt` + `←`, `Alt` + (`↑` oder `↓`), `Alt` + `→`.
-* `Strg` + `Alt` + (`↑` oder `↓`) *(Benutzerskript)* – Zum vorherigen oder zum nächsten Absatz springen (Absatz = Durch Leerzeilen getrennte Codezeilen). Zusätzlich `Umschalttaste` wählt den Absatz auch aus.
+* *(Benutzerskript)* `Strg` + `Alt` + (`↑` oder `↓`) – Zum vorherigen oder zum nächsten Absatz springen (Absatz = Durch Leerzeilen getrennte Codezeilen).
 * `Alt` + `g` – Springe zur einzugebenden Zeilennummer.
 * `Strg` + `b` – Springe zur entsprechenden Klammer. Zusätzlich `Umschalttaste` wählt den Text dazwischen aus.
 
@@ -82,15 +82,15 @@ Die nachfolgenden Schritte sind optional.
 * `F12` – Eine neue Sektion erstellen. Wenn Text selektiert ist, wird dieser der Inhalt der Sektion werden.
 * `Umschalttaste` + `F12` – Die Sektion unter dem Cursor löschen. Ihr Inhalt wird nicht gelöscht, sondern auf die Eltern-Ebene verschoben.
 * `Alt` + `Enter` – Eigenschaften der Sektion oder des Links unter dem Cursor bearbeiten.
-* `Strg` + `Alt` + (`←` oder `→`) *(Benutzerskript)* – Wenn etwas selektiert ist, die Selektion ein Zeichen nach links oder rechts verschieben, ansonsten den Absatz unter dem Cursor falten oder die Sektion unter dem Cursor entfalten.
+* *(Benutzerskript)* `Strg` + `Alt` + (`←` oder `→`) – Absatz unter dem Cursor falten oder die Sektion unter dem Cursor entfalten.
 
-  *Ohne den schließenden Marker einer entfalteten Sektion – z.B. `#)` in Python oder `/*)*/` in CSS – kannst du die Sektion nicht wieder zusammenfalten.*
+  *Ohne den schließenden Marker einer entfalteten Sektion – `)` – kannst du die Sektion nicht wieder zusammenfalten.*
 
 ### Links
 
 * `Strg` + `Alt` + `c` – Kopiere einen Link zur aktuellen Sektion in die Zwischenablage. Kann dann mit `Strg` + `v` woanders – auch in andere Dateien – eingefügt werden. Damit das funktioniert, muss die Sektion und alle Eltern-Sektionen über eine ID verfügen (ID = Ein frei zu wählender Text). Diese kann für eine Sektion (oder einen Link) entweder von Hand hinzugefügt werden, mittels `Alt` + `Enter` wenn der Cursor sich auf der Sektions- oder Linkzeile befindet, oder einfach die Sektion einmal mit `Strg` + `Alt` + `→` entfalten und dann mit `Strg` + `Alt` + `←` wieder falten. Das setzt die ID mit dem Titel der Sektion gleich.
 
-Es ist kein Tastenkürzel definiert, um einen Link von Hand zu erstellen, da das meines Erachtens sowieso ein umständlicher Prozess ist.
+Es ist kein Tastenkürzel definiert, um einen Link von Hand zu erstellen, da das sowieso ein umständlicher Prozess ist.
 
 ### Beschreibungen
 
@@ -98,13 +98,11 @@ Es ist kein Tastenkürzel definiert, um einen Link von Hand zu erstellen, da das
 
 ### Text verschieben
 
-* `Strg` + (`↑` oder `↓`) *(Benutzerskript)* – Die aktuelle Zeile oder Selektion eine Zeile nach oben oder nach unten verschieben. Die Selektion muss kein sauberer selektierter Block sein, es werden einfach alle Zeilen verschoben, in denen etwas selektiert ist. `Strg` + `Alt` + (`←` oder `→`) verschiebt die Selektion nach links oder rechts.
+* *(Benutzerskript)* `Strg` + (`↑` oder `↓`) – Die aktuelle Zeile oder Selektion eine Zeile nach oben oder nach unten verschieben. Die Selektion muss kein sauberer selektierter Block sein, es werden einfach alle Zeilen verschoben, in denen etwas selektiert ist.
 
 ### Zeilen auskommentieren und entkommentieren
 
-* (`Umschalttaste` +) `Alt` + `x` *(Benutzerskript)* – Die aktuelle Zeile oder die Selektion auskommentieren oder wieder entkommentieren. Verwendet `<Kommentarzeichen der Sprache>~<Leerzeichen>` als Direktive, zum Beispiel `#~ ` in Python. Funktioniert rekursiv bei Sektionen.
-
-  *Mehreres Auskommentieren hintereinander funktioniert derzeit nicht korrekt mit Sprachen wie CSS, die keine einzeiligen Kommentare haben.*
+* *(Benutzerskript)* (`Umschalttaste` +) `Alt` + `x` – Die aktuelle Zeile oder die Selektion auskommentieren oder wieder entkommentieren. Verwendet `~<Leerzeichen>` als Direktive. Funktioniert rekursiv bei Sektionen.
 
 ### Lesezeichen
 
@@ -118,21 +116,11 @@ Es ist kein Tastenkürzel definiert, um einen Link von Hand zu erstellen, da das
 * `Alt` + `r` – Wenn der *Suchen und ersetzen*-Dialog den Fokus hat, wähle das erste Suchresultat aus, oder ersetze es und wähle das nächste Suchresultat aus. Leider kann dieses Tastenkürzel nicht geändert werden.
 * (`Umschalttaste` +) `F3` – Finde das nächste oder das vorherige Suchresultat, ersetze das aktuelle nicht.
 
-## Tips und Tricks
-
-* Das von meiner `preferences.cbc` verwendete Theme versucht, die folgenden Schriften in dieser Reihenfolge zu verwenden: *[Consolas](https://www.google.com/search?q=Download+Consolas+font)*, *[Lucida Sans Typewriter](https://www.google.com/search?q=Download+Lucida+Sans+Typewriter+font)*, *[Courier New](https://www.google.com/search?q=Download+Courier+New+font)*, *Monospace*. Du kannst diese Schriftarten unter *Themes → Bob* → *Font* ändern.
-* Zur Zeit verwende ich mal wieder Tabs zur Einrückung – wem das nicht passt, der setze in der `preferences.cbc` unter *Languages* → *default* → *Indents and word wrapping* die Variable `expand-tabulation` auf `true`. Hier kann man auch die Weite eines Tabs, beziehungsweise die Anzahl der Leerzeichen, die eingegeben werden, wenn man `Tab` drückt, mit der Variable `tabulation-size` einstellen.
-* Alle definierten Sprachen – bis auf die Wurzelsprache `default`, deren Name nicht geändert werden kann – erben Variablen von einer Elternsprache via `prototype = languages.<Elternsprache>`. Man kann diese Variablen in der jeweiligen Sprache ändern, indem man sie einfach dorthin kopiert.
-
-  `<Name der Variablen> =` setzt die Variable auf Null, sie erbt dann auch nicht von der Elternvariable.
-* Man kann innerhalb von `*.cbc` Dateien in Namen keine Unterstriche – `_` – verwenden, wohl aber das Trennzeichen – `-`.
-* Code Browser beherrscht keine Codevervollständigung. Abhilfe kann das Autohotkey-basierte [Typing Aid](https://github.com/ManiacDC/TypingAid) schaffen.
-
 ## Direktiven
 
-Hier eine Referenz der für Code Browser und meine Benutzerskripte bedeutsamen Metazeichen und -zeichengruppen. So würden sie in einem anderen Editor aussehen. Diejenigen, welche für Code Browser relevant sind, sind gelb hinterlegt. Solche, die für meine Benutzerskripte relevant sind, sind orange hinterlegt.
+Hier eine Referenz der für Code Browser und meine Benutzerskripte bedeutsamen Metazeichen und -zeichengruppen. So würden sie in einem anderen Editor aussehen. Diejenigen, welche für Code Browser relevant sind, sind gelb hinterlegt. Solche, die für meine Benutzerskripte relevant sind, sind orange hinterlegt (Letztere haben nur eine Bedeutung, wenn Sie am Anfang eines beschreibenden Kommentars stehen).
 
-*Edit: Zumindest sollten sie das sein, aber Github´s Markdown Parser unterstützt keine farbige Hervorhebungen. Browser-Erweiterungen wie [diese für Firefox](https://addons.mozilla.org/de/firefox/addon/markdown-viewer-webext/) oder [diese für Chrome](https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk) werden [die Hervorhebungen anzeigen](https://raw.githubusercontent.com/heronils/Code_Browser_49/master/README.md#direktiven).*
+*Edit: Zumindest sollten sie farbig hinterlegt sein, aber Github´s Markdown Parser unterstützt keine farbige Hervorhebungen. Browser-Erweiterungen wie [diese für Firefox](https://addons.mozilla.org/de/firefox/addon/markdown-viewer-webext/) oder [diese für Chrome](https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk) werden [die Hervorhebungen anzeigen](https://raw.githubusercontent.com/heronils/Code_Browser_49/master/README.md#direktiven).*
 
 <pre>
 <span style='background:yellow'>#[of]</span>ID der Sektion<span style='background:yellow'>:</span>Titel der Sektion
@@ -143,20 +131,25 @@ Inhalt der Sektion
 
 <span style='background:yellow'>#[c]</span>Beschreibender Kommentar
 
-<span style='background:orange'>#( </span>Titel der entfalteten Sektion
+<span style='background:yellow'>#[c]</span><span style='background:orange'>( </span>Titel der entfalteten Sektion
 Inhalt der Sektion
-<span style='background:orange'>#)</span>
+<span style='background:yellow'>#[c]</span><span style='background:orange'>)</span>
 
-<span style='background:orange'>#~ </span>Auskommentierter Text
-<span style='background:orange'>#~ #~ </span>Doppelt auskommentiert
+<span style='background:yellow'>#[c]</span><span style='background:orange'>~ </span>Auskommentierter Text
+<span style='background:yellow'>#[c]</span><span style='background:orange'>~ ~ </span>Doppelt auskommentiert
 
 # Normaler Kommentar
-
 
 Normaler Text
 </pre>
 
-Die Direktiven starten jeweils mit dem sprachspezifische Metazeichen für [Kommentare](https://de.wikipedia.org/wiki/Kommentar_(Programmierung)). In diesem Beispiel ist es das Hash-Zeichen – `#` – von Code Browser standardmäßig verwendet für unbekannte Dateitypen, Text, [Python](https://www.python.org/) und [Nim](https://nim-lang.org/). Bei Javascript ist es `//`, bei CSS, welches keine einzeiligen Kommentare hat, `/*` am Start der Zeile und `*/` am Ende.
+Diese Datei würde, in Code Browser geöffnet, so aussehen:
+
+![Verschiedene Kommentartypen und wie sie in Code Bowser aussehen](screenshots/de/kommentartypen.png)
+
+*Verschiedene Kommentartypen und wie sie in Code Bowser aussehen*
+
+Die Direktiven starten jeweils mit dem sprachspezifische Metazeichen für [Kommentare](https://de.wikipedia.org/wiki/Kommentar_(Programmierung)). In diesem Beispiel ist es das Hash-Zeichen – `#` – von Code Browser standardmäßig verwendet für unbekannte Dateitypen, Text und [Python](https://www.python.org/). Bei Javascript ist es `//`, bei CSS, welches keine einzeiligen Kommentare hat, `/*` am Start der Zeile und `*/` am Ende.
 
 Kommentarzeichen können in der `preferences.cbc` unter *Languages* → *(Sprache)* mit der Variable `line-comment` definiert werden. Oder mit `open-comment` und `close-comment`, wenn die Sprache keine einzeiligen Kommentare besitzt. Wenn alle drei definiert sind, wird `line-comment` bevorzugt.
 
@@ -167,27 +160,47 @@ Bedeutung der einzelnen Direktiven:
 * `#[of]` und `#[cf]` öffnet und schließt eine Sektion (ursprünglich *Folder* genannt). Der Doppelpunkt – `:` – trennt die ID der Sektion (das, worauf Links verlinken) vom Titel der Sektion.
 * `#[l]:` kennzeichnet einen Link. Der zweite Doppelpunkt trennt den Titel des Links vom Ziel des Links.
 
-  Die Syntax für Link-Ziele entspricht etwa der von [URLs](https://de.wikipedia.org/wiki/Uniform_Resource_Locator).
+  Die Syntax für Link-Ziele entspricht etwa der von [URLs](https://de.wikipedia.org/wiki/Uniform_Resource_Locator). Wenn das Ziel ein absoluter Dateipfad ist, muss es mit `file:///` starten. Relative Link-Ziele sind auch möglich. Wenn das Ziel eine Sektion ist, hängt man den Pfad zur Sektion mittels Hash-Zeichen – `#` – an den Dateipfad an. Also etwa `file:///<Dateipfad>#<Pfad zur Sektion innerhalb der Datei>`. Wenn sich die Sektion in der selben Datei befindet, kann man den Dateipfad weglassen, so wie in obigem Beispiel.
 
-  Wenn das Ziel ein absoluter Dateipfad ist, muss es mit `file:///` starten. Relative Link-Ziele sind auch möglich.
-
-  Wenn das Ziel eine Sektion ist, hängt man den Pfad zur Sektion mittels Hash-Zeichen – `#` – an den Dateipfad an. Also etwa `file:///<Dateipfad>#<Pfad zur Sektion innerhalb der Datei>`. Wenn sich die Sektion in der selben Datei befindet, kann man den Dateipfad weglassen, so wie in obigen Beispiel.
-
-  Man kann auch auf Zeilennummern verlinken, indem man zusätzlich `?aln=<nummer>` (*absolute line number*) anhängt.
-
-  Und mehr, siehe Abschnitt *Links* in der Hilfedatei.
+  Man kann auch auf Zeilennummern verlinken, indem man zusätzlich `?aln=<nummer>` (*absolute line number*) anhängt. Und mehr, siehe Abschnitt *Links* in der Hilfedatei.
 
   Links erzeugt man am einfachsten mittels `Strg` + `Alt` + `c` – [Siehe Tastenkürzel → Links](#links).
 * `#[c]` kennzeichnet eine Beschreibungszeile.
-* `#(<Leerzeichen>` und `#)` öffnet und schließt eine entfaltete Sektion.
-* `#~<Leerzeichen>` kennzeichnet eine auskommentierte Zeile. `~<Leerzeichen>` kennzeichnet eine auskommentierte Sektion.
-* `#<Leerzeichen>` kennzeichnet einen normalen Kommentar, der keine besondere Bedeutung für Code Browser oder für meine Benutzerskripte hat.
+* `#[c](<Leerzeichen>` und `#[c])` öffnet und schließt eine entfaltete Sektion.
+* `#[c]~<Leerzeichen>` kennzeichnet eine auskommentierte Zeile.
+* `#` kennzeichnet einen normalen Kommentar, der keine besondere Bedeutung für Code Browser oder für meine Benutzerskripte hat.
 
-Diese Datei würde, in Code Browser geöffnet, so aussehen:
+## Tips und Tricks
 
-![Verschiedene Kommentartypen und wie sie in Code Bowser aussehen](Screenshots/Kommentartypen.png)
+* Das von meiner `preferences.cbc` verwendete Farbschema versucht, die folgenden Schriften in dieser Reihenfolge zu verwenden: *[Consolas](https://www.google.com/search?q=Download+Consolas+font)*, *[Lucida Sans Typewriter](https://www.google.com/search?q=Download+Lucida+Sans+Typewriter+font)*, *[Courier New](https://www.google.com/search?q=Download+Courier+New+font)*, *Monospace*. Du kannst diese Schriftarten unter *Themes* → *Basic* ändern (suche nach `font-family`).
+* Alle definierten Sprachen – bis auf die Wurzelsprache `Default` – erben Variablen von einer Elternsprache via `prototype = languages.<Elternsprache>`. Man kann diese Variablen in der jeweiligen Sprache ändern, indem man sie einfach dorthin kopiert. `<Name der Variablen> =` setzt die Variable auf Null, sie erbt dann auch nicht von der Elternvariable.
+* Wegen eines Bugs in Code Browser kann der Typ der Einrückung nicht dynamisch erkannt werden. Per default **werden Tabs zur Einrückung verwendet**, außer in der Sprache [Elm](https://elm-lang.org/), welche zwei Leerzeichen vorschreibt. Wenn Du stattdessen Leerzeichen für die Einrückung verwenden willst, befolge bitte die Instruktionen unter *Languages* → *Defaults* → *Default* → *Tabs* in der `preferences.cbc`.
+* Man kann innerhalb von `*.cbc` Dateien in Namen keine Unterstriche – `_` – verwenden, wohl aber das Trennzeichen – `-`.
+* Code Browser beherrscht keine Codevervollständigung. Abhilfe kann das Autohotkey-basierte [Typing Aid](https://github.com/ManiacDC/TypingAid) schaffen.
+* Ich verwende extensiv die Paragraphen-Navigation – `Strg` + `Alt` + (`↑` oder `↓`) – um schnell in Code-Dateien zu navigieren. Wenn ich beispielsweise in einer Liste von neun Sektionszeilen nach jeder dritten eine Leerzeile einfüge, kannst ich von der ersten zur achten in drei statt sieben Schritten navigieren.
+* Um einer Sektion bequem eine ID zu verpassen, entfalte ich sie einmal und falte sie dann wieder. Das setzt die ID der Sektion mit ihrem Titel gleich.
+* Ich strukturiere den Code **semantisch**, packe inhaltlich zusammengehörende Funktionalität in die gleichen Sektionen. *Inhaltlich* bedeutet: *Was tut es?*, nicht *Was ist es?*.
+* Ich strukturiere den Code wie ein **Fraktal** - Wenn z.B. eine Funktion *B* nur von einer anderen Funktion *A* genutzt wird, füge ich *B* als Sub-Sektion am Anfang innerhalb der Sektion ein, in der *A* definiert ist. So verfahre ich auch mit nicht-lokalen Variablen. Eine Funktion *C*, die nur von *B* genutzt wird packe ich dann wiederum in die Sektion von *B*, und so weiter. Von außen sehe ich dann nur die *A*-Sektion. Auf diese Weise habe ich eine (schwache) Form von Kapselung der Logik und muss nicht für jedes winzige Problem ein OOP-Monster erschaffen. Sprachen wie Javascript unterstützen auch eine faktische Kapselung, indem man Code-Bereiche in `{` und `}` einschließt und `let` oder `const` statt `var` verwendet. Dieses Verfahren skaliert, ich erweitere nach innen, statt lange Listen von Funktionen zu haben, die nicht klar zeigen, was zu was gehört.
+* Um klar zu kennzeichnen, welche Code-Bereiche von einem Kommentar betroffen sind, verwende ich entfaltete Sektionen. Aber ich mache das nur bei langen Code-Sektionen.
+* Längere Code-Abschnitte, die dazu dienen, eine Variable zu füllen, falte ich zu einer Sektion und gebe dieser Sektion den Namen der Variablen. Temporäre Variablen befinden sich innerhalb der Sektion und werden von außen nicht gesehen.
+* Während des Schreibens von Code falte ich fertiggestellte Bereiche temporär weg.
+* Um auseinanderliegende Code-Bereiche zu vergleichen, falte ich die Bereiche dazwischen. Alternativ füge ich einen temporären Link zum anderen Code-bereich ein, so daß ich schnell hin und her wechseln kann.
+* Wenn ich in Kommentaren über andere Code-Bereiche spreche, füge ich Links zu diesen bei.
+* Ich habe eine globale Index-Datei auf C:/, die Links zu allen Code-Dateien enthält, an denen ich regelmäßig arbeite. Diese Index-Datei habe ich in der Liste untergebracht, die aufpoppt, wenn ich das Symbol von Code Browser in der Taskleiste rechtsklicke.
+* Das Zen des Code-Faltens lautet: **Falte nicht, um zu verstecken, falte, um zu finden. Wenn es auf eine Bildschirmseite passt, reicht es mit der Falterei ;-)**.
 
-*Verschiedene Kommentartypen und wie sie in Code Bowser aussehen*
+## Versionshistorie
+
+### Version 1
+
+Erster Commit.
+
+### Version 2
+
+* Habe das Benutzerscript vollständig überarbeitet und einige Bugs gefixt. Die Skripte zum Auskommentieren von Quellcode und Entfalten von Sektionen verwenden jetzt Beschreibungskommentare statt wie bisher normale Kommentare.
+* Habe das Farbschema gepimpt. Die Grundidee ist, lokale Variablen blau und predefinierte Variablen/Funktionen Lila anzuzeigen. So kann ein versehentliches shadowing unterbunden werden. Leider ist die Funktionalität etwas beschränkt. Daher wird der Text in normalen Textdateien blau dargestellt.
+* Viele Sprachen entsprechend optimiert.
+* Viele andere kleine Korrekturen
 
 ## Credits
 
@@ -195,4 +208,4 @@ Ein herzlicher Dank an Marc Kerbiquet für [Code Browser](http://tibleiz.net/cod
 
 Wenn Du hier Fehler findest, bitte eröffne ein [„Issue“](https://github.com/heronils/Code_Browser_49/issues) oder schick´ mir ein [„pull request“](https://help.github.com/en/articles/creating-a-pull-request).
 
-Geschrieben 2019-09-26 von [heronils](https://github.com/heronils?tab=repositories). Letzte Aktualisierung: 2019-10-05.
+Geschrieben 2019-09-26 von [heronils](https://github.com/heronils?tab=repositories). Letzte Aktualisierung: 2020-05-08.

@@ -1,0 +1,7 @@
+Hallo Welt!
+
+#[of]:Ich bin eine Sektion
+Ich bin der Inhalt der Sektion.
+#[cf]
+
+#[c]Ich bin ein Kommentar
