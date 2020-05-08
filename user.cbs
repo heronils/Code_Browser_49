@@ -10,14 +10,11 @@ function Activesection
 //[cf]
 //[of]:Activelanguage	\:\: Language
 function Activelanguage
-	var lang = Activefile language
+	return Activefile language
 
-	//return Activefile language
-	return lang
-
-//[of]:test
-function test
-	print (Activelanguage name)
+//[of]:~ test
+//[c]~ function test
+//[c]	~ print (Activelanguage name)
 //[cf]
 //[cf]
 //[of]:Activeview	\:\: TextView
@@ -2330,5 +2327,3 @@ function assert (what)
 //[cf]
 
 //[l]:user.cbc:user.cbc
-//[l]:scrap.txt:scrap.txt
-//[l]:test.txt:test.txt
