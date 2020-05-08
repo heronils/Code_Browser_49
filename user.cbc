@@ -1,10 +1,19 @@
 def commands
+	//[of]:Test
+	def Test
+	//[c]	~disabled=true
+		caption=Run Test
+		hot-key=CTRL+SHIFT+ALT+T
+		script=user
+		function=test
+	end
+	//[cf]
 	//[of]:Navigate Next Section
 	def NavigateNextSection
 		caption=Navigate to Next Section
 		hot-key=ALT+DOWN
 		script=user
-		function=Navigate_Next_Section
+		function=action_navigatenextsection
 	end
 	//[cf]
 	//[of]:Navigate Prev Section
@@ -12,16 +21,15 @@ def commands
 		caption=Navigate to Previous Section
 		hot-key=ALT+UP
 		script=user
-		function=Navigate_Prev_Section
+		function=action_navigateprevsection
 	end
 	//[cf]
-
 	//[of]:Navigate Next Paragraph
 	def NavigateNextParagraph
 		caption=Navigate To Next Paragraph
 		hot-key=CTRL+ALT+DOWN
 		script=user
-		function=Navigate_Next_Paragraph
+		function=action_navigatenextparagraph
 	end
 	//[cf]
 	//[of]:Navigate Prev Paragraph
@@ -29,50 +37,32 @@ def commands
 		caption=Navigate To Previous Paragraph
 		hot-key=CTRL+ALT+UP
 		script=user
-		function=Navigate_Prev_Paragraph
+		function=action_navigateprevparagraph
 	end
 	//[cf]
-
-	//[of]:Select Next Paragraph
-	def SelectNextParagraph
-		caption=Select Next Paragraph
-		hot-key=CTRL+SHIFT+ALT+DOWN
-		script=user
-		function=Select_Next_Paragraph
-	end
-	//[cf]
-	//[of]:Select Prev Paragraph
-	def SelectPrevParagraph
-		caption=Select Previous Paragraph
-		hot-key=CTRL+SHIFT+ALT+UP
-		script=user
-		function=Select_Prev_Paragraph
-	end
-	//[cf]
-
-	//[of]:Fold Or Move Left
-	def FoldOrMoveLeft
-		caption=Fold Paragraph Or Move Selection Left
+	//[of]:Fold
+	def Fold
+		caption=Fold Paragraph
 		hot-key=CTRL+ALT+LEFT
 		script=user
-		function=Fold_Or_Move_Left
+		function=action_fold
 	end
+	
 	//[cf]
-	//[of]:Unfold Or Move Right
-	def UnfoldOrMoveRight
-		caption=Unfold Section Or Move Selection Right
+	//[of]:Unfold
+	def Unfold
+		caption=Unfold Paragraph
 		hot-key=CTRL+ALT+RIGHT
 		script=user
-		function=Unfold_Or_Move_Right
+		function=action_unfold
 	end
 	//[cf]
-
 	//[of]:Move Selection Up
 	def MoveUp
 		caption=Move Line Or Selection Up
 		hot-key=CTRL+UP
 		script=user
-		function=Move_Up
+		function=action_moveup
 	end
 	//[cf]
 	//[of]:Move Selection Down
@@ -80,16 +70,16 @@ def commands
 		caption=Move Line Or Selection Down
 		hot-key=CTRL+DOWN
 		script=user
-		function=Move_Down
+		function=action_movedown
 	end
+	
 	//[cf]
-
 	//[of]:Outcomment Selection
 	def OutcommentSelection
 		caption=Outcomment Selection
 		hot-key=ALT+X
 		script=user
-		function=Outcomment_Selection
+		function=action_outcomment
 	end
 	//[cf]
 	//[of]:Unoutcomment Selection
@@ -97,20 +87,17 @@ def commands
 		caption=Unoutcomment Selection
 		hot-key=SHIFT+ALT+X
 		script=user
-		function=Unoutcomment_Selection
+		function=action_unoutcomment
 	end
 	//[cf]
-
-	//[of]:Run Tests
-	def RunTests
-		disabled=true
-
-		caption=_ Run Tests
-		hot-key=CTRL+SHIFT+ALT+T
+	//[of]:Go To Definition
+	def GoToDefinition
+		caption=Go To Definition
+		hot-key=F1
 		script=user
-		function=Run_Tests
+		function=action_gotodefinition
 	end
 	//[cf]
 end
 
-//[l]:Backup of this file:user.cbc.backup
+//[l]:user.cbc.bak:user.cbc.bak

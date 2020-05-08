@@ -1,3308 +1,2334 @@
-//[c]I am at the start of rewriting this.
-//[c]
-//[c]Currently the scripts work, except that the Outcomment/Unoutcomment
-//[c]Selection scripts have a bug - they generate invalid code when multiple
-//[c]outcommenting in languages like CSS which have no single-line comments.
-//[c]
-//[c]Planning to improve moving Selection left/right
-//[c]
-//[c]Planning to improve Paragraph folding
-//[c]
+//[of]Global functions:Global functions
+//[of]:Activesection	\:\: Section
+function Activesection
+	return Section (Activeview section)
 
-//[of]:(Old)
-//[of]Lib:Lib
-//[of]:Meaning of syntax and variable names used here
-//[c]â†“ Code Browser Types and Concepts. See the Code Browser Docs.
-//[c]
-//[c]S = Text Section = eg. the blue Line below is a Text Section
-//[c]O = Output Section
-//[c]B = Text Block = mainly used for Copypaste
-//[c]R = Text Row = a Row of a Text Block
-//[c]s = String
-//[c]sb = String Buffer = behaves like String = performs better when joining Strings
-//[c]b = Bool
-//[c]c = Char
-//[c]n = Number = Integer
-//[c]
-//[c]â†“ Types/Concepts added by Me (Nils)
-//[c]
-//[c]Cb = Code Block = lines of code = CBÂ´s are either separated from each other by empty lines or are defined by special comments
-//[c]x = Column Number = Integer
-//[c]y = Row Number = Integer
-//[c]X = Any Thing
-//[c]- = Nothing
-//[c]
-//[c]â†“ Syntax
-//[c]-> = 'returns'
-//[c]->-> = 'yields'
-//[c]`name` = 'see the thing called `name`'
-//[c]! = The function has a requirement in order to work properly
+//[of]:~ test
+//[c]~ function test
+//[c]	~ print (Activesection Repr)
 //[cf]
+//[cf]
+//[of]:Activelanguage	\:\: Language
+function Activelanguage
+	var lang = Activefile language
 
-//[of]B_do_each_add_left	Block -> String -> nil:B_do_each_add_left	|	B -> s -> -	|
-//[c]
-//[c]	Add string left to each line of TextBlock.
-//[c]
+	//return Activefile language
+	return lang
 
-function B_do_each_add_left(B, str)
-	B each do y
-		BY_do_add_left(B, y, str)
-	end
+//[of]:test
+function test
+	print (Activelanguage name)
 //[cf]
-//[of]B_do_each_cut_left_if_starts_with	Block -> String -> nil:B_do_each_cut_left_if_starts_with	|	B -> s -> -	|
-//[c]
-//[c]	Cut string left from each line in TextBlock if line starts with
-//[c]	string.
-//[c]
+//[cf]
+//[of]:Activeview	\:\: TextView
+function Activeview
+	return frame activeView
+//[cf]
+//[of]:Activefile	\:\: TextView
+function Activefile
+	return frame activeFile
+//[cf]
+//[of]:Indenttoken	\:\: String
+//[c]Todo: Activelanguage expandTabulation always returns true, even if set to false
+//[c]in the preferences.cbc. How to solve?
 
-function B_do_each_cut_left_if_starts_with(B, str)
-	B each do y
-		BY_do_cut_left_if_starts_with(B, y, str)
-	end
-//[cf]
-//[of]B_do_outc_all	Block -> nil:B_do_outc_all	|	B -> -	|
-//[c]
-//[c]	Outcomment each line in TextBlock.
-//[c]
+function Indenttoken
+	var lang = Activelanguage name
 
-function B_do_outc_all(B)
-	B each do y
-		BY_do_outc(B, y)
-	end
-//[cf]
-//[of]B_do_unoutc_all	Block -> nil:B_do_unoutc_all	|	B -> -	|
-//[c]
-//[c]	Unoutcomment each line in TextBlock.
-//[c]
+//[c]	These languages enforce two spaces for indenting code
+	if lang == "Elm"
+		return "  "
 
-function B_do_unoutc_all(B)
-	B each do y
-		BY_do_unoutc(B, y)
-	end
-//[cf]
-//[of]BY_do_add_left	Block -> Y -> String -> nil:BY_do_add_left	|	B -> y -> s -> -	|
-//[c]
-//[c]	In TextBlock, add string left to line at Y.
-//[c]
-
-function BY_do_add_left(B, Y, str)
-	B setRowText(Y, str + B rowText(Y))
-//[cf]
-//[of]BY_do_cut_left_if_starts_with	Block -> Y -> String -> nil:BY_do_cut_left_if_starts_with	|	B -> y -> s -> -	|
-//[c]
-//[c]	In TextBlock, cut string from line at Y if line starts with string.
-//[c]
-
-function BY_do_cut_left_if_starts_with(B, Y, str)
-	B setRowText(Y, cut_left_if_starts_with(B rowText(Y), str))
-//[cf]
-//[of]BY_do_outc	Block -> Y -> nil:BY_do_outc	|	B -> y -> -	|
-//[c]
-//[c]	In TextBlock, outcomment line at Y.
-//[c]
-
-function BY_do_outc(B, Y)
-	if BY_not_link(B, Y) and BY_not_sec(B, Y) and BY_not_cb_sep(B, Y) and BY_not_just_ws(B, Y) and BY_not_desc(B, Y)
-		B setRowText(
-			Y, outc(
-				B rowText(Y), true))
-	elsif BY_is_sec(B, Y)
-		B setRowText(
-			Y, outc(
-				B rowText(Y), false))
-	end
-//[cf]
-//[of]BY_do_unoutc	Block -> Y -> nil:BY_do_unoutc	|	B -> y -> -	|
-//[c]
-//[c]	In TextBlock, unoutcomment line at Y.
-//[c]
-
-function BY_do_unoutc(B, Y)
-	if BY_not_link(B, Y) and BY_not_sec(B, Y) and BY_not_cb_sep(B, Y) and BY_not_just_ws(B, Y)
-		B setRowText(
-			Y, unoutc(
-				B rowText(Y), true))
-	elsif BY_is_sec(B, Y)
-		B setRowText(
-			Y, unoutc(
-				B rowText(Y), false))
-	end
-//[cf]
-//[of]BY_is_cb_sep	Block -> Y -> Bool:BY_is_cb_sep	|	B -> y -> b	|
-//[c]
-//[c]	In TextBlock, if line at Y is opener or closer of a code block.
-//[c]
-
-function BY_is_cb_sep(B, Y)
-	return is_cb_sep(B rowText(Y)) and BY_is_desc_or_text(B, Y)
-//[cf]
-//[of]BY_is_desc	Block -> Y -> Bool	shortcut for Code Browser function:BY_is_desc	|	B -> y -> b	|
-//[c]
-//[c]	In TextBlock, if line at Y is description.
-//[c]
-
-function BY_is_desc(B, Y)
-	return (B rowType(Y) == lt_comment)
-//[cf]
-//[of]BY_is_desc_or_text	Block -> Y -> Bool:BY_is_desc_or_text	|	B -> y -> b	|
-//[c]
-//[c]	In TextBlock, if line at Y is description or text.
-//[c]
-
-function BY_is_desc_or_text(B, Y)
-	return BY_is_desc(B, Y) or BY_is_text(B, Y)
-//[cf]
-//[of]BY_is_just_ws	Block -> Y -> Bool:BY_is_just_ws	|	B -> y -> b	|
-//[c]
-//[c]	In TextBlock, if line at Y is just whitespace.
-//[c]
-
-function BY_is_just_ws(B, Y)
-	return BY_not_sec(B, Y) and BY_not_link(B, Y) and is_just_ws(B rowText(Y))
-//[cf]
-//[of]BY_is_link	Block -> Y -> Bool	shortcut for Code Browser function:BY_is_link	|	B -> y -> b	|
-//[c]
-//[c]	In TextBlock, if line at Y is link.
-//[c]
-
-function BY_is_link(B, Y)
-	return (B rowType(Y) == lt_link)
-//[cf]
-//[of]BY_is_sec	Block -> Y -> Bool	shortcut for Code Browser function:BY_is_sec	|	B -> y -> b	|
-//[c]
-//[c]	In TextBlock, if line at Y is section.
-//[c]
-
-function BY_is_sec(B, Y)
-	return (B rowType(Y) == lt_section)
-//[cf]
-//[of]BY_is_text	Block -> Y -> Bool	shortcut for Code Browser function:BY_is_text	|	B -> y -> b	|
-//[c]
-//[c]	In TextBlock, if line at Y is text.
-//[c]
-
-function BY_is_text(B, Y)
-	return (B rowType(Y) == lt_text)
-//[cf]
-//[of]BY_not_cb_sep	Block -> Y -> Bool	shortcut:BY_not_cb_sep	|	B -> y -> b	|
-//[c]
-//[c]	In TextBlock, if line at Y is not opener and not closer of a
-//[c]	code block.
-//[c]
-
-function BY_not_cb_sep(B, Y)
-	return not BY_is_cb_sep(B, Y)
-//[cf]
-//[of]BY_not_cb_sep	Block -> Y -> Bool	shortcut:BY_not_desc	|	B -> y -> b	|
-//[c]
-//[c]	In TextBlock, if line at Y is not description.
-//[c]
-
-function BY_not_desc(B, Y)
-	return not BY_is_desc(B, Y)
-//[cf]
-//[of]BY_not_just_ws	Block -> Y -> Bool	shortcut:BY_not_just_ws	|	B -> y -> b	|
-//[c]
-//[c]	In TextBlock, if line at Y is not just whitespace.
-//[c]
-
-function BY_not_just_ws(B, Y)
-	return not BY_is_just_ws(B, Y)
-//[cf]
-//[of]BY_not_link	Block -> Y -> Bool	shortcut:BY_not_link	|	B -> y -> b	|
-//[c]
-//[c]	In TextBlock, if line at Y is not link.
-//[c]
-
-function BY_not_link(B, Y)
-	return not BY_is_link(B, Y)
-//[cf]
-//[of]BY_not_sec	Block -> Y -> Bool	shortcut:BY_not_sec	|	B -> y -> b	|
-//[c]
-//[c]	In TextBlock, if line at Y is not section.
-//[c]
-
-function BY_not_sec(B, Y)
-	return not BY_is_sec(B, Y)
-//[cf]
-
-//[of]choose_first_non_nil:FirstNotNil	|	x -> x -> x	|
-function FirstNotNil(a, b)
-	if a isNil
-		return b
-	end
-	return a
-//[cf]
-//[of]Codeblock	Codeblock	has rule:Codeblock!	|	S -> y -> y -> Cb	|		|
-//[of]doc:doc
-//[of]1:0
-//[c]
-//[c]	Definition:
-//[c]
-//[c]	'b' = 'unnamed code block'
-//[c]	'nb' = 'named code block'
-//[c]
-//[cf]
-//[of]1:1
-//[c]
-//[c]	foo
-//[c]	bar
-//[c]	baz
-//[c]
-//[c]	lorem
-//[c]	ipsum
-//[c]	dolor
-//[c]
-//[c]	^ Two ubÂ´s.
-//[c]
-//[cf]
-//[of]1:2
-//[c]
-//[c]	foo bar baz
-//[c]
-//[c]	lorem ipsum dolor
-//[c]
-//[c]	^ Also two ubÂ´s.
-//[c]
-//[cf]
-//[of]2:3
-//[c]
-//[c]	foo
-//[c]		lorem
-//[c]	bar
-//[c]
-//[c]	^ One ub, it has one child b.
-//[c]
-//[cf]
-//[of]2:4
-//[c]
-//[c]	foo
-//[c]		lorem
-//[c]
-//[c]		ipsum
-//[c]	bar
-//[c]
-//[c]	^ One unnamed code block, it has two unnamed child
-//[c]	code blocks.
-//[c]
-//[cf]
-//[of]2:5
-//[c]
-//[c]	foo
-//[c]		lorem
-//[c]
-//[c]		ipsum
-//[c]
-//[c]	bar
-//[c]
-//[c]	^ Two unnamed code blocks, the first has two unnamed child
-//[c]	code blocks.
-//[c]
-//[cf]
-//[of]3:6
-//[c]
-//[c]	// foo
-//[c]	//
-//[c]
-//[c]	^ A named code block (the name is 'foo')
-//[c]
-//[cf]
-//[of]3:7
-//[c]
-//[c]	// foo
-//[c]	lorem
-//[c]	//
-//[c]
-//[c]	^ A named code block ('foo') with an
-//[c]
-//[cf]
-//[of]3:7
-//[c]
-//[c]	// foo
-//[c]	lorem
-//[c]	//
-//[c]
-//[c]	// bar
-//[c]	ipsum
-//[c]	//
-//[c]
-//[c]	^ Two named code blocks ('foo' and 'bar').
-//[c]
-//[cf]
-//[of]3:8
-//[c]
-//[c]	// foo
-//[c]	lorem
-//[c]	//
-//[c]	// bar
-//[c]	ipsum
-//[c]	//
-//[c]
-//[c]	^ The same two named code blocks.
-//[c]
-//[cf]
-//[of]3:9
-//[c]
-//[c]	// foo
-//[c]	lorem
-//[c]	//
-//[c]
-//[c]	bar
-//[c]
-//[c]	// baz
-//[c]	ipsum
-//[c]	//
-//[c]
-//[c]	^ Three code blocks, the second is unnamed.
-//[c]
-//[cf]
-//[of]3:10
-//[c]
-//[c]	// foo
-//[c]	lorem
-//[c]	//
-//[c]	bar
-//[c]	// baz
-//[c]	ipsum
-//[c]	//
-//[c]
-//[c]	^ The same three code blocks.
-//[c]
-//[cf]
-//[of]3:11
-//[c]
-//[c]	// foo
-//[c]	// lorem
-//[c]	text
-//[c]	//
-//[c]	//
-//[c]
-//[c]	^ A Block named 'foo' with a child block named The same three code blocks.
-//[c]
-//[cf]
-//[of]3:4
-//[c]
-//[c]	foo
-//[c]
-//[c]	// bar
-//[c]	lorem
-//[c]	//
-//[c]
-//[c]	baz
-//[c]
-//[c]	^ Three code blocks, the second is a named code block (the
-//[c]	name is 'foo').
-//[c]
-//[cf]
-//[of]4:4
-//[c]
-//[c]	text
-//[c]	// named block
-//[c]	2 1
-//[c]	// named block
-//[c]	2 2 1
-//[c]		2 2 1 1
-//[c]			// 2 2 1 1 1
-//[c]			2 2 1 1 1 1
-//[c]
-//[c]			2 2 1 1 1 2
-//[c]			//
-//[c]	//
-//[c]	//
-//[c]	3 unnamed block
-//[c]
-//[c]	^ Three code blocks, the second is a named code block
-//[c]	(name: '2') and contains two child code blocks, the second
-//[c]	of those is also a named code block (name: '2.2') and contains
-//[c]	one unamed child code block, that contains one unnamed child
-//[c]	code block, and that contains a named child code block
-//[c]	(name: 'quux') which contains two unnamed child code blocks.
-//[c]
-//[cf]
-//[cf]
-
-//[c]Requirements:
-//[c]* The Section ends with an empty line = Use ->active_normed_S. This is relevant if the user presses eg. CTRL+A and then quick-folds.
-//[c]* y must be the start of a code block and y2 must be the end.
-//[c]
-
-class Codeblock
-	//[of]:attribs
-	attr b
-	attr first
-	attr indent
-	attr indent_next
-	attr indent_prev
-	attr i_size
-	attr is_first_in_level
-	attr is_last_in_level
-	attr last
-	attr margin_bot
-	attr margin_bot_when_folded
-	attr margin_top
-	attr margin_top_when_folded
-	attr padding_bot
-	attr padding_top
-	attr s
-	attr title
-	//[cf]
-
-	// init	: Section -> Y -> Y -> Codeblock
-	method init(S, Y, Y2)
-		var y2 = make_lower_than(Y2, S rowsSize - 1)
-		self s = S
-		self first = Y
-		self last = y2
-		self indent = SY_extract_indent(S, Y)
-		self i_size = (self indent) size
-		self margin_top = SY_get_margin_top(S, Y)
-		self margin_bot = SY_get_margin_bot(S, y2)
-		self is_first_in_level = SY_is_first_non_e_in_level(S, Y)
-		self is_last_in_level =
-			SY_is_last_non_e_in_sec(S, y2) or
-			(SY_get_i_size_of_next_non_e(S, y2) < self i_size) or
-			SY_next_non_e_is_cb_close(S, y2)
-		self indent_next = SY_get_lowest_indent_next_non_e(S, y2, self indent)
-		self indent_prev = SY_get_lowest_indent_prev_non_e(S, Y, self indent)
-
-		if SY_is_cb_open(S, Y)
-//[c]			contract: y2 is a code block closer
-
-			self padding_top = SY_get_margin_bot(S, Y)
-			self padding_bot = SY_get_margin_top(S, y2)
-			self b = S_copy_block(S, Y+1+(self padding_top), 0, y2-(self padding_bot), 0)
-			self title = SY_extract_cb_title(S, Y)
-		else
-			self b = S_copy_block(S, Y, 0, y2+1, 0)
-		end
-
-		// self margin_top_when_folded
-//[c]		temporarily disabled
-		//~ if SY_is_first_non_e_in_sec(S, Y) or (
-			//~ self is_first_in_level and not SY_prev_is_just_ws(S, Y)) or (
-			//~ SY_prev_non_e_is_sec_or_link(S, Y) and (SY_get_i_size_of_prev_non_e(S, Y) == self i_size))
-			//~ self margin_top_when_folded = 0
-		//~ else
-			//~ self margin_top_when_folded = 1
-		//~ end
-
-		self margin_top_when_folded = 0
-		//
-		// self margin_bot_when_folded
-//[c]		temporarily disabled
-		//~ if SY_is_last_non_e_in_sec(S, y2) or (
-			//~ self is_last_in_level and SY_next_not_just_ws(S, y2)) or (
-			//~ SY_next_non_e_is_sec_or_link(S, y2) and (
-			//~ SY_get_i_size_of_next_non_e(S, y2) == self i_size))
-			//~ self margin_bot_when_folded = 0
-		//~ else
-			//~ self margin_bot_when_folded = 1
-		//~ end
-
-		self margin_bot_when_folded = 0
-		//
-
-		return self
-	//
-//[cf]
-//[of]cut_left_if_starts_with	String -> String -> String:cut_left_if_starts_with	|	s -> s -> s	|
-//[c]
-//[c]	If string starts with string 2, cut string 2 from start of string.
-//[c]
-
-function cut_left_if_starts_with(str, str2)
-	if str startsWith (str2)
-		var s = str2 size
-		return str range (s, str size - s)
 	else
-		return str
-	end
-//[cf]
-//[of]cut_right_if_ends_with	String -> String -> String:cut_right_if_ends_with	|	s -> s -> s	|
-//[c]
-//[c]	If string ends with string 2, cut string 2 from end of string.
-//[c]
+//[c]		Outcomment this if you want to use spaces for indentation.
+//[c]		Also 'expand-tabulation'	has to be set to 'false' in
+//[c]		preferences.cbc -> 'Languages' -> 'Default' -> 'Tabs'.
+		return "\t"
 
-function cut_right_if_ends_with(str, str2)
-	if str endsWith (str2)
-		return str range (0, str size - str2 size)
+//[c]		Outcomment this if you want to use Tabs.
+//[c]		'expand-tabulation'	has to be set to 'true'.
+//[c]		~ return "    "
+	end
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ printborder (Indenttoken)
+//[cf]
+//[cf]
+//[of]:Selectedtext	\:\: String
+function Selectedtext
+	return Activeview selectedText
+//[cf]
+//[of]:Opencomment	\:\: String
+function Opencomment
+	var language = Activelanguage
+	if language lineComment notEmpty
+		return language lineComment
 	else
-		return str
+		return language openComment
 	end
 //[cf]
-//[of]Cb_fold	Codeblock -> Y:Cb_fold	|	Cb -> y	|
-//[c]
-//[c]	(Quick-)Fold code block to a section.
-//[c]
-
-function Cb_fold(Cb)
-	var title = Cb title
-	var indent = Cb indent
-	var indent_next = Cb indent_next
-	var indent_prev = Cb indent_prev
-	var first = Cb first
-	var last = Cb last
-	var mt = Cb margin_top
-	var mb = Cb margin_bot
-	var fmt = Cb margin_top_when_folded
-	var fmb = Cb margin_bot_when_folded
-	var b1 = Cb b
-	if (frame activeFile language relativeIndentation)
-		B_do_each_cut_left_if_starts_with(b1, indent)
-	end
-	var b2 = TextBlock new
-	//~ if fmt == 1
-		//~ b2 addText(indent_prev)
-	//~ end
-	if title isNil
-		b2 addSection(indent + "...", "")
-	else
-		b2 addSection(indent + title, title)
-	end
-	//~ if fmb == 1
-		//~ b2 addText(indent_next)
-	//~ end
-	b2 rowSection(fmt) replaceAll(b1)
-	//~ S_do_replace(Cb s, first-mt, 0, last+1+mb, 0, b2)
-	S_do_replace(Cb s, first, 0, last+1, 0, b2)
-	return (frame activeView cursorLine) + fmt
-//[cf]
-//[of]Cb_find_next	Codeblock -> Codeblock:Cb_find_next	|	Cb -> Cb	|
-//[c]
-//[c]	Find next sibling of code block.
-//[c]
-
-function Cb_find_next(Cb)
-	var y = SY_find_next_non_e_with_i_size(Cb s, Cb last, Cb i_size)
-	if y == nil
-		return nil
-	else
-		return SY_get_cblock(Cb s, y)
-	end
-//[cf]
-//[of]Cb_find_prev	Codeblock -> Codeblock:Cb_find_prev	|	Cb -> Cb	|
-//[c]
-//[c]	Find prev sibling of code block.
-//[c]
-
-function Cb_find_prev(Cb)
-	var y = SY_find_prev_non_e_with_i_size(Cb s, Cb first, Cb i_size)
-	if y == nil
-		return nil
-	else
-		return SY_get_cblock(Cb s, y)
-	end
-//[cf]
-//[of]:do_select	|	y -> x -> y -> x -> -	|
-function do_select(Y, X, Y2, X2)
-	var v = frame activeView
-	v moveCursor(Y, X, false)
-	v moveCursor(Y2, X2, true)
-//[cf]
-//[of]ensureEndsWithNewline:endwithnewline	|	S -> -	|
-function endwithnewline(S)
-	var y = S rowsSize - 1
-	if (SY_not_just_ws(S, y)) or (y == 0)
-		S_do_insert(S, nil, nil, TextBlock fromString("\n"))
-	end
-
-
-//~ function test
-	//~ endwithnewline(frame activeView section)
-//[cf]
-//[of]extract_cb_title	String -> String:extract_cb_title	|	s -> s	|
-//[c]
-//[c]	Extract_title from code block opener.
-//[c]
-
-function extract_cb_title(str)
-	var sb = (StringBuffer new) << str
-	if sb size == 0
-		return nil
-	end
-	Sb_do_strip_ws(sb)
-	if sb size == 0
-		return nil
-	end
-	Sb_cut_left_if_starts_with(sb, get_lang_prefix + "( ")
-	if sb size == 0
-		return nil
-	end
-	Sb_cut_right_if_ends_with(sb, get_lang_suffix)
-	if sb size == 0
-		return nil
-	end
-	Sb_do_strip_ws(sb)
-	if sb size == 0
-		return nil
-	end
-	return sb toString
-
-
-//~ function test
-	//~ print_with_borders(extract_cb_title("       // foo    "))    // >foo<
-//[cf]
-//[of]extract_indent	String -> String:extract_indent	|	s -> s	|
-//[c]
-//[c]	Extract indent of string as a string. Only spaces and tabs
-//[c]	recognized, no automagical fixing of mixed tabs and spaces
-//[c]	because reading tab expand option from language returned false
-//[c]	result in my tests (Probably a Code Browser bug).
-//[c]
-
-function extract_indent(str)
-	var sb = StringBuffer new
-	str each do c
-		if c == $  or c == \t
-		sb << c
-		else
-			break
-		end
-	end
-	return sb toString
-//[cf]
-//[of]for_each_in_range	N -> N ->>> N:for_each_in_range	|	n -> n ->-> n	|
-//[c]
-//[c]	Yield numbers in range n1-n2. n2 is not contained.
-//[c]
-
-function for_each_in_range(n1, n2)
-	var n = n1
-	while n < n2
-		yield n
-		n = n + 1
-	end
-
-
-//~ function test
-	//~ for_each_in_range(18, 20) do n
-		//~ print(n)
-	//~ end
-//[cf]
-//[of]activeSection:get_active_normed_section	|	S	|
-//[c]
-//[c]Return the active Section. If it does not end with a newline, add a newline.
-//[c]
-
-function get_active_normed_section
-	var s = frame activeView section
-	endwithnewline(s)
-	return s
-
-
-//~ function test
-	//~ get_active_normed_section
-//[cf]
-//[of]get_lang_prefix	-> String:get_lang_prefix	|	s	|
-function get_lang_prefix
-	var lang = frame activeFile language
-	if lang lineComment notEmpty
-		return lang lineComment
-	else
-		return lang openComment
-	end
-
-
-//~ function test
-	//~ print_with_borders(get_lang_prefix)    // >//<
-//[cf]
-//[of]get_lang_suffix	-> String:get_lang_suffix	|	s	|
-function get_lang_suffix
-	var l = frame activeFile language
-	if l lineComment isEmpty
-		return l closeComment
+//[of]:Closecomment	\:\: String
+function Closecomment
+	var language = Activelanguage
+	if language lineComment isEmpty
+		return language closeComment
 	else
 		return ""
 	end
-
-
-//~ function test
-	//~ print_with_borders(get_lang_suffix)    // ><
-//[cf]
-//[of]get_selection_end_x	-> Y:get_sel_end_x	|	x	|
-//[c]
-//[c]	Column of the selection end or the cursor column if nothing is
-//[c]	selected.
-//[c]
-
-function get_sel_end_x
-	var v = frame activeView
-	var ml = v markLine
-	var mc = v markColumn
-	var cl = v cursorLine
-	var cc = v cursorColumn
-	if (cl < ml) or ((cl == ml) and (cc < mc))
-		return mc
-	end
-	return cc
-//[cf]
-//[of]get_selection_end_y	-> Y:get_sel_end_y	|	y	|
-//[c]
-//[c]	Last line of the selection or the cursor line if nothing is
-//[c]	selected.
-//[c]
-
-function get_sel_end_y
-	var v = frame activeView
-	var m = v markLine
-	var c = v cursorLine
-	if c < m
-		return m
-	end
-	return c
-//[cf]
-//[of]get_selection_start_x	-> Y:get_sel_start_x	|	x	|
-//[c]
-//[c]	Column of the start of selection or column of the cursor if
-//[c]	nothing is selected.
-//[c]
-
-function get_sel_start_x
-	var v = frame activeView
-	var ml = v markLine
-	var mc = v markColumn
-	var cl = v cursorLine
-	var cc = v cursorColumn
-	if (cl < ml) or ((cl == ml) and (cc < mc))
-		return cc
-	end
-	return mc
-
-
-//~ function test
-	//~ print_with_borders(get_sel_start_x)
-//[cf]
-//[of]get_selection_start_y	-> Y:get_sel_start_y	|	y	|
-//[c]
-//[c]	First line of the selection or cursor line if nothing selected.
-//[c]
-
-function get_sel_start_y
-	var v = frame activeView
-	var m = v markLine
-	var c = v cursorLine
-	if c < m
-		return c
-	end
-	return m
-//[cf]
-//[of]is_backward_selection	-> Bool	has rule:is_backward_sel!	|	b	|		|
-//[c]
-//[c]	return true if the cursor is before the selection mark, false
-//[c]	otherwise. contract: something is selected.
-//[c]
-
-function is_backward_sel
-	if ((frame activeView cursorLine) == get_sel_start_y) and ((frame activeView cursorColumn) == get_sel_start_x)
-		return true
-	end
-	return false
-//[cf]
-//[of]is_cb_close	String -> Bool:is_cb_close	|	s -> b	|
-//[c]
-//[c]	If text is code block closer.
-//[c]
-
-function is_cb_close(T)
-	var t = strip_ws(T)
-	var p = get_lang_prefix
-	return (t == p + ")") or (t == p + ")" + get_lang_suffix)
-
-
-//~ function test
-	//~ print(is_cb_close("//)"))    // true
-	//~ print(is_cb_close(" //) "))    // true
-	//~ print(is_cb_close("//) foo"))    // false
-	//~ print(is_cb_close("// //)"))    // false
-	//~ print(is_cb_close("//foo)"))    // false
-	//~ print(is_cb_close("////)"))    // false
-//[cf]
-//[of]is_cb_open	String -> Bool:is_cb_open	|	s -> b	|
-//[c]
-//[c]	If string is code block opener.
-//[c]
-
-function is_cb_open(str)
-	return strip_ws_left(str) startsWith(get_lang_prefix + "( ")
-
-
-//~ function test
-	//~ print(is_cb_open("// ("))    // false
-	//~ print(is_cb_open("//( foo"))    // true
-	//~ print(is_cb_open(" //(   foo  "))    // true
-	//~ print(is_cb_open("//( //"))    // true
-	//~ print(is_cb_open("//(foo"))    // false
-	//~ print(is_cb_open("//(//"))    // false
-//[cf]
-//[of]is_cb_sep	String -> Bool:is_cb_sep	|	s -> b	|
-//[c]
-//[c]	If string is code block opener or closer.
-//[c]
-
-function is_cb_sep(str)
-	var t = strip_ws(str)
-	return (((t == get_lang_prefix + ")") or (t == get_lang_prefix + get_lang_suffix)) or t startsWith(get_lang_prefix + "( "))
-
-
-//~ function test
-	//~ print(is_cb_sep("//( "))    // true
-	//~ print(is_cb_sep("// ( "))    // false
-	//~ print(is_cb_sep("//( foo"))    // true
-	//~ print(is_cb_sep("// //( foo"))    // false
-	//~ print(is_cb_sep("//)"))    // true
-	//~ print(is_cb_sep("//foo)"))    // false
-	//~ print(is_cb_sep("////)"))    // false
-//[cf]
-//[of]is_quickfold_title	String -> Bool:is_quickfold_title	|	s -> b	|
-//[c]
-//[c]	If string contains just dots and whitespaces.
-//[c]
-
-function is_quickfold_title(str)
-	var t = (StringBuffer new) << str
-	var t2 = t
-	while true
-		Sb_do_strip(t2, ". \t")
-		if t2 == t
-			break
-		end
-		t = t2
-	end
-	if t2 isEmpty
-		return true
-	else
-		return false
-	end
-
-
-//~ function test
-	//~ print(is_quickfold_title(" . ...  "))    // true
-	//~ print(is_quickfold_title("foo"))    // false
-	//~ print(is_quickfold_title(" ... bar ... "))    // false
-//[cf]
-//[of]is_just_ws:is_just_ws	|	s -> b	|
-function is_just_ws(str)
-	str each do c
-		if not ((c == $ ) or (c ==\t) or (c ==\r) or (c==\n))
-			return false
-		end
-	end
-	return true
-//[cf]
-//[of]make_cb_close	-> String:make_cb_close	|	s	|
-//[c]
-//[c]	Construct a code block closer. eg. "//)" or "/*)*/".
-//[c]
-
-function make_cb_close
-	var p = get_lang_prefix
-	var s = get_lang_suffix
-	if s isEmpty
-		return p + ")"
-	else
-		return p + ")" + s
-	end
-
-
-//~ function test
-	//~ print_with_borders(make_cb_close)    // >//<
-//[cf]
-//[of]make_cb_open	String -> String:make_cb_open	|	s -> s	|
-//[c]
-//[c]	Construct a code block opener. eg. "//( foo" or "/*( foo */".
-//[c]
-
-function make_cb_open(title)
-	var p = get_lang_prefix
-	var s = get_lang_suffix
-	if s isEmpty
-		return ((StringBuffer new) << p << "( " << title) toString
-	else
-		return ((StringBuffer new) << p << "( " << title << " " << s) toString
-	end
-
-
-//~ function test
-	//~ print_with_borders(make_cb_open("foo"))    // >//( foo<
-//[cf]
-//[of]make_lower_than	y -> y -> y:make_lower_than	|	y -> y -> y	|
-//[c]
-//[c]	If n not smaller than max, make it 1 smaller, return it.
-//[c]
-
-function make_lower_than(n, max)
-	if n >= max
-		return max-1
-	end
-	return n
-
-
-//~ function test
-	//~ print(make_lower_than(2, 10))    // 2
-	//~ print(make_lower_than(9, 10))    // 9
-	//~ print(make_lower_than(10, 10))    // 9
-	//~ print(make_lower_than(11, 10))    // 9
-//[cf]
-//[of]:move_selection_left!	|	S -> -	|		|
-//[c]
-//[c]	Something must be selected and not more than one line shall be
-//[c]	selected.
-//[c]
-
-function move_selection_left(S)
-	var x = get_sel_start_x
-	var x2 = get_sel_end_x
-	var y = get_sel_start_y
-	var y2 = get_sel_end_y
-	if x > 0
-		var b = S_copy_block(S, y, x, y2, x2)
-		S_do_replace(S, y, x, y2, x2, TextBlock new)
-		S_do_insert(S, y, x-1, b)
-		do_select(y, x-1, y, x2-1)
-	end
-	//~ var f = new_finddata
-	//~ f setSearchString("^[ \t]*" + get_lang_prefix)
-	//~ f setDirection(find_next)
-	//~ while true
-		//~ r = f find(S, y, 0, false)
-		//~ if r isNil
-//[cf]
-//[of]msg	Thing -> nil:msg	|	Thing -> -	|
-//[c]
-//[c]	Lazy message box.
-//[c]
-
-function msg(x)
-	frame messageBox(Str(x), "Info", mb_ok)
-//[cf]
-//[of]msg_error	Thing -> Thing -> nil:msg_error	|	Thing -> Thing -> -	|
-//[c]
-//[c]	Lazy 'error' message box.
-//[c]
-
-function msg_error(context, message)
-	frame messageBox(Str(message), ((StringBuffer new) << "Error in " << Str(context)) toString, mb_ok)
-	return nil
-
-
-//~ function test
-	//~ msg_error("foo", "bar")
-//[cf]
-//[of]msg_not_implemented	Thing -> nil:msg_not_implemented	|	Thing -> -	|
-//[c]
-//[c]	Lazy 'not implemented' message box.
-//[c]
-
-function msg_not_implemented(thing)
-	frame messageBox(Str(thing), "Not implemented", mb_ok)
-	return nil
-
-
-//~ function test
-	//~ msg_not_implemented("foo bar baz lorem ipsum dolor")
-//[cf]
-//[of]move_cursor_to_first_non_e	Y -> nil:move_cursor_to_first_non_e	|	y -> -	|
-//[c]
-//[c]	Move cursor to first non empty char in line at Y.
-//[c]
-
-function move_cursor_to_first_non_e(Y)
-	var v = frame activeView
-	v moveCursor(Y, SY_get_i_size(frame activeView section, Y), false)
-	v adjustPage
-//[cf]
-//[of]move_cursor_to_first_relevant	Y -> nil:move_cursor_to_first_relevant	|	y -> -	|
-//[c]
-//[c]	In line at Y, move cursor to eg. before the "f" in "   // foo".
-//[c]
-
-function move_cursor_to_first_relevant(Y)
-	var r = SY_get_row(frame activeView section, Y)
-	var v = frame activeView
-	if not R_is_cb_open(r)
-		move_cursor_to_first_non_e(Y)
-	else
-		v moveCursor(Y, (r text) indexOf(R_extract_cb_title(r), 0), false)
-		v adjustPage
-	end
-//[cf]
-//[of]move_cursor_to_next_relevant	Y -> nil:move_cursor_to_next_relevant	|	y -> -	|
-//[c]
-//[c]	Find next non empty line after line at Y, there move cursor to
-//[c]	eg. before the "f" in "   // foo".
-//[c]
-
-function move_cursor_to_next_relevant(Y)
-	var s = frame activeView section
-	var y = SY_find_same_or_next_non_e(s, Y)
-	if y isNil
-		y = s rowsSize - 1
-	end
-	move_cursor_to_first_relevant(y)
-//[cf]
-//[of]new_finddata	-> FindData:new_finddata	|	FindData	|
-//[c]
-//[c]	Shortcut creation of FindData.
-//[c]
-
-function new_finddata
-	var f = FindData new
-	f setRegularExpression(true)
-	f setCaseSensitive(true)
-	f setMatchWholeWord(false)
-	f setScope(find_in_local_section)
-	f setDirection(find_next)
-	f setSearchString("")
-	return f
-//[cf]
-//[of]outc	String -> String:outc	|	s -> s	|
-//[c]
-//[c]	Outcomment string.
-//[c]
-
-function outc(str, not_section)
-	var ind = extract_indent(str)
-	var sb = StringBuffer new
-	if not_section
-		sb << ind << get_lang_prefix << "~ " << str range(ind size, (str size) - ind size)
-		var suf = get_lang_suffix
-		if suf notEmpty
-			sb << " " << suf
-		end
-	else
-		sb << ind << "~ " << str range(ind size, (str size) - ind size)
-	end
-	return sb toString
-//[cf]
-//[of]:R	|	R -> s	|
-//[of]R_extract_cb_title	Row -> String	shortcut:R_extract_cb_title	|	R -> s	|
-//[c]
-//[c]	Extract title from code block opener at row.
-//[c]
-
-function R_extract_cb_title(R)
-	return extract_cb_title(R text)
-//[cf]
-//[of]R_extract_indent	Row -> String	shortcut:R_extract_indent	|	R -> s	|
-//[c]
-//[c]	Get indent of row (as string, not number).
-//[c]
-
-function R_extract_indent(R)
-	return extract_indent(R text)
-//[cf]
-//[of]R_get_i_size	Row -> X	shortcut:R_get_i_size	|	R -> x	|
-//[c]
-//[c]	Get indent size of row.
-//[c]
-
-function R_get_i_size(R)
-	return R_extract_indent(R) size
-//[cf]
-//[of]R_get_normed_sec	Row -> Section:R_get_normed_sec	|	R -> S	|
-//[c]
-//[c]	Get rows section, adding a newline if missing.
-//[c]
-
-function R_get_normed_sec(R)
-	var s = R section
-	if s notNil
-		endwithnewline(s)
-	end
-	return s
-//[cf]
-//[of]R_is_cb_close	Row -> Bool:R_is_cb_close	|	R -> b	|
-//[c]
-//[c]	If row is a code block closer.
-//[c]
-
-function R_is_cb_close(R)
-	return is_cb_close(R text) and R_is_desc_or_text(R)
-//[cf]
-//[of]R_is_cb_open	Row -> Bool:R_is_cb_open	|	R -> b	|
-//[c]
-//[c]	If row is a code block opener.
-//[c]
-
-function R_is_cb_open(R)
-	return is_cb_open(R text) and R_is_desc_or_text(R)
-//[cf]
-//[of]R_is_cb_sep	Row -> Bool:R_is_cb_sep	|	R -> b	|
-//[c]
-//[c]	If row is a code block opener or closer.
-//[c]
-
-function R_is_cb_sep(R)
-	return is_cb_sep(R text) and R_is_desc_or_text(R)
-//[cf]
-//[of]R_is_desc_or_text	Row -> Bool:R_is_desc_or_text	|	R -> b	|
-//[c]
-//[c]	If row is a description line or text.
-//[c]
-
-function R_is_desc_or_text(R)
-	return (R type == lt_comment) or (R type == lt_text)
-//[cf]
-//[of]R_is_just_ws	Row -> Bool:R_is_just_ws	|	R -> b	|
-//[c]
-//[c]	If row is just whitespace and not a link or section.
-//[c]
-
-function R_is_just_ws(R)
-	return not (R type == lt_comment) and not (R type == lt_link) and is_just_ws(R text)
-//[cf]
-//[of]R_is_sec_or_link	Row -> Bool	shortcut for Code Browser function:R_is_sec_or_link	|	R -> b	|
-//[c]
-//[c]	If row is a section or a link.
-//[c]
-
-function R_is_sec_or_link(R)
-	var t = R type
-	return ((t == lt_section) or (t == lt_link))
-//[cf]
-//[of]R_strip_ws	Row -> String	shortcut:~ R_strip_ws	|	R -> s	|
-//[c]
-//[c]	Text of row with whitespace stripped from both sides.
-//[c]
-
-//~ function R_strip_ws(R)
-	//~ return strip_ws(R text)
-//[cf]
-//[of]R_not_link:~ R_not_link	|	R -> b	|
-//~ function R_not_link(R)
-	//~ return not (R type == lt_link)
-//[cf]
-//[of]R_not_sec:~ R_not_sec	|	R -> b	|
-//~ function R_not_sec(R)
-	//~ return not (R type == lt_section)
-//[cf]
-//[cf]
-//[of]select_relevant	Y -> nil:select_relevant	|	y -> -	|
-//[c]
-//[c]	Normal line: select non-empty part of line.
-//[c]	Code block opener: select everything after start of code
-//[c]	block title.
-//[c]
-
-function select_relevant(y)
-	move_cursor_to_first_relevant(y)
-	frame activeView moveCursor(y, SY_get_size(frame activeView section, y), true)
-//[cf]
-//[of]strip_ws	String -> String:strip_ws	|	s -> s	|
-//[c]
-//[c]	Strip all whitespace from both sides of string.
-//[c]
-
-function strip_ws(str)
-	var sb = (StringBuffer new) << str
-	Sb_do_strip_ws(sb)
-	return sb toString
-
-
-//~ function test
-	//~ print_with_borders(strip_ws(" foo "))    // >foo<
-//[cf]
-//[of]strip_ws_left	String -> String:strip_ws_left	|	s -> s	|
-//[c]
-//[c]	Strip all whitespace from left side of string.
-//[c]
-
-function strip_ws_left(str)
-	var sb = (StringBuffer new) << str
-	Sb_do_strip_left(sb, " \t")
-	return sb toString
-
-
-//~ function test
-	//~ print_with_borders(strip_ws_left(" foo "))    // >foo <
-//[cf]
-//[of]somethingSelected:something_selected	|	b	|
-function something_selected
-	var v = frame activeView
-	return (
-		(v markColumn) <> (v cursorColumn)) or (
-		(v markLine) <> (v cursorLine))
-//[cf]
-//[of]:S	|	S -> y -> x -> y -> x -> Block	|
-//[of]S_copy_block	Section -> Y -> X -> Y -> X -> Block:S_copy_block	|	S -> y -> x -> y -> x -> Block	|
-//[c]
-//[c]	In section, get text between Y/X and Y2/X2 and return it as
-//[c]	block. Indices can be nil, then are biggest values.
-//[c]
-
-function S_copy_block(S, Y, X, Y2, X2)
-	var last_y = S rowsSize - 1
-	var y = FirstNotNil(Y, last_y)
-	var x = FirstNotNil(X, SY_get_size(S, y))
-	var y2 = FirstNotNil(Y2, last_y)
-	var x2 = FirstNotNil(X2, SY_get_size(S, y2))
-	return S copyBlock(y, x, y2, x2)
-
-
-//~ function test
-	//~ print_B_with_borders(S_copy_block(frame activeView section, 2, 0, nil, nil))
-//[cf]
-//[of]S_do_add_missing_nl	Section -> nil:S_do_add_nl	|	S -> -	|
-//[c]
-//[c]	Add a newline at end of section.
-//[c]
-
-function S_do_add_nl(S)
-	S_do_insert(S, nil, nil, TextBlock fromString("\n"))
-
-
-//~ function test
-	//~ S_do_add_nl(frame activeView section)
-//[cf]
-//[of]S_do_clear	Section -> nil:S_do_clear	|	S -> -	|
-//[c]
-//[c]	Replace everything in section with one newline.
-//[c]
-
-function S_do_clear(S)
-	S replaceAll(TextBlock fromString("\n"))
-
-
-//~ function test
-	//~ var s = frame activeView section
-	//~ S_do_clear(s)
-//[cf]
-//[of]S_do_cut_all_after	Section -> Y -> X -> nil	shortcut:S_do_cut_all_after	|	S -> y -> x -> -	|
-//[c]
-//[c]	Cut everything after y/x from section.
-//[c]
-
-function S_do_cut_all_after(S, y, x)
-	S_do_replace(S, y, x, nil, nil, TextBlock new)
-
-
-//~ function test
-	//~ S_do_cut_all_after(frame activeView section, 1, 0)
-//[cf]
-//[of]S_do_cut_all_before	Section -> Y -> X -> nil	shortcut:S_do_cut_all_before	|	S -> y -> x -> -	|
-//[c]
-//[c]	Cut everything before y/x from section.
-//[c]
-
-function S_do_cut_all_before(S, y, x)
-	S_do_replace(S, 0, 0, y, x, TextBlock new)
-
-
-//~ function test
-	//~ S_do_cut_all_before(frame activeView section, 1, 0)
-//[cf]
-//[of]S_do_fold_all	Section -> nil:S_do_fold_all	|	S -> -	|
-//[c]
-//[c]	Fold all named code blocks in section.
-//[c]
-
-function S_do_fold_all(S)
-	var open_y = nil
-	var close_y = nil
-	var last_y = nil
-	var cb = nil
-	while true
-		last_y = S rowsSize - 1
-		close_y = SY_find_same_or_next_cb_close(S, 0)
-		if close_y isNil
-			return
-		else
-			cb = SY_get_cblock(S, close_y)
-			Cb_fold(cb)
-		end
-	end
-
-
-//~ function test
-	//~ S_do_fold_all(frame activeView section)
-//[cf]
-//[of]S_do_insert_line	Section -> Y -> Buffer -> nil:S_do_insert_line	|	S -> y -> Buffer -> -	|
-//[c]
-//[c]	Insert str + "\n" at y in section.
-//[c]
-
-function S_do_insert_line(S, y, str)
-	var y = FirstNotNil(y, S rowsSize - 1)
-	S replaceText(y, 0, y, 0, TextBlock fromString(((StringBuffer new) << str << "\n") toString))
-//[cf]
-//[of]S_do_insert_line_sb	Section -> Y -> Buffer -> nil:S_do_insert_line_sb	|	S -> y -> Buffer -> -	|
-//[c]
-//[c]	Insert buffer + "\n" at y in section.
-//[c]
-
-function S_do_insert_line_sb(S, y, sb)
-	var y = FirstNotNil(y, S rowsSize - 1)
-	S replaceText(y, 0, y, 0, TextBlock fromString((sb << "\n") toString))
-//[cf]
-//[of]S_do_outc_all	Section -> nil:S_do_move_sel_right_one_char!	|	S -> -	|		|
-//[c]
-//[c]	move selection right one char. contract: Something is selected,
-//[c]	not more than one line is selected.
-//[c]
-
-function S_do_move_sel_right_one_char(S)
-	var x = get_sel_start_x
-	var x2 = get_sel_end_x
-	var y = get_sel_start_y
-	var y2 = get_sel_end_y
-	var xl = SY_get_size(S, y)
-	if x2 < xl
-		var b = S_copy_block(S, y, x, y2, x2)
-		S_do_replace(S, y, x, y2, x2, TextBlock new)
-		S_do_insert(S, y, x+1, b)
-		do_select(y, x+1, y, x2+1)
-	end
-
-
-//~ function test
-	//~ move_selection_left(get_active_normed_section)
-//[cf]
-//[of]S_do_outc_all	Section -> nil:S_do_outc_all!	|	S -> -	|		|
-//[c]
-//[c]	Outcomment every line in section.
-//[c]
-
-function S_do_outc_all(S)
-//[c]	contract: S ends with an empty line
-	S_outc(S, 0, 0, nil, nil)
-//[cf]
-//[of]S_do_outc_rec	Section -> Y -> Y -> nil:S_do_outc_rec	|	S -> y -> x -> y -> x -> -	|
-//[c]
-//[c]	Outcomment every line in section between and including Y and Y2.
-//[c]	Also outcomment subsections.
-//[c]
-
-function S_do_outc_rec(S, Y, X, Y2, X2)
-	var y2 = S_outc(S, Y, X, Y2, X2)
-	var sub_s = nil
-	for_each_in_range(Y, y2) do y
-		if SY_is_sec(S, y)
-			sub_s = SY_get_normed_sec(S, y)
-			S_do_unfold_all(sub_s)
-			S_do_outc_all(sub_s)
-		end
-	end
-//[cf]
-//[of]S_do_replace	Section -> Y -> X -> Y -> X -> Block -> nil:S_do_replace	|	S -> y -> x -> y -> x -> Block -> -	|
-//[c]
-//[c]	In section, replace everything between Y/X and Y2/X2 with block.
-//[c]	Indices can be nil, = max.
-//[c]
-
-function S_do_replace(S, Y, X, Y2, X2, B)
-	var last_y = S rowsSize - 1
-	var y = FirstNotNil(Y, last_y)
-	var x = FirstNotNil(X, SY_get_size(S, y))
-	var y2 = FirstNotNil(Y2, last_y)
-	var x2 = FirstNotNil(X2, SY_get_size(S, y2))
-	S replaceText(y, x, y2, x2, B)
-//[cf]
-//[of]S_do_strip_ws	Section -> nil:S_do_strip_ws	|	S -> -	|
-//[c]
-//[c]	Remove all whitespace-only lines at top and bottom of section.
-//[c]
-
-function S_do_strip_ws(S)
-	S_do_strip_ws_top(S)
-	S_do_strip_ws_bot(S)
-
-
-//~ function test
-	//~ S_do_strip_ws(frame activeView section)
-//[cf]
-//[of]S_do_strip_ws_bot	Section -> nil:S_do_strip_ws_bot	|	S -> -	|
-//[c]
-//[c]	Remove all whitespace-only lines at bottom of section.
-//[c]
-
-function S_do_strip_ws_bot(S)
-	endwithnewline(S)
-	var y = S rowsSize - 1-1
-	while true
-		if SY_not_just_ws(S, y)
-			S_do_cut_all_after(S, y+1, 0)
-			break
-		end
-		y = y-1
-			 if y < 0
-				 S_do_clear(S)
-				 break
-			 end
-	end
-
-
-//~ function test
-	//~ S_do_strip_ws_bot(frame activeView section)
-//[cf]
-//[of]S_do_strip_ws_top	Section -> nil:S_do_strip_ws_top	|	S -> -	|
-//[c]
-//[c]	Remove all whitespace-only lines at top of section.
-//[c]
-
-function S_do_strip_ws_top(S)
-	endwithnewline(S)
-	var y = 0
-	var last_y = S rowsSize - 1
-	while true
-		if SY_not_just_ws(S, y)
-			S_do_cut_all_before(S, y, 0)
-			break
-		end
-		y = y+1
-			 if y > last_y
-				 S_do_clear(S)
-				 break
-			 end
-	end
-
-
-//~ function test
-	//~ S_do_strip_ws_top(frame activeView section)
-//[cf]
-//[of]S_do_unfold_all	Section -> nil:S_do_unfold_all	|	S -> -	|
-//[c]
-//[c]	Unfold all sub sections of section.
-//[c]
-
-function S_do_unfold_all(S)
-	var y = 0
-	var last_y = nil
-	while true
-		last_y = S rowsSize - 1
-		y = SY_find_same_or_next_sec(S, 0)
-		if y isNil
-			return
-		else
-			SY_unfold(S, y)
-		end
-	end
-
-
-//~ function test
-	//~ S_do_unfold_all(frame activeView section)
-//[cf]
-//[of]S_do_unoutc_all	Section -> nil	shortcut:S_do_unoutc_all	|	S -> -	|
-//[c]
-//[c]	Unoutcomment every line in section.
-//[c]
-
-function S_do_unoutc_all(S)
-	S_unoutc(S, 0, 0, nil, nil)
-//[cf]
-//[of]S_do_unoutc_rec	Section -> Y -> Y -> nil:S_do_unoutc_rec	|	S -> y -> y -> -	|
-//[c]
-//[c]	Unoutcomment every line in section between and including Y and
-//[c]	Y2. Also unoutcomment subsections.
-//[c]
-
-function S_do_unoutc_rec(S, Y, X, Y2, X2)
-	var y2 = S_unoutc(S, Y, X, Y2, X2)
-	var sub_s = nil
-	for_each_in_range(Y, y2) do y
-		if SY_is_sec(S, y)
-			sub_s = SY_get_normed_sec(S, y)
-			S_do_unfold_all(sub_s)
-			S_do_unoutc_all(sub_s)
-			S_do_fold_all(sub_s)
-		end
-	end
-//[cf]
-//[of]S_do_insert:S_do_insert	|	S -> y -> x -> Block -> -	|
-function S_do_insert(S, Y, X, B)
-	var y = FirstNotNil(Y, S rowsSize - 1)
-	var x = FirstNotNil(X, SY_get_size(S, y))
-	S replaceText(y, x, y, x, B)
-//[cf]
-//[of]S_make_cblock	Section -> Y -> Y -> Codeblock:S_make_cblock	|	S -> y -> y -> Cb	|
-//[c]
-//[c]	In section, get code block between Y and Y2.
-//[c]	Does not check if Y and Y2 are really start and end of this
-//[c]	code block. Use ...
-//[l]:	SY_get_cblock:#SY_get_cblock	\: Section -> Y -> Codeblock	\:
-//[c]	... for this.
-//[c]
-
-function S_make_cblock(S, Y, Y2)
-	return Codeblock basicNew init(S, Y, Y2)
-//[cf]
-//[of]S_do_outc	Section -> Y -> Y -> nil:S_outc	|	S -> y -> x -> y -> x -> y	|
-//[c]
-//[c]	In section, outcomment every line between and including Y and
-//[c]	Y2.
-//[c]
-
-function S_outc(S, Y, X, Y2, X2)
-	var last_y = S rowsSize - 1
-	if (not (Y < last_y))
-		return last_y
-	end
-	var y = Y
-	var x = 0
-	var y2 = Y2
-	var x2 = X2
-	if y2 isNil
-		y2 = last_y
-		x2 = 0
-	end
-	if x2 isNil
-		x2 = SY_get_size(S, y2)
-	end
-	if (y2 == y) or (x2 > 0)
-		y2 = y2+1
-		x2 = 0
-	end
-	var b = S_copy_block(S, Y, 0, y2, 0)
-	B_do_outc_all(b)
-	S_do_replace(S, Y, 0, y2, 0, b)
-	return y2
-//[cf]
-//[of]S_do_unoutc	Section -> Y -> Y -> nil	has rule:S_unoutc!	|	S -> y -> y -> -	|		|
-//[c]
-//[c]	In section, unoutcomment every line between and including Y and
-//[c]	Y2.
-//[c]
-
-function S_unoutc(S, Y, X, Y2, X2)
-	var last_y = S rowsSize - 1
-	if (not (Y < last_y))
-		return last_y
-	end
-	var y = Y
-	var x = 0
-	var y2 = Y2
-	var x2 = X2
-	if y2 isNil
-		y2 = last_y
-		x2 = 0
-	end
-	if x2 isNil
-		x2 = SY_get_size(S, y2)
-	end
-	if (y2 == y) or (x2 > 0)
-		y2 = y2+1
-		x2 = 0
-	end
-	var b = S_copy_block(S, Y, 0, y2, 0)
-	B_do_unoutc_all(b)
-	S_do_replace(S, Y, 0, y2, 0, b)
-	return y2
-//[cf]
-//[cf]
-//[of]:Sb	|	Buffer -> s -> -	|
-//[of]Sb_cut_left_if_starts_with	Buffer -> String -> nil:Sb_cut_left_if_starts_with	|	Buffer -> s -> -	|
-//[c]
-//[c]	Cut string from left side of buffer if buffer starts with string.
-//[c]
-
-function Sb_cut_left_if_starts_with(Sb, str)
-	var to_cut = str size
-	if to_cut > 0
-		if Sb startsWith(str)
-			Sb removeRange(0, to_cut)
-		end
-	end
-//[cf]
-//[of]Sb_cut_right_if_ends_with	Buffer -> String -> nil:Sb_cut_right_if_ends_with	|	Buffer -> s -> -	|
-//[c]
-//[c]	Cut string from right side of buffer if buffer ends with string.
-//[c]
-
-function Sb_cut_right_if_ends_with(Sb, str)
-	var to_cut = str size
-	if to_cut > 0
-		if Sb endsWith(str)
-			Sb removeRange((Sb size)-to_cut, to_cut)
-		end
-	end
-
-
-//~ function test
-	//~ var sb = (StringBuffer new) << "bar    "
-	//~ Sb_cut_right_if_ends_with(sb, "    ")
-	//~ print_with_borders(sb)
-//[cf]
-//[of]Sb_do_strip	Buffer -> String -> nil:Sb_do_strip	|	Buffer -> s -> -	|
-//[c]
-//[c]	Strip chars from both sides of buffer.
-//[c]
-
-function Sb_do_strip(Sb, chars)
-	Sb_do_strip_left(Sb, chars)
-	Sb_do_strip_right(Sb, chars)
-//[cf]
-//[of]Sb_do_strip_left	Buffer -> String -> nil:Sb_do_strip_left	|	Buffer -> s -> -	|
-//[c]
-//[c]	Strip chars from left side of buffer.
-//[c]
-
-function Sb_do_strip_left(Sb, chars)
-	var s = Sb size
-	while true
-		chars each do c
-			Sb_do_strip_c_left(Sb, c)
-		end
-		if s == Sb size
-			break
-		else
-			s = Sb size
-		end
-	end
-//[cf]
-//[of]Sb_do_strip_right	Buffer -> String -> nil:Sb_do_strip_right	|	Buffer -> s -> -	|
-//[c]
-//[c]	Strip chars from right side of buffer.
-//[c]
-
-function Sb_do_strip_right(Sb, chars)
-	var s = Sb size
-	while true
-		chars each do c
-			Sb_do_strip_c_right(Sb, c)
-		end
-		if s == Sb size
-			break
-		else
-			s = Sb size
-		end
-	end
-
-
-//~ function test
-	//~ var Sb = make_new_buffer << "abc */  "
-	//~ Sb_do_strip_right(Sb, " */")
-	//~ print_with_borders(Sb)
-//[cf]
-//[of]Sb_do_strip_ws	Buffer -> nil:Sb_do_strip_ws	|	Buffer -> -	|
-//[c]
-//[c]	Strip whitespaces from each side of buffer.
-//[c]
-
-function Sb_do_strip_ws(Sb)
-	Sb_do_strip(Sb, " \t")
-//[cf]
-//[of]Sb_do_strip_c_left	Buffer -> Char -> nil:Sb_do_strip_c_left	|	Buffer -> Char -> -	|
-//[c]
-//[c]	Strip each occurrence of char from left side of buffer.
-//[c]
-
-function Sb_do_strip_c_left(Sb, char)
-	while true
-		if Sb size == 0
-			break
-		end
-		if Sb[0] == char
-			Sb removeRange(0, 1)
-		else
-			break
-		end
-	end
-//[cf]
-//[of]Sb_do_strip_c_right	Buffer -> Char -> nil:Sb_do_strip_c_right	|	Buffer -> Char -> -	|
-//[c]
-//[c]	Strip each occurrence of char from right side of buffer.
-//[c]
-
-function Sb_do_strip_c_right(Sb, char)
-	while true
-		if Sb size == 0
-			break
-		end
-		if Sb[Sb size - 1] == char
-			Sb removeRange(Sb size -1, 1)
-		else
-			break
-		end
-	end
-//[cf]
-//[cf]
-//[of]SY_fold:fold_at_cursor!	|	S -> y -> y	|		|
-//[c]
-//[c]	In section: If line at Y is a code block opener or code block
-//[c]	closer, fold the matching named block. If line at Y is a
-//[c]	non-empty line, quick-fold the innermost block. If something
-//[c]	is selected, make this a quickfolded block. If something in
-//[c]	one line is selected, make the name of the quickfolded block
-//[c]	be the selection. If the line at Y is an empty line, fold all
-//[c]	code blocks in level (not implemented).
-//[c]
-
-function fold_at_cursor(S, Y)
-	var cursor_y = nil
-	if something_selected
-		var open_y = get_sel_start_y
-		var close_y = get_sel_end_y
-		if open_y == close_y
-//[c]			contract: open_y == close_y == Y
-			//~ var cb = S_make_cblock(S, open_y, open_y)
-			var cb = SY_get_cblock(S, Y)
-			var title = SY_get_text(S, Y) range(get_sel_start_x, FirstNotNil(get_sel_end_x, SY_get_text(S, Y) size) - get_sel_start_x)
-			cb title = title
-			cursor_y = Cb_fold(cb)
-		else
-			cursor_y = Cb_fold(S_make_cblock(S, open_y, close_y))
-		end
-	elsif SY_is_just_ws(S, Y)
-		msg_not_implemented("when on empty line, fold all code blocks in level (is this useful?)")
-		cursor_y = Y
-	else
-		cursor_y = Cb_fold(SY_get_cblock(S, Y))
-	end
-	return cursor_y
-//[l]:something_selected:#somethingSelected
-//[cf]
-//[of]:SY	|	S -> y -> s	|		|
-//[of]SY_extract_cb_title	Section -> Y -> String	shortcut, has rule:SY_extract_cb_title!	|	S -> y -> s	|		|
-//[c]
-//[c]	In section, extract title from code block opener at line at Y.
-//[c]
-
-function SY_extract_cb_title(S, Y)
-//[c]	contract: Y is code block opener
-	return extract_cb_title(SY_get_text(S, Y))
-//[cf]
-//[of]SY_extract_indent	Section -> Y -> String	shortcut:SY_extract_indent	|	S -> y -> s	|
-//[c]
-//[c]	In section, get indent of line at Y.
-//[c]
-
-function SY_extract_indent(S, Y)
-	return extract_indent(SY_get_text(S, Y))
-//[cf]
-//[of]SY_extract_indent_of_next_non_e	Section -> Y -> String:SY_extract_indent_of_next_non_e	|	S -> y -> s	|
-//[c]
-//[c]	In section, get indent of next non-empty line after line at Y.
-//[c]
-
-function SY_extract_indent_of_next_non_e(S, Y)
-	var y = SY_find_next_non_e(S, Y)
-	if y==nil
-		return nil
-	else
-		return SY_extract_indent(S, y)
-	end
-//[cf]
-//[of]SY_extract_indent_of_prev_non_e	Section -> Y -> String:SY_extract_indent_of_prev_non_e	|	S -> y -> s	|
-//[c]
-//[c]	In section, get indent of previous non-empty line before line at Y.
-//[c]
-
-function SY_extract_indent_of_prev_non_e(S, Y)
-	var y = SY_find_prev_non_e(S, Y)
-	if y==nil
-		return nil
-	else
-		return SY_extract_indent(S, y)
-	end
-//[cf]
-//[of]SY_find_end_of_cblock	Section -> Y -> Y	has rule:SY_find_end_of_cblock!	|	S -> y -> y	|		|
-//[c]
-//[c]	In section, If y is code block opener: return matching code
-//[c]	block closer. If y is code block closer: return it. Otherwise:
-//[c]	return end of innermost code block at line at Y.
-//[c]
-
-function SY_find_end_of_cblock(S, Y)
-//[c]	contract: Y is a non empty line
-	if SY_is_cb_open(S, Y)
-		return SY_find_matching_cb_close(S, Y)
-	elsif SY_is_cb_close(S, Y)
-		return Y
-	else
-		var y = Y
-		var last_y = S rowsSize - 1
-		var cb_i_size = SY_get_i_size(S, y)
-		var i_size = nil
-		var last_non_e = y
-		var last_was_ws = false
-		var r = nil
-		while true
-			r = SY_get_row(S, y)
-			if R_is_just_ws(r)
-				last_was_ws = true
-			else
-				i_size = R_get_i_size(r)
-//[c]				re-enabled
-				if ((not (i_size > cb_i_size)) and (last_was_ws or R_is_cb_sep(r))) or (i_size < cb_i_size)
-				//~ if ((not (i_size > cb_i_size)) and (last_was_ws or R_is_cb_sep(r) or (r type == lt_section))) or (i_size < cb_i_size)
-					return last_non_e
-				end
-				last_was_ws = false
-				last_non_e = y
-			end
-			y = y + 1
-			if y > last_y
-				return last_non_e
-			end
-		end
-	end
-//[cf]
-//[of]SY_find_matching_cb_close	Section -> Y -> Y	has rule:SY_find_matching_cb_close!	|	S -> y -> y	|		|
-//[c]
-//[c]	Find the code block closer which belongs to the code block
-//[c]	opener at line at Y.
-//[c]
-
-function SY_find_matching_cb_close(S, Y)
-//[c]	contract: Y is a code block opener
-	var y = Y + 1
-	var last_y = S rowsSize - 1
-	if y > last_y
-		return msg_error(
-			"SY_find_matching_cb_close",
-			"start of named code block at end of section")
-	end
-	var r = nil
-	var to_close = 1
-	var f = new_finddata
-	f setSearchString("^[ \t]*" + get_lang_prefix)
-	f setDirection(find_next)
-	while true
-		r = f find(S, y, 0, false)
-		if r isNil
-			return msg_error(
-				"SY_find_matching_cb_close",
-					"no matching end found for named code block start at line " + Y toString)
-		else
-			if SY_is_cb_close(S, r line)
-				to_close = to_close - 1
-				if to_close == 0
-					return r line
-				end
-			elsif SY_is_cb_open(S, r line)
-				to_close = to_close + 1
-			end
-		end
-		y = r line + 1
-		if y > last_y
-			return msg_error(
-				"SY_find_matching_cb_close",
-				"did not find matching cblock_close (reached end of section)")
-		end
-	end
-//[cf]
-//[of]SY_find_matching_cb_open	Section -> Y -> Y	has rule:SY_find_matching_cb_open!	|	S -> y -> y	|		|
-//[c]
-//[c]	Find the code block opener which belongs to the code block
-//[c]	closer at line at Y.
-//[c]
-
-function SY_find_matching_cb_open(S, Y)
-//[c]	contract: Y is a code block closer
-	var y = Y
-	var r = nil
-	var to_close = 1
-	var f = new_finddata
-	f setSearchString("^[ \t]*" + get_lang_prefix)
-	f setDirection(find_previous)
-	while true
-		r = f find(S, y, 0, false)
-		if r isNil
-			return msg_error(
-				"SY_find_matching_cb_open",
-				"no matching start found for code block closer at line " + Y toString)
-		else
-			if SY_is_cb_open(S, r line)
-				to_close = to_close - 1
-				if to_close == 0
-					return r line
-				end
-			elsif SY_is_cb_close(S, r line)
-				to_close = to_close + 1
-			end
-		end
-		y = r line
-	end
-//[cf]
-//[of]SY_find_next_cb_open	Section -> Y -> Y:SY_find_next_cb_open	|	S -> y -> y	|
-//[c]
-//[c]	In section, find next code block opener after line at Y.
-//[c]
-
-function SY_find_next_cb_open(S, Y)
-	var y = Y
-	var last_y = S rowsSize - 1
-	while true
-		y = y+1
-		if y>last_y
-			return nil
-		end
-		if SY_is_cb_open(S, y)
-			return y
-		end
-	end
-//[cf]
-//[of]SY_find_next_e	Section -> Y -> Y:SY_find_next_e	|	S -> y -> y	|
-//[c]
-//[c]	In section, find next empty line after line at Y.
-//[c]
-
-function SY_find_next_e(S, Y)
-	var y = Y
-	var last_y = S rowsSize - 1
-	while true
-		y = y+1
-		if y>last_y
-			return nil
-		end
-		if SY_is_just_ws(S, y)
-			return y
-		end
-	end
-//[cf]
-//[of]SY_find_next_non_e	Section -> Y -> Y:SY_find_next_non_e	|	S -> y -> y	|
-//[c]
-//[c]	In section, find next non-empty line after line at Y.
-//[c]
-
-function SY_find_next_non_e(S, Y)
-	var y = Y
-	var last_y = S rowsSize - 1
-	while true
-		y = y+1
-		if y>last_y
-			return nil
-		end
-		if SY_not_just_ws(S, y)
-			return y
-		end
-	end
-//[cf]
-//[of]SY_find_next_non_e_with_i_size	Section -> Y -> X -> Y:SY_find_next_non_e_with_i_size	|	S -> y -> x -> y	|
-//[c]
-//[c]	In section, find next non-empty line after line at Y, which
-//[c]	has the same indent size as size.
-//[c]
-
-function SY_find_next_non_e_with_i_size(S, Y, size)
-	var y = Y
-	var last_y = S rowsSize - 1
-	var ind = nil
-	while true
-		y = y+1
-		if y > last_y
-			return nil
-		elsif SY_not_just_ws(S, y)
-			ind = SY_get_i_size(S, y)
-			if ind == size
-				return y
-			elsif ind < size
-				return nil
-			end
-		end
-	end
-//[cf]
-//[of]SY_find_next_sec_or_link	Section -> Y -> Y:SY_find_next_sec_or_link	|	S -> y -> y	|
-//[c]
-//[c]	In section, find next section or link after line at Y.
-//[c]
-
-function SY_find_next_sec_or_link(S, Y)
-	var y = Y
-	var last_y = S rowsSize - 1
-	while true
-		y = y + 1
-		if y > last_y
-			return nil
-		end
-		if SY_is_sec_or_link(S, y)
-			return y
-		end
-	end
-//[cf]
-//[of]SY_find_prev_cb_open	Section -> Y -> Y:SY_find_prev_cb_open	|	S -> y -> y	|
-//[c]
-//[c]	In section, find previous code block opener before line at Y.
-//[c]
-
-function SY_find_prev_cb_open(S, Y)
-	var y = Y
-	while true
-		y = y-1
-		if y<0
-			return nil
-		end
-		if SY_is_cb_open(S, y)
-			return y
-		end
-	end
-//[cf]
-//[of]SY_find_prev_e	Section -> Y -> Y:SY_find_prev_e	|	S -> y -> y	|
-//[c]
-//[c]	In section, find previous empty line before line at Y.
-//[c]
-
-function SY_find_prev_e(S, Y)
-	var y = Y
-	while true
-		y = y-1
-		if y<0
-			return nil
-		end
-		if SY_is_just_ws(S, y)
-			return y
-		end
-	end
-//[cf]
-//[of]SY_find_prev_non_e	Section -> Y -> Y:SY_find_prev_non_e	|	S -> y -> y	|
-//[c]
-//[c]	In section, find previous non-empty line before line at Y.
-//[c]
-
-function SY_find_prev_non_e(S, Y)
-	var y = Y
-	while true
-		y = y-1
-		if y<0
-			return nil
-		end
-		if SY_not_just_ws(S, y)
-			return y
-		end
-	end
-//[cf]
-//[of]SY_find_prev_non_e_with_i_size	Section -> Y -> X -> Y:SY_find_prev_non_e_with_i_size	|	S -> y -> x -> y	|
-//[c]
-//[c]	In section, find previous non-empty line before line at Y,
-//[c]	which has the same indent size as size.
-//[c]
-
-function SY_find_prev_non_e_with_i_size(S, Y, size)
-	var y = Y
-	var ind = nil
-	while true
-		y = y-1
-		if y < 0
-			return nil
-		elsif SY_not_just_ws(S, y)
-			ind = SY_get_i_size(S, y)
-			if ind == size
-				return y
-			elsif ind < size
-				return nil
-			end
-		end
-	end
-//[cf]
-//[of]SY_find_prev_sec_or_link	Section -> Y -> Y:SY_find_prev_sec_or_link	|	S -> y -> y	|
-//[c]
-//[c]	In section, find previous section or link before line at Y.
-//[c]
-
-function SY_find_prev_sec_or_link(S, Y)
-	var y = Y
-	while true
-		y = y-1
-		if y<0
-			return nil
-		end
-		if SY_is_sec_or_link(S, y)
-			return y
-		end
-	end
-//[cf]
-//[of]SY_find_same_or_next_cb_close	Section -> Y -> Y:SY_find_same_or_next_cb_close	|	S -> y -> y	|
-//[c]
-//[c]	In section, find code block closer after line at Y or Y if Y
-//[c]	is a code block closer.
-//[c]
-
-function SY_find_same_or_next_cb_close(S, Y)
-	var y = Y
-	var last_y = S rowsSize - 1
-	while true
-		if SY_is_cb_close(S, y)
-			return y
-		end
-		y = y+1
-		if y>last_y
-			return nil
-		end
-	end
-//[cf]
-//[of]SY_find_same_or_next_non_e	Section -> Y -> Y:SY_find_same_or_next_non_e	|	S -> y -> y	|
-//[c]
-//[c]	In section, find next non-empty line after line at Y or Y if
-//[c]	Y is non-empty.
-//[c]
-
-function SY_find_same_or_next_non_e(S, Y)
-	var y = Y
-	var last_y = S rowsSize - 1
-	while true
-		if SY_not_just_ws(S, y)
-			return y
-		end
-		y = y+1
-		if y>last_y
-			return nil
-		end
-	end
-//[cf]
-//[of]SY_find_same_or_next_sec	Section -> Y -> Y:SY_find_same_or_next_sec	|	S -> y -> y	|
-//[c]
-//[c]	In section, find next section after line at Y or Y if Y is
-//[c]	a section.
-//[c]
-
-function SY_find_same_or_next_sec(S, Y)
-	var y = Y
-	var last_y = S rowsSize - 1
-	while true
-		if SY_is_sec(S, y)
-			return y
-		end
-		y = y+1
-		if y>last_y
-			return nil
-		end
-	end
-//[cf]
-//[of]SY_find_start_of_cblock	Section -> Y -> Y:SY_find_start_of_cblock!	|	S -> y -> y	|		|
-//[c]
-//[c]	In section, If line at Y is code block opener return it. If
-//[c]	line at Y is code block closer return the matching code
-//[c]	block opener. Otherwise find the start of the innermost code
-//[c]	block at line at Y. Contract: Y is non empty.
-//[c]
-
-function SY_find_start_of_cblock(S, Y)
-	if SY_is_cb_close(S, Y)
-		return SY_find_matching_cb_open(S, Y)
-	elsif SY_is_cb_open(S, Y)
-		return Y
-	else
-		var y = Y
-		var r = nil
-		var i_size = nil
-		var cb_i_size = SY_get_i_size(S, y)
-		var last_is_same_i_size = true
-		var last_non_e = y
-		while true
-			y = y - 1
-			if y < 0
-				return last_non_e
-			end
-			r = SY_get_row(S, y)
-			if R_is_just_ws(r)
-				if last_is_same_i_size
-					return last_non_e
-				end
-			else
-				i_size = SY_get_i_size(S, y)
-				if (i_size == cb_i_size)
-//[c]					added (r type == lt_section)
-					//~ if R_is_cb_sep(r) or (r type == lt_section)
-//[c]					removed (r type == lt_section)
-					if R_is_cb_sep(r)
-						return last_non_e
-					end
-					last_is_same_i_size = true
-				elsif (i_size < cb_i_size)
-					return last_non_e
-				else
-					last_is_same_i_size = false
-				end
-				last_non_e = y
-			end
-		end
-	end
-//[cf]
-//[of]nav_next_codeblock:SY_find_start_of_next_cblock	|	S -> y -> y	|
-//[c]
-//[c]	in section, find start of next code block after line at Y
-//[c]
-
-function SY_find_start_of_next_cblock(S, Y)
-	var s = S
-	var y = Y
-	var last_y = s rowsSize - 1
-	if y < last_y
-		var y2 = last_y
-		var y3 = last_y
-		var y4 = last_y
-		var cb = nil
-		if SY_is_just_ws(s, y)
-			//[of]y2:y2
-			y2 = SY_find_next_non_e(s, y)
-			if y2 == nil
-				y2 = last_y
-			end
-			//[cf]
-		else
-			//[of]y2:y2
-			cb = SY_get_cblock(s, y)
-			if cb is_last_in_level
-				y2 = cb last
-				y2 = SY_find_next_e(s, y)
-				if y2 isNil
-					y2 = last_y
-				else
-					y2 = SY_find_next_non_e(s, y2)
-					if y2 isNil
-						y2 = last_y
-					end
-				end
-			else
-				cb = Cb_find_next(cb)
-				y2 = cb first
-			end
-
-			if y2 == y
-				y2 = last_y
-			end
-			//[cf]
-			//[of]y3:y3
-			y3 = SY_find_next_e(s, y)
-			if y3 isNil
-				y3 = last_y
-			else
-				y3 = SY_find_next_non_e(s, y3)
-				if y3 isNil
-					y3 = last_y
-				else
-					cb = SY_get_cblock(s, y3)
-					y3 = cb first
-					if y3 > y
-						var temp_cb = cb
-						while true
-							temp_cb = Cb_find_prev(temp_cb)
-							if (temp_cb isNil) or (not (temp_cb first > y))
-								y3 = cb first
-								break
-							end
-							cb = temp_cb
-						end
-					else
-						y3 = last_y
-					end
-				end
-			end
-			//[cf]
-			//[of]y4:y4
-			y4 = SY_find_next_cb_open(s, y)
-			if y4 isNil
-				y4 = last_y
-			else
-				cb = SY_get_cblock(s, y4)
-				var temp_cb = cb
-				while true
-					temp_cb = Cb_find_prev(temp_cb)
-					if (temp_cb isNil) or (not (temp_cb first > y))
-						y4 = cb first
-						break
-					end
-					cb = temp_cb
-				end
-			end
-			//[cf]
-		end
-		y = y2
-		if y3 < y
-			y = y3
-		end
-		if y4 < y
-			y = y4
-		end
-	end
-	return y
-//[cf]
-//[of]nav_prev_codeblock:SY_find_start_of_prev_cblock	|	S -> y -> y	|
-//[c]
-//[c]	in section, find start of previous code block before line at Y
-//[c]
-
-function SY_find_start_of_prev_cblock(S, Y)
-	var s = S
-	var y = Y
-	if y > 0
-		var y2 = 0
-		var y3 = 0
-		var y4 = 0
-		var yt = 0
-		var cb = nil
-		var temp_cb = nil
-		if SY_is_just_ws(s, y)
-			//[of]y2:y2
-			y2 = SY_find_prev_non_e(s, y)
-			if y2 isNil
-				y2 = 0
-			else
-				y2 = SY_find_prev_e(s, y2)
-				if y2 isNil
-					y2 = 0
-				else
-					y2 = SY_find_next_non_e(s, y2)
-				end
-			end
-			//[cf]
-		else
-			//[of]y2:y2
-			cb = SY_get_cblock(s, y)
-			if y == cb first
-				if cb is_first_in_level
-					y2 = SY_find_prev_non_e(s, y)
-					if y2 isNil
-						y2 = 0
-					else
-						y2 = SY_find_prev_e(s, y2)
-						if y2 isNil
-							y2 = 0
-						else
-							y2 = SY_find_next_non_e(s, y2)
-						end
-					end
-				else
-					cb = Cb_find_prev(cb)
-					y2 = cb first
-				end
-			else
-				y2 = cb first
-			end
-			//[cf]
-			//[of]y3:y3
-			y3 = SY_find_prev_e(s, y)
-			if y3 isNil
-				y3 = 0
-			else
-				yt = SY_find_next_non_e(s, y3)
-				if yt == y
-					y3 = SY_find_prev_non_e(s, y3)
-					if y3 isNil
-						y3 = 0
-					else
-						y3 = SY_find_prev_e(s, y3)
-						if y3 isNil
-							y3 = 0
-						else
-							y3 = SY_find_next_non_e(s, y3)
-							temp_cb = SY_get_cblock(s, y3)
-							y3 = temp_cb first
-						end
-					end
-				else
-					y3 = yt
-				end
-			end
-			//[cf]
-			//[of]y3:y4
-			y4 = SY_find_prev_cb_open(s, y)
-			if y4 isNil
-				y4 = 0
-			else
-				cb = SY_get_cblock(s, y4)
-				if not cb is_last_in_level
-					temp_cb = Cb_find_next(cb)
-					if not (temp_cb first < y)
-						y4 = cb first
-					else
-						y4 = temp_cb first
-					end
-				end
-			end
-
-			//[cf]
-		end
-		y = y2
-		if y3 > y
-			y = y3
-		end
-		if y4 > y
-			y = y4
-		end
-	end
-	return y
-//[cf]
-//[of]SY_get_cblock	\: Section -> Y -> Codeblock	\::SY_get_cblock	|	S -> y -> Cb	|
-//[c]
-//[c]	In section, return innermost code block at line at Y.
-//[c]
-
-function SY_get_cblock(S, Y)
-	var y = SY_find_start_of_cblock(S, Y)
-	var y2 = SY_find_end_of_cblock(S, Y)
-	return S_make_cblock(S, y, y2)
-//[cf]
-//[of]SY_get_i_size	Section -> Y -> X	shortcut:SY_get_i_size	|	S -> y -> x	|
-//[c]
-//[c]	In section, get size of indent of line at Y.
-//[c]
-
-function SY_get_i_size(S, Y)
-	return SY_extract_indent(S, Y) size
-//[cf]
-//[of]SY_get_i_size_of_next_non_e	Section -> Y -> String:SY_get_i_size_of_next_non_e	|	S -> y -> s	|
-//[c]
-//[c]	In section, get size of indent of next non-empty line after
-//[c]	the line at Y.
-//[c]
-
-function SY_get_i_size_of_next_non_e(S, Y)
-	var t = SY_extract_indent_of_next_non_e(S, Y)
-	if t==nil
-		return nil
-	else
-		return t size
-	end
-//[cf]
-//[of]SY_get_i_size_of_prev_non_e	Section -> Y -> String:SY_get_i_size_of_prev_non_e	|	S -> y -> s	|
-//[c]
-//[c]	In section, get size of indent of previous non-empty line before
-//[c]	the line at Y.
-//[c]
-
-function SY_get_i_size_of_prev_non_e(S, Y)
-	var t = SY_extract_indent_of_prev_non_e(S, Y)
-	if t==nil
-		return nil
-	else
-		return t size
-	end
-//[cf]
-//[of]SY_get_lowest_indent_next_non_e	Section -> Y -> String:SY_get_lowest_indent_next_non_e	|	S -> y -> s	|
-//[c]
-//[c]	In section, extract indent of next non-empty line after line at Y,
-//[c]	compare it with ind, return the smaller indent.
-//[c]
-
-function SY_get_lowest_indent_next_non_e(S, Y, ind)
-	var t = SY_extract_indent_of_next_non_e(S, Y)
-	if t isNil
-		return 0
-	else
-		if ind size > t size
-			return t
-		else
-			return ind
-		end
-	end
-//[cf]
-//[of]SY_get_lowest_indent_prev_non_e	Section -> Y -> String:SY_get_lowest_indent_prev_non_e	|	S -> y -> s	|
-//[c]
-//[c]	In section, extract indent of previous non-empty line before
-//[c]	the line at Y, compare it with ind, return the smaller indent.
-//[c]
-
-function SY_get_lowest_indent_prev_non_e(S, Y, ind)
-	var t = SY_extract_indent_of_prev_non_e(S, Y)
-	if t isNil
-		return 0
-	else
-		if ind size > t size
-			return t
-		else
-			return ind
-		end
-	end
-//[cf]
-//[of]SY_get_margin_bot	Section -> Y -> Y	has rule:SY_get_margin_bot!	|	S -> y -> y	|		|
-//[c]
-//[c]	In section, return amount of empty lines above line at Y.
-//[c]	Contract: S ends with an empty line, Y is not that last line.
-//[c]
-
-function SY_get_margin_bot(S, Y)
-	var y = SY_find_next_non_e(S, Y)
-	if y isNil
-		y=S rowsSize - 1
-	end
-	return (y - 1) - Y
-//[cf]
-//[of]SY_get_margin_top	Section -> Y -> Y:SY_get_margin_top	|	S -> y -> y	|
-//[c]
-//[c]	In section, return amount of empty lines above line at Y.
-//[c]
-
-function SY_get_margin_top(S, Y)
-	var y = SY_find_prev_non_e(S, Y)
-	if y isNil
-		y=-1
-	end
-	return Y - (y + 1)
 //[cf]
-//[of]SY_get_sec	Section -> Y -> Section	shortcut:SY_get_normed_sec!	|	S -> y -> S	|		|
-//[c]
-//[c]	In section, return normed section of row at Y. Contract: row
-//[c]	at Y is a section.
-//[c]
-
-function SY_get_normed_sec(S, Y)
-	var s = SY_get_row(S, Y) section
-	endwithnewline(s)
-	return s
-//[cf]
-//[of]SY_get_sec	Section -> Y -> Section	shortcut:SY_get_sec	|	S -> y -> S	|
-//[c]
-//[c]	In section, return section of row at Y.
-//[c]
-
-function SY_get_sec(S, Y)
-	return SY_get_row(S, Y) section
-//[cf]
-//[of]SY_get_size:SY_get_size	|	S -> y -> n	|
-function SY_get_size(S, Y)
-	return SY_get_row(S, Y) size
-//[cf]
-//[of]SY_get_text	Section -> Y -> String	shortcut:SY_get_text	|	S -> y -> s	|
-//[c]
-//[c]	In section, return text of row at Y.
-//[c]
-
-function SY_get_text(S, Y)
-	return SY_get_row(S, Y) text
-//[cf]
-//[of]SY_get_row:SY_get_row	|	S -> y -> R	|
-function SY_get_row(S, Y)
-	return S row(FirstNotNil(Y, (S rowsSize)-1))
-//[cf]
-//[of]SY_is_cb_close	Section -> Y -> Bool	shortcut:SY_is_cb_close	|	S -> y -> b	|
-//[c]
-//[c]	In section, if line at Y is a code block closer
-//[c]	(eg. '//' or '/**/').
-//[c]
-
-function SY_is_cb_close(S, Y)
-	return R_is_cb_close(SY_get_row(S, Y))
-//[cf]
-//[of]SY_is_cb_open	Section -> Y -> Bool	shortcut:SY_is_cb_open	|	S -> y -> b	|
-//[c]
-//[c]	In section, if line at Y is code block opener
-//[c]	(eg. '// foo' or '/* foo */').
-//[c]
-
-function SY_is_cb_open(S, Y)
-	return R_is_cb_open(SY_get_row(S, Y))
-//[cf]
-//[of]SY_is_first_in_level	Section -> Y -> Bool:SY_is_first_in_level	|	S -> y -> b	|
-//[c]
-//[c]	In section, if line at Y is first line in level.
-//[c]
-
-function SY_is_first_in_level(S, Y)
-	var y = Y-1
-	if y<0
-		return true
-	elsif SY_is_just_ws(S, y)
-		return false
-	elsif SY_is_cb_open(S, y) or (SY_extract_indent(S, y) < SY_extract_indent(S, Y))
-		return true
-	end
-	return false
-//[cf]
-//[of]SY_is_first_non_e_in_level	Section -> Y -> Bool:SY_is_first_non_e_in_level	|	S -> y -> b	|
-//[c]
-//[c]	In section, if line at Y is first non-empty line in level.
-//[c]
-
-function SY_is_first_non_e_in_level(S, Y)
-	var y = SY_find_prev_non_e(S, Y)
-	if (y isNil) or SY_is_cb_open(S, y) or (SY_extract_indent(S, y) < SY_extract_indent(S, Y))
-		return true
-	end
-	return false
-//[cf]
-//[of]SY_is_first_non_e_in_sec	Section -> Y -> Bool:SY_is_first_non_e_in_sec	|	S -> y -> b	|
-//[c]
-//[c]	In section, if line at Y is first non-empty line in section.
-//[c]
-
-function SY_is_first_non_e_in_sec(S, Y)
-	var y = SY_find_prev_non_e(S, Y)
-	if (y isNil)
-		return true
-	end
-	return false
-//[cf]
-//[of]SY_is_link	Section -> Y -> Bool	shortcut:SY_is_link	|	S -> y -> b	|
-//[c]
-//[c]	In section, if line at Y is a link.
-//[c]
-
-function SY_is_link(S, Y)
-	return (SY_get_row(S, Y) type == lt_link)
-//[cf]
-//[of]SY_is_last_non_e_in_sec	Section -> Y -> Bool:SY_is_last_non_e_in_sec	|	S -> y -> b	|
-//[c]
-//[c]	In section, if line at Y is last non-empty line in section.
-//[c]
-
-function SY_is_last_non_e_in_sec(S, Y)
-	var y = SY_find_next_non_e(S, Y)
-	if (y isNil)
-		return true
-	end
-	return false
-
-
-//~ function test
-	//~ var s = get_active_normed_section
-	//~ var last = s rowsSize - 1
-	//~ print(SY_is_last_non_e_in_sec(s, last))    // true
-//[cf]
-//[of]SY_is_last_in_level	Section -> Y -> Bool:SY_is_last_in_level	|	S -> y -> b	|
-//[c]
-//[c]	In section, if line at Y is last line in level.
-//[c]
-
-function SY_is_last_in_level(S, Y)
-	var y = Y+1
-	if y>S rowsSize - 1
-		return true
-	elsif SY_is_just_ws(S, y)
-		return false
-	elsif SY_is_cb_close(S, y) or (SY_extract_indent(S, y) < SY_extract_indent(S, Y))
-		return true
-	end
-	return false
-//[cf]
-//[of]SY_is_sec	Section -> Y -> Bool	shortcut:SY_is_sec	|	S -> y -> b	|
-//[c]
-//[c]	In section, if line at Y is a section.
-//[c]
-
-function SY_is_sec(S, Y)
-	return (SY_get_row(S, Y) type == lt_section)
-//[cf]
-//[of]SY_is_just_ws:SY_is_just_ws	|	S -> y -> b	|
-function SY_is_just_ws(S, Y)
-	var r = SY_get_row(S, Y)
-	return not (r type == lt_comment) and not (r type == lt_link) and is_just_ws(r text)
-//[cf]
-//[of]SY_is_sec_or_link	Section -> Y -> Bool	shortcut:SY_is_sec_or_link	|	S -> y -> b	|
-//[c]
-//[c]	In section, if line at Y is a section or link.
-//[c]
-
-function SY_is_sec_or_link(S, Y)
-	return R_is_sec_or_link(SY_get_row(S, Y))
-//[cf]
-//[of]SY_next_is_just_ws	Section -> Y -> Bool:SY_next_is_just_ws	|	S -> y -> b	|
-//[c]
-//[c]	In section, if next line after line at Y is just whitespace.
-//[c]
-
-function SY_next_is_just_ws(S, Y)
-	var y = Y+1
-	if y>S rowsSize - 1
-		return false
-	elsif SY_is_just_ws(S, y)
-		return true
-	end
-	return false
-//[cf]
-//[of]SY_next_non_e_is_cb_close	Section -> Y -> Bool:SY_next_non_e_is_cb_close	|	S -> y -> b	|
-//[c]
-//[c]	In section, if next non-empty line after line at Y is a
-//[c]	code block closer.
-//[c]
-
-function SY_next_non_e_is_cb_close(S, Y)
-	var y = SY_find_next_non_e(S, Y)
-	if y==nil
-		return false
-	elsif SY_is_cb_close(S, y)
-		return true
-	end
-	return false
-//[cf]
-//[of]SY_next_non_e_is_sec	Section -> Y -> Bool:SY_next_non_e_is_sec	|	S -> y -> b	|
-//[c]
-//[c]	In section, if next non-empty line after line at Y is section.
-//[c]
-
-function SY_next_non_e_is_sec(S, Y)
-	var y = SY_find_next_non_e(S, Y)
-	if y==nil
-		return false
-	elsif SY_is_sec(S, y)
-		return true
-	end
-	return false
-//[cf]
-//[of]SY_next_non_e_is_sec_or_link	Section -> Y -> Bool:SY_next_non_e_is_sec_or_link	|	S -> y -> b	|
-//[c]
-//[c]	In section, if next non-empty line after line at Y is section
-//[c]	or link.
-//[c]
-
-function SY_next_non_e_is_sec_or_link(S, Y)
-	var y = SY_find_next_non_e(S, Y)
-	if y==nil
-		return false
-	elsif SY_is_sec(S, y) or SY_is_link(S, y)
-		return true
-	end
-	return false
-//[cf]
-//[of]SY_next_not_just_ws	Section -> Y -> Bool	shortcut:SY_next_not_just_ws	|	S -> y -> b	|
-//[c]
-//[c]	In section, if next line after line at Y is not just whitespace.
-//[c]
-
-function SY_next_not_just_ws(S, Y)
-	return not SY_next_is_just_ws(S, Y)
-//[cf]
-//[of]SY_not_just_ws:SY_not_just_ws	|	S -> y -> b	|
-function SY_not_just_ws(S, Y)
-	return not SY_is_just_ws(S, Y)
-//[cf]
-//[of]SY_prev_is_just_ws	Section -> Y -> Bool:SY_prev_is_just_ws	|	S -> y -> b	|
-//[c]
-//[c]	In section, if previous line before line at Y is just whitespace.
-//[c]
-
-function SY_prev_is_just_ws(S, Y)
-	var y = Y-1
-	if y<0
-		return false
-	elsif SY_is_just_ws(S, y)
-		return true
-	end
-	return false
-//[cf]
-//[of]SY_prev_non_e_is_sec	Section -> Y -> Bool:SY_prev_non_e_is_sec	|	S -> y -> b	|
-//[c]
-//[c]	In section, if previous non-empty line before line at Y is a
-//[c]	section.
-//[c]
-
-function SY_prev_non_e_is_sec(S, Y)
-	var y = SY_find_prev_non_e(S, Y)
-	if y==nil
-		return false
-	elsif SY_is_sec(S, y)
-		return true
-	end
-	return false
-//[cf]
-//[of]SY_prev_non_e_is_sec_or_link	Section -> Y -> Bool:SY_prev_non_e_is_sec_or_link	|	S -> y -> b	|
-//[c]
-//[c]	In section, if previous non-empty line before line at Y is a
-//[c]	section or link.
-//[c]
-
-function SY_prev_non_e_is_sec_or_link(S, Y)
-	var y = SY_find_prev_non_e(S, Y)
-	if y==nil
-		return false
-	elsif SY_is_sec(S, y) or SY_is_link(S, y)
-		return true
-	end
-	return false
-//[cf]
-//[of]SY_unfold	Section -> Y -> Y:SY_unfold	|	S -> y -> y	|
-//[c]
-//[c]	In section, unfold subsection at Y to a named/unnamed code
-//[c]	block. Unnamed code block if section line text contains just
-//[c]	'.'s and whitspaces, named code block otherwise.
-//[c]
-
-function SY_unfold(S, Y)
-	var r = SY_get_row(S, Y)
-	if not (r type == lt_section)
-		return Y
-	end
-//[c]	changed: added SY_prev/next_non_e_is_sec
-	//~ var is_first = SY_is_first_in_level(S, Y) or SY_is_first_non_e_in_sec(S, Y) or SY_prev_non_e_is_sec(S, Y)
-	//~ var is_last = SY_is_last_in_level(S, Y) or SY_is_last_non_e_in_sec(S, Y) or SY_next_non_e_is_sec(S, Y)
-//[c]	changed back: removed SY_prev/next_non_e_is_sec
-	var is_first = SY_is_first_in_level(S, Y) or SY_is_first_non_e_in_sec(S, Y)
-	var is_last = SY_is_last_in_level(S, Y) or SY_is_last_non_e_in_sec(S, Y)
-	var rel = (frame activeFile language relativeIndentation)
-	var ind = R_extract_indent(r)
-	var ind_next = SY_get_lowest_indent_next_non_e(S, Y, ind)
-	var ind_prev = SY_get_lowest_indent_prev_non_e(S, Y, ind)
-	var title = strip_ws(r text)
-	var is_cblock = not is_quickfold_title(title)
-	var sub_s = R_get_normed_sec(r)
-	S_do_strip_ws(sub_s)
-	var b = S_copy_block(sub_s, 0, 0, nil, nil)
-	if rel
-		B_do_each_add_left(b, ind)
-	end
-	var y1 = Y
-	//~ var y1 = SY_find_prev_non_e(S, Y)
-	//~ if y1 isNil
-		//~ y1 = 0
-	//~ else
-		//~ y1 = y1+1
-	//~ end
-	var y2 = y1+1
-	//~ var y2 = SY_find_next_non_e(S, Y)
-	//~ if y2 isNil
-		//~ y2 = S rowsSize - 1
-	//~ end
-	S_do_replace(S, y1, 0, y2, 0, TextBlock fromString(""))
-	//~ if not is_first
-		//~ S_do_insert_line(S, y1, ind_prev)
-		//~ y1 = y1+1
-	//~ end
-	//~ if not is_last
-		//~ S_do_insert_line(S, y1, ind_next)
-	//~ end
-	if is_cblock
-		if rel
-			S_do_insert_line_sb(S, y1, (StringBuffer new) << ind << make_cb_open(title) << "\n" << ind << make_cb_close)
-		else
-			S_do_insert_line_sb(S, y1, (StringBuffer new) << make_cb_open(title) << "\n" << make_cb_close)
-		end
-		y1 = y1+1
-	end
-	S_do_insert(S, y1, 0, b)
-	if is_cblock
-		return y1-1
-	else
-		return y1
-	end
-//[cf]
-//[cf]
-//[of]unoutc	String -> String:unoutc	|	s -> s	|
-//[c]
-//[c]	Unoutcomment string.
-//[c]
-
-function unoutc(str, not_section)
-	if not_section
-		var pre = get_lang_prefix + "~ "
-		var suf = get_lang_suffix
-		if suf <> ""
-			suf = " " + suf
-		end
-		var ind = extract_indent(str)
-		var rest = str range(ind size, (str size)-(ind size))
-		rest = cut_left_if_starts_with(rest, pre)
-		if suf <> ""
-			rest = cut_right_if_ends_with(rest, suf)
-		end
-		return ((StringBuffer new) << ind << rest) toString
-	else
-		var pre = "~ "
-		var ind = extract_indent(str)
-		var rest = str range(ind size, (str size)-(ind size))
-		rest = cut_left_if_starts_with(rest, pre)
-		return ((StringBuffer new) << ind << rest) toString
-	end
-
-
-//~ function test
-	//~ print_with_borders(unoutc("    //~ foo"))    // >    foo<
-	//~ print_with_borders(unoutc("    //~ //~ bar"))    // >    //~ bar<
-//[cf]
-//[cf]
-
-//[of]nav_next:Navigate_Next_Section
-function Navigate_Next_Section
-	var s = get_active_normed_section
-	s startGroup
-	var cursor_y = (frame activeView cursorLine)
-	var ylast = s rowsSize - 1
-	var ynext = nil
-	var ygo   = ylast
-	if cursor_y < ylast
-		ynext = SY_find_next_sec_or_link(s, cursor_y)
-		if ynext notNil
-			ygo = ynext
-		end
-		ynext = SY_find_next_cb_open(s, cursor_y)
-		if ynext notNil
-			if ynext < ygo
-				ygo = ynext
-			end
-		end
-	end
-	move_cursor_to_first_relevant(ygo)
-	s stopGroup
-//[cf]
-//[of]nav_prev:Navigate_Prev_Section
-function Navigate_Prev_Section
-	var s = get_active_normed_section
-	s startGroup
-	var cursor_y = (frame activeView cursorLine)
-	var temp_y = nil
-	var go_there_y = 0
-	if cursor_y > 0
-		temp_y = SY_find_prev_sec_or_link(s, cursor_y)
-		if temp_y notNil
-			go_there_y = temp_y
-		end
-		temp_y = SY_find_prev_cb_open(s, cursor_y)
-		if temp_y notNil
-			if temp_y > go_there_y
-				go_there_y = temp_y
-			end
-		end
-	end
-	move_cursor_to_first_relevant(go_there_y)
-	s stopGroup
-//[cf]
-
-//[of]nav_next_codeblock:Navigate_Next_Paragraph
-function Navigate_Next_Paragraph
-	var s = get_active_normed_section
-	s startGroup
-//[c]	temporary disabled
-	//~ var y = SY_find_start_of_next_cblock(s, (frame activeView cursorLine))
-//[c]	replacement
-	var last_y = s rowsSize - 1
-	var y = SY_find_next_e(s, (frame activeView cursorLine))
-	if y notNil
-		y = SY_find_next_non_e(s, y)
-		if y isNil
-			y = last_y
-		end
-	else
-		y = last_y
-	end
-	move_cursor_to_first_relevant(y)
-	s stopGroup
-//[cf]
-//[of]nav_prev_codeblock:Navigate_Prev_Paragraph
-function Navigate_Prev_Paragraph
-	var s = frame activeView section
-	s startGroup
-//[c]	temporary disabled
-	//~ var y = SY_find_start_of_prev_cblock(s, (frame activeView cursorLine))
-//[c]	replacement
-	var y = SY_find_prev_non_e(s, (frame activeView cursorLine))
-	if y isNil
-		y = 0
-	else
-		y = SY_find_prev_e(s, y)
-		if y isNil
-			y = 0
-		else
-			y = SY_find_next_non_e(s, y)
-		end
-	end
-	move_cursor_to_first_relevant(y)
-	s stopGroup
-//[cf]
-
-//[of]nav_next_codeblock:Select_Next_Paragraph
-function Select_Next_Paragraph
-	var s = get_active_normed_section
-	s startGroup
-	var y = SY_find_start_of_next_cblock(s, (frame activeView cursorLine))
-	var cb = SY_get_cblock(s, y)
-	(frame activeView) select(cb last+1, 0, cb first, 0)
-	s stopGroup
-//[cf]
-//[of]nav_prev_codeblock:Select_Prev_Paragraph
-function Select_Prev_Paragraph
-	var s = get_active_normed_section
-	s startGroup
-	var y = SY_find_start_of_prev_cblock(s, (frame activeView cursorLine))
-	var cb = SY_get_cblock(s, y)
-	(frame activeView) select(cb last+1, 0, cb first, 0)
-	s stopGroup
-//[cf]
-
-//[of]fold:Fold_Or_Move_Left
-function Fold_Or_Move_Left
-	var s = get_active_normed_section
-	s startGroup
-	if something_selected
-		move_selection_left(s)
-	else
-		var y = fold_at_cursor(s, (frame activeView cursorLine))
-		move_cursor_to_first_relevant(y)
-	end
-	s stopGroup
-//[cf]
-//[of]unfold:Unfold_Or_Move_Right
-function Unfold_Or_Move_Right
-	var s = get_active_normed_section
-	s startGroup
-	if something_selected
-		S_do_move_sel_right_one_char(s)
-	else
-		var cursor_y = SY_unfold(s, (frame activeView cursorLine))
-		move_cursor_to_next_relevant(cursor_y)
-	end
-	s stopGroup
-//[cf]
-
-//[of]move_selection_up:Move_Up
-function Move_Up
-	var s = get_active_normed_section
-	s startGroup
-	var start_y = get_sel_start_y
-	if start_y > 0
-		if start_y == s rowsSize - 1
-			S_do_add_nl(s)
-		end
-		var start_x = get_sel_start_x
-		var end_y = get_sel_end_y
-		var end_x = get_sel_end_x
-		var intuitive_end_y = end_y
-		if (end_y == start_y) or (end_x > 0)
-			intuitive_end_y = end_y+1
-		end
-		var select_backward = is_backward_sel
-		var b = S_copy_block(s, start_y, 0, intuitive_end_y, 0)
-		S_do_replace(s, start_y, 0, intuitive_end_y, 0, (TextBlock new))
-		S_do_insert(s, start_y-1, 0, b)
-		if select_backward
-			frame activeView select(end_y-1, end_x, start_y-1, start_x)
-		else
-			frame activeView select(start_y-1, start_x, end_y-1, end_x)
-		end
-	end
-	s stopGroup
-//[cf]
-//[of]move_selection_down:Move_Down
-function Move_Down
-	var s = get_active_normed_section
-	s startGroup
-	var start_y = get_sel_start_y
-	var start_x = get_sel_start_x
-	var end_y = get_sel_end_y
-	var end_x = get_sel_end_x
-	var intuitive_end_y = end_y
-	if (end_y == start_y) or (end_x > 0)
-		intuitive_end_y = end_y+1
-	end
-	if intuitive_end_y == s rowsSize - 1
-		S_do_add_nl(s)
-	end
-	var select_backward = is_backward_sel
-	var b = S_copy_block(s, start_y, 0, intuitive_end_y, 0)
-	S_do_replace(s, start_y, 0, intuitive_end_y, 0, (TextBlock new))
-	S_do_insert(s, start_y+1, 0, b)
-	if select_backward
-		frame activeView select(end_y+1, end_x, start_y+1, start_x)
-	else
-		frame activeView select(start_y+1, start_x, end_y+1, end_x)
-	end
-	s stopGroup
-//[cf]
-
-//[of]outcomment_selection:Outcomment_Selection
-//[c]Flat outcomment selected text, unfold sections in subsections,
-//[c]flat comment out subsections.
-//[c]
-
-function Outcomment_Selection
-	var s = get_active_normed_section
-	s startGroup
-	var y = get_sel_start_y
-	var x = get_sel_start_x
-	var y2 = get_sel_end_y
-	var x2 = get_sel_end_x
-	var sel = something_selected
-	S_do_outc_rec(s, y, x, y2, x2)
-	if sel
-		if is_backward_sel
-			(frame activeView) select(y2, x2, y, x)
-		else
-			(frame activeView) select(y, x, y2, x2)
-		end
-	end
-	s stopGroup
-//[cf]
-//[of]unoutcomment_selection:Unoutcomment_Selection
-//[c]Flat unoutcomment selected text, unfold sections in subsections, flat
-//[c]uncomment out subsections, fold sections in subsections.
-//[c]
-
-function Unoutcomment_Selection
-	var s = get_active_normed_section
-	s startGroup
-	var y = get_sel_start_y
-	var x = get_sel_start_x
-	var y2 = get_sel_end_y
-	var x2 = get_sel_end_x
-	var sel = something_selected
-	S_do_unoutc_rec(s, y, x, y2, x2)
-	if sel
-		if is_backward_sel
-			(frame activeView) select(y2, x2, y, x)
-		else
-			(frame activeView) select(y, x, y2, x2)
-		end
-	end
-	s stopGroup
-//[cf]
-//[cf]
-//[of]:(New)
-//[c]Unfinished
-//[c]
 
-//[of]:Tools
-//[of]printing:printing
-//[c]This is not performant, but i dont want to type 'output Print(...)'
+//[of]:Strings
+//[c]Most functions return StringBuffers and not Strings. This is for performance
+//[c]reasons - it prevents making string copies (well, i think it does).
 //[c]
-
-function OutputWindow
-	return application outputFile root
-
-function Prnt(thing)
-	var output = OutputWindow
-	var y = output rowsSize - 1
-	output replaceText(y, 0, y, 0, Block(Str(thing)))
-	frame showOutput
-
-function Print(thing)
-	Prnt((Buf(Str(thing)) << "\n") toString)
+//[c]If it is an inplace action i do not return the stringbuffer but nil or sometimes
+//[c]a number, indicating eg. how many replacements have been done. For example
+//[c]the strip functions do that. This to make users of the library aware of the
+//[c]fact that it is happening inplace. This is how Python does it.
 
-function PrintWithBorders(thing)
-	Print(Wrap(Str(thing), "|"))
+//[of]:Buf	\:\: Buffer
+//[c]Lazy shortcut
 
-function Clear
-	var output = OutputWindow
-	output replaceAll(Block(""))
+function Buf
+	return StringBuffer new
 //[cf]
-//[of]conversion:conversion
-function Block(string)
-	return TextBlock fromString(string)
 
-function Buf(string)
-	return (StringBuffer new) << string
+//[of]:tostring	\:\: Thing -> String
+//[c]Todo: add 'toString' method to all types defined by this script
 
-function Str(thing)
+function tostring (thing)
 	if thing isNil
 		return "nil"
 	else
 		return thing toString
 	end
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var o = Output clear
+
+//[c]	~ var buf = Buf
+//[c]	~ buf << tostring($a) << $|
+//[c]	~ buf << tostring("Hi") << $|
+//[c]	~ buf << tostring(1) << $|
+//[c]	~ buf << tostring(true) << $|
+//[c]	~ buf << tostring(nil)
+
+//[c]	~ o print(buf)
 //[cf]
 
-function Wrap(string, wrapper)
-	return (StringBuffer new << wrapper << string << wrapper) toString
 //[cf]
-//[of]classes:Classes
-//[of]:Section
-class SectionWrapper
+//[of]:tostringbuffer	\:\: Thing -> Buffer
+function tostringbuffer (thing)
+	return Buf << tostring (thing)
 
-	attr Type
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var o = Output clear
+
+//[c]	~ var ok = " works"
+//[c]	~ o print(tostringbuffer($a) << ok)
+//[c]	~ o print(tostringbuffer("hi") << ok)
+//[c]	~ o print(tostringbuffer(1) << ok)
+//[c]	~ o print(tostringbuffer(true) << ok)
+//[c]	~ o print(tostringbuffer(nil) << ok)
+//[cf]
+//[cf]
+
+//[of]:replace	\:\: String|Buffer -> String -> String -> Buffer
+function replace (string, oldstring, newstring)
+	var buf = Buf
+	var stringsize = string size
+	var oldsize = oldstring size
+	var stophere = stringsize - oldsize
+	var relevant = oldstring[0]
+	var curpos = 0
+	var curchar = nil
+	while curpos <= stophere
+		curchar = string[curpos]
+		if curchar == relevant
+			//[of]:maybe replace oldstring with newstring
+			var endpos = curpos + oldsize
+			var curpos_ = curpos + 1
+			var oldpos = 1
+			var found = true
+			while curpos_ < endpos
+				if string[curpos_] <> oldstring[oldpos]
+					found = false
+					break
+				end
+				curpos_ = curpos_ + 1
+				oldpos = oldpos + 1
+			end
+			if found
+				curpos = curpos_ - 1
+				buf << newstring
+			else
+				buf << curchar
+			end
+			//[cf]
+		else
+			buf << curchar
+		end
+		curpos = curpos + 1
+	end
+	buf << string range(curpos, stringsize - curpos)
+
+	return buf
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var o = Output clear
+
+//[c]	~ var string = "/* foo */"
+//[c]	~ o print(string)
+
+//[c]	~ string = replace (string, "/*", "___oc___")
+//[c]	~ o print(string)
+
+//[c]	~ string = replace (string, "*/", "___cc___")
+//[c]	~ o print(string)
+
+//[c]	~ string = replace (string, "___oc___", "/*")
+//[c]	~ o print(string)
+
+//[c]	~ string = replace (string, "___cc___", "*/")
+//[c]	~ o print(string)
+//[cf]
+//[cf]
+//[of]times	\:\: Number -> String -> StringBuffer:times	\:\: Number -> String -> Buffer
+function times (num, string)
+	var buf = Buf
+	var curpos = 0
+	while curpos < num
+		buf << string
+		curpos = curpos + 1
+	end
+	return buf
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var o = Output clear
+//[c]	~ o print(times(3, "hi "))
+//[c]	~ o printborder(times(0, "hi "))
+//[cf]
+//[cf]
+//[of]:wrap	\:\: String or Buffer -> Thing -> String or Buffer -> Buffer
+function wrap (leftchars, thing, rightchars)
+	return Buf << leftchars << tostring (thing) << rightchars
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var o = Output clear
+//[c]	~ o print(wrap("(", "hi", ")"))
+//[c]	~ o print(wrap("foo ", "bar", " baz"))
+//[cf]
+//[cf]
+
+//[of]:Stripping
+//[of]:lstripstring	\:\: Buffer -> String -> Integer
+function lstripstring (buf, string)
+	var stringsize = string size
+	var howoften = 0
+	while buf startsWith (string)
+		buf removeRange (0, stringsize)
+		howoften = howoften + 1
+	end
+	return howoften
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var x = Buf << "... ... ... indented"
+//[c]	~ lstripstring (x, "... ")
+//[c]	~ p(x)
+//[cf]
+//[cf]
+//[of]:rstripstring	\:\: Buffer -> String -> Integer
+function rstripstring (buf, string)
+	var stringsize = string size
+	var howoften = 0
+	while buf endsWith (string)
+		rcrop (buf, stringsize)
+		howoften = howoften + 1
+	end
+	return howoften
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var x = Buf << "foo bar bar baz baz"
+//[c]	~ rstripstring (x, " baz")
+//[c]	~ rstripstring (x, " bar")
+//[c]	~ p (x)
+//[cf]
+//[cf]
+//[of]:lstripchar	\:\: Buffer -> Buffer -> Integer
+function lstripchar (buf, char)
+	var bufsize = buf size
+	if bufsize == 0
+		return 0
+	end
+	var pos = 0
+	while true
+		if (pos == bufsize) or (buf[pos] <> char)
+			break
+		end
+		pos = pos + 1
+	end
+	if pos > 0
+		buf removeRange (0, pos)
+	end
+	return pos
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var x = Buf << "aaabbbccc"
+//[c]	~ lstripchar (x, $a)
+//[c]	~ lstripchar (x, $b)
+//[c]	~ p (x)
+//[cf]
+//[cf]
+//[of]:rstripchar	\:\: Buffer -> Buffer -> Integer
+function rstripchar (buf, char)
+	var bufsize = buf size
+	if bufsize == 0
+		return 0
+	end
+	var pos = bufsize
+	while true
+		pos = pos - 1
+		if (pos < 0) or (buf[pos] <> char)
+			pos = pos + 1
+			break
+		end
+	end
+	var stripamount = bufsize - pos
+	if stripamount > 0
+		buf removeRange (pos, stripamount)
+	end
+	return stripamount
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var x = Buf << "aaabbbccc"
+//[c]	~ rstripchar (x, $c)
+//[c]	~ rstripchar (x, $b)
+//[c]	~ p (x)
+//[cf]
+//[cf]
+//[of]:lstripchars	\:\: String -> Buffer -> Integer
+function lstripchars (buf, chars)
+	var bufsize = buf size
+	var howoften = 0
+	while true
+		chars each do char
+			howoften = howoften + lstripchar (buf, char)
+		end
+		if buf size == bufsize
+			return howoften
+		end
+		bufsize = buf size
+	end
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var x = Buf << "aabbabaaaabaabbbbaac"
+//[c]	~ lstripchars (x, "ab")
+//[c]	~ p (x)
+//[cf]
+//[cf]
+//[of]:rstripchars	\:\: String -> Buffer -> Integer
+function rstripchars (buf, chars)
+	var bufsize = buf size
+	var howoften = 0
+	while true
+		chars each do char
+			howoften = howoften + rstripchar (buf, char)
+		end
+		if buf size == bufsize
+			return howoften
+		end
+		bufsize = buf size
+	end
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var x = Buf << "abbccbbbcbbccccbcbcbc"
+//[c]	~ rstripchars (x, "bc")
+//[c]	~ p (x)
+//[cf]
+//[cf]
+//[of]:lstrip	\:\: Buffer -> Integer
+function lstrip (buf)
+	return lstripchars (buf, "\a\b\f\n\r\t\v\w ")
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var x = Buf << "\t  \t  indented"
+//[c]	~ lstrip (x)
+//[c]	~ Output clear printborder (x)
+//[cf]
+//[cf]
+//[of]:rstrip	\:\: Buffer -> Integer
+function rstrip (buf)
+	return rstripchars (buf, "\a\b\f\n\r\t\v\w ")
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var x = Buf << "foo bar  \t\t"
+//[c]	~ rstrip (x)
+//[c]	~ Output clear printborder (x)
+//[cf]
+//[cf]
+//[of]:strip	\:\: Buffer -> Integer
+function strip (buf)
+	return lstrip (buf) + rstrip (buf)
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var x = Buf << "\t  \t     \t foo bar  \t\t"
+//[c]	~ strip (x)
+//[c]	~ Output clear printborder (x)
+//[cf]
+//[cf]
+//[cf]
+//[of]:Cropping
+//[c]Used by the strip functions
+
+//[c]( crop amount chars
+//[of]:lcrop	\:\: Buffer -> Integer -> nil
+function lcrop (buf, amount)
+	buf removeRange (0, amount)
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var x = Buf << "0123456789"
+//[c]	~ lcrop (x, 3)
+//[c]	~ p (x)
+//[cf]
+//[cf]
+//[of]:rcrop	\:\: Buffer -> Integer -> nil
+function rcrop (buf, amount)
+	buf removeRange (buf size - amount, amount)
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var x = Buf << "0123456789"
+//[c]	~ rcrop (x, 3)
+//[c]	~ p (x)
+//[cf]
+//[cf]
+//[c])
+
+//[c]( crop at position
+//[of]:lcropat	\:\: Buffer -> Integer -> nil
+//[c]This actually behaves like lcrop. Keeping it for consistency with rcropat
+
+function lcropat (buf, pos)
+	buf removeRange (0, pos)
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var x = Buf << "0123456789"
+//[c]	~ lcropat (x, 3)
+//[c]	~ p (x)
+//[cf]
+//[cf]
+//[of]:rcropat	\:\: Buffer -> Integer -> nil
+function rcropat (buf, pos)
+	buf removeRange (pos, buf size - pos)
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var x = Buf << "0123456789"
+//[c]	~ rcropat (x, 7)
+//[c]	same as rcrop (x, 3)
+//[c]	~ p (x)
+//[cf]
+//[cf]
+//[c])
+//[cf]
+//[of]:Indenting lines
+//[of]:indentnorm	\:\: Buffer -> Integer -> nil
+function indentnorm (buf, indentsize)
+	rstrip (buf)
+	if not buf isEmpty
+		var indented = Buf << times (indentsize, Indenttoken) << buf
+		buf removeAll
+		buf << indented
+	end
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var x = Buf << "hello world   \t"
+//[c]	~ indentnorm (x, 3)
+//[c]	~ Output clear printborder (x)
+//[cf]
+//[cf]
+//[of]:dedentnorm	\:\: Buffer -> Integer -> nil
+//[c]Todo: this also crops non empty chars from the left side of the stringbuffer
+//[c]if it has less indent than indentsize suggests.
+
+function dedentnorm (buf, indentsize)
+	rstrip (buf)
+	if not buf isEmpty
+		var amount = indentsize * Indenttoken size
+		lcrop (buf, amount)
+	end
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var x = Buf << "\t\t\thello world   \t"
+//[c]	~ dedentnorm (x, 3)
+//[c]	~ Output clear printborder (x)
+//[cf]
+//[cf]
+//[cf]
+//[cf]
+//[of]:Textblocks
+//[of]:totexblock	\:\: Thing -> TextBlock
+function totextblock (thing)
+	return TextBlock fromString (tostring (thing))
+//[cf]
+//[of]:indentblock	\:\: TextBlock -> Integer -> nil
+function indentblock (block, indentsize)
+	block each do y
+		var string = Buf << block rowText (y)
+		indentnorm (string, indentsize)
+		block setRowText (y, string toString)
+	end
+	var lasttext = Buf << block lastText
+	indentnorm (lasttext, indentsize)
+	block setLastText (lasttext toString)
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var sec = Activesection
+//[c]	~ var block = sec copy
+//[c]	~ indentblock (block, 1)
+//[c]	~ sec paste (block)
+//[cf]
+//[cf]
+//[of]:dedentblock	\:\: TextBlock -> Integer -> nil
+function dedentblock (block, indentsize)
+	block each do y
+		var string = Buf << block rowText (y)
+		dedentnorm (string, indentsize)
+		block setRowText (y, string toString)
+	end
+	var lasttext = Buf << block lastText
+	dedentnorm (lasttext, indentsize)
+	block setLastText (lasttext toString)
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var sec = Activesection
+//[c]	~ var block = sec copy
+//[c]	~ dedentblock (block, 1)
+//[c]	~ sec paste (block)
+//[cf]
+//[cf]
+//[of]:normend	\:\: TextBlock -> nil
+//[c]Adds a newline if the last line contains non whitespace chars
+
+function normend (block)
+	var lasttext = Buf << block lastText
+	rstrip (lasttext)
+	if lasttext notEmpty
+		block addText (lasttext toString)
+	end
+	block setLastText ("")
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var sec = Activesection
+//[c]	~ var block = sec copy
+//[c]	~ normend (block)
+//[c]	~ sec paste (block)
+//[cf]
+//[cf]
+//[cf]
+//[of]:Printing
+//[c]Lazy development shortcuts for printing stuff to the output buffer.
+//[c]This is slow, because eg. for every 'print' call a Section and a Output class
+//[c]will be created. Further, the section will always be normalized - a newline may
+//[c]be appended. The fast way is to do it like this:
+//[c]
+//[c]	var o = Output
+//[c]	o clear
+//[c]	o print("foo")
+//[c]	o print("foo") clear print("bar") clear printborder("baz")
+//[c]	...
+//[c]
+//[c]... which only creates the Section and Output wrapper classes once.
+
+//[of]:clear	\:\: nil
+function clear
+	Output clear
+//[cf]
+//[of]:print	\:\: nil
+function print (thing)
+	Output print (thing)
+//[cf]
+//[of]:clearprint	\:\: nil
+function clearprint (thing)
+	Output clear print (thing)
+//[cf]
+//[of]:printborder	\:\: nil
+function printborder (thing)
+	Output printborder (thing)
+
+//[cf]
+//[cf]
+
+//[of]:startundo	\:\: nil
+function startundo
+	Activeview section startGroup
+//[cf]
+//[of]:stopundo	\:\: nil
+function stopundo
+	Activeview section stopGroup
+//[cf]
+
+//[of]:smallest	\:\: Number -> Number -> Number
+function smallest (num, othernum)
+	if num < othernum
+		return num
+	end
+	return othernum
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var o = Output clear
+//[c]	~ o print (smallest(0, 10))
+//[c]	~ o print (smallest (11, 10))
+//[c]	~ o print (smallest (10, 10))
+//[cf]
+//[cf]
+//[of]:biggest	\:\: Number -> Number -> Number
+function biggest (num, othernum)
+	if num > othernum
+		return num
+	end
+	return othernum
+
+//[of]:~ test
+//[c]~ function test
+//[c]	~ var o = Output clear
+//[c]	~ o print (biggest(0, 10))
+//[c]	~ o print (biggest (11, 10))
+//[c]	~ o print (biggest (10, 10))
+//[cf]
+//[cf]
+
+//[of]:somethingselected	\:\: Boolean
+function somethingselected
+	return not Activeview isSelectionEmpty
+//[cf]
+//[cf]
+//[of]Types:Types
+//[c]( Wrappers for predefined Code Browser types
+//[of]Section:Section
+//[c]Wraps a TextSection. This also serves as a God Object for global variables,
+//[c]as it is instantiated in every script anyway.
+
+function Section (textsection)
+	return TextSectionWrapper basicNew init (textsection)
+
+class TextSectionWrapper
+	attr Textsection
+
+	//[of]init	\:\: TextSection -> Section:init	\:\: TextSection -> Section
+	method init (textsection)
+		self Textsection = textsection
+		return self normend
+	//[cf]
+
+	//[of]:Title	\:\: Buffer
+	attr _Title
+	
+	method Title
+		var t = self _Title
+		if t isNil
+			var textsec = self Textsection
+			var par = textsec parent
+			t = Buf
+			if par isNil
+				t << "<root section>"
+			else
+				t << (par row (textsec line) text)
+				strip (t)
+			end
+			self _Title = t
+		end
+		return t
+	//[cf]
+	//[of]:Uid	\:\: Buffer
+	//[c]Todo: Make Uid be a date loaded from an external prog,
+	//[c]so that i can implement a `fix links` function`.
+	
+	attr _Uid
+	
+	method Uid
+		var u = self _Uid
+		if u isNil
+			u = Buf << (self Textsection id)
+			strip (u)
+			self _Uid = u
+		end
+		return u
+	//[cf]
+	//[of]:Repr	\:\: Buffer
+	attr _Repr
+	
+	method Repr
+		var r = self _Repr
+		if r isNil
+			r = Buf
+			r << "Section ( "
+				r << "title=\"" << self Title << "\" "
+				r << "id=\"" << self Uid << "\""
+			r << " )"
+			self _Repr = r
+		end
+		return r
+	//[cf]
+	//[of]:Range	\:\: Range
+	attr _Range
+	
+	method Range
+		var r = self _Range
+		if r isNil
+			r = Rowrange (self, 0, self Endy)
+			self _Range = r
+		end
+		return r
+	
+	//[cf]
+	//[of]:Selection	\:\: Range
+	method Selection
+		var view = Activeview
+		var startloc = Location (self, view markLine, view markColumn)
+		var endloc = Location (self, view cursorLine, view cursorColumn)
+		return Range (startloc, endloc)
+	//[cf]
+	//[of]:Cursorline	\:\: Line
+	method Cursorline
+		return Line (self, Activeview cursorLine)
+	//[cf]
+	//[of]:Lastline	\:\: Line
+	method Lastline
+		return self lineat (self Endy)
+	//[cf]
+	//[of]:Cursorlocation	\:\: Location
+	method Cursorlocation
+		var view = Activeview
+		return Location (self, view cursorLine, view cursorColumn)
+	//[cf]
+	//[of]:Startlocation	\:\: Location
+	method Startlocation
+		return Location (self, 0, 0)
+	//[cf]
+	//[of]:Endlocation	\:\: Location
+	attr _Endlocation
+	
+	method Endlocation
+		var loc = self _Endlocation
+		if loc isNil
+			var y = self Endy
+			loc = Location (self, y, self Textsection row (y) size)
+			self _Endlocation = loc
+		end
+		return loc
+	//[cf]
+	//[of]:Selectionstart	\:\: Location
+	method Selectionstart
+		var view = Activeview
+		return Location (self, view markLine, view markColumn)
+	//[cf]
+	//[of]:Endy	\:\: Integer
+	attr _Endy
+	
+	method Endy
+		var y = self _Endy
+		if y isNil
+			y = self Textsection rowsSize - 1
+			self _Endy = y
+		end
+		return y
+	//[cf]
+	//[of]unfoldedcloser	\:\: String:Closetoken	\:\: String
+	//[c]Todo: This is not needed any more, as i now use descriptions for denoting an
+	//[c]unfolded paragraph
+	
+	attr _Closetoken
+	
+	method Closetoken
+		var t = self _Closetoken
+		if t isNil
+			t = ( Buf << self Opencomment << ")" << self Closecomment) toString
+			self _Closetoken = t
+		end
+		return t
+	//[cf]
+	//[of]:Opentoken	\:\: String
+	//[c]Todo: This is not needed any more, as i now use descriptions for denoting an
+	//[c]unfolded paragraph
+	
+	attr _Opentoken
+	
+	method Opentoken
+		var t = self _Opentoken
+		if t isNil
+			t = ( Buf << self Opencomment << "( ") toString
+			self _Opentoken = t
+		end
+		return t
+	//[cf]
+	//[of]:Opencomment	\:\: String
+	attr _Opencomment
+	
+	method Opencomment
+		var p = self _Opencomment
+		if p isNil
+			var language = Activelanguage
+			if language lineComment notEmpty
+				p = language lineComment
+			else
+				p = language openComment
+			end
+			self _Opencomment = p
+		end
+		return p
+	//[cf]
+	//[of]:Closecomment	\:\: String
+	attr _Closecomment
+	
+	method Closecomment
+		var s = self _Closecomment
+		if s isNil
+			var language = Activelanguage
+			if language lineComment isEmpty
+				s = language closeComment
+			else
+				s = ""
+			end
+			self _Closecomment = s
+		end
+		return s
+	//[cf]
+	//[of]:Find	\:\: Find
+	method Find
+		return Find (self)
+	//[cf]
+	//[of]:Output	\:\: Output
+	attr _Output
+	
+	method Output
+		var o = self _Output
+		if o isNil
+			o = Output
+			self _Output = o
+		end
+		return o
+	//[cf]
+
+	//[of]:normend	\:\: Section
+	method normend
+		var last= self Lastline
+		if not (last istext and last isempty)
+			self appendnewline
+		end
+		return self
+	//[cf]
+	//[of]:refresh	\:\: Section
+	method refresh
+		return self refreshdimensions refreshdata
+	//[cf]
+	//[of]:refreshdata	\:\: Section
+	method refreshdata
+		self _Uid = nil
+		self _Title = nil
+		self _Repr = nil
+		return self
+	//[cf]
+	//[of]:refreshdimensions	\:\: Section
+	method refreshdimensions
+		self _Endy = nil
+		self _Endlocation = nil
+		return self
+	//[cf]
+	//[of]:show	\:\: Section
+	method show
+		frame activeWindow showSection (self Textsection)
+		return self
+	//[cf]
+	//[of]:clear	\:\: Section
+	method clear
+		self Textsection replaceAll (TextBlock new)
+		return self refreshdimensions
+	//[cf]
+	//[of]:cut	\:\: TextBlock
+	method copy
+		return self Range cut
+	//[cf]
+	//[of]:copy	\:\: TextBlock
+	method copy
+		return self Range copy
+	//[cf]
+	//[of]:paste	\:\: TextBlock
+	method paste (textblock)
+		self Range paste (textblock)
+		return self
+	//[cf]
+	//[of]:prepend	\:\: TextBlock -> Section
+	method prepend (textblock)
+		self Startlocation paste (textblock)
+		return self
+	//[cf]
+	//[of]:prependcomment	\:\: TextBlock -> Section
+	method prependcomment (buf)
+		var block = TextBlock new
+		block addComment (buf toString)
+		self prepend (block)
+		return self
+	//[cf]
+	//[of]:append	\:\: TextBlock -> Section
+	method append (textblock)
+		self Endlocation paste (textblock)
+		return self
+	//[cf]
+	//[of]:appendcomment	\:\: TextBlock -> Section
+	method appendcomment (buf)
+		var block = TextBlock new
+		block addComment (buf toString)
+		self append (block)
+		return self
+	//[cf]
+	//[of]:appendnewline	\:\: Section
+	method appendnewline
+		self Endlocation paste (TextBlock fromString ("\n"))
+		return self
+	//[cf]
+	//[of]:levelat	\:\: Number -> Level
+	method levelat (y)
+		return Level (self, y)
+	//[cf]
+	//[of]:paragraphat	\:\: Number -> Paragraph
+	method paragraphat (y)
+		return Paragraph ( self levelat (y), y )
+	//[cf]
+	//[of]:lineat	\:\: Number -> Line
+	method lineat (y)
+		return Line (self, y)
+	//[cf]
+	//[of]:outcomment	\:\: Section
+	method outcomment
+		self Range outcomment
+		return self
+		
+	//[cf]
+	//[of]:unoutcomment	\:\: Section
+	method unoutcomment
+		self Range unoutcomment
+		return self
+		
+	//[cf]
+//[cf]
+//[of]:Output
+//[c]Wraps the root section of the output buffer = application outputFile root
+
+function Output
+	return OutputSectionWrapper basicNew init
+
+class OutputSectionWrapper
+	attr File
 	attr Section
 
-	method Init(section)
-		self Type = "Section"
-		self Section = section
-		return self
-
-	//[of]:StartUndo
-	method StartUndo
-		self Section startGroup
+	//[of]:init	\:\: Output
+	method init
+		var file = application outputFile
+		self File = file
+		self Section = Section (file root)
 		return self
 	//[cf]
-	//[of]:StopUndo
-	method StopUndo
-		self Section stopGroup
+
+	//[of]:show	\:\: Output
+	method show
+		frame showOutput
 		return self
 	//[cf]
-	//[of]:Cursor
-	method Cursor
-		var v = frame activeView
-		return Location(v cursorColumn, v cursorLine)
-
+	//[of]:clear	\:\: Output
+	method clear
+		self Section clear
+		self File synchronize
+		return self
 	//[cf]
-	//[of]:End
-	method End
-		var section = self Section
-		var y = section rowsSize - 1
-		var x = section row(y) size
-		return Location(x, y)
+	//[of]:_print	\:\: Buffer -> Output
+	method _print (stringbuffer)
+		self Section append (totextblock (stringbuffer))
+		self show
+		self File synchronize
+		return self
 	//[cf]
-
-	//[of]:toString
-	method toString
-		return (StringBuffer new << self Type << "()") toString
+	//[of]:prnt	\:\: Thing -> Output
+	method prnt (thing)
+		return self _print ( tostringbuffer (thing) )
 	//[cf]
-	//[of]:addToStringBuffer
-	method addToStringBuffer(stringbuffer)
-		return stringbuffer << self toString
+	//[of]:print	\:\: Thing -> Output
+	method print (thing)
+		return self _print ( tostringbuffer (thing) << "\n" )
 	//[cf]
-
-	//[of]:Section
-	function Section(section)
-		return SectionWrapper basicNew Init(section)
-	//[cf]
-	//[of]:ActiveSection
-	function ActiveSection
-		return Section(frame activeView section)
+	//[of]:printborder	\:\: Thing -> Output
+	//[c]Useful for printing whitespace
+	
+	method printborder (thing)
+		self Section append (totextblock (wrap ("|", thing, "|\n")))
+		self show
+		self File synchronize
+		return self
 	//[cf]
 //[cf]
-//[of]:Location
+//[of]:Find
+//[c]Wraps FindData
+
+function Find (sec)
+	return FindDataWrapper basicNew init (sec)
+
+class FindDataWrapper
+	attr Section
+	attr Scope
+	attr Regex
+	attr Direction
+	attr Case
+	attr Whole
+	attr From
+		
+	//[of]:init	\:\: Section -> Findresult
+	method init (sec)
+		self Section = sec
+		self Scope = find_in_file
+		self Regex = false
+		self Direction = find_next
+		self Case = true
+		self Whole = false
+		self From = nil
+		return self
+	//[cf]
+
+	//[of]:_find	\:\: String -> Findresult
+	method _find (searchstring)
+		var finddata = FindData new
+		finddata setScope (self Scope)
+		finddata setRegularExpression (self Regex)
+		finddata setDirection (self Direction)
+		finddata setCaseSensitive (self Case)
+		finddata setMatchWholeWord (self Whole)
+		finddata setSearchString (searchstring)
+		if self From isNil
+			self From = self Section Cursorlocation
+		end
+		var loc = self From
+		var result = nil
+		if self Direction == find_next
+	//[c]		Todo: jump over the variable at the cursor
+		else
+			result = finddata find (self Section Textsection, loc Y, loc X, true)
+		end
+		if result isNil
+			return nil
+		else
+			return Findresult (result)
+		end
+	//[cf]
+	//[of]:prev	\:\: String -> Findresult
+	method prev (searchstring)
+		self Direction = find_previous
+		return self _find (searchstring)
+	//[cf]
+	//[of]:next	\:\: String -> Findresult
+	method next (searchstring)
+		self Direction = find_next
+		return self _find (searchstring)
+	//[cf]
+	//[of]:definition	\:\: String -> String -> Findresult
+	method definition (langname, identifier)
+		if langname == "Code-Browser-Script"
+			return self cbsdefinition (identifier)
+		elsif langname == "python"
+			return self pythondefinition (identifier)
+		else
+			clearprint (Buf << "The go to definition feature is currently " <<
+			"not implemented for " << langname << ".")
+		end
+	//[cf]
+	//[of]:cbsdefinition	\:\: String -> Findresult
+	method cbsdefinition (name)
+		self Regex = true
+		self Whole = true
+		var searchtext = Buf
+		searchtext << "(class|method|function|attr|var)[ 	]+" << name
+		searchtext = searchtext toString
+		var result = self prev (searchtext)
+		if result notNil
+			var loc = result Location
+			var sec = result Section
+			var txt = result Section lineat (loc Y) Text
+			if txt startsWith ("class")
+				result Location = Location (sec, loc Y, loc X + 6)
+			elsif txt startsWith ("method")
+				result Location = Location (sec, loc Y, loc X + 7)
+			elsif txt startsWith ("function")
+				result Location = Location (sec, loc Y, loc X + 9)
+			elsif txt startsWith ("attr")
+				result Location = Location (sec, loc Y, loc X + 5)
+			elsif txt startsWith ("var")
+				result Location = Location (sec, loc Y, loc X + 4)
+			end
+		end
+		return result
+	//[cf]
+	//[of]:pythondefinition	\:\: String -> Findresult
+	method pythondefinition (name)
+		self Regex = true
+		self Whole = true
+		var searchtext = Buf
+		searchtext << "((class|def)[ 	]+" << name << ")"
+		searchtext << "|(" << name << "[ 	]+" << "[=,])"
+		searchtext = searchtext toString
+		var result = self prev (searchtext)
+		if result notNil
+			var loc = result Location
+			var txt = result Section lineat (loc Y) Text
+			if txt startsWith ("class")
+				result Location = Location (self Section, loc Y, loc X + 6)
+			elsif txt startsWith ("def")
+				result Location = Location (self Section, loc Y, loc X + 4)
+			end
+		end
+		return result
+	//[cf]
+//[cf]
+//[of]:Findresult
+function Findresult (findresult)
+	return FindresultWrapper basicNew init (findresult)
+
+class FindresultWrapper
+	attr Section
+	attr Location
+	attr Size
+
+	//[of]:init	\:\: FindResult -> Findresult
+	method init (findresult)
+		self Section = Section (findresult section)
+		self Location = Location (self Section, findresult line, findresult column)
+		self Size = findresult size
+		return self
+	//[cf]
+//[cf]
+//[c])
+
+//[c]( Location related
+//[of]Range:Range
+//[c]A Range wraps a start and end
+//[l]:Location:#Types/Location
+
+function Range (startloc, endloc)
+	return RangeClass basicNew init (startloc, endloc)
+
+function Rowrange (sec, y1, y2)
+	var startloc = Location(sec, y1, 0)
+	var endloc = Location(sec, y2, 0)
+	return RangeClass basicNew init (startloc, endloc)
+
+class RangeClass
+	attr Section
+	attr Start
+	attr End
+
+	//[of]:init	\:\: Section -> Location -> Location -> Range
+	method init (startloc, endloc)
+	//[c]	~ assert (startloc Section == endloc Section)
+		self Section = startloc Section
+		self Start = startloc
+		self End = endloc
+		return self
+	//[cf]
+
+	//[of]:Repr	\:\: Buffer
+	method Repr
+		return Buf << "Range(start=" << (self Start Repr) <<
+		", end=" << (self End Repr) << ")"
+	//[cf]
+
+	//[of]:clone	\:\: Range
+	method clone
+		return Range (self Start clone, self End clone)
+	//[cf]
+	//[of]blockify	\:\: Range:blockify	\:\: Range
+	//[c]Expand a range to be a bunch of lines. It then always ends with a newline.
+	
+	method blockify
+		var s = self Start
+		var e = self End
+		if e > s  // like in a forward selection
+			s X = 0
+			if e X > 0
+				e Y = (e Y + 1)
+				e X = 0
+			end
+		elsif s > e  // like in a backwards selection
+			e X = 0
+			if s X > 0
+				s Y = (s Y + 1)
+				s X = 0
+			end
+		else  // the range is a point --> select the line
+			s X = 0
+			e X = 0
+			e Y = (s Y + 1)
+		end
+		return self
+	
+	//[cf]
+	//[of]:normdirection	\:\: Range
+	method normdirection
+		var s = self Start
+		var e = self End
+		if (s > e)
+			self Start = e
+			self End = s
+		end
+		return self
+	//[cf]
+	//[of]:up	\:\: Range
+	method up
+		self Start up
+		self End up
+		return self
+	//[cf]
+	//[of]:down	\:\: Range
+	method down
+		self Start down
+		self End down
+		return self
+	//[cf]
+	//[of]:left	\:\: Range
+	method left
+		self Start left
+		self End left
+		return self
+	//[cf]
+	//[of]:right	\:\: Range
+	method right
+		self Start right
+		self End right
+		return self
+	//[cf]
+	//[of]:empty	\:\: Range
+	method empty
+		return self paste (TextBlock fromString (""))
+	//[cf]
+	//[of]:select	\:\: Range
+	method select
+		Activeview select (self Start Y, self Start X, self End Y, self End X)
+		return self
+	//[cf]
+	//[of]:outcomment	\:\: Range
+	//[c]The range must end with a newline. See the
+//[l]:blockify:#Types/Range/blockify	\:\: Range
+	//[c]method.
+	
+	method outcomment
+		var sec = self Start Section
+		var y = self Start Y
+		var endy = self End Y
+		while y < endy
+			Line (sec, y) outcomment
+			y = y + 1
+		end
+		return self
+	//[cf]
+	//[of]:unoutcomment	\:\: Range
+	//[c]The range must end with a newline. See the
+//[l]:blockify:#Types/Range/blockify	\:\: Range
+	//[c]method.
+	
+	method unoutcomment
+		var sec = self Start Section
+		var y = self Start Y
+		var endy = self End Y
+		while y < endy
+			Line (sec, y) unoutcomment
+			y = y + 1
+		end
+		return self
+	//[cf]
+	//[of]:cut	\:\: TextBlock
+	method cut
+		var textblock = self copy
+		self empty
+		return textblock
+	//[cf]
+	//[of]:copy	\:\: TextBlock
+	method copy
+		return self Section Textsection copyBlock (
+		self Start Y, self Start X, self End Y, self End X)
+	//[cf]
+	//[of]:paste	\:\: TextBlock -> Range
+	method paste (textblock)
+		var y1 = self Start Y
+		var x1 = self Start X
+		self Section Textsection replaceText (
+			y1, x1, self End Y, self End X, textblock)
+		var blocksize = textblock size
+		if blocksize == 0
+			self End Y = y1
+			self End X = x1 + textblock lastText size
+		else
+			self End Y = y1 + blocksize
+			self End X = textblock lastText size
+		end
+		return self
+	//[cf]
+//[cf]
+//[of]Location:Location
+//[c]A Location is a point in the file, wrapping x and y position
+
+function Location (sec, y, x)
+	return LocationClass basicNew init (sec, y, x)
+
 class LocationClass
-	attr Type
-	attr X
+	attr Section
 	attr Y
+	attr X
 
-	method Init(x, y)
-		self Type = "Location"
-		self X = x
+	//[of]:init	\:\: Section -> Number -> Number -> Location
+	method init (sec, y, x)
+		self Section = sec
 		self Y = y
+		self X = x
 		return self
-
-	//[of]:toString
-	method toString
-		return ((StringBuffer new) << self Type << "(X=" << self X toString << ", Y=" << self Y toString << ")") toString
-	//[cf]
-	//[of]:addToStringBuffer
-	method addToStringBuffer(stringbuffer)
-		return stringbuffer << self toString
 	//[cf]
 
-	function Location(x, y)
-		return LocationClass basicNew Init(x, y)
-//[cf]
-//[cf]
+	//[of]:Repr	\:\: Buffer
+	method Repr
+		return Buf <<
+			"Location(line=" <<
+			(self Y toString) <<
+			" column=" <<
+			(self X toString) <<
+			")"
+	//[cf]
+	//[of]:Range	\:\: Range
+	method Range
+		var loc = Location(self Section, self Y, self X)
+		return Range (loc, loc clone)
+	//[cf]
 
-function Goto_Next_Special
-	var section = ActiveSection StartUndo
-	var cursor = section Cursor
-	var last = section End
-	var goto = nil
-	if cursor Y < last Y
-		//~ goto = FindSpecialLine(section, cursor, last)
+	//[of]:==	\:\: Location -> Boolean
+	method _eq (loc)
+		return (self Y == loc Y) and (self X == loc X)
+	//[cf]
+	//[of]:<>	\:\: Location -> Boolean
+	method _ne (loc)
+		return (self Y <> loc Y) or (self X <> loc X)
+	//[cf]
+	//[of]:>	\:\: Location -> Boolean
+	method _gt (loc)
+		return (self Y > loc Y) or ( (self Y == loc Y) and (self X > loc X) )
+	//[cf]
+	//[of]:<	\:\: Location -> Boolean
+	method _lt (loc)
+		return (self Y < loc Y) or ( (self Y == loc Y) and (self X < loc X) )
+	//[cf]
+
+	//[of]:clone	\:\: Location
+	method clone
+		return Location (self Section, self Y, self X)
+	//[cf]
+	//[of]:putcursor	\:\: Location
+	method putcursor
+		self Section show
+		var view = Activeview
+	//[c]	~ assert (view section == self Section Textsection)
+		view moveCursor (self Y, self X, false)
+		view adjustPage
+	
+		return self
+	//[cf]
+	//[of]:paste	\:\: TextBlock -> Location
+	method paste (textblock)
+		var sec = self Section
+		sec Textsection replaceText (self Y, self X, self Y, self X, textblock)
+		sec refreshdimensions
+		return self
+	//[cf]
+	//[of]:up	\:\: Location
+	method up
+		self Y = (self Y) - 1
+		return self
+	//[cf]
+	//[of]:down	\:\: Location
+	method down
+		self Y = (self Y) + 1
+		return self
+	//[cf]
+	//[of]:left	\:\: Location
+	method left
+		var x = self X
+		if x > 0
+			self X = x - 1
+		end
+		return self
+	//[cf]
+	//[of]:right	\:\: Location
+	method right
+		self X = self X + 1
+		return self
+	//[cf]
+//[cf]
+//[c])
+
+//[c]( Line related
+//[of]Level:Level
+//[c]A level is all lines which are indented the same or more.
+//[c]A level contains one or more
+//[l]:paragraphs:#Types/Paragraph
+
+function Level (sec, index)
+	return LevelClass basicNew init (sec, index)
+
+class LevelClass
+	attr Section
+	attr Indent
+	attr Start
+	attr End
+
+	//[of]:init	\:\: Section -> Integer -> Level
+	method init (sec, index)
+		self Section = sec
+		return self _findborders (index)
+	//[cf]
+
+	//[of]_findborders:_findborders	\:\: Integer -> Level
+	method _findborders (index)
+		var line_ = Line (self Section, index)
+		var remember = line_ clone
+		var indent = line_ Indent
+		self Indent = indent
+		while not line_ isfirst and ( (line_ isempty) or not (line_ Indent < indent) )
+			line_ prev
+		end
+		if (line_ Indent < indent) or line_ isempty
+			line_ next
+			while line_ isempty
+				line_ next
+			end
+		end
+		self Start = line_
+		line_ = remember
+		while not line_ islast and ( (line_ isempty) or not (line_ Indent < indent) )
+			line_ next
+		end
+		if (line_ Indent < indent) or line_ isempty
+			line_ prev
+			while line_ isempty
+				line_ prev
+			end
+		end
+		self End = line_
+		return self
+	//[cf]
+
+	//[of]:Indentstring	\:\: Buffer
+	attr _Indentstring
+	
+	method Indentstring
+		var indentstring = self _Indentstring
+		if indentstring isNil
+			indentstring = times (self Indent, Indenttoken)
+			self _Indentstring = indentstring
+		end
+		return indentstring
+	//[cf]
+	//[of]:Repr	\:\: Buffer
+	method Repr
+		return Buf << "Level(start=" << (self Start Repr) << " end=" << (self End Repr) << ")"
+	//[cf]
+//[cf]
+//[of]Paragraph:Paragraph
+//[c]A Paragraph is all lines which are indented the same or more and which are not
+//[c]separated by empty lines. An
+//[l]:unfolded:#Actions/action_unfold	\:\: nil
+//[l]:Section:#Types/Section
+//[c]also counts as paragraph.
+//[c]
+//[c]A paragraph is always part of a
+//[l]:Level:#Types/Level
+
+function Paragraph (level, index)
+	return ParagraphClass basicNew init (level, index)
+
+class ParagraphClass
+	attr Level
+	attr Title
+	attr Start
+	attr End
+
+	//[of]:init	\:\: Level -> Integer -> Paragraph
+	method init (level, index)
+		self Level = level
+		return self _findborders (index)
+	//[cf]
+	//[of]_findborders:_findborders	\:\: Integer -> Paragraph
+	//[c]Todo: split this up into findstartborder and findendborder
+	
+	method _findborders (y)
+		var level = self Level
+		var sec = level Section
+		var line_ = Line (sec, y)
+		if line_ isopener
+			self Start = line_
+			self End = line_ clone matchingcloser (level)
+		elsif line_ iscloser
+			self End = line_
+			self Start = line_ clone matchingopener (level)
+		else
+			var levelstart = level Start
+			var levelend = level End
+			var remember = line_ clone
+			//[of]startline:startline
+			if line_ > levelstart
+				var wantindent = line_ Indent
+				var curindent = wantindent
+				while line_ > levelstart
+					line_ prev
+					if line_ isempty
+						if curindent == wantindent
+							line_ next
+							break
+						end
+					elsif line_ iscloser
+						if line_ Indent == wantindent
+							line_ next
+							while line_ isempty
+								line_ next
+							end
+							break
+						else
+							line_ matchingopener (level)
+							curindent = line_ Indent
+						end
+					elsif line_ isopener
+						line_ next
+						while line_ isempty
+							line_ next
+						end
+						break
+					else
+						curindent = line_ Indent
+					end
+				end
+			end
+			self Start = line_
+			//[cf]
+			//[of]endline:endline
+			line_ = remember
+			if line_ < levelend
+				var lastwaswhitespace = false
+				var wantindent = line_ Indent
+				while line_ < levelend
+					line_ next
+					if line_ isempty
+						lastwaswhitespace = true
+					elsif line_ isopener
+						if line_ Indent == wantindent
+							line_ prev
+							while line_ isempty
+								line_ prev
+							end
+							break
+						else
+							line_ matchingcloser (level)
+							lastwaswhitespace = false
+						end
+					elsif line_ iscloser
+						line_ prev
+						while line_ isempty
+							line_ prev
+						end
+						break
+					else
+						if (line_ Indent == wantindent) and lastwaswhitespace
+							line_ prev
+							while line_ isempty
+								line_ prev
+							end
+							break
+						end
+						lastwaswhitespace = false
+					end
+				end
+			end
+			self End = line_
+			//[cf]
+		end
+		var startline = self Start
+		if startline isopener and self End iscloser
+			var title = Buf << startline Text
+			lcrop (title, 2)
+	//[c]		~ lcrop (title, sec Opentoken size)
+			self Title = title
+		end
+		return self
+	//[cf]
+
+	//[of]:Repr	\:\: Buffer
+	method Repr
+		return Buf << "Paragraph(start=" << (self Start Repr) << " end=" << (self End Repr) << ")"
+	//[cf]
+	//[of]:Range	\:\: Range
+	attr _Range
+	
+	method Range
+		var range_ = self _Range
+		if range_ isNil
+			range_ = Rowrange (
+				self Level Section,
+				self Start Index,
+				(self End Index) + 1)
+			self _Range = range_
+		end
+		return range_
+	//[cf]
+	//[of]Fold	\:\: TextBlock:Fold	\:\: TextBlock
+	method Fold
+		var textblock = TextBlock new
+		var indentstring = self Level Indentstring
+		var title = self Title
+	
+	//[c]	Todo: generate section UIDs from date using python
+	//[c]	eg. "2019-12-25 17:23:28.45"
+	//[c]	i can then implement a `fixlinktargets` function
+		if title isNil
+			textblock addSection ((indentstring << "...") toString, "")
+		else
+			textblock addSection ((indentstring << title) toString, title toString)
+		end
+	
+		var childblock = self Range copy
+		dedentblock (childblock, self Level Indent)
+		if title notNil
+			childblock remove (childblock size - 1)
+			childblock remove (0)
+		end
+		textblock rowSection (0) replaceAll (childblock)
+		return textblock
+	//[cf]
+
+	//[of]:fold	\:\: Paragraph
+	method fold
+		self Range paste (self Fold)
+		self End = self Start refresh clone
+	
+	//[cf]
+	//[of]:paste	\:\: TextBlock -> Paragraph
+	method paste (textblock)
+		normend(textblock)
+		self Range paste (textblock)
+		return self _findborders (self _startline Index)
+	//[cf]
+//[cf]
+//[of]Line:Line
+//[c]A Line represents one line in the code.
+
+function Line (sec, index)
+	return LineClass basicNew init (sec, index)
+
+class LineClass
+	attr Section
+	attr Index
+
+	//[of]init	\:\: Section -> Number -> Line:init	\:\: Section -> Number -> Line
+	method init (sec, index)
+		self Index = smallest (index, sec Endy)
+		self Section = sec
+		return self
+	//[cf]
+
+	//[of]:_load	\:\: Line
+	method _load
+		var buf = Buf << (self Row text)
+		rstrip (buf)
+		var indent = lstripstring (buf, Indenttoken)
+		self _Text = buf
+		self _Indent = indent
+		return self
+	//[cf]
+
+	//[of]:Text	\:\: Buffer
+	attr _Text
+	
+	method Text
+		if self _Text isNil
+			self _load
+		end
+		return self _Text
+	//[cf]
+	//[of]Indent	\:\: Integer:Indent	\:\: Integer
+	attr _Indent
+	
+	method Indent
+		if self _Indent isNil
+			self _load
+		end
+		return self _Indent
+	//[cf]
+	//[of]:Indentstring	\:\: Buffer
+	attr _Indentstring
+	
+	method Indentstring
+		var s = self _Indentstring
+		if s isNil
+			s = times (self Indent, Indenttoken)
+			self _Indentstring = s
+		end
+		return s
+	//[cf]
+	//[of]:Repr	\:\: Buffer
+	method Repr
+		return Buf <<
+			"Line(" <<
+			self Index toString <<
+			" \"" <<
+			self Text <<
+			"\" indent=" <<
+			self Indent toString <<
+			")"
+	//[cf]
+	//[of]:Row	\:\: TextRow
+	attr _Row
+	
+	method Row
+		var r = self _Row
+		if r isNil
+			r = self Section Textsection row (self Index)
+			self _Row = r
+		end
+		return r
+	//[cf]
+	//[of]:Startlocation	\:\: Location
+	method Startlocation
+		return Location (self Section, self Index, self Indentstring size)
+	//[cf]
+	//[of]:Smartlocation	\:\: Location
+	method Smartlocation
+		var xpos = 0
+		if self isopener
+			xpos = 2 + self Indentstring size
+		else
+			xpos = self Indentstring size
+		end
+		return Location (self Section, self Index, xpos)
+	//[cf]
+	//[of]:Endlocation	\:\: Location
+	method Endlocation
+		return Location (self Section, self Index, self Indentstring size + self Text size)
+	//[cf]
+	//[of]Childsection	\:\: Section:Childsection	\:\: Section
+	method Childsection
+		return Section (self Row section)
+	//[cf]
+	//[of]Block:Paragraph	\:\: Paragraph
+	method Paragraph
+		var index = self Index
+		return Paragraph ( Level (self Section, index), index )
+	//[cf]
+
+	//[of]:>	\:\: Line -> Boolean
+	method _gt (otherline)
+		return self Index > otherline Index
+	//[cf]
+	//[of]:<	\:\: Line -> Boolean
+	method _lt (otherline)
+		return self Index < otherline Index
+	//[cf]
+	//[of]:==	\:\: Line -> Boolean
+	method _eq (otherline)
+		return self Index == otherline Index
+	//[cf]
+	//[of]:<>	\:\: Line -> Boolean
+	method _ne (otherline)
+		return self Index <> otherline Index
+	//[cf]
+
+	//[of]:refresh	\:\: Line
+	method refresh
+		self _Row = nil
+		self _Text = nil
+		self _Indent = nil
+		self _Indentstring = nil
+		return self
+	//[cf]
+	//[of]:clone	\:\: Line
+	//[c]Todo: add other data if it exists
+	
+	method clone
+		return Line (self Section, self Index)
+	//[cf]
+	//[of]:paste	\:\: Location -> TextBlock -> Section
+	//[c]The textblocks last line must be empty (aka, it ends with a newline)
+	
+	method paste (textblock)
+		var y = self Index
+		var sec = self Section
+		sec Textsection replaceText (y, 0, y + 1, 0, textblock)
+		if textblock size <> 1
+			sec refreshdimensions
+		end
+		return self
+	//[cf]
+	//[of]:issamethan	\:\: Line -> Boolean
+	method issamethan (otherline)
+		return self Index == otherline Index
+	//[cf]
+	//[of]:isfirst	\:\: Boolean
+	method isfirst
+		return self Index == 0
+	//[cf]
+	//[of]:islast	\:\: Boolean
+	method islast
+		return self Index == self Section Endy
+	//[cf]
+	//[of]:isempty	\:\: Boolean
+	method isempty
+		return (self Text size == 0)
+	
+	//[cf]
+	//[of]:issection	\:\: Boolean
+	method issection
+		return self Row type == lt_section
+	//[cf]
+	//[of]:islink	\:\: Boolean
+	method islink
+		return self Row type == lt_link
+	//[cf]
+	//[of]:isdescription	\:\: Boolean
+	method isdescription
+		return self Row type == lt_comment
+	
+	//[cf]
+	//[of]:istext	\:\: Boolean
+	method istext
+		return self Row type == lt_text
+	
+	//[cf]
+	//[of]:isopener	\:\: Boolean
+	method isopener
+		return self isdescription and self Text startsWith ("( ")
+	//[cf]
+	//[of]:iscloser	\:\: Boolean
+	method iscloser
+		return self isdescription and self Text toString == (")")
+	//[cf]
+	//[of]:prev	\:\: Line
+	method prev
+		if not self isfirst
+			self Index = self Index - 1
+			self refresh
+		end
+		return self
+	//[cf]
+	//[of]:next	\:\: Line
+	method next
+		if not self islast
+			self Index = self Index + 1
+			self refresh
+		end
+		return self
+	//[cf]
+	//[of]matchingcloser:matchingcloser	\:\: Line
+	method matchingcloser (level)
+	//[c]
+	//[c]	~ assert(self isopener == true)
+	
+		var endline = level End
+		var counter = 1
+		while self < endline
+			self next
+			if self isopener
+				counter = counter + 1
+			elsif self iscloser
+				counter = counter - 1
+				if counter == 0
+					return self
+				end
+			end
+		end
+		return Error
+	//[cf]
+	//[of]:matchingopener	\:\: Line
+	method matchingopener (level)
+	
+	//[c]	~ assert(self iscloser == true)
+	
+		var startline = level Start
+		var counter = 1
+		while self > startline
+			self prev
+			if self isopener
+				counter = counter - 1
+				if counter == 0
+					return self
+				end
+			elsif self iscloser
+				counter = counter + 1
+			end
+		end
+		return Error
+	
+	//[cf]
+	//[of]fold:fold	\:\: Line
+	method fold
+		var para = self Paragraph
+		var newline = para Start
+		para fold
+		newline refresh
+		return newline
+	//[cf]
+	//[of]:unfold	\:\: Line
+	method unfold
+		var childssection = self Childsection
+		var title_ = self Text toString
+		if title_ <> "..."
+			childssection prependcomment (Buf << "( " << title_)
+			childssection appendcomment (Buf << ")")
+		end
+		var block = childssection copy
+		indentblock (block, self Indent)
+		self paste (block)
+		self refresh
+		return self
+	//[cf]
+	//[of]:outcomment	\:\: Line
+	method outcomment
+		var oc = self Section Opencomment
+		var cc = self Section Closecomment
+		var hasnolinecomment = cc notEmpty
+		var buf = self Text
+		if self istext and not self isempty
+			buf = Buf << buf
+			if hasnolinecomment
+				buf = replace (buf, oc, "___oc___")
+				buf = replace (buf, cc, "___cc___")
+			end
+			var block = TextBlock new
+			block addComment ( (Buf << self Indentstring << "~ " << buf) toString )
+			self paste (block)
+		elsif self isdescription and buf startsWith ("~ ")
+			var block = TextBlock new
+			block addComment ( (Buf << self Indentstring << "~ " << buf) toString )
+			self paste (block)
+		elsif self issection
+			self Childsection outcomment
+			var block = self copy
+			block setRowText (0, (Buf << self Indentstring << "~ " << buf) toString)
+			self paste (block)
+		end
+		return self
+	//[cf]
+	//[of]:unoutcomment	\:\: Line
+	method unoutcomment
+		var oc = self Section Opencomment
+		var cc = self Section Closecomment
+		var hasnolinecomment = cc notEmpty
+		var buf = self Text
+		if self isdescription and buf startsWith ("~ ")
+			buf = Buf << buf
+			lcrop (buf, 2)
+			var block = TextBlock new
+			if not buf startsWith ("~ ")
+				if hasnolinecomment
+					buf = replace (buf, "___oc___", oc)
+					buf = replace (buf, "___cc___", cc)
+				end
+				block addText ( (Buf << self Indentstring << buf) toString )
+			else
+				block addComment ( (Buf << self Indentstring << buf) toString )
+			end
+			self paste (block)
+		elsif self issection
+			self Childsection unoutcomment
+			if buf startsWith ("~ ")
+				var block = self copy
+				buf = Buf << buf
+				lcrop (buf, 2)
+				block setRowText ( 0, (Buf << self Indentstring << buf) toString )
+				self paste (block)
+			end
+		end
+		return self
+	//[cf]
+	//[of]:copy	\:\: TextBlock
+	method copy
+		return self Section Textsection copyBlock (
+		self Index, 0, self Index + 1, 0)
+	//[cf]
+
+	//[of]:D
+	//[of]:~ isopener v1	\:\: Boolean
+	//[c]~ method isopener
+	//[c]	~ return self Text startsWith (self Section Opentoken)
+	//[cf]
+	//[of]:~ iscloser v1	\:\: Boolean
+	//[c]~ method iscloser
+	//[c]	~ return self Text startsWith (self Section Closetoken)
+	//[cf]
+	//[of]:~ unfold v1	\:\: Line
+	//[c]~ method unfold
+	//[c]	~ var childssection = self Childsection
+	//[c]	~ var title_ = self Text toString
+	//[c]	~ if title_ <> "..."
+	//[c]		~ var sec = self Section
+	//[c]		~ var oc = Buf << (sec Opentoken) << title_ <<
+	//[c]			~ sec Closecomment << "\n"
+	//[c]		~ childssection prepend (totextblock (oc))
+	//[c]		~ var cc = Buf << (sec Closetoken) << "\n"
+	//[c]		~ childssection append (totextblock (cc))
+	//[c]	~ end
+	//[c]	~ var block = childssection copy
+	//[c]	~ indentblock (block, self Indent)
+	//[c]	~ self paste (block)
+	//[c]	~ self refresh
+	//[c]	~ return self
+	//[cf]
+	//[cf]
+//[cf]
+//[c])
+//[cf]
+//[of]Actions:Actions
+//[of]action_navigatenextsection	\:\: nil:action_navigatenextsection	\:\: nil
+function action_navigatenextsection
+	startundo
+	var line_ = Activesection Cursorline
+	if not line_ islast
+		line_ next
+		while not (line_ islast or line_ issection or
+		line_ islink or line_ isopener)
+			line_ next
+		end
 	end
-	//~ if goto isNil
-		//~ goto = last
-	//~ else
-		//~ goto = SkipWhitespace(section, goto, last)
-	//~ end
-	//~ section SetCursor(goto)
-	section StopUndo
+	line_ Smartlocation putcursor
+	stopundo
+//[cf]
+//[of]action_navigate_prev_section	-> nil:action_navigateprevsection	\:\: nil
+function action_navigateprevsection
+	startundo
+	var line_ = Activesection Cursorline
+	if not line_ isfirst
+		line_ prev
+		while not (line_ isfirst or line_ issection or line_ islink or
+		line_ isopener)
+			line_ prev
+		end
+	end
+	line_ Smartlocation putcursor
+	stopundo
+//[cf]
+//[of]action_navigatenextparagraph	\:\: nil:action_navigatenextparagraph	\:\: nil
+function action_navigatenextparagraph
+	startundo
+	var line_ = Activesection Cursorline
+	if not line_ islast
+		if not line_ isempty
+			line_ next
+//[c]			~ while not (line_ islast or line_ isempty)
+			while not line_ islast and not (line_ isempty or line_ isopener)
+				line_ next
+			end
+		end
+		while not line_ islast and (line_ isempty or line_ iscloser)
+			line_ next
+		end
+	end
+	line_ Smartlocation putcursor
+	stopundo
+//[cf]
+//[of]:action_navigateprevparagraph	\:\: nil
+function action_navigateprevparagraph
+	startundo
+	var line_ = Activesection Cursorline
+	if not line_ isfirst
+		line_ prev
+		while not line_ isfirst and (line_ isempty or line_ iscloser)
+			line_ prev
+		end
+		if not line_ isfirst
+//[c]			~ while not (line_ isfirst or line_ isempty)
+			while not line_ isfirst and not (line_ isempty or line_ isopener)
+				line_ prev
+			end
+			while (line_ isempty or line_ iscloser)
+				line_ next
+			end
+		end
+	end
+	line_ Smartlocation putcursor
+	stopundo
+//[cf]
+//[of]action_fold	\:\: nil:action_fold	\:\: nil
+function action_fold
+	startundo
+	var sec = Activesection
+	var line_ = sec Cursorline
+	if line_ isempty
+//[c]		Todo: what to do when folding an empty line?
+//[c]		fold all blocks in level?
+	else
+		var newline = line_ fold
+		var linestart = newline Startlocation
+		Range (linestart, newline Endlocation) select
+	end
+	stopundo
+//[cf]
+//[of]action_unfold	\:\: nil:action_unfold	\:\: nil
+function action_unfold
+	startundo
+	var line_ = Activesection Cursorline
+	if line_ issection
+		line_ unfold
+		line_ Smartlocation putcursor
+	end
+	stopundo
+//[cf]
+//[of]:action_moveup	\:\: nil
+function action_moveup
+	startundo
+	var sec = Activesection
+	var sel = sec Selection
+	var then = sel clone up
+	sel normdirection
+	if sel Start Y > 0
+		sel blockify
+		if sel End Y > sec Endy
+			sec appendnewline
+		end
+		var textblock = sel cut
+		sel Start up paste (textblock)
+		then select
+	end
+	stopundo
+//[cf]
+//[of]:action_movedown	\:\: nil
+function action_movedown
+	startundo
+	var sec = Activesection
+	var sel = sec Selection
+	var then = sel clone down
+	sel normdirection blockify
+	if sel End Y == sec Endy
+		sec appendnewline
+	end
+	var textblock = sel cut
+	if sec Endy == sel Start Y
+		sec appendnewline
+	end
+	sel Start down paste (textblock)
+	then select
+	stopundo
+//[cf]
+//[of]:action_outcomment	\:\: nil
+function action_outcomment
+	startundo
+	var sec = Activesection
+	var sel = sec Selection
+	var remember = sel clone
+	sel blockify normdirection
+	if sel End Y > sec Endy
+		sec appendnewline
+	end
+	sel outcomment
+	remember select
+	stopundo
+//[cf]
+//[of]:action_unoutcomment	\:\: nil
+function action_unoutcomment
+	startundo
+	var sec = Activesection
+	var sel = sec Selection
+	var remember = sel clone
+	sel blockify normdirection
+	if sel End Y > sec Endy
+		sec appendnewline
+	end
+	sel unoutcomment
+	remember select
+	stopundo
+//[cf]
+//[of]:action_gotodefinition	\:\: nil
+function action_gotodefinition
+	startundo
+	var identifier = Selectedtext
+	if identifier <> ""
+		var findresult = Activesection Find definition (
+			Activelanguage name,
+			identifier)
+		if findresult notNil
+			findresult Location putcursor
+		end
+	end
+	stopundo
+//[cf]
+//[cf]
+//[of]Error Handling:Error Handling
+//[c]Todo: Extend
 
-//[of]:Run Tests
-function Run_Tests
-	Clear
-	Goto_Next_Special
-	//[of]:~ Print
-	//~ Testing("Print")
+//[of]:Error
+function Error
+	stopundo
+	print ("Error")
+	return ScriptError basicNew
 
-	//~ Print(1)
-	//~ Print(true)
-	//~ Print(nil)
-	//~ Print("OK")
-	//~ Print((StringBuffer new) << "OK")
-	//~ Print($x)
-	//[cf]
-	//[of]:~ Section
-	//~ Testing("Section")
-
-	//~ var section = ActiveSection
-
-	//~ Debug("ActiveSection", section)
-	//~ Debug("section Cursor", section Cursor)
-	//~ Debug("section End", section End)
-	//[cf]
-	//[of]:~ PrintWithBorders
-	//~ Testing("PrintWithBorders")
-
-	//~ PrintWithBorders("I should have borders around me")
-	//[cf]
-
-function Testing(string)
-	Print((Buf("\n--------- Testing `")) << string << "` ---------\n")
-
-function Debug(key, value)
-	Print(Buf(key) << ": " << value)
-
+class ScriptError
+//[c]	this class does nothing, so that Code Browser will raise when the
+//[c]	script tries to call methods on it. This is currently not very helpful
+//[c]	because messages printed to the console are not shown on hard errors, like
+//[c]	calling a non-existent method.
+//[cf]
+//[of]:assert	\:\: Boolean -> nil
+function assert (what)
+//[c]	used in test functions
+	var o = Output clear
+	if not what
+		o print ("Assertion Error")
+	else
+		o print ("OK")
+	end
+//[cf]
 //[cf]
 
-
+//[of]Notes:Notes
+//[of]:Solving language related problems
+//[c]The Code Browser script language is, with a few exceptions, easy to use and
+//[c]nice to read. But as script language it misses some features from more
+//[c]powerful languages:
+//[c]
+//[c]* Session persistent variables
+//[c]* Arrays, dicts, tuples, sets
+//[c]* Class extension, especially of built in classes.
+//[c]* Powerful regular expressions. (Like eg. in Pythons regex module).
+//[c]* Variadic function arguments or function overloading or the possibility
+//[c]  to check the type of a parameter (only isNil available).
+//[c]* Exception handling.
+//[c]* The possibility to abort the script.
+//[c]
+//[c]I solve some of these problems as follows:
+//[c]
+//[c]Global variables become an attribute of usually the Section class as it gets
+//[c]instantiated in every script anyway. Other classes have a reference to it.
+//[c]	
+//[c]Instead of class extension i use Wrapper classes. Eg. the Section class wraps
+//[c]a Code Browser TextSection class.
+//[c]	
+//[c]No variadic func args, no function overloading: Variadic args become class
+//[c]attributes and i pass that class instance instead.
+//[c]	
+//[c]No possibilities of checking the type of a thing: If this is needed, i add a
+//[c]'Type' attribute to the class, which describes the class, and i check against
+//[c]this. But currently not used.
+//[c]
+//[c]No exception / abort mechanism: No elegant solution for that.
+//[c]
+//[c]In short, it would be simpler if the script language was Python.
+//[c]
+//[cf]
+//[of]Variable, class and function naming:Variable, class and function naming
+//[c]Local variables as well as functions are written in small letters and never
+//[c]use underscores. For example
+//[c]
+//[c]	mylocalvar
+//[c]
+//[c]and not
+//[c]
+//[c]	my_local_var
+//[c]	myLocalVar
+//[c]
+//[c]Classes and global or class level Getter properties (= functions which
+//[c]take no arguments and return something except self) always start with a big
+//[c]letter, followed by zero or more small letters. Also no underscores.
+//[c]For example
+//[c]
+//[c]	Myclass
+//[c]	Myglobalproperty
+//[c]	mylocalvar Myproperty
+//[c]
+//[c]and not
+//[c]
+//[c]	My_Class
+//[c]	MyGlobalProperty
+//[c]	mylocalvar my_property
+//[c]
+//[c]This is to distinguish them from local variables (reflected by the code
+//[c]coloring). I have edited the Code-Browser-Script language in preferences.cbc
+//[c]so that the color of local variables is blue and the color of other variables,
+//[c]as well as functions and classes is purple.
+//[c]
+//[c]The syntax is also overall more pleasant to read in my opinion.
+//[c]
+//[c]'private' class attributes and helper functions and methods start with an
+//[c]underscore. As usual, this means they are not intended to be used outside
+//[c]of the library.
+//[c]
+//[l]:Script functions:#Actions
+//[c]which are assigned to shortcuts in the
+//[l]:user.cbc:user.cbc
+//[c]start with 'action_'.
+//[c]
+//[c]
+//[c]If identifiers dont follow this naming scheme then they are predefined by
+//[c]Code Browser.
+//[c]
+//[cf]
+//[of]Ordering of function arguments:Ordering of function arguments
+//[c]The ordering of function arguments reflects how they would be ordered when they
+//[c]would form a normal sentence (the verb moved to the start). For example the
+//[c]sentence
+//[c]
+//[c]	3 times "foo"
+//[c]
+//[c]becomes the function call
+//[c]
+//[c]	times (3, "foo")
+//[c]
+//[c]and not
+//[c]
+//[c]	times ("foo", 3)
+//[c]
+//[cf]
+//[of]Where are the methods located?:Where are class methods located?
+//[c]The methods are attached to the object which requires the least arguments. Eg.
+//[c]
+//[c]	Line cut
+//[c]
+//[c]and not
+//[c]
+//[c]	Section cutline (index)
+//[c]
+//[c](This works because Section and index are attributes of the Line class)
+//[c]
+//[c]or
+//[c]
+//[c]	Location putcursor
+//[c]
+//[c]and not
+//[c]
+//[c]	Section putcursor (location)
+//[c]
+//[c](Here Section is an attribute of the Location class)
+//[cf]
 //[cf]
 
-//[l]:Scrap:scrap.txt
+//[l]:user.cbc:user.cbc
+//[l]:scrap.txt:scrap.txt
+//[l]:test.txt:test.txt
