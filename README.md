@@ -54,6 +54,10 @@ Die nachfolgenden Schritte sind optional aber ich empfehle sie.
 
 [Wenn meine Benutzerskripte und meine Nutzereinstellungen installiert sind](#installation), verwendet der Code Browser die folgenden Tastenkürzel. Die Kürzel können unter `preferences.cbc` → *Key Mappings* → *(aktiviertes Key Mapping)* geändert werden. Die mit dem Text *(Benutzerskript)* davor werden von meinen Benutzerskripten definiert und können in der `user.cbc` geändert werden.
 
+### Zu lang, hab's nicht gelesen
+
+[Hier ein Youtube Video](https://youtu.be/sU4ThIJ6eKc) (englisch), das einige der unten aufgelisteten Tastenkürzel zeigt.
+
 ### Grundlegendes
 
 * `Strg` + `z` und `Strg` + `y` – Undo und Redo

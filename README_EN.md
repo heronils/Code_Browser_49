@@ -54,6 +54,11 @@ The following steps are optional but i recommend them.
 
 [If my user scripts and my user settings are installed](#installation), the Code Browser uses the following keyboard shortcuts. The shortcuts can be changed under `preferences.cbc` → *Key Mappings* → *(activated Key Mapping)*. Those prepended with the text *(user script)* are defined by my user scripts and can be changed in the `user.cbc`.
 
+### Too long, didn't read
+
+[Here a Youtube Video](https://youtu.be/sU4ThIJ6eKc) which shows some of the Shortcuts listed below.
+
+
 ### Basics
 * `Ctrl` + `z` and `Ctrl` + `y` – Undo and Redo
 * `Ctrl` + `Shift` + `s` – Save all files, including those not visible (for example, those that you have changed and from which you then have navigated away via link).
