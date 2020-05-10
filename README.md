@@ -177,17 +177,17 @@ Bedeutung der einzelnen Direktiven:
 * Wegen eines Bugs in Code Browser kann der Typ der Einrückung nicht dynamisch erkannt werden. Per default **werden Tabs zur Einrückung verwendet**, außer in der Sprache [Elm](https://elm-lang.org/), welche zwei Leerzeichen vorschreibt. Wenn Du stattdessen Leerzeichen für die Einrückung verwenden willst, befolge bitte die Instruktionen unter *Languages* → *Defaults* → *Default* → *Tabs* in der `preferences.cbc`.
 * Man kann innerhalb von `*.cbc` Dateien in Namen keine Unterstriche – `_` – verwenden, wohl aber das Trennzeichen – `-`.
 * Code Browser beherrscht keine Codevervollständigung. Abhilfe kann das Autohotkey-basierte [Typing Aid](https://github.com/ManiacDC/TypingAid) schaffen.
-* Ich verwende extensiv die Paragraphen-Navigation – `Strg` + `Alt` + (`↑` oder `↓`) – um schnell in Code-Dateien zu navigieren. Wenn ich beispielsweise in einer Liste von neun Sektionszeilen nach jeder dritten eine Leerzeile einfüge, kannst ich von der ersten zur achten in drei statt sieben Schritten navigieren.
-* Um einer Sektion bequem eine ID zu verpassen, entfalte ich sie einmal und falte sie dann wieder. Das setzt die ID der Sektion mit ihrem Titel gleich.
-* Ich strukturiere den Code **semantisch**, packe inhaltlich zusammengehörende Funktionalität in die gleichen Sektionen. *Inhaltlich* bedeutet: *Was tut es?*, nicht *Was ist es?*.
-* Ich strukturiere den Code wie ein **Fraktal** - Wenn z.B. eine Funktion *B* nur von einer anderen Funktion *A* genutzt wird, füge ich *B* als Sub-Sektion am Anfang innerhalb der Sektion ein, in der *A* definiert ist. So verfahre ich auch mit nicht-lokalen Variablen. Eine Funktion *C*, die nur von *B* genutzt wird packe ich dann wiederum in die Sektion von *B*, und so weiter. Von außen sehe ich dann nur die *A*-Sektion. Auf diese Weise habe ich eine (schwache) Form von Kapselung der Logik und muss nicht für jedes winzige Problem ein OOP-Monster erschaffen. Sprachen wie Javascript unterstützen auch eine faktische Kapselung, indem man Code-Bereiche in `{` und `}` einschließt und `let` oder `const` statt `var` verwendet. Dieses Verfahren skaliert, ich erweitere nach innen, statt lange Listen von Funktionen zu haben, die nicht klar zeigen, was zu was gehört.
-* Um klar zu kennzeichnen, welche Code-Bereiche von einem Kommentar betroffen sind, verwende ich entfaltete Sektionen. Aber ich mache das nur bei langen Code-Sektionen.
-* Längere Code-Abschnitte, die dazu dienen, eine Variable zu füllen, falte ich zu einer Sektion und gebe dieser Sektion den Namen der Variablen. Temporäre Variablen befinden sich innerhalb der Sektion und werden von außen nicht gesehen.
-* Während des Schreibens von Code falte ich fertiggestellte Bereiche temporär weg.
-* Um auseinanderliegende Code-Bereiche zu vergleichen, falte ich die Bereiche dazwischen. Alternativ füge ich einen temporären Link zum anderen Code-bereich ein, so daß ich schnell hin und her wechseln kann.
-* Wenn ich in Kommentaren über andere Code-Bereiche spreche, füge ich Links zu diesen bei.
-* Ich habe eine globale Index-Datei auf C:/, die Links zu allen Code-Dateien enthält, an denen ich regelmäßig arbeite. Diese Index-Datei habe ich in der Liste untergebracht, die aufpoppt, wenn ich das Symbol von Code Browser in der Taskleiste rechtsklicke.
-* Das Zen des Code-Faltens lautet: **Falte nicht, um zu verstecken, falte, um zu finden. Wenn es auf eine Bildschirmseite passt, reicht es mit der Falterei ;-)**.
+* Verwende die Paragraphen-Navigation – `Strg` + `Alt` + (`↑` oder `↓`) – um schneller in Code-Dateien zu navigieren.
+* Der einfachste Weg einer Sektion eine ID zu verpassen ist sie einmal zu entfalten und dann wieder zusammenzufalten. Das setzt die ID der Sektion mit ihrem Titel gleich.
+* Strukturiere Code semantisch nach dem was er tut, nicht was er ist.
+* Strukturiere Code wie ein Fraktal. Wenn eine Funktion *B* nur von einer Funktion *A* genutzt wird, füge *B* als Sub-Sektion am Anfang innerhalb der Sektion ein, in der *A* definiert ist. Eine Funktion *C*, die nur von *B* genutzt wird packe dann wiederum in die Sektion von *B*, und so weiter. Verfahre auch mit Klassen und Variablen so.
+* Wenn längere Code-Bereiche von einem Kommentar betroffen sind, verwende entfaltete Sektionen.
+* Falte längere Code-Abschnitte, die dazu dienen, eine Variable zu füllen, zu einer Sektion und gib dieser Sektion den Namen der Variablen.
+* Während des Schreibens von Code falte fertiggestellte Bereiche temporär weg.
+* Um auseinanderliegende Code-Bereiche zu vergleichen, füge einen temporären Link zum anderen Code-Bereich ein, so daß Du schnell hin und her wechseln kannst.
+* Füge Links zu Kommentaren hinzu, die über woanders liegende Code-Bereiche reden.
+* Erstelle Dir eine globale Index-Datei, die Links zu allen Code-Dateien enthält, an denen Du regelmäßig arbeitest. Pinne diese Index-Datei an der Liste an, die aufpoppt, wenn man das Symbol von Code Browser in der Taskleiste rechtsklickt.
+* Falte nicht zu viel. Wenn es auf eine Bildschirmseite passt, reicht es in der Regel.
 
 ## Versionshistorie
 

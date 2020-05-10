@@ -178,20 +178,17 @@ Meaning of the individual directives:
 * Due to a bug in Code Browser, the type of indentation cannot be detected dynamically. By default, **tabs are used for indentation**, except in the [Elm](https://elm-lang.org/) language, which requires two spaces. If you want to use spaces for the indentation instead, please follow the instructions under *Languages* → *Defaults* → *Default* → *Tabs* in the `preferences.cbc`.
 * You can not use underscores – `_` – within `*.cbc` files, but the separator sign – `-`.
 * Code Browser can not do code completion. The Autohotkey-based [Typing Aid](https://github.com/ManiacDC/TypingAid) can help.
-
-
-* I use paragraph navigation extensively - `Ctrl` + `Alt` + (`↑` oder `↓`) - to quickly navigate through code files. For example, if i insert a blank line after every third in a list of nine section lines, I can navigate from the first to the eight in three instead of seven steps.
-* In order to easily give an ID to a section, I unfold it once and then fold it again. This equates the section ID with its title.
-* I structure the code **semantically**, pack the functionality that belongs together in the same sections. *By funktionality* means: *What does it do?*, not *What is it?*.
-* I structure the code like a **fractal** - if e.g. a function *B* is only used by another function *A*, I add *B* as a sub-section at the beginning within the section in which *A* is defined. I do the same with non-local variables. I then put a function *C*, which is only used by *B*, inside of the section of *B*, and so on. From the outside, I only see the *A* section. This way I have a (weak) form of logic encapsulation and don't have to create an OOP monster for every mini problem. Languages ​​like Javascript also support factual encapsulation by enclosing code areas in `{` and `}` and using `let` or `const` instead of `var`. This process scales, I expand inward instead of having long lists of functions that don't clearly show what belongs to what.
-* I use unfolded sections to clearly identify which code areas are affected by a comment. But I only do that for long code sections.
-* I fold longer sections of code, that are used to fill a variable, into a section and give this section the name of the variable. Temporary variables are located within the section and are not seen from the outside.
-* As I write code, I temporarily fold away finished areas.
-* To compare areas of code, I fold the areas in between. Alternatively, I insert a temporary link to the other code area so that I can quickly switch back and forth.
-* When I talk about other areas of code in comments, I include links to them.
-* I have a global index file on C:/ that contains links to all the code files that I work on regularly. I put this index file in the list that pops up when i right-click the Code Browser icon in the taskbar.
-* The zen of code folding is: **Do not fold to hide, fold to find. If it fits on one screen, it is enough with the folding ;-)**.
-
+* Use the paragraph navigation - `Ctrl` + `Alt` + (`↑` oder `↓`) - to quickly navigate through code files.
+* The easiest way to give a section an ID is to unfold it once and then fold it again. This equates the section ID with its title.
+* Structure code semantically based on what it does, not what it is.
+* Structure code like a fractal. If a function *B* is only used by a function *A*, add *B* as a sub-section at the beginning within the section in which *A* is defined. Put a function *C* that is only used by *B* into the section of *B*, and so on. Do the same with classes and variables.
+* If longer areas of code are affected by a comment, use unfolded sections.
+* Fold longer sections of code, used to fill a variable, into a section and give that section the name of the variable.
+* Temporary fold out completed areas while writing code.
+* To compare areas of code insert a temporary link to the other code area so that you can quickly switch back and forth.
+* Add links to other code locations about which you talk in comments.
+* Create a global index file that contains links to all code files that you work on regularly. Pin this index file to the list that pops up when you right-click the Code Browser icon on the taskbar.
+* Don't fold too much. If it fits on one screen, it is usually enough.
 ## Version History
 
 ### Version 1
