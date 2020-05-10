@@ -52,7 +52,7 @@ Die nachfolgenden Schritte sind optional aber ich empfehle sie.
 
 ## Tastenkürzel
 
-[Wenn meine Benutzerskripte und meine Nutzereinstellungen installiert sind](#installation), verwendet der Code Browser die folgenden Tastenkürzel. Die Kürzel können unter `preferences.cbc` → *Key Mappings* → *(aktiviertes Key Mapping)* geändert werden. Die mit dem Text `(Benutzerskript)` davor werden von meinen Benutzerskripten definiert und können in der `user.cbc` geändert werden.
+[Wenn meine Benutzerskripte und meine Nutzereinstellungen installiert sind](#installation), verwendet der Code Browser die folgenden Tastenkürzel. Die Kürzel können unter `preferences.cbc` → *Key Mappings* → *(aktiviertes Key Mapping)* geändert werden. Die mit dem Text *(Benutzerskript)* davor werden von meinen Benutzerskripten definiert und können in der `user.cbc` geändert werden.
 
 ### Grundlegendes
 
@@ -100,7 +100,7 @@ Es ist kein Tastenkürzel definiert, um einen Link von Hand zu erstellen, da das
 
 * *(Benutzerskript)* `Strg` + (`↑` oder `↓`) – Die aktuelle Zeile oder Selektion eine Zeile nach oben oder nach unten verschieben. Die Selektion muss kein sauberer selektierter Block sein, es werden einfach alle Zeilen verschoben, in denen etwas selektiert ist.
 
-### Zeilen auskommentieren und entkommentieren
+### Code auskommentieren und entkommentieren
 
 * *(Benutzerskript)* (`Umschalttaste` +) `Alt` + `x` – Die aktuelle Zeile oder die Selektion auskommentieren oder wieder entkommentieren. Verwendet `~<Leerzeichen>` als Direktive. Funktioniert rekursiv bei Sektionen.
 
@@ -186,7 +186,7 @@ Bedeutung der einzelnen Direktiven:
 * Während des Schreibens von Code falte fertiggestellte Bereiche temporär weg.
 * Um auseinanderliegende Code-Bereiche zu vergleichen, füge einen temporären Link zum anderen Code-Bereich ein, so daß Du schnell hin und her wechseln kannst.
 * Füge Links zu Kommentaren hinzu, die über woanders liegende Code-Bereiche reden.
-* Erstelle Dir eine globale Index-Datei, die Links zu allen Code-Dateien enthält, an denen Du regelmäßig arbeitest. Pinne diese Index-Datei an der Liste an, die aufpoppt, wenn man das Symbol von Code Browser in der Taskleiste rechtsklickt.
+* Erstelle Dir eine globale Index-Datei, die Links zu allen Code-Dateien enthält, an denen Du regelmäßig arbeitest. Pinne diese Index-Datei an der Liste an, die aufpoppt, wenn man das Symbol von Code Browser in der Taskleiste rechtsklickt (Um in dieser Liste zu erscheinen muss die Datei in Code Browser mittels *File* -> *Open ...* geöffnet worden sein).
 * Falte nicht zu viel. Wenn es auf eine Bildschirmseite passt, reicht es in der Regel.
 
 ## Versionshistorie

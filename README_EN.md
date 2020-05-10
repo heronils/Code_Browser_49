@@ -52,16 +52,16 @@ The following steps are optional but i recommend them.
 
 ## Keyboard Shortcuts
 
-[If my user scripts and my user settings are installed](#installation), the Code Browser uses the following keyboard shortcuts. The shortcuts can be changed under `preferences.cbc` → *Key Mappings* → *(activated Key Mapping)*. Those prepended with the text `(user script)` are defined by my user scripts and can be changed in the `user.cbc`.
+[If my user scripts and my user settings are installed](#installation), the Code Browser uses the following keyboard shortcuts. The shortcuts can be changed under `preferences.cbc` → *Key Mappings* → *(activated Key Mapping)*. Those prepended with the text *(user script)* are defined by my user scripts and can be changed in the `user.cbc`.
 
-### Basic
+### Basics
 * `Ctrl` + `z` and `Ctrl` + `y` – Undo and Redo
 * `Ctrl` + `Shift` + `s` – Save all files, including those not visible (for example, those that you have changed and from which you then have navigated away via link).
 * `Esc` – Close any dialog below the editor or, if no dialog is open, close the current tab.
 * `Alt` + `f4` – Exit Code Browser. If files are unsaved, Code Browser will ask what should be done.
 * ... and more, which you can inspect in the main menu.
 
-### view modes
+### View modes
 
 * `F4` to `F7` – Switch between the four different view modes of Code Browser.
 
@@ -69,10 +69,10 @@ The following steps are optional but i recommend them.
 
 ### Navigation
 
-* `Alt` + (`↑` or `↓`) – Jump to the previous or the next section/Link.
+* `Alt` + (`↑` or `↓`) – Jump to the previous or the next section/link.
 * `Alt` + (`→` or `←`) – Move into or out of a section/link.
 * `Ctrl` + `Shift` + (`↑` or `↓`) – Jump to the previous or next sibling section in the parent layer – Shortcut for `Alt` + `←`, `Alt` + (`↑` or `↓`), `Alt` + `→`.
-* *(user script)* `Ctrl` + `Alt` + (`↑` or `↓`) – Jump to the previous or next paragraph (Paragraph = lines separated by blank lines).
+* *(user script)* `Ctrl` + `Alt` + (`↑` or `↓`) – Jump to the previous or next paragraph (paragraph = lines separated by blank lines).
 * `Alt` + `g` – Jump to the line number to be entered.
 * `Ctrl` + `b` – Jump to the corresponding bracket. Additionally `Shift` selects the text in between.
 
@@ -101,7 +101,7 @@ There is no shortcut defined to create a link by hand, because that´s a cumbers
 
 * *(user script)* `Ctrl` + (`↑` or `↓`) – Move the current line or selection one line up or down. The selection does not have to be a cleanly selected block, it simply moves all lines in which something is selected.
 
-### Outcommenting and unoutcommenting lines
+### Outcommenting and unoutcommenting code
 
 * *(user script)* (`Shift` +) `Alt` + `x` – Outcomment or unoutcomment the current line or selection. Uses `~<space>` as directive. Works recursively on sections.
 
@@ -187,7 +187,7 @@ Meaning of the individual directives:
 * Temporary fold out completed areas while writing code.
 * To compare areas of code insert a temporary link to the other code area so that you can quickly switch back and forth.
 * Add links to other code locations about which you talk in comments.
-* Create a global index file that contains links to all code files that you work on regularly. Pin this index file to the list that pops up when you right-click the Code Browser icon on the taskbar.
+* Create a global index file that contains links to all code files that you work on regularly. Pin this index file to the list that pops up when you right-click the Code Browser icon on the taskbar (To appear in this list, the file must have been opened in Code Browser via *File* -> *Open ...*).
 * Don't fold too much. If it fits on one screen, it is usually enough.
 ## Version History
 
