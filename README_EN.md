@@ -56,8 +56,7 @@ The following steps are optional but i recommend them.
 
 ### Too long, didn't read
 
-[Here a Youtube Video](https://youtu.be/sU4ThIJ6eKc) which shows some of the Shortcuts listed below.
-
+[Here a Youtube Video](https://youtu.be/sU4ThIJ6eKc) which explains how to use some of the shortcuts listed below.
 
 ### Basics
 * `Ctrl` + `z` and `Ctrl` + `y` – Undo and Redo

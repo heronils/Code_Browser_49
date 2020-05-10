@@ -56,7 +56,7 @@ Die nachfolgenden Schritte sind optional aber ich empfehle sie.
 
 ### Zu lang, hab's nicht gelesen
 
-[Hier ein Youtube Video](https://youtu.be/sU4ThIJ6eKc) (englisch), das einige der unten aufgelisteten Tastenkürzel zeigt.
+[Hier ein Youtube Video](https://youtu.be/sU4ThIJ6eKc) (englisch), das erklärt, wie man einige der unten aufgelisteten Tastenkürzel verwendet.
 
 ### Grundlegendes
 
