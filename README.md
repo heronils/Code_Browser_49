@@ -30,7 +30,7 @@ Da ich diese Features in [Treesearcher](https://github.com/heronils/Treesearcher
 
 ## Installation
 
-1. Lade die zu deinem Betriebssystem passende Portable aus dem hier befindlichen Ordner `Setup` herunter und [entpacke](https://www.7-zip.de/) Sie. Der Editor ist die `cb.exe` unter Windows und die `code-browser` im Ordner `usr/local/bin` unter Linux.
+1. Lade die zu deinem Betriebssystem passende Portable aus dem hier befindlichen Ordner `setup` herunter und [entpacke](https://www.7-zip.de/) Sie. Der Editor ist die `cb.exe` unter Windows und die `code-browser` im Ordner `usr/local/bin` unter Linux.
 
 Die nachfolgenden Schritte sind optional aber ich empfehle sie.
 

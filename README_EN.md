@@ -30,7 +30,7 @@ Since I need these features in [Treesearcher](https://github.com/heronils/Treese
 
 ## Installation
 
-1. Download the portable which fits your operating system from the `Setup` folder located here and [unpack it](https://www.7-zip.org/). The editor is the `cb.exe` under Windows and the `code-browser` in the folder `usr/local/bin` under Linux.
+1. Download the portable which fits your operating system from the `setup` folder located here and [unpack it](https://www.7-zip.org/). The editor is the `cb.exe` under Windows and the `code-browser` in the folder `usr/local/bin` under Linux.
 
 The following steps are optional but i recommend them.
 
