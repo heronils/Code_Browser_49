@@ -627,7 +627,8 @@ function somethingselected
 //[c]( Wrappers for predefined Code Browser types
 //[of]Section:Section
 //[c]Wraps a TextSection. This also serves as a God Object for global variables,
-//[c]as it is instantiated in every script anyway.
+//[c]as it is instantiated in every script anyway (the Code Browser script language
+//[c]does not allow global variables).
 
 function Section (textsection)
 	return TextSectionWrapper basicNew init (textsection)
@@ -643,7 +644,7 @@ class TextSectionWrapper
 
 	//[of]:Title	\:\: Buffer
 	attr _Title
-	
+
 	method Title
 		var t = self _Title
 		if t isNil
@@ -663,9 +664,9 @@ class TextSectionWrapper
 	//[of]:Uid	\:\: Buffer
 	//[c]Todo: Make Uid be a date loaded from an external prog,
 	//[c]so that i can implement a `fix links` function`.
-	
+
 	attr _Uid
-	
+
 	method Uid
 		var u = self _Uid
 		if u isNil
@@ -677,7 +678,7 @@ class TextSectionWrapper
 	//[cf]
 	//[of]:Repr	\:\: Buffer
 	attr _Repr
-	
+
 	method Repr
 		var r = self _Repr
 		if r isNil
@@ -692,7 +693,7 @@ class TextSectionWrapper
 	//[cf]
 	//[of]:Range	\:\: Range
 	attr _Range
-	
+
 	method Range
 		var r = self _Range
 		if r isNil
@@ -700,7 +701,7 @@ class TextSectionWrapper
 			self _Range = r
 		end
 		return r
-	
+
 	//[cf]
 	//[of]:Selection	\:\: Range
 	method Selection
@@ -728,7 +729,7 @@ class TextSectionWrapper
 	//[cf]
 	//[of]:Endlocation	\:\: Location
 	attr _Endlocation
-	
+
 	method Endlocation
 		var loc = self _Endlocation
 		if loc isNil
@@ -745,7 +746,7 @@ class TextSectionWrapper
 	//[cf]
 	//[of]:Endy	\:\: Integer
 	attr _Endy
-	
+
 	method Endy
 		var y = self _Endy
 		if y isNil
@@ -757,9 +758,9 @@ class TextSectionWrapper
 	//[of]unfoldedcloser	\:\: String:Closetoken	\:\: String
 	//[c]Todo: This is not needed any more, as i now use descriptions for denoting an
 	//[c]unfolded paragraph
-	
+
 	attr _Closetoken
-	
+
 	method Closetoken
 		var t = self _Closetoken
 		if t isNil
@@ -771,9 +772,9 @@ class TextSectionWrapper
 	//[of]:Opentoken	\:\: String
 	//[c]Todo: This is not needed any more, as i now use descriptions for denoting an
 	//[c]unfolded paragraph
-	
+
 	attr _Opentoken
-	
+
 	method Opentoken
 		var t = self _Opentoken
 		if t isNil
@@ -784,7 +785,7 @@ class TextSectionWrapper
 	//[cf]
 	//[of]:Opencomment	\:\: String
 	attr _Opencomment
-	
+
 	method Opencomment
 		var p = self _Opencomment
 		if p isNil
@@ -800,7 +801,7 @@ class TextSectionWrapper
 	//[cf]
 	//[of]:Closecomment	\:\: String
 	attr _Closecomment
-	
+
 	method Closecomment
 		var s = self _Closecomment
 		if s isNil
@@ -820,7 +821,7 @@ class TextSectionWrapper
 	//[cf]
 	//[of]:Output	\:\: Output
 	attr _Output
-	
+
 	method Output
 		var o = self _Output
 		if o isNil
@@ -923,13 +924,13 @@ class TextSectionWrapper
 	method outcomment
 		self Range outcomment
 		return self
-		
+
 	//[cf]
 	//[of]:unoutcomment	\:\: Section
 	method unoutcomment
 		self Range unoutcomment
 		return self
-		
+
 	//[cf]
 //[cf]
 //[of]:Output
@@ -978,7 +979,7 @@ class OutputSectionWrapper
 	//[cf]
 	//[of]:printborder	\:\: Thing -> Output
 	//[c]Useful for printing whitespace
-	
+
 	method printborder (thing)
 		self Section append (totextblock (wrap ("|", thing, "|\n")))
 		self show
@@ -1000,7 +1001,7 @@ class FindDataWrapper
 	attr Case
 	attr Whole
 	attr From
-		
+
 	//[of]:init	\:\: Section -> Findresult
 	method init (sec)
 		self Section = sec
@@ -1164,7 +1165,7 @@ class RangeClass
 	//[cf]
 	//[of]blockify	\:\: Range:blockify	\:\: Range
 	//[c]Expand a range to be a bunch of lines. It then always ends with a newline.
-	
+
 	method blockify
 		var s = self Start
 		var e = self End
@@ -1186,7 +1187,7 @@ class RangeClass
 			e Y = (s Y + 1)
 		end
 		return self
-	
+
 	//[cf]
 	//[of]:normdirection	\:\: Range
 	method normdirection
@@ -1235,7 +1236,7 @@ class RangeClass
 	//[c]The range must end with a newline. See the
 //[l]:blockify:#Types/Range/blockify	\:\: Range
 	//[c]method.
-	
+
 	method outcomment
 		var sec = self Start Section
 		var y = self Start Y
@@ -1250,7 +1251,7 @@ class RangeClass
 	//[c]The range must end with a newline. See the
 //[l]:blockify:#Types/Range/blockify	\:\: Range
 	//[c]method.
-	
+
 	method unoutcomment
 		var sec = self Start Section
 		var y = self Start Y
@@ -1351,7 +1352,7 @@ class LocationClass
 	//[c]	~ assert (view section == self Section Textsection)
 		view moveCursor (self Y, self X, false)
 		view adjustPage
-	
+
 		return self
 	//[cf]
 	//[of]:paste	\:\: TextBlock -> Location
@@ -1440,7 +1441,7 @@ class LevelClass
 
 	//[of]:Indentstring	\:\: Buffer
 	attr _Indentstring
-	
+
 	method Indentstring
 		var indentstring = self _Indentstring
 		if indentstring isNil
@@ -1480,7 +1481,7 @@ class ParagraphClass
 	//[cf]
 	//[of]_findborders:_findborders	\:\: Integer -> Paragraph
 	//[c]Todo: split this up into findstartborder and findendborder
-	
+
 	method _findborders (y)
 		var level = self Level
 		var sec = level Section
@@ -1587,7 +1588,7 @@ class ParagraphClass
 	//[cf]
 	//[of]:Range	\:\: Range
 	attr _Range
-	
+
 	method Range
 		var range_ = self _Range
 		if range_ isNil
@@ -1604,7 +1605,7 @@ class ParagraphClass
 		var textblock = TextBlock new
 		var indentstring = self Level Indentstring
 		var title = self Title
-	
+
 	//[c]	Todo: generate section UIDs from date using python
 	//[c]	eg. "2019-12-25 17:23:28.45"
 	//[c]	i can then implement a `fixlinktargets` function
@@ -1613,7 +1614,7 @@ class ParagraphClass
 		else
 			textblock addSection ((indentstring << title) toString, title toString)
 		end
-	
+
 		var childblock = self Range copy
 		dedentblock (childblock, self Level Indent)
 		if title notNil
@@ -1628,7 +1629,7 @@ class ParagraphClass
 	method fold
 		self Range paste (self Fold)
 		self End = self Start refresh clone
-	
+
 	//[cf]
 	//[of]:paste	\:\: TextBlock -> Paragraph
 	method paste (textblock)
@@ -1666,7 +1667,7 @@ class LineClass
 
 	//[of]:Text	\:\: Buffer
 	attr _Text
-	
+
 	method Text
 		if self _Text isNil
 			self _load
@@ -1675,7 +1676,7 @@ class LineClass
 	//[cf]
 	//[of]Indent	\:\: Integer:Indent	\:\: Integer
 	attr _Indent
-	
+
 	method Indent
 		if self _Indent isNil
 			self _load
@@ -1684,7 +1685,7 @@ class LineClass
 	//[cf]
 	//[of]:Indentstring	\:\: Buffer
 	attr _Indentstring
-	
+
 	method Indentstring
 		var s = self _Indentstring
 		if s isNil
@@ -1706,7 +1707,7 @@ class LineClass
 	//[cf]
 	//[of]:Row	\:\: TextRow
 	attr _Row
-	
+
 	method Row
 		var r = self _Row
 		if r isNil
@@ -1770,13 +1771,13 @@ class LineClass
 	//[cf]
 	//[of]:clone	\:\: Line
 	//[c]Todo: add other data if it exists
-	
+
 	method clone
 		return Line (self Section, self Index)
 	//[cf]
 	//[of]:paste	\:\: Location -> TextBlock -> Section
 	//[c]The textblocks last line must be empty (aka, it ends with a newline)
-	
+
 	method paste (textblock)
 		var y = self Index
 		var sec = self Section
@@ -1801,7 +1802,7 @@ class LineClass
 	//[of]:isempty	\:\: Boolean
 	method isempty
 		return (self Text size == 0)
-	
+
 	//[cf]
 	//[of]:issection	\:\: Boolean
 	method issection
@@ -1814,12 +1815,12 @@ class LineClass
 	//[of]:isdescription	\:\: Boolean
 	method isdescription
 		return self Row type == lt_comment
-	
+
 	//[cf]
 	//[of]:istext	\:\: Boolean
 	method istext
 		return self Row type == lt_text
-	
+
 	//[cf]
 	//[of]:isopener	\:\: Boolean
 	method isopener
@@ -1849,7 +1850,7 @@ class LineClass
 	method matchingcloser (level)
 	//[c]
 	//[c]	~ assert(self isopener == true)
-	
+
 		var endline = level End
 		var counter = 1
 		while self < endline
@@ -1867,9 +1868,9 @@ class LineClass
 	//[cf]
 	//[of]:matchingopener	\:\: Line
 	method matchingopener (level)
-	
+
 	//[c]	~ assert(self iscloser == true)
-	
+
 		var startline = level Start
 		var counter = 1
 		while self > startline
@@ -1884,7 +1885,7 @@ class LineClass
 			end
 		end
 		return Error
-	
+
 	//[cf]
 	//[of]fold:fold	\:\: Line
 	method fold
@@ -2224,13 +2225,13 @@ function assert (what)
 //[c]
 //[c]Global variables become an attribute of usually the Section class as it gets
 //[c]instantiated in every script anyway. Other classes have a reference to it.
-//[c]	
+//[c]
 //[c]Instead of class extension i use Wrapper classes. Eg. the Section class wraps
 //[c]a Code Browser TextSection class.
-//[c]	
+//[c]
 //[c]No variadic func args, no function overloading: Variadic args become class
 //[c]attributes and i pass that class instance instead.
-//[c]	
+//[c]
 //[c]No possibilities of checking the type of a thing: If this is needed, i add a
 //[c]'Type' attribute to the class, which describes the class, and i check against
 //[c]this. But currently not used.
