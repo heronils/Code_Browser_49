@@ -246,6 +246,10 @@ def themes
 		highlight-back-color	= #F0F0E0 // umbra grey
 		inactive-line-back-color	= #F0F0E0
 		//[cf]
+		//[of]Descriptions:Descriptions
+		description-color	= #008200 // forest green
+		description-back-color	= #ffffff // white
+		//[cf]
 		//[of]Selection:Selections
 		selected-back-color	= #9fcfff // sky blue
 		inactive-back-color	= #bfdfff // sky blue, a bit lighter
@@ -281,11 +285,6 @@ def themes
 
 		//[of]Defaults:Defaults
 		normal-color	= #408fdf // light sky blue - local variables.
-		//[cf]
-		//[of]Descriptions:Descriptions
-		description-color	= #008200 // forest green
-		description-back-color	= #ffffff // white
-		//[c]~ description-back-color	= #efffdf // very light green
 		//[cf]
 		//[of]Language:Language
 		preproc-color	= #df8080 // pink - same as keywords
