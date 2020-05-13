@@ -554,7 +554,7 @@ function normend (block)
 //[c]	var o = Output
 //[c]	o clear
 //[c]	o print("foo")
-//[c]	o print("foo") clear print("bar") clear printborder("baz")
+//[c]	o print("foo") clear print("bar") printborder("baz")
 //[c]	...
 //[c]
 //[c]... which only creates the Section and Output wrapper classes once.
@@ -855,6 +855,16 @@ class TextSectionWrapper
 		self Startlocation paste (textblock)
 		return self
 	//[cf]
+	//[of]:append	\:\: TextBlock -> Section
+	method append (textblock)
+		self Endlocation paste (textblock)
+		return self
+	//[cf]
+	//[of]:appendnewline	\:\: Section
+	method appendnewline
+		self Endlocation paste (TextBlock fromString ("\n"))
+		return self
+	//[cf]
 	//[of]:prependcomment	\:\: TextBlock -> Section
 	method prependcomment (buf)
 		var block = TextBlock new
@@ -862,21 +872,11 @@ class TextSectionWrapper
 		self prepend (block)
 		return self
 	//[cf]
-	//[of]:append	\:\: TextBlock -> Section
-	method append (textblock)
-		self Endlocation paste (textblock)
-		return self
-	//[cf]
 	//[of]:appendcomment	\:\: TextBlock -> Section
 	method appendcomment (buf)
 		var block = TextBlock new
 		block addComment (buf toString)
 		self append (block)
-		return self
-	//[cf]
-	//[of]:appendnewline	\:\: Section
-	method appendnewline
-		self Endlocation paste (TextBlock fromString ("\n"))
 		return self
 	//[cf]
 	//[of]:levelat	\:\: Number -> Level
@@ -1108,7 +1108,7 @@ function Range (startloc, endloc)
 function Rowrange (sec, y1, y2)
 	var startloc = Location(sec, y1, 0)
 	var endloc = Location(sec, y2, 0)
-	return RangeClass basicNew init (startloc, endloc)
+	return Range (startloc, endloc)
 
 class RangeClass
 	attr Section
@@ -1691,6 +1691,10 @@ class LineClass
 	method Startlocation
 		return Location (self Section, self Index, self Indentstring size)
 	//[cf]
+	//[of]:Endlocation	\:\: Location
+	method Endlocation
+		return Location (self Section, self Index, self Indentstring size + self Text size)
+	//[cf]
 	//[of]:Smartlocation	\:\: Location
 	method Smartlocation
 		var xpos = 0
@@ -1700,10 +1704,6 @@ class LineClass
 			xpos = self Indentstring size
 		end
 		return Location (self Section, self Index, xpos)
-	//[cf]
-	//[of]:Endlocation	\:\: Location
-	method Endlocation
-		return Location (self Section, self Index, self Indentstring size + self Text size)
 	//[cf]
 	//[of]Childsection	\:\: Section:Childsection	\:\: Section
 	method Childsection
@@ -1756,6 +1756,7 @@ class LineClass
 		if textblock size <> 1
 			sec refreshdimensions
 		end
+		self refresh
 		return self
 	//[cf]
 	//[of]:issamethan	\:\: Line -> Boolean
