@@ -287,16 +287,16 @@ def themes
 		normal-color	= #408fdf // light sky blue - local variables.
 		//[cf]
 		//[of]Language:Language
-		preproc-color	= #df8080 // pink - same as keywords
-
 		word-1-color	= #df8080 // pink - keywords
 		word-1-font-style	= normal
 		word-2-color	= #a03080 // purple - funcs, predefined, getters
-		word-3-color	= #009f9f // turquoise - literals like `True`, `False`, `None` - same as strings.
+		word-3-color	= #009f9f // turquoise - same as strings - literals like `True`, `False`, `None`.
 		word-4-color	= #404040 // nearly black - everything else
 
 		char-1-color	= #404040 // like word-4
 		char-2-color	= #df8080 // like word-1
+
+		preproc-color	= #df8080 // pink - same as keywords
 		//[cf]
 	end
 	//[cf]
