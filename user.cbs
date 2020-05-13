@@ -2136,6 +2136,8 @@ function action_unoutcomment
 	stopundo
 //[cf]
 //[of]:action_gotodefinition	\:\: nil
+//[c]This is not fully implemented yet
+
 function action_gotodefinition
 	startundo
 	var identifier = Selectedtext
