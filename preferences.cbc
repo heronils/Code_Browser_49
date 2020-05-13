@@ -2353,8 +2353,8 @@ def tools
 		show-window	= false
 	end
 	//[cf]
-	//[of]:search
-	def search
+	//[of]:ff-search
+	def ff-search
 		caption	= Search selected Text with Firefox
 		hot-key	= ALT+SHIFT+G
 		command	= C:\Program Files\Mozilla Firefox\firefox.exe
