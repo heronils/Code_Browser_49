@@ -627,7 +627,8 @@ function somethingselected
 //[c]( Wrappers for predefined Code Browser types
 //[of]Section:Section
 //[c]Wraps a TextSection. This also serves as a God Object for global variables,
-//[c]as it is instantiated in every script anyway.
+//[c]as it is instantiated in every script anyway (the Code Browser script language
+//[c]does not allow global variables).
 
 function Section (textsection)
 	return TextSectionWrapper basicNew init (textsection)
