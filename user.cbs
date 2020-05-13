@@ -838,7 +838,7 @@ class TextSectionWrapper
 		return self refreshdimensions
 	//[cf]
 	//[of]:cut	\:\: TextBlock
-	method copy
+	method cut
 		return self Range cut
 	//[cf]
 	//[of]:copy	\:\: TextBlock
