@@ -7,7 +7,7 @@ search-patterns-history	= *.*:*.py;*.html;*.js;*.css
 search-history	=
 search-replace-history	=
 layout	= page
-scroll-speed	= 1
+scroll-speed	= 7
 fisheye-view	= true
 
 //[c]Do not add underscores ('_') in names. Dashes ('-') are ok.
