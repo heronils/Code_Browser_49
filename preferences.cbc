@@ -648,7 +648,7 @@ def languages
 	//[of]:Text
 	def Text
 		prototype	= languages.Default
-		patterns	= *.txt
+		patterns	= *.txt;*.info
 		stylizer	= monochrome
 	end
 	//[cf]
