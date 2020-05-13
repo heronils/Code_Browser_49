@@ -754,34 +754,6 @@ class TextSectionWrapper
 		end
 		return y
 	//[cf]
-	//[of]unfoldedcloser	\:\: String:Closetoken	\:\: String
-	//[c]Todo: This is not needed any more, as i now use descriptions for denoting an
-	//[c]unfolded paragraph
-
-	attr _Closetoken
-
-	method Closetoken
-		var t = self _Closetoken
-		if t isNil
-			t = ( Buf << self Opencomment << ")" << self Closecomment) toString
-			self _Closetoken = t
-		end
-		return t
-	//[cf]
-	//[of]:Opentoken	\:\: String
-	//[c]Todo: This is not needed any more, as i now use descriptions for denoting an
-	//[c]unfolded paragraph
-
-	attr _Opentoken
-
-	method Opentoken
-		var t = self _Opentoken
-		if t isNil
-			t = ( Buf << self Opencomment << "( ") toString
-			self _Opentoken = t
-		end
-		return t
-	//[cf]
 	//[of]:Opencomment	\:\: String
 	attr _Opencomment
 
