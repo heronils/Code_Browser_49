@@ -26,7 +26,7 @@ More information can be found in the help file or [on the project page](http://w
 
 Unfortunately, after version 4.9, the author removed an important feature - relative indentation (see *Folding* → *Relative Indentation* in the help file) - which renders the editor rather useless for indentation-based languages like [Python](https://www.python.org/ ). Furthermore, the sibling navigation has been changed - `Ctrl` + `Shift` + (`↑` or `↓`) - which now changes the level when navigating across section borders.
 
-Since I need these features in [Treesearcher](https://github.com/heronils/Treesearcher), here is a backup of version 4.9, as well as my global settings and my user scripts.
+Since I need these features in [Treesearcher](https://github.com/nilslindemann/Treesearcher), here is a backup of version 4.9, as well as my global settings and my user scripts.
 
 ## Installation
 
@@ -125,7 +125,7 @@ There is no shortcut defined to create a link by hand, because that´s a cumbers
 
 Here is a reference of the meta characters and -character groups that are meaningful for Code Browser and my user scripts. That´s how they would look in another editor. Those that are relevant for Code Browser are highlighted in yellow. Those that are relevant for my user scripts are highlighted in orange. The latter only have meaning when they are placed at the beginning of a description comment.
 
-*Edit: At least they should be colored, but Github´s markdown parser does not support colored highlighting. Browser extensions like [this for Firefox](https://addons.mozilla.org/de/firefox/addon/markdown-viewer-webext/) or [this for Chrome](https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk) will [show the highlights](https://raw.githubusercontent.com/heronils/Code_Browser_49/master/README_EN.md#directives).*
+*Edit: At least they should be colored, but Github´s markdown parser does not support colored highlighting. Browser extensions like [this for Firefox](https://addons.mozilla.org/de/firefox/addon/markdown-viewer-webext/) or [this for Chrome](https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk) will [show the highlights](https://raw.githubusercontent.com/nilslindemann/Code_Browser_49/master/README_EN.md#directives).*
 
 <pre>
 <span style = 'background:yellow'>#[of]</span>ID of the Section<span style = 'background:yellow'>:</span>Title of the section
@@ -210,6 +210,6 @@ First commit.
 
 Many thanks to Marc Kerbiquet for [Code Browser](http://tibleiz.net/code-browser/) and [for other languages, tools, and games he wrote](http://tibleiz.net/).
 
-This text was translated from german with the help of [Google Translate](https://translate.google.com/). If you find errors here, please open an [issue](https://github.com/heronils/Code_Browser_49/issues) or make a [pull request](https://help.github.com/en/articles/creating-a-pull-request).
+This text was translated from german with the help of [Google Translate](https://translate.google.com/). If you find errors here, please open an [issue](https://github.com/nilslindemann/Code_Browser_49/issues) or make a [pull request](https://help.github.com/en/articles/creating-a-pull-request).
 
-Posted 2019-09-26 by [heronils](https://github.com/heronils?tab=repositories). Last update: 2020-05-08.
+Posted 2019-09-26 by [Nils Lindemann](https://github.com/nilslindemann?tab=repositories). Last update: 2020-05-08.
