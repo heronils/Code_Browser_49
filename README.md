@@ -26,7 +26,7 @@ Mehr Informationen dazu gibt´s in der Hilfedatei oder [auf der Projektseite](ht
 
 Nach Version 4.9 hat der Autor leider ein wichtiges Feature entfernt – relative Einrückung (siehe *Folding* → *Relative Indentation* in der Hilfedatei) – was den Editor für einrückungsbasierte Sprachen wie [Python](https://www.python.org/) eher unbrauchbar gemacht hat. Ferner wurde die Geschwister-Navigation verändert – `Strg` + `Umschalttaste` + (`↑` oder `↓`) – welche nun die Ebene wechselt wenn man über Sektionsgrenzen hinweg navigiert.
 
-Da ich diese Features in [Treesearcher](https://github.com/heronils/Treesearcher) benötige, hier ein Backup von Version 4.9, dazu ferner meine globalen Einstellungen und meine Benutzerskripte.
+Da ich diese Features in [Treesearcher](https://github.com/nilslindemann/Treesearcher) benötige, hier ein Backup von Version 4.9, dazu ferner meine globalen Einstellungen und meine Benutzerskripte.
 
 ## Installation
 
@@ -124,7 +124,7 @@ Es ist kein Tastenkürzel definiert, um einen Link von Hand zu erstellen, da das
 
 Hier eine Referenz der für Code Browser und meine Benutzerskripte bedeutsamen Metazeichen und -zeichengruppen. So würden sie in einem anderen Editor aussehen. Diejenigen, welche für Code Browser relevant sind, sind gelb hinterlegt. Solche, die für meine Benutzerskripte relevant sind, sind orange hinterlegt (Letztere haben nur eine Bedeutung, wenn Sie am Anfang eines beschreibenden Kommentars stehen).
 
-*Edit: Zumindest sollten sie farbig hinterlegt sein, aber Github´s Markdown Parser unterstützt keine farbige Hervorhebungen. Browser-Erweiterungen wie [diese für Firefox](https://addons.mozilla.org/de/firefox/addon/markdown-viewer-webext/) oder [diese für Chrome](https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk) werden [die Hervorhebungen anzeigen](https://raw.githubusercontent.com/heronils/Code_Browser_49/master/README.md#direktiven).*
+*Edit: Zumindest sollten sie farbig hinterlegt sein, aber Github´s Markdown Parser unterstützt keine farbige Hervorhebungen. Browser-Erweiterungen wie [diese für Firefox](https://addons.mozilla.org/de/firefox/addon/markdown-viewer-webext/) oder [diese für Chrome](https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk) werden [die Hervorhebungen anzeigen](https://raw.githubusercontent.com/nilslindemann/Code_Browser_49/master/README.md#direktiven).*
 
 <pre>
 <span style='background:yellow'>#[of]</span>ID der Sektion<span style='background:yellow'>:</span>Titel der Sektion
@@ -210,6 +210,6 @@ Erster Commit.
 
 Ein herzlicher Dank an Marc Kerbiquet für [Code Browser](http://tibleiz.net/code-browser/) und [für andere Sprachen, Werkzeuge und Spiele, die er geschrieben hat](http://tibleiz.net/).
 
-Wenn Du hier Fehler findest, bitte eröffne ein [„Issue“](https://github.com/heronils/Code_Browser_49/issues) oder schick´ mir ein [„pull request“](https://help.github.com/en/articles/creating-a-pull-request).
+Wenn Du hier Fehler findest, bitte eröffne ein [„Issue“](https://github.com/nilslindemann/Code_Browser_49/issues) oder schick´ mir ein [„pull request“](https://help.github.com/en/articles/creating-a-pull-request).
 
-Geschrieben 2019-09-26 von [heronils](https://github.com/heronils?tab=repositories). Letzte Aktualisierung: 2020-05-08.
+Geschrieben 2019-09-26 von [Nils Lindemann](https://github.com/nilslindemann?tab=repositories). Letzte Aktualisierung: 2020-05-08.
