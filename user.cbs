@@ -26,15 +26,19 @@ function Activefile
 	return frame activeFile
 //[cf]
 //[of]:Indenttoken	\:\: String
-//[c]Todo: Activelanguage expandTabulation always returns true, even if set to false
-//[c]in the preferences.cbc. How to solve?
+//[c]Todo: Activelanguage expandTabulation always returns true, even
+//[c]if set to false in the preferences.cbc. How to solve?
 
 function Indenttoken
 	var lang = Activelanguage name
 
-//[c]	These languages enforce two spaces for indenting code
+//[c]	Elm enforces two spaces for indenting code
 	if lang == "Elm"
 		return "  "
+
+//[c]	Using tabs inside of HTML tags causes problems
+	elsif lang == "HTML"
+		return "    "
 
 	else
 //[c]		Outcomment this if you want to use spaces for indentation.
@@ -634,6 +638,7 @@ function Section (textsection)
 	return TextSectionWrapper basicNew init (textsection)
 
 class TextSectionWrapper
+
 	attr Textsection
 
 	//[of]init	\:\: TextSection -> Section:init	\:\: TextSection -> Section
@@ -644,7 +649,7 @@ class TextSectionWrapper
 
 	//[of]:Title	\:\: Buffer
 	attr _Title
-
+	
 	method Title
 		var t = self _Title
 		if t isNil
@@ -664,9 +669,9 @@ class TextSectionWrapper
 	//[of]:Uid	\:\: Buffer
 	//[c]Todo: Make Uid be a date loaded from an external prog,
 	//[c]so that i can implement a `fix links` function`.
-
+	
 	attr _Uid
-
+	
 	method Uid
 		var u = self _Uid
 		if u isNil
@@ -678,7 +683,7 @@ class TextSectionWrapper
 	//[cf]
 	//[of]:Repr	\:\: Buffer
 	attr _Repr
-
+	
 	method Repr
 		var r = self _Repr
 		if r isNil
@@ -693,7 +698,7 @@ class TextSectionWrapper
 	//[cf]
 	//[of]:Range	\:\: Range
 	attr _Range
-
+	
 	method Range
 		var r = self _Range
 		if r isNil
@@ -701,7 +706,7 @@ class TextSectionWrapper
 			self _Range = r
 		end
 		return r
-
+	
 	//[cf]
 	//[of]:Selection	\:\: Range
 	method Selection
@@ -729,7 +734,7 @@ class TextSectionWrapper
 	//[cf]
 	//[of]:Endlocation	\:\: Location
 	attr _Endlocation
-
+	
 	method Endlocation
 		var loc = self _Endlocation
 		if loc isNil
@@ -746,7 +751,7 @@ class TextSectionWrapper
 	//[cf]
 	//[of]:Endy	\:\: Integer
 	attr _Endy
-
+	
 	method Endy
 		var y = self _Endy
 		if y isNil
@@ -757,7 +762,7 @@ class TextSectionWrapper
 	//[cf]
 	//[of]:Opencomment	\:\: String
 	attr _Opencomment
-
+	
 	method Opencomment
 		var p = self _Opencomment
 		if p isNil
@@ -773,7 +778,7 @@ class TextSectionWrapper
 	//[cf]
 	//[of]:Closecomment	\:\: String
 	attr _Closecomment
-
+	
 	method Closecomment
 		var s = self _Closecomment
 		if s isNil
@@ -793,7 +798,7 @@ class TextSectionWrapper
 	//[cf]
 	//[of]:Output	\:\: Output
 	attr _Output
-
+	
 	method Output
 		var o = self _Output
 		if o isNil
@@ -896,13 +901,13 @@ class TextSectionWrapper
 	method outcomment
 		self Range outcomment
 		return self
-
+		
 	//[cf]
 	//[of]:unoutcomment	\:\: Section
 	method unoutcomment
 		self Range unoutcomment
 		return self
-
+		
 	//[cf]
 //[cf]
 //[of]:Output
@@ -912,6 +917,7 @@ function Output
 	return OutputSectionWrapper basicNew init
 
 class OutputSectionWrapper
+
 	attr File
 	attr Section
 
@@ -951,7 +957,7 @@ class OutputSectionWrapper
 	//[cf]
 	//[of]:printborder	\:\: Thing -> Output
 	//[c]Useful for printing whitespace
-
+	
 	method printborder (thing)
 		self Section append (totextblock (wrap ("|", thing, "|\n")))
 		self show
@@ -966,6 +972,7 @@ function Find (sec)
 	return FindDataWrapper basicNew init (sec)
 
 class FindDataWrapper
+
 	attr Section
 	attr Scope
 	attr Regex
@@ -973,7 +980,7 @@ class FindDataWrapper
 	attr Case
 	attr Whole
 	attr From
-
+		
 	//[of]:init	\:\: Section -> Findresult
 	method init (sec)
 		self Section = sec
@@ -1084,6 +1091,7 @@ function Findresult (findresult)
 	return FindresultWrapper basicNew init (findresult)
 
 class FindresultWrapper
+
 	attr Section
 	attr Location
 	attr Size
@@ -1112,6 +1120,7 @@ function Rowrange (sec, y1, y2)
 	return Range (startloc, endloc)
 
 class RangeClass
+
 	attr Section
 	attr Start
 	attr End
@@ -1124,20 +1133,47 @@ class RangeClass
 		self End = endloc
 		return self
 	//[cf]
-
 	//[of]:Repr	\:\: Buffer
 	method Repr
-		return Buf << "Range(start=" << (self Start Repr) <<
-		", end=" << (self End Repr) << ")"
+		return Buf << "Range(" <<
+			"start=" << (self Start Repr) << ", " <<
+			"end=" << (self End Repr) <<
+		")"
 	//[cf]
-
 	//[of]:clone	\:\: Range
 	method clone
 		return Range (self Start clone, self End clone)
 	//[cf]
+	//[of]:select	\:\: Range
+	method select
+		Activeview select (self Start Y, self Start X, self End Y, self End X)
+		return self
+	//[cf]
+
+	//[of]:up, down, left, right	\:\: Range
+	method up
+		self Start up
+		self End up
+		return self
+	
+	method down
+		self Start down
+		self End down
+		return self
+	
+	method left
+		self Start left
+		self End left
+		return self
+	
+	method right
+		self Start right
+		self End right
+		return self
+	//[cf]
 	//[of]blockify	\:\: Range:blockify	\:\: Range
 	//[c]Expand a range to be a bunch of lines. It then always ends with a newline.
-
+	
 	method blockify
 		var s = self Start
 		var e = self End
@@ -1153,13 +1189,13 @@ class RangeClass
 				s Y = (s Y + 1)
 				s X = 0
 			end
-		else  // the range is a point --> select the line
+		else  // the range is a point --> expand it to be a line
 			s X = 0
 			e X = 0
 			e Y = (s Y + 1)
 		end
 		return self
-
+	
 	//[cf]
 	//[of]:normdirection	\:\: Range
 	method normdirection
@@ -1171,44 +1207,48 @@ class RangeClass
 		end
 		return self
 	//[cf]
-	//[of]:up	\:\: Range
-	method up
-		self Start up
-		self End up
-		return self
+
+	//[of]:cut	\:\: TextBlock
+	method cut
+		var block = self copy
+		self empty
+		return block
 	//[cf]
-	//[of]:down	\:\: Range
-	method down
-		self Start down
-		self End down
-		return self
+	//[of]:copy	\:\: TextBlock
+	method copy
+		return self Section Textsection copyBlock (
+		self Start Y, self Start X, self End Y, self End X)
 	//[cf]
-	//[of]:left	\:\: Range
-	method left
-		self Start left
-		self End left
-		return self
-	//[cf]
-	//[of]:right	\:\: Range
-	method right
-		self Start right
-		self End right
+	//[of]:paste	\:\: TextBlock -> Range
+	method paste (block)
+		var x1 = self Start X
+		var y1 = self Start Y
+		self Section Textsection replaceText (
+			y1, x1, self End Y, self End X, block)
+	
+	//[c]	( Adjust dimensions
+		var blocksize = block size
+		if blocksize == 0
+			self End Y = y1
+			self End X = x1 + block lastText size
+		else
+			self End Y = y1 + blocksize
+			self End X = block lastText size
+		end
+	//[c]	)
+	
 		return self
 	//[cf]
 	//[of]:empty	\:\: Range
 	method empty
 		return self paste (TextBlock fromString (""))
 	//[cf]
-	//[of]:select	\:\: Range
-	method select
-		Activeview select (self Start Y, self Start X, self End Y, self End X)
-		return self
-	//[cf]
-	//[of]:outcomment	\:\: Range
+
+	//[of]:outcomment, unoutcomment	\:\: Range
 	//[c]The range must end with a newline. See the
 //[l]:blockify:#Types/Range/blockify	\:\: Range
 	//[c]method.
-
+	
 	method outcomment
 		var sec = self Start Section
 		var y = self Start Y
@@ -1218,12 +1258,7 @@ class RangeClass
 			y = y + 1
 		end
 		return self
-	//[cf]
-	//[of]:unoutcomment	\:\: Range
-	//[c]The range must end with a newline. See the
-//[l]:blockify:#Types/Range/blockify	\:\: Range
-	//[c]method.
-
+	
 	method unoutcomment
 		var sec = self Start Section
 		var y = self Start Y
@@ -1231,33 +1266,6 @@ class RangeClass
 		while y < endy
 			Line (sec, y) unoutcomment
 			y = y + 1
-		end
-		return self
-	//[cf]
-	//[of]:cut	\:\: TextBlock
-	method cut
-		var textblock = self copy
-		self empty
-		return textblock
-	//[cf]
-	//[of]:copy	\:\: TextBlock
-	method copy
-		return self Section Textsection copyBlock (
-		self Start Y, self Start X, self End Y, self End X)
-	//[cf]
-	//[of]:paste	\:\: TextBlock -> Range
-	method paste (textblock)
-		var y1 = self Start Y
-		var x1 = self Start X
-		self Section Textsection replaceText (
-			y1, x1, self End Y, self End X, textblock)
-		var blocksize = textblock size
-		if blocksize == 0
-			self End Y = y1
-			self End X = x1 + textblock lastText size
-		else
-			self End Y = y1 + blocksize
-			self End X = textblock lastText size
 		end
 		return self
 	//[cf]
@@ -1269,6 +1277,7 @@ function Location (sec, y, x)
 	return LocationClass basicNew init (sec, y, x)
 
 class LocationClass
+
 	attr Section
 	attr Y
 	attr X
@@ -1280,39 +1289,18 @@ class LocationClass
 		self X = x
 		return self
 	//[cf]
-
 	//[of]:Repr	\:\: Buffer
 	method Repr
 		return Buf <<
-			"Location(line=" <<
-			(self Y toString) <<
-			" column=" <<
-			(self X toString) <<
+			"Location(" <<
+				"line=" << (self Y toString) << " " <<
+				"column=" << (self X toString) <<
 			")"
 	//[cf]
 	//[of]:Range	\:\: Range
 	method Range
-		var loc = Location(self Section, self Y, self X)
-		return Range (loc, loc clone)
+		return Range (self clone, self clone)
 	//[cf]
-
-	//[of]:==	\:\: Location -> Boolean
-	method _eq (loc)
-		return (self Y == loc Y) and (self X == loc X)
-	//[cf]
-	//[of]:<>	\:\: Location -> Boolean
-	method _ne (loc)
-		return (self Y <> loc Y) or (self X <> loc X)
-	//[cf]
-	//[of]:>	\:\: Location -> Boolean
-	method _gt (loc)
-		return (self Y > loc Y) or ( (self Y == loc Y) and (self X > loc X) )
-	//[cf]
-	//[of]:<	\:\: Location -> Boolean
-	method _lt (loc)
-		return (self Y < loc Y) or ( (self Y == loc Y) and (self X < loc X) )
-	//[cf]
-
 	//[of]:clone	\:\: Location
 	method clone
 		return Location (self Section, self Y, self X)
@@ -1324,37 +1312,51 @@ class LocationClass
 	//[c]	~ assert (view section == self Section Textsection)
 		view moveCursor (self Y, self X, false)
 		view adjustPage
+		return self
+	//[cf]
 
-		return self
+	//[of]==	\:\: Location -> Boolean:==	\:\: Location -> Boolean
+	method _eq (loc)
+		return (self Y == loc Y) and (self X == loc X)
 	//[cf]
-	//[of]:paste	\:\: TextBlock -> Location
-	method paste (textblock)
-		var sec = self Section
-		sec Textsection replaceText (self Y, self X, self Y, self X, textblock)
-		sec refreshdimensions
-		return self
+	//[of]<>	\:\: Location -> Boolean:<>	\:\: Location -> Boolean
+	method _ne (loc)
+		return (self Y <> loc Y) or (self X <> loc X)
 	//[cf]
-	//[of]:up	\:\: Location
+	//[of]>	\:\: Location -> Boolean:>	\:\: Location -> Boolean
+	method _gt (loc)
+		return (self Y > loc Y) or ( (self Y == loc Y) and (self X > loc X) )
+	//[cf]
+	//[of]<	\:\: Location -> Boolean:<	\:\: Location -> Boolean
+	method _lt (loc)
+		return (self Y < loc Y) or ( (self Y == loc Y) and (self X < loc X) )
+	//[cf]
+
+	//[of]:up, down, left, right	\:\: Location
 	method up
 		self Y = (self Y) - 1
 		return self
-	//[cf]
-	//[of]:down	\:\: Location
+	
 	method down
 		self Y = (self Y) + 1
 		return self
-	//[cf]
-	//[of]:left	\:\: Location
+	
 	method left
 		var x = self X
 		if x > 0
 			self X = x - 1
 		end
 		return self
-	//[cf]
-	//[of]:right	\:\: Location
+	
 	method right
 		self X = self X + 1
+		return self
+	//[cf]
+	//[of]:paste	\:\: TextBlock -> Location
+	method paste (block)
+		var sec = self Section
+		sec Textsection replaceText (self Y, self X, self Y, self X, block)
+		sec refreshdimensions
 		return self
 	//[cf]
 //[cf]
@@ -1370,6 +1372,7 @@ function Level (sec, index)
 	return LevelClass basicNew init (sec, index)
 
 class LevelClass
+
 	attr Section
 	attr Indent
 	attr Start
@@ -1379,52 +1382,63 @@ class LevelClass
 	method init (sec, index)
 		self Section = sec
 		return self _findborders (index)
-	//[cf]
-
+	
+	
 	//[of]_findborders:_findborders	\:\: Integer -> Level
 	method _findborders (index)
-		var line_ = Line (self Section, index)
-		var remember = line_ clone
-		var indent = line_ Indent
+		var L = Line (self Section, index)
+		var remember = L clone
+		var indent = L Indent
 		self Indent = indent
-		while not line_ isfirst and ( (line_ isempty) or not (line_ Indent < indent) )
-			line_ prev
+	
+	//[c]	( Find start
+		while not L isfirst and ( (L isempty) or not (L Indent < indent) )
+			L prev
 		end
-		if (line_ Indent < indent) or line_ isempty
-			line_ next
-			while line_ isempty
-				line_ next
+		if (L Indent < indent) or L isempty
+			L next
+			while L isempty
+				L next
 			end
 		end
-		self Start = line_
-		line_ = remember
-		while not line_ islast and ( (line_ isempty) or not (line_ Indent < indent) )
-			line_ next
+		self Start = L
+	//[c]	)
+	
+	//[c]	( Find end
+		L = remember
+		while not L islast and ( (L isempty) or not (L Indent < indent) )
+			L next
 		end
-		if (line_ Indent < indent) or line_ isempty
-			line_ prev
-			while line_ isempty
-				line_ prev
+		if (L Indent < indent) or L isempty
+			L prev
+			while L isempty
+				L prev
 			end
 		end
-		self End = line_
+		self End = L
+	//[c]	)
+	
 		return self
+	//[cf]
+	//[cf]
+	//[of]:Repr	\:\: Buffer
+	method Repr
+		return Buf << "Level(" <<
+			"start=" << (self Start Repr) << " " <<
+			"end=" << (self End Repr) <<
+		")"
 	//[cf]
 
 	//[of]:Indentstring	\:\: Buffer
 	attr _Indentstring
-
+	
 	method Indentstring
-		var indentstring = self _Indentstring
-		if indentstring isNil
-			indentstring = times (self Indent, Indenttoken)
-			self _Indentstring = indentstring
+		var i = self _Indentstring
+		if i isNil
+			i = times (self Indent, Indenttoken)
+			self _Indentstring = i
 		end
-		return indentstring
-	//[cf]
-	//[of]:Repr	\:\: Buffer
-	method Repr
-		return Buf << "Level(start=" << (self Start Repr) << " end=" << (self End Repr) << ")"
+		return i
 	//[cf]
 //[cf]
 //[of]Paragraph:Paragraph
@@ -1453,7 +1467,7 @@ class ParagraphClass
 	//[cf]
 	//[of]_findborders:_findborders	\:\: Integer -> Paragraph
 	//[c]Todo: split this up into findstartborder and findendborder
-
+	
 	method _findborders (y)
 		var level = self Level
 		var sec = level Section
@@ -1560,7 +1574,7 @@ class ParagraphClass
 	//[cf]
 	//[of]:Range	\:\: Range
 	attr _Range
-
+	
 	method Range
 		var range_ = self _Range
 		if range_ isNil
@@ -1577,7 +1591,7 @@ class ParagraphClass
 		var textblock = TextBlock new
 		var indentstring = self Level Indentstring
 		var title = self Title
-
+	
 	//[c]	Todo: generate section UIDs from date using python
 	//[c]	eg. "2019-12-25 17:23:28.45"
 	//[c]	i can then implement a `fixlinktargets` function
@@ -1586,7 +1600,7 @@ class ParagraphClass
 		else
 			textblock addSection ((indentstring << title) toString, title toString)
 		end
-
+	
 		var childblock = self Range copy
 		dedentblock (childblock, self Level Indent)
 		if title notNil
@@ -1601,7 +1615,7 @@ class ParagraphClass
 	method fold
 		self Range paste (self Fold)
 		self End = self Start refresh clone
-
+	
 	//[cf]
 	//[of]:paste	\:\: TextBlock -> Paragraph
 	method paste (textblock)
@@ -1626,7 +1640,6 @@ class LineClass
 		self Section = sec
 		return self
 	//[cf]
-
 	//[of]:_load	\:\: Line
 	method _load
 		var buf = Buf << (self Row text)
@@ -1639,7 +1652,7 @@ class LineClass
 
 	//[of]:Text	\:\: Buffer
 	attr _Text
-
+	
 	method Text
 		if self _Text isNil
 			self _load
@@ -1648,7 +1661,7 @@ class LineClass
 	//[cf]
 	//[of]Indent	\:\: Integer:Indent	\:\: Integer
 	attr _Indent
-
+	
 	method Indent
 		if self _Indent isNil
 			self _load
@@ -1657,7 +1670,7 @@ class LineClass
 	//[cf]
 	//[of]:Indentstring	\:\: Buffer
 	attr _Indentstring
-
+	
 	method Indentstring
 		var s = self _Indentstring
 		if s isNil
@@ -1679,7 +1692,7 @@ class LineClass
 	//[cf]
 	//[of]:Row	\:\: TextRow
 	attr _Row
-
+	
 	method Row
 		var r = self _Row
 		if r isNil
@@ -1743,13 +1756,13 @@ class LineClass
 	//[cf]
 	//[of]:clone	\:\: Line
 	//[c]Todo: add other data if it exists
-
+	
 	method clone
 		return Line (self Section, self Index)
 	//[cf]
 	//[of]:paste	\:\: Location -> TextBlock -> Section
 	//[c]The textblocks last line must be empty (aka, it ends with a newline)
-
+	
 	method paste (textblock)
 		var y = self Index
 		var sec = self Section
@@ -1775,7 +1788,7 @@ class LineClass
 	//[of]:isempty	\:\: Boolean
 	method isempty
 		return (self Text size == 0)
-
+	
 	//[cf]
 	//[of]:issection	\:\: Boolean
 	method issection
@@ -1788,12 +1801,12 @@ class LineClass
 	//[of]:isdescription	\:\: Boolean
 	method isdescription
 		return self Row type == lt_comment
-
+	
 	//[cf]
 	//[of]:istext	\:\: Boolean
 	method istext
 		return self Row type == lt_text
-
+	
 	//[cf]
 	//[of]:isopener	\:\: Boolean
 	method isopener
@@ -1823,7 +1836,7 @@ class LineClass
 	method matchingcloser (level)
 	//[c]
 	//[c]	~ assert(self isopener == true)
-
+	
 		var endline = level End
 		var counter = 1
 		while self < endline
@@ -1841,9 +1854,9 @@ class LineClass
 	//[cf]
 	//[of]:matchingopener	\:\: Line
 	method matchingopener (level)
-
+	
 	//[c]	~ assert(self iscloser == true)
-
+	
 		var startline = level Start
 		var counter = 1
 		while self > startline
@@ -1858,7 +1871,7 @@ class LineClass
 			end
 		end
 		return Error
-
+	
 	//[cf]
 	//[of]fold:fold	\:\: Line
 	method fold
@@ -2200,10 +2213,10 @@ function assert (what)
 //[c]
 //[c]Global variables become an attribute of usually the Section class as it gets
 //[c]instantiated in every script anyway. Other classes have a reference to it.
-//[c]
+//[c]	
 //[c]Instead of class extension i use Wrapper classes. Eg. the Section class wraps
 //[c]a Code Browser TextSection class.
-//[c]
+//[c]	
 //[c]No variadic func args, no function overloading: Variadic args become class
 //[c]attributes and i pass that class instance instead.
 //[c]

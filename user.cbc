@@ -47,7 +47,7 @@ def commands
 		script=user
 		function=action_fold
 	end
-
+	
 	//[cf]
 	//[of]:Unfold
 	def Unfold
@@ -72,7 +72,7 @@ def commands
 		script=user
 		function=action_movedown
 	end
-
+	
 	//[cf]
 	//[of]:Outcomment Selection
 	def OutcommentSelection

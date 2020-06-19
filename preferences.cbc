@@ -51,13 +51,13 @@ def themes
 		//[c]
 		//[c]inactive-line-back-color is the same but when the section is inactive,
 		//[c]eg. the inactive panes in the page view.
-
+		
 		section-color	= #283C78
 		section-back-color	= background
-
+		
 		link-color	= #20643C
 		link-back-color	= background
-
+		
 		highlight-back-color	= medium
 		inactive-line-back-color	= inactive
 		//[cf]
@@ -68,7 +68,7 @@ def themes
 		//[of]:Selections
 		//[c]inactive-back-color is the color of a selection in a section which is not active.
 		//[c]For example the left and right view in the page view.
-
+		
 		selected-back-color	= #96A0B4
 		inactive-back-color	= inactive
 		//[cf]
@@ -85,14 +85,14 @@ def themes
 		string-color	= #008080
 		comment-color	= #208040
 		preproc-color	= #0040A0
-
+		
 		//[c]( chars
 		char-1-color	= #3C50DC
 		char-2-color	= #8050DC
 		char-3-color	= #DC5080
 		char-4-color	= #DC503C
 		//[c])
-
+		
 		//[c]( words
 		word-1-color	= #3C50DC
 		word-2-color	= #8050DC
@@ -127,10 +127,10 @@ def themes
 		//[of]:Sections and links
 		section-color	= #283C78
 		section-back-color	= background
-
+		
 		link-color	= #20643C
 		link-back-color	= background
-
+		
 		highlight-back-color	= medium
 		//[cf]
 		//[of]:Descriptions
@@ -205,12 +205,12 @@ def themes
 		number-color	= #8CD0D3
 		preproc-color	= #FFCFAF
 		string-color	= #CC9393
-
+		
 		char-1-color	= #F0EFD0
 		char-2-color	= #C05080
 		char-3-color	= #D080D0
 		char-4-color	= #E08050
-
+		
 		word-1-color	= #F0DFAF
 		word-1-font-style	= bold
 		word-2-color	= #EFDCBC
@@ -224,10 +224,14 @@ def themes
 	//[of]purpleblackblue:Basic
 	def Basic
 		prototype	= themes.System
-
+	
 		//[of]:Defaults
-		font-family	= Consolas, Lucida Sans Typewriter, Courier New, Monospace
-		font-size	= 11
+		font-family	= Source Code Pro, Consolas, Lucida Sans Typewriter, Courier New, Monospace
+		font-size	= 12
+		
+		//[c]~ font-family	= Consolas, Lucida Sans Typewriter, Courier New, Monospace
+		//[c]~ font-size	= 11
+		
 		normal-color	= #000000 // black
 		//[cf]
 		//[of]:Tree
@@ -239,10 +243,10 @@ def themes
 		//[of]sections and links:Sections and links
 		section-color	= #005FBF // blue
 		section-back-color	= #f8fbff // light blue, to indicate: 'this has content'.
-
+		
 		link-color	= #70c300 // yellow green
 		link-back-color	= #ffffff // white, to indicate 'this has no content'
-
+		
 		highlight-back-color	= #F0F0E0 // umbra grey
 		inactive-line-back-color	= #F0F0E0
 		//[cf]
@@ -263,15 +267,15 @@ def themes
 		//[of]words and chars:Language
 		comment-color	= #008200 // forest green
 		number-color	= #0000ff // blue
-		string-color	= #009f9f // turquoise
+		string-color	= #0080A0 // turquoise
 		preproc-color	= #0088BB // todo
-
+		
 		word-1-color	= #000000
 		word-1-font-style	= bold
 		word-2-color	= #000000
 		word-3-color	= #000000
 		word-4-color	= #000000
-
+		
 		char-1-color	= #000000
 		char-2-color	= #000000
 		char-3-color	= #000000
@@ -282,21 +286,21 @@ def themes
 	//[of]purpleblue:Purple-Blue
 	def Purple-Blue
 		prototype	= themes.Basic
-
+	
 		//[of]Defaults:Defaults
-		normal-color	= #408fdf // light sky blue - local variables.
+		normal-color	= #2070C0 // light sky blue - local variables.
 		//[cf]
 		//[of]Language:Language
-		word-1-color	= #df8080 // pink - keywords
+		word-1-color	= #C07080 // pink - keywords
 		word-1-font-style	= normal
-		word-2-color	= #a03080 // purple - funcs, predefined, getters
-		word-3-color	= #009f9f // turquoise - same as strings - literals like `True`, `False`, `None`.
+		word-2-color	= #A04070 // purple - funcs, predefined, getters
+		word-3-color	= #0080A0 // turquoise - same as strings - literals like `True`, `False`, `None`.
 		word-4-color	= #404040 // nearly black - everything else
-
+		
 		char-1-color	= #404040 // like word-4
-		char-2-color	= #df8080 // like word-1
-
-		preproc-color	= #df8080 // pink - same as keywords
+		char-2-color	= #C07080 // like word-1
+		
+		preproc-color	= #C07080 // like word-1
 		//[cf]
 	end
 	//[cf]
@@ -336,25 +340,25 @@ def key-mappings
 	def Nils
 		activate-text-window	=
 		activate-tree-window	=
-
+	
 		view-one-pane	= F4
 		page-view	= F5
 		view-tree	= F6
 		view-browser	= F7
-
+	
 		word-wrap	= CTRL+W
 		elastic-tabstops	=
 		show-tabs	= CTRL+SHIFT+T
 		show-line-type	=
 		switch-zoom	=
-
+	
 		file-new	= CTRL+N
 		file-open	= CTRL+O
 		file-open-new	= CTRL+SHIFT+N
 		file-save	= CTRL+S
 		file-save-all	= CTRL+SHIFT+S
 		file-save-as	=
-
+	
 		edit-select-all	= CTRL+A
 		edit-cut	= CTRL+X
 		edit-copy	= CTRL+C
@@ -374,11 +378,11 @@ def key-mappings
 		edit-properties	= ALT+RETURN
 		mark-all	= CTRL+M
 		unmark-all	= CTRL+SHIFT+M
-
+	
 	//[c]	Seems to be broken
 		move-up	=
 		move-down	=
-
+	
 		find	=
 		find-next	= F3
 		find-previous	= SHIFT+F3
@@ -389,7 +393,7 @@ def key-mappings
 		find-replace-in-files	= CTRL+SHIFT+R
 		find-replace-all	=
 		show-search-results	=
-
+	
 		go-back	= ALT+LEFT
 		go-enter	= ALT+RIGHT
 		go-next	= CTRL+SHIFT+DOWN
@@ -410,32 +414,32 @@ def key-mappings
 		go-previous-error	=
 		go-open-in-new-tab	= CTRL+T
 		go-open-target-in-new-tab	=
-
+	
 		toggle-bookmark	= CTRL+F2
 		goto-next-bookmark	= F2
 		goto-previous-bookmark	= SHIFT+F2
-
+	
 		open-cmdline-preferences	=
 		open-global-preferences	=
 		open-global-languages	=
 		open-user-preferences	=
 		open-user-languages	=
-
+	
 		tools-break	=
 		tools-options	=
 		show-output	=
-
+	
 	//[c]	Seems to be broken
 		window-next	=
 		window-previous	=
-
+	
 		window-clone	=
 		window-close	=
 		window-close-dialog	=
 		window-close-dialog-or-window	= ESCAPE
 		window-windows	=
 		file-files	=
-
+	
 		exit	= CTRL+F4
 	end
 	//[cf]
@@ -552,15 +556,15 @@ def key-mappings
 	//[of]:GTK
 	def GTK-Style
 		prototype	= key-mappings.Windows-Style
-
+	
 		edit-redo	= CTRL+SHIFT+Z
-
+	
 		find-next	= CTRL+G
 		find-previous	= CTRL+SHIFT+G
-
+	
 		goto-line	= CTRL+L
 		elastic-tabstops	= CTRL+SHIFT+B
-
+	
 		word-wrap	= CTRL+SHIFT+W
 		window-close	= CTRL+W
 	end
@@ -575,7 +579,7 @@ def languages
 	def Default
 		relative-indentation	= true
 		encoding	= UTF-8
-
+	
 		first-line-patterns	=
 		layout	= page
 		ignore-case	= false
@@ -583,33 +587,38 @@ def languages
 		show-line-type	= false
 		fixed	= false
 		extra-id-chars	= [_A-Za-z0-9]
-
+	
 		//[of]Tabs:Tabs
-		//[c]Due to a bug in Code Browser the indentation type of a file can not be detected.
-		//[c]Auto guessing it from the file is ambiguous and not performant for technical
-		//[c]reasons. Therefore it has to be hardcoded.
+		//[c]Due to a bug in Code Browser the indentation type of a file can
+		//[c]not be detected. Auto guessing it from the file is ambiguous and
+		//[c]not performant for technical reasons. Therefore it has to be
+		//[c]hardcoded.
 		//[c]
-		//[c]If you want to use spaces instead of tabs, set 'expand-tabulation' here to 'true'
-		//[c]_and_ tweak the function 'Global functions' -> 'Indenttoken' in the user.cbs.
-		//[c]The settings made there have to reflect the settings made for languages in this
-		//[c]file.
+		//[c]If you want to use spaces instead of tabs, set 'expand-tabulation'
+		//[c]here to 'true' and tweak the function 'Global functions' ->
+		//[c]'Indenttoken' in the user.cbs. The settings made there have to
+		//[c]reflect the settings made for languages in this file.
 		//[c]
-		//[c]elastic-tabstops = true only has an effect if word-wrap is set to false.
-
+		//[c]elastic-tabstops = true only has an effect if word-wrap is set to
+		//[c]false.
+		
+		//[c]These settings are only different in
+//[l]:#Languages/Functional/Elm:#Languages/Functional/Elm
+		//[c]and
+//[l]:#Languages/Web/HTML:#Languages/Web/HTML
 		expand-tabulation	= false
 		tabulation-size	= 4
-//[l]:this is only different in #Languages/Functional/Elm:#Languages/Functional/Elm
-
+		
 		word-wrap	= true
 		elastic-tabstops	= false
 		//[cf]
 		//[of]:Comments
 		line-comment	= #
 		line-comment-2	=
-
+		
 		open-comment	=
 		close-comment	=
-
+		
 		open-comment-2	=
 		close-comment-2	=
 		//[cf]
@@ -618,10 +627,10 @@ def languages
 		regex-escape-char	=
 		char-escape-char	=
 		string-escape-char	=
-
+		
 		char-delimiter	=
 		multiline-char-delimiter	=
-
+		
 		string-delimiter	=
 		multiline-string-delimiter	=
 		//[cf]
@@ -656,25 +665,25 @@ def languages
 	def Code
 		prototype	= languages.Default
 		stylizer	= generic
-
+		
 		escape-char	= \
 		regex-escape-char	= \
 		char-escape-char	= \
 		string-escape-char	= \
 		hexa-prefix	= 0x
-
+		
 		char-delimiter	= '
 		multiline-char-delimiter	= '''
 		string-delimiter	= "
 		multiline-string-delimiter	= """
-
+		
 	//[c]	( Tabs
 		word-wrap	= false
 		elastic-tabstops	= true
 		tabulation-size	= 4
 		expand-tabulation	= false
 	//[c]	)
-
+		
 		chars-1	= ()[]{}<>!?`´.;,:-+*/\=|@^~%%&$
 	end
 	//[cf]
@@ -684,16 +693,16 @@ def languages
 	def Code-Browser-Script
 		prototype	= languages.Code
 		patterns	= *.cbs
-
+	
 		line-comment	= //
 		char-delimiter	=
 		char-escape-char	=
 		char-prefix	= $
 		hexa-prefix	= 0x
-
+	
 		//[of]:Words 1
 		//[c]'self' is actually not a keyword.
-
+		
 		words-1 = and attr break class cond do else elsif end function if method not	%
 		or return self var while yield
 		//[cf]
@@ -755,7 +764,7 @@ def languages
 		//[cf]
 		//[of]words-2:~ Words 2 (Code Browser only)
 		//[c]Copied from the docs.
-
+		
 		//[c]~ words-2 = %
 		//[c]~ Boolean Char Integer Nil String StringBuffer	%
 		//[c]~ %
@@ -792,7 +801,7 @@ def languages
 		//[c]~ useRegularExpression variablePrefix wordWrap workingDirectory
 		//[cf]
 		words-3	= true false nil application frame
-
+	
 		chars-1	= ,()[]{}=<>+-*
 	end
 	//[cf]
@@ -801,30 +810,30 @@ def languages
 		prototype	= languages.Code
 		patterns	= *.cbc;*.cb-config
 		stylizer	= code-browser-config
-
+	
 		line-comment	= //
 		hexa-prefix	= #
-
+	
 		words-1	= def end
-
+		
 	end
 	//[cf]
 	//[of]copper:Copper
 	def Copper
 		prototype	= languages.Code
 		patterns	= *.co
-
+	
 		line-comment	= //
 		hexa-prefix	= 0x
 		char-prefix	= $
-
+	
 		//[of]words-1:Words 1
 		words-1 = %
 		and attr break case cond const do else elsif end enum extend function	global if	%
 		import method not or ref repeat return static struct switch var while yield
 		//[cf]
 		words-3	= false nil true
-
+	
 		chars-1	= ()[]{},:?#.
 		chars-2	= <>=+-&|^@
 	end
@@ -834,7 +843,7 @@ def languages
 		prototype	= languages.Code
 		patterns	= *.zc
 		stylizer	= zinc
-
+	
 		layout	= list
 		line-comment	= //
 		open-comment	= /*
@@ -843,14 +852,14 @@ def languages
 		string-escape-char	= \
 		hexa-prefix	= 0x
 		char-prefix	= $
-
+	
 		//[of]:Words 1
 		words-1 = %
 		break case const continue def else elsif enum equ end func if import public	%
 		private repeat return sizeof struct switch typedef union while
 		//[cf]
 		words-3 = false true
-
+	
 		chars-1	= (){}[]$
 		chars-2	= <>=|+-*~!&%%^
 	end
@@ -861,7 +870,7 @@ def languages
 	def Markdown
 		prototype	= languages.Text
 		patterns	= *.md
-
+	
 		line-comment	=
 		open-comment	= <!--
 		close-comment	= -->
@@ -872,10 +881,10 @@ def languages
 		prototype	= languages.Text
 		stylizer	= tex
 		patterns	= *.tex;*.sty
-
+	
 		line-comment = %%
 		chars-1	= {}[]=
-
+	
 	//[c]	Todo: Where to find a complete list of symbols?
 		//[of]~ Plain TeX:~ Plain TeX
 		//[c]~ words-1 = %
@@ -1016,24 +1025,24 @@ def languages
 		prototype	= languages.Code
 		stylizer	= html
 		patterns	= *.xml;*.xsl;*.xsd;*.xul;*.exe.config;*.rdf
-
+	
 		line-comment	=
 		open-comment	= <!--
 		close-comment	= -->
 	end
 	//[cf]
 	//[cf]
-	//[of]:Web
+	//[of]Web:Web
 	//[of]:CSS
 	def CSS
 		prototype	= languages.Code
 		stylizer	= css
 		patterns	= *.css
-
+	
 		line-comment	=
 		open-comment	= /*
 		close-comment	= */
-
+	
 		words-1 = @font-face @font-feature-values @keyframes @page
 		//[of]words-1:Words 2
 		words-2 = %
@@ -1117,7 +1126,7 @@ def languages
 		font-variant-alternates font-variant-caps font-variant-east-asian	%
 		font-variant-ligatures font-variant-numeric font-variant-position	%
 		font-variation-settings font-weight grid grid-area grid-auto-columns	%
-		grid-auto-flow grid-auto-rows grid-column grid-column-end grid-column-start	%
+		grid-auto-flow grid-auto-rows grid-column grid-column-end grid-column-start grid-gap	%
 		grid-row grid-row-end grid-row-start grid-template grid-template-areas	%
 		grid-template-columns grid-template-rows hanging-punctuation height hyphens	%
 		icon image-orientation image-rendering image-resolution ime-mode include-source	%
@@ -1169,42 +1178,49 @@ def languages
 		widows width will-change word-break word-spacing word-wrap wrap-flow	%
 		wrap-through writing-mode z-index
 		//[cf]
-
+	
 	end
-
+	
 	//[of]Sass:Sass
 	def Sass
 		prototype	= languages.CSS
 		stylizer	= generic
 		patterns	= *.scss
-
+	
 		line-comment	= //
 		open-comment	= /*
 		close-comment	= */
 		open-comment-2	= #{
 		close-comment-2	= }
-
+	
 		variable-prefix	= $
 	end
 	//[cf]
 	//[cf]
-	//[of]:HTML
+	//[of]HTML:HTML
 	def HTML
 		prototype	= languages.Code
 		patterns	= *.html;*.htm;*.tpl
 		extra-id-chars	= [_A-Za-z0-9=]
-
+	
+		word-wrap	= true
+		elastic-tabstops	= false
+	
+//[l]:	See also #Languages/Defaults/Default/Tabs:#Languages/Defaults/Default/Tabs
+		expand-tabulation	= true
+		tabulation-size	= 4
+	
 		line-comment	=
 		open-comment	= <!--
 		close-comment	= -->
-
+	
 		//[of]words-1:Words 1
 		//[c]HTML tags compiled from
 		//[c]https://developer.mozilla.org/de/docs/Web/HTML/HTML5/HTML5_element_list
 		//[c]
 		//[c]SVG tags compiled from
 		//[c]https://www.w3.org/TR/SVG/eltindex.html
-
+		
 		words-1 = %
 		doctype public	%
 			%
@@ -1234,7 +1250,7 @@ def languages
 		//[of]words-1:Words 2
 		//[c]HTML attributes compiled from
 		//[c]https://developer.mozilla.org/de/docs/Web/HTML/Attributes
-
+		
 		words-2 = %
 			%
 		accept-charset= accept= accesskey= action= align= alt= aria-label= async=	%
@@ -1253,21 +1269,21 @@ def languages
 		srcdoc= srclang= srcset= start= step= style= summary= tabindex=	%
 		target= title= type= usemap= value= width= wrap= xmlns=
 		//[cf]
-
+	
 		chars-1 =
 		chars-2 = !<>/
 	//[c]	~ chars-3	= &;
 	end
-
+	
 	//[of]ASP:ASP
 	def ASP
 		prototype	= languages.HTML
 		patterns	= *.asp;*.aspx
 		sublanguage	= vb
-
+	
 	//[c]	These comments are used for folding only, they are not used
 	//[c]	by the html highlighter.
-
+	
 	//[c]	You can choose either html or vb comments, by default
 	//[c]	these comments are not configured because you must
 	//[c]	know exactly what you do:
@@ -1275,11 +1291,11 @@ def languages
 	//[c]	- If you choose java, you must only fold vb blocks
 	//[c]	Otherwise the editor will insert fold markers with wrong
 	//[c]	comment directives, resulting a broken source file.
-
+	
 	//[c]	Uncomment this if you want to fold at html level
 	//[c]	~ open-comment	= <!--
 	//[c]	~ close-comment	= -->
-
+	
 	//[c]	Uncomment this if you want to fold at java level
 		line-comment	= '
 		sublanguage-in-subsections	= true
@@ -1290,10 +1306,10 @@ def languages
 		prototype	= languages.HTML
 		patterns	= *.jsp
 		sublanguage	= java
-
+	
 	//[c]	These comments are used for folding only, they are not used
 	//[c]	by the html highlighter.
-
+	
 	//[c]	You can choose either html or java comments, by default
 	//[c]	these comments are not configured because you must
 	//[c]	know exactly what you do:
@@ -1301,11 +1317,11 @@ def languages
 	//[c]	- If you choose java, you must only fold java blocks
 	//[c]	Otherwise the editor will insert fold markers with wrong
 	//[c]	comment directives, resulting a broken source file.
-
+	
 	//[c]	Uncomment this if you want to fold at html level
 	//[c]	~ open-comment	= <!--
 	//[c]	~ close-comment	= -->
-
+	
 	//[c]	Uncomment this if you want to fold at java level
 		line-comment	= //
 		sublanguage-in-subsections	= true
@@ -1315,7 +1331,7 @@ def languages
 	def PHP
 		prototype	= languages.Code
 		patterns	= *.php
-
+	
 	//[c]	These comments are used for folding only, they are not used
 	//[c]	by the html highlighter.
 	//[c]
@@ -1326,22 +1342,22 @@ def languages
 	//[c]	- If you choose php, you must only fold php blocks
 	//[c]	Otherwise the editor will insert fold markers with wrong
 	//[c]	comment directives, resulting a broken source file.
-
+	
 	//[c]	Uncomment this if you want to fold at html level
 	//[c]	~ open-comment	= <!--
 	//[c]	~ close-comment	= -->
-
+	
 	//[c]	Uncomment this if you want to fold at php level
 		line-comment	= //
 		sublanguage-in-subsections	= true
-
+	
 		line-comment-2	= #
 		open-comment	= /*
 		close-comment	= */
 		hexa-prefix	= 0x
 		variable-prefix	= $
 		ignore-case	= true
-
+	
 		//[of]:Words 1
 		words-1 = %
 		__halt_compiler abstract and array as break callable case catch class clone	%
@@ -1363,7 +1379,7 @@ def languages
 		old_function php_user_filter this
 		//[cf]
 		words-3= FALSE TRUE NULL
-
+	
 		chars-1	= =>
 	end
 	//[cf]
@@ -1372,13 +1388,13 @@ def languages
 	def Javascript
 		prototype	= languages.Code
 		patterns	= *.js; *.json
-
+	
 		line-comment	= //
 		open-comment	= /*
 		close-comment	= */
-
+	
 		multiline-string-delimiter	= `
-
+	
 		//[of]:Words 1
 		words-1 = %
 		as break case catch class const continue def default delete do else export	%
@@ -1409,11 +1425,11 @@ def languages
 		textarea toString top undefined unescape untaint valueOf window
 		//[cf]
 		words-3	= true false Infinity NaN null undefined
-
+	
 		chars-1	= .;,:()[]{}\<>-+*/=!?|@^~%%&
-
+	
 	end
-
+	
 	//[of]:PEG-js
 	def PEG-js
 		prototype	= languages.Javascript
@@ -1434,12 +1450,12 @@ def languages
 		prototype	= languages.Code
 		patterns	= *.asm;*.inc;*.fasm
 		fixed	= true
-
+	
 		stylizer	= asm
 		line-comment	= ;
 		preprocessor = %%
 		hexa-prefix	= $
-
+	
 		//[of]words-1:Words 1
 		words-1 = %
 		aaa aad aam aas adc add addps addss align and andnps andps arpl at bound bsf	%
@@ -1496,7 +1512,7 @@ def languages
 		r9w rax rbp rbx rcx rdi rdx rsi rsp si sil sp spl ss st0 st1 st2 st3 st4 st5	%
 		st6 st7 xmm10 xmm11 xmm12 xmm13 xmm14 xmm15v xmm8 xmm9
 		//[cf]
-
+	
 		chars-1	= ,()[]+-*~#`\{}=:
 	end
 	//[cf]
@@ -1504,12 +1520,12 @@ def languages
 	def C
 		prototype	= languages.Code
 		patterns	= *.c;*.h;*.cpp;*.hpp;*.cxx;*.hxx;*.cc;*.hh;*.m
-
+	
 		line-comment	= //
 		open-comment	= /*
 		close-comment	= */
 		preprocessor	= #
-
+	
 		//[of]words-1:Words 1
 		words-1 = %
 		auto break case catch class const const_cast continue default delete do	%
@@ -1540,7 +1556,7 @@ def languages
 		pid_t
 		//[cf]
 		words-3	= false METHOD_NULL nil Nil NULL NO true YES
-
+	
 		chars-1	= %%(){}[]:?.,;
 		chars-2	= *&+-/<>|~^!=
 	end
@@ -1549,13 +1565,13 @@ def languages
 	def C-Sharp
 		prototype	= languages.Code
 		patterns	= *.cs
-
+	
 		line-comment	= //
 		open-comment	= /*
 		close-comment	= */
 		hexa-prefix	= 0x
 		preprocessor	= #
-
+	
 		//[of]words-1:Words 1
 		words-1 = %
 		abstract as base break case catch checked class const continue default delegate	%
@@ -1571,17 +1587,17 @@ def languages
 		ushort
 		//[cf]
 		words-3	= false null true void
-
+	
 	end
 	//[cf]
 	//[of]CMake:CMake
 	def CMake
 		prototype	= languages.Code
 		patterns	= *.cmake;CMakeLists.txt
-
+	
 		hexa-prefix	= 0x
 		ignore-case	= true
-
+	
 		//[of]words-1:Words 1
 		words-1 = %
 		add_custom_command add_custom_target add_definitions add_dependencies	%
@@ -1609,9 +1625,9 @@ def languages
 	def Go
 		prototype	= languages.Code
 		patterns	= *.go
-
+	
 		line-comment	= //
-
+	
 		//[of]:Words 1
 		words-1 = %
 		break case chan const continue default defer else fallthrough for func go goto	%
@@ -1623,7 +1639,7 @@ def languages
 		rune string struct uint uint16 uint32 uint64 uint8 uintptr
 		//[cf]
 		words-3 = true false nil
-
+	
 		chars-1	= (){}[]&+-%%*/<>!?|~^=,.;:
 	end
 	//[cf]
@@ -1631,13 +1647,13 @@ def languages
 	def Java
 		prototype	= languages.Code
 		patterns	= *.java;*.jav
-
-
+	
+	
 		line-comment	= //
 		open-comment	= /*
 		close-comment	= */
 		hexa-prefix	= 0x
-
+	
 		//[of]:Words 1
 		words-1 = %
 		abstract assert break case catch class const continue default do else extends	%
@@ -1660,7 +1676,7 @@ def languages
 	def Pascal
 		prototype	= languages.Code
 		patterns	= *.pas;*.pp;*.p
-
+	
 		line-comment	= //
 		open-comment	= {
 		close-comment	= }
@@ -1668,7 +1684,7 @@ def languages
 		close-comment-2	= *)
 		hexa-prefix	= $
 		ignore-case	= true
-
+	
 		//[of]words-1:Words 1
 		words-1 = %
 		absolute abstract alias and array as asm assembler automated begin bitpacked	%
@@ -1699,7 +1715,7 @@ def languages
 		prototype	= languages.Code
 		patterns	= *.scala
 		line-comment	= //
-
+	
 		//[of]:Words 1
 		words-1 = %
 		abstract case catch class def do else extends final finally for forSome if	%
@@ -1711,11 +1727,11 @@ def languages
 		words-2 = %
 		Array Boolean Console Double Int List Map None Option Ordering Range Regex Set	%
 		StdIn String StringBuilder Throwable Vector
-
+		
 		//[cf]
 		words-3 = false null true
 	end
-
+	
 	//[of]Scala-Build:Scala-Build
 	def Scala-Build
 		prototype	= languages.Scala
@@ -1728,7 +1744,7 @@ def languages
 	def Visual-Basic
 		prototype	= languages.Code
 		patterns	= *.vb;*.bas
-
+	
 		line-comment	= '
 		line-comment-2	= REM%_
 		hexa-prefix	= &H
@@ -1736,7 +1752,7 @@ def languages
 		escape-char	= _
 		preprocessor	= #
 		ignore-case	= true
-
+	
 		//[of]words-1:Words 1
 		words-1 = %
 		AddHandler AddressOf Alias And AndAlso Ansi As Assembly Auto Boolean ByRef	%
@@ -1767,20 +1783,20 @@ def languages
 		prototype	= languages.Code
 		patterns	= *.lua
 		first-line-patterns	= #!*lua*
-
+	
 		line-comment	= --
 		line-comment-2	= #!
 		open-comment	= --[[
 		close-comment	= ]]
 		hexa-prefix	= 0x
-
+	
 		//[of]:Words 1
 		words-1 = %
 		and break do else elseif end for function if in local not or repeat return	then	%
 		until while
 		//[cf]
 		words-3	= false nil true
-
+	
 		chars-1	= ;,.:[](){}+-*/^%%<>~#
 	end
 	//[cf]
@@ -1789,12 +1805,12 @@ def languages
 		prototype	= languages.Code
 		patterns	= *.pl;*.PL;*.pm;*.pod
 		first-line-patterns	= #!*/perl*
-
+	
 		stylizer	= perl
-
+	
 		//[of]:Words 1
 		//[c]These are just the keywords which are human readable.
-
+		
 		words-1 = %
 		and continue do else elsif for foreach if not or package unless until	use %
 		return sub my strict while xor
@@ -1852,7 +1868,7 @@ def languages
 		unpack unshift untie updir use_ok utime values vec wait waitpid wantarray	%
 		warn write y
 		//[cf]
-
+	
 		chars-1	= (){}[]<>=|+-*/~!&$%%^,;?:
 	end
 	//[cf]
@@ -1861,7 +1877,7 @@ def languages
 		prototype	= languages.Code
 		stylizer	= python
 		patterns	= *.py;*.pyw
-
+	
 		//[of]:Words 1
 		words-1 = %
 		and as assert async await break class continue def del elif else except finally	%
@@ -1894,7 +1910,7 @@ def languages
 		setattr slice sorted staticmethod str sum super tuple type vars zip
 		//[cf]
 		words-3 = Ellipsis True False None NotImplemented
-
+	
 		chars-1	= ()[]{}.;,:\@^~%%&!-+*/=|<>
 	end
 	//[cf]
@@ -1903,11 +1919,11 @@ def languages
 		prototype	= languages.Code
 		patterns	= *.rb
 		first-line-patterns	= #!*/ruby*
-
+	
 		stylizer	= ruby
 		open-comment	= =begin
 		close-comment	= =end
-
+	
 		//[of]:Words 1
 		words-1 = %
 		BEGIN END Validate __ENCODING__ __FILE__ __LINE__ alias and begin break case	%
@@ -1915,7 +1931,7 @@ def languages
 		or redo rescue retry return self super then true undef unless until when while	%
 		yield
 		//[cf]
-
+	
 		chars-1	= (){}[]<>=|+-*/~!&$%%^,?:
 	end
 	//[cf]
@@ -1925,18 +1941,18 @@ def languages
 	def Elm
 		prototype	= languages.Code
 		patterns	= *.elm
-
+	
 		line-comment	= --
 		open-comment	= {-
 		close-comment	= -}
-
-//[l]:	see also #Languages/Defaults/Default/Tabs:#Languages/Defaults/Default/Tabs
+	
+//[l]:	See also #Languages/Defaults/Default/Tabs:#Languages/Defaults/Default/Tabs
 		expand-tabulation	= true
 		tabulation-size	= 2
-
+	
 		//[of]words-1:Words 1
 		//[c]https://stackoverflow.com/a/51062961/1658543
-
+		
 		words-1 = %
 		alias as case class command data effect else exposing if import in infix	%
 		jsonFalse jsonNull jsonTrue left let module newtype non of port right	%
@@ -1947,15 +1963,15 @@ def languages
 	//[cf]
 	//[of]Haskell:Haskell
 	//[c]Todo: This is not really complete
-
+	
 	def Haskell
 		prototype	= languages.Code
 		patterns	= *.hs
-
+	
 		line-comment	= --
 		open-comment	= {-
 		close-comment	= -}
-
+	
 		//[of]:Words 1
 		words-1 = %
 		case class data default deriving do else foreign if import in infix infixl	%
@@ -1971,7 +1987,7 @@ def languages
 		//[of]words-3:Words 3
 		words-3 = EQ False GT Just LT Left Nothing Right True _
 		//[cf]
-
+	
 		chars-1	= ()[]{}:,-+<>|\=$
 	end
 	//[cf]
@@ -1990,7 +2006,7 @@ def languages
 		prototype	= languages.Code
 		stylizer	= batch
 		patterns	= *.bat;*.btm;*.cmd
-
+	
 		line-comment	= REM%_
 	end
 	//[cf]
@@ -2002,10 +2018,10 @@ def languages
 		patterns	= *.ahk
 		encoding	= default
 		ignore-case	= false
-
+	
 		line-comment	= ;
 		hexa-prefix	= 0x
-
+	
 		//[of]:Words 1
 		words-1 = %
 		and break byref catch continue critical else exit exitapp for global gosub goto	%
@@ -2064,7 +2080,7 @@ def languages
 		ahk_id ahk_pid clipboard
 		//[cf]
 		words-3 = True False On Off
-
+	
 		//[of]:Preprocessor
 		//[c]Catches these:
 		//[c]#AllowSameLineComments #ClipboardTimeout #CommentFlag #ErrorStdOut
@@ -2073,7 +2089,7 @@ def languages
 		//[c]#MaxHotkeysPerInterval #MaxMem #MaxThreads #MaxThreadsBuffer
 		//[c]#MaxThreadsPerHotkey #NoEnv #NoTrayIcon #Persistent #SingleInstance #UseHook
 		//[c]#WinActivateForce
-
+		
 		preprocessor	= #
 		//[cf]
 	end
@@ -2085,14 +2101,14 @@ def languages
 		prototype	= languages.Code
 		patterns	= *.cloe
 		line-comment	= ;
-
+	
 		//[of]:Words 1
 		words-1 = %
 		def import insert let map match merge mr par reduce seq type
 		//[cf]
 		words-2 = catch error print
 		words-3 = false nil true
-
+	
 		chars-1	= ()[]{}.
 		chars-2	=
 		chars-3	=
@@ -2108,7 +2124,7 @@ def languages
 	//[cf]
 	//[of]Scheme:Scheme
 	//[c]The second oldest language, and googling for a list of keywords gives no results...
-
+	
 	def Scheme
 		prototype	= languages.Code
 		patterns	= *.scheme
@@ -2122,7 +2138,7 @@ def languages
 		prototype	= languages.Text
 		patterns	= *.ini
 		stylizer	= generic
-
+	
 		line-comment	= ;
 		line-comment-2	= :
 		open-comment	= [
@@ -2135,12 +2151,12 @@ def languages
 	def SQL
 		prototype	= languages.Code
 		patterns	= *.sql
-
+	
 		line-comment	= --
 		open-comment	= /*
 		close-comment	= */
 		ignore-case	= true
-
+	
 		//[of]words-1:Words 1
 		words-1 = %
 		a absolute accessible account action active ada add admin after against	%
@@ -2261,7 +2277,7 @@ def languages
 		xmlexists xmlforest xmliterate xmlnamespaces xmlparse xmlpi xmlquery	%
 		xmlserialize xmltable xmltext xmlvalidate xor y year year_month z zerofill zone
 		//[cf]
-
+	
 		chars-1	= @
 	end
 	//[cf]
@@ -2271,7 +2287,7 @@ def languages
 	def NSIS
 		prototype	= languages.Code
 		patterns	= *.nsi;*.nsh
-
+	
 		line-comment	= ;
 		line-comment-2	= #
 		open-comment	= /*
@@ -2279,7 +2295,7 @@ def languages
 		hexa-prefix	= 0x
 		preprocessor	= !
 		ignore-case	= true
-
+	
 		//[of]words-1:Words 1
 		words-1 = %
 		Abort AllowRootDirInstall AllowSkipFiles AutoCloseWindow BGGradient	%
@@ -2363,6 +2379,40 @@ def tools
 		auto-close	= true
 		show-window	= false
 	end
+	//[cf]
+	//[of]:~ nim
+	//[c]~ def nim-compile-run
+	//[c]	~ caption	= Nim Compile + Run
+	//[c]	~ hot-key	= ALT+N
+	//[c]	~ command	= nim
+	//[c]	~ language	= default
+	//[c]	~ arguments	= c -r "$(FilePath)"
+	//[c]	~ directory	= $(FileDir)
+	//[c]	~ save-all	= true
+	//[c]	~ auto-close	= false
+	//[c]~ end
+	
+	//[c]~ def nim-compile
+	//[c]	~ caption	= Nim Compile
+	//[c]	~ hot-key	= CTRL+ALT+N
+	//[c]	~ command	= nim
+	//[c]	~ language	= default
+	//[c]	~ arguments	= c "$(FilePath)"
+	//[c]	~ directory	= $(FileDir)
+	//[c]	~ save-all	= true
+	//[c]	~ auto-close	= false
+	//[c]~ end
+	
+	//[c]~ def nim-compile-release
+	//[c]	~ caption	= Nim Compile Release
+	//[c]	~ hot-key	= CTRL+SHIFT+ALT+N
+	//[c]	~ command	= nim
+	//[c]	~ language	= default
+	//[c]	~ arguments	= c -d:release "$(FilePath)"
+	//[c]	~ directory	= $(FileDir)
+	//[c]	~ save-all	= true
+	//[c]	~ auto-close	= false
+	//[c]~ end
 	//[cf]
 end
 //[cf]
