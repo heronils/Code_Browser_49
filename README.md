@@ -32,19 +32,19 @@ Da ich diese Features in [Treesearcher](https://github.com/nilslindemann/Treesea
 
 1. Lade die zu deinem Betriebssystem passende Portable aus dem hier befindlichen Ordner `setup` herunter und [entpacke](https://www.7-zip.de/) Sie. Der Editor ist die `cb.exe` unter Windows und die `code-browser` im Ordner `usr/local/bin` unter Linux.
 
-Die nachfolgenden Schritte sind optional aber ich empfehle sie.
+Die nachfolgenden Schritte installieren meine Nutzerscripte und globalen Einstellungen.
 
 2. Lies den Abschnitt *Customizing* → *Files* in der beigefügten Hilfedatei.
 
-3. Starte den Editor einmal. Das erstellt die unter 2. beschriebenen Nutzerverzeichnisse. [Suche gegebenfalls systemweit](https://www.voidtools.com/) nach `code-browser-4` unter Windows oder `.code-browser-4` unter Linux. Diese Ordner sind die Nutzerverzeichnisse.
-
-4. *Globale Einstellungen ändern*: Ersetze die globale `preferences.cbc` mit der in diesem Verzeichnis.
+3. *Globale Einstellungen ändern*: Ersetze die globale `preferences.cbc` mit der in diesem Verzeichnis.
 
    Die Hauptunterschiede sind: Relative Einrückung wird als Standard gesetzt, ein (meiner Meinung nach) hübscher anzusehendes Theme wird verwendet (Siehe *Themes* → *Purple-Blue* in der `preferences.cbc`), einige Tastenkürzel werden umdefiniert (siehe *Key Mappings* → *Nils*), und einige Sprachen werden geändert (siehe *Languages*). Auch wird unter Anderem Python (`Alt` + `p`) und Node.js (`Alt` + `n`) als Tool definiert (siehe *Tools*).
 
    Die `preferences.cbc` kann nach Belieben verändert werden, **wird aber bei einer Neuinstallation – [falls Du den Installer verwendet hast](https://web.archive.org/web/20160912162221/http://tibleiz.net:80/code-browser/download.html) – überschrieben**.
 
-5. *Benutzerskripte aktivieren*: Verschiebe die `user.cbs` und die `user.cbc` hier im Verzeichnis in das in Schritt 3 erstellte Nutzerverzeichnis. Die `user.cbs` sind die Skripte, und die `user.cbc` verbindet die Skripte mit dem Editor.
+4. Starte den Editor einmal. Das erstellt die unter 2. beschriebenen Nutzerverzeichnisse. [Suche gegebenfalls systemweit](https://www.voidtools.com/) nach `code-browser-4` unter Windows oder `.code-browser-4` unter Linux. Diese Ordner sind die Nutzerverzeichnisse.
+
+5. *Benutzerskripte aktivieren*: Verschiebe die `user.cbs` und die `user.cbc` hier im Verzeichnis in das in Schritt 4 erstellte Nutzerverzeichnis. Die `user.cbs` sind die Skripte, und die `user.cbc` verbindet die Skripte mit dem Editor.
 
    *Beachte, daß das Layout der `user.cbc` zerstört wird, wenn Du Änderungen innerhalb von Code Browser via 'Tools' → 'Options...' vornimmst. Mach Dir zur Not ein Backup dieser Datei.*
 

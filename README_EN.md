@@ -32,19 +32,19 @@ Since I need these features in [Treesearcher](https://github.com/nilslindemann/T
 
 1. Download the portable which fits your operating system from the `setup` folder located here and [unpack it](https://www.7-zip.org/). The editor is the `cb.exe` under Windows and the `code-browser` in the folder `usr/local/bin` under Linux.
 
-The following steps are optional but i recommend them.
+The following steps install my userscripts and global settings.
 
 2. Read the section *Customizing* → *Files* in the contained help file.
 
-3. Start the editor once. This creates the user directories described under 2. If necessary, [search system-wide](https://www.voidtools.com/) for `code-browser-4` under Windows or `.code-browser-4` under Linux. These folders are the user directories.
-
-4. *Change global settings*: Replace the global `preferences.cbc` with the one in this directory.
+3. *Change global settings*: Replace the global `preferences.cbc` with the one in this directory.
 
    The main differences are: Relative indentation is set as default, a (in my opinion) prettier to look at theme is used (See *Themes* → *Purple-Blue* in `preferences.cbc`), some shortcuts are redefined (see *Key Mappings* → *Nils*), and some languages ​​are changed (see *Languages​​*). Among other things, Python (`Alt` + `p`) and Node.js (`Alt` + `n`) are defined as tools (see *Tools*).
 
    The `preferences.cbc` can be changed at will, **but will - [if you have used the installer](https://web.archive.org/web/20160912162221/http://tibleiz.net:80/code-browser/download.html) - be overwritten during a reinstall**.
 
-5. *Enable user scripts*: Move the `user.cbs` and the `user.cbc` here in the directory into the user directory created in step 3. The `user.cbs` are the scripts, and the `user.cbc` connects the scripts to the editor.
+4. Start the editor once. This creates the user directories described under 2. If necessary, [search system-wide](https://www.voidtools.com/) for `code-browser-4` under Windows or `.code-browser-4` under Linux. These folders are the user directories.
+
+5. *Enable user scripts*: Move the `user.cbs` and the `user.cbc` here in the directory into the user directory created in step 4. The `user.cbs` are the scripts, and the `user.cbc` connects the scripts to the editor.
 
    *Note that the layout of `user.cbc` is destroyed when you make changes within Code Browser via 'Tools' → 'Options ...'. If necessary, make a backup of this file.*
 
